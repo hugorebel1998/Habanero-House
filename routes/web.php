@@ -35,4 +35,6 @@ Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->m
 Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('auth');
 Route::post('/usuarios/store', 'UserController@store')->name('usuarios.store')->middleware('auth');
 Route::get('/usuarios/edit/{usuario}', 'UserController@edit')->name('usuarios.edit')->middleware('auth');
-Route::put('/usuarios/update', 'UserController@update')->name('usuarios.update')->middleware('auth');
+Route::get('/usuarios/show/{usuario}', 'UserController@show')->name('usuarios.show')->middleware('auth');
+Route::put('/usuarios/update/{usuario}', 'UserController@update')->name('usuarios.update')->middleware('auth');
+Route::get('/usuarios/delete/{usuario}', 'UserController@delete')->name('usuarios.delete')->middleware('auth');

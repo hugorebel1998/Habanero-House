@@ -15,6 +15,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <label for="nombre">Nombre</label>
+                                <input type="hidden" value="{{ $usuario->id }}">
                                 <input type="text" name="nombre"
                                     class="form-control @error('nombre') is-invalid @enderror"
                                      value="{{ $usuario->name }}">
@@ -70,21 +71,6 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-
-                            {{-- <div class="col-md-6 mt-3">
-                                <label for="contraseña">Contraseña</label>
-                                <input type="password" name="contraseña"
-                                    class="form-control @error('contraseña') is-invalid @enderror" value="{{ old('contraseña') }}">
-                                @error('contraseña')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div> --}}
-
-                            {{-- <div class="col-md-6 mt-3">
-                                <label for="confirmar_contraseña">Confirmar contraseña</label>
-                                <input type="password" name="confirmar_contraseña"
-                                    class="form-control" value="{{ old('confirmar_contraseña') }}">
-                                </div> --}}
                             </div>
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>

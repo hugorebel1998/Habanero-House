@@ -31,7 +31,7 @@
                                 <td>{{ $usuario->id }}</td>
                                 <td>{{ $usuario->name}}</td>
                                 <td>{{ $usuario->apellido_paterno}} {{ $usuario->apellido_materno}}</td>
-                                <td>{{ $usuario->fecha_nacimiento }} años</td>
+                                <td>{{ $usuario->age }} años</td>
                                 <td>{{ $usuario->telefono }}</td>
                                 <td>{{ $usuario->email }}</td>
                                 
@@ -41,8 +41,9 @@
                                          <i class="fas fa-cogs"></i> Acciones
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="{{ route('usuarios.show', $usuario->id)}}"><i class="far fa-bookmark"></i> Ver usuario</a>
                                           <a class="dropdown-item" href="{{ route('usuarios.edit', $usuario->id) }}"><i class="fas fa-edit"></i> Editar información</a>
-                                          <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Eliminar usuario</a>
+                                          <a class="dropdown-item" onclick="return confirm('¿Estas Seguro de eliminar este usuario')" href="{{ route('usuarios.delete',$usuario->id) }}"><i class="far fa-trash-alt"></i> Eliminar usuario</a>
                                         </div>
                                       </div>
                                 </td>

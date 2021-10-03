@@ -232,6 +232,7 @@
     </div>
     <!-- ./wrapper -->
 
+    
     <!-- jQuery -->
     <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
@@ -306,6 +307,9 @@
             });
         });
     </script>
+
+
+  </script>
 
 
 </body>

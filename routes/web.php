@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return redirect(route('home'));
+    } else {
+        return view('auth.login');
+    }
 });
 
 Auth::routes();
+Auth::routes(['register' => false]);
+Route::match(['get','post'], 'register' , function(){
+return redirect('/');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//usuarios
+Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->middleware('auth');
+Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('auth');
+

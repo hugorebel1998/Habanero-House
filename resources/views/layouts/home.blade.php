@@ -14,28 +14,26 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
     <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
+    @include('sweetalert::alert')
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark navbar-danger">
             <!-- Left navbar links -->
             <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
 
@@ -52,7 +50,8 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <span class="mr-2"><b>|</b></span><span class="mr-2"><b>Perfil</b></span><i class="fas fa-user"></i>
+                        <span class="mr-2"><b>|</b></span><span class="mr-2"><b>Perfil</b></span><i
+                            class="fas fa-user"></i>
                         <span class="badge badge-warning navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -77,7 +76,8 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a>
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
+                            class="fas fa-th-large"></i></a>
                 </li>
             </ul>
         </nav>
@@ -87,7 +87,8 @@
         <aside class="main-sidebar sidebar-dark-danger navbar-light elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link navbar-white pl-3">
-                <img class="mx-auto d-block" src="{{ asset('img/habanero-logo.png') }}" alt="Habanero House" width="100">
+                <img class="mx-auto d-block" src="{{ asset('img/habanero-logo.png') }}" alt="Habanero House"
+                    width="100">
             </a>
 
             <!-- Sidebar -->
@@ -95,7 +96,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('admin-lte/dist/img/user.jpg') }}" alt="User Image" class="img-circle elevation-4" style="opacity: .9;">
+                        <img src="{{ asset('admin-lte/dist/img/user.jpg') }}" alt="User Image"
+                            class="img-circle elevation-4" style="opacity: .9;">
                     </div>
                     <div class="info">
                         <a href="#" class="text-danger">{{ auth()->user()->name }}</a>
@@ -104,7 +106,8 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-close">
@@ -119,12 +122,13 @@
                                 <li class="nav-item">
                                     <a href="#" class="nav-link text-dark">
                                         <!-- <i class="fas fa-list-ul"></i> -->
-                                        <img src="{{ asset('img/Botones/12.png') }}" height="20" alt="Gestion de empresas">
+                                        <img src="{{ asset('img/Botones/12.png') }}" height="20"
+                                            alt="Gestion de empresas">
                                         <p>&nbsp;Gestiónar empresas</p>
                                     </a>
                                 </li>
                                 <li>
-                                <div class="dropdown-divider text-dark"></div>
+                                    <div class="dropdown-divider text-dark"></div>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link text-dark">
@@ -135,7 +139,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-close">
@@ -154,7 +159,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                <div class="dropdown-divider text-dark"></div>
+                                    <div class="dropdown-divider text-dark"></div>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link text-dark">
@@ -210,7 +215,8 @@
         <aside class="control-sidebar sidebar-dark-info navbar-light elevation-2">
             <div class="p-3">
                 <h5 class="text-center text-gray"><i class="nav-icon fas fa-users"></i> Usuarios</h5>
-                <a href="{{ route('usuarios.index') }}" class="nav-link active text-gray"><i class="fas fa-user-friends"></i> Lista de usuarios</a>
+                <a href="{{ route('usuarios.index') }}" class="nav-link active text-gray"><i
+                        class="fas fa-user-friends"></i> Lista de usuarios</a>
                 <a href="#" class="nav-link active text-gray"><i class="fas fa-user-friends"></i> Crear usuario</a>
             </div>
         </aside>
@@ -237,12 +243,8 @@
     <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- AdminLTE App -->
-
-    <!-- SweetAlert2 -->
-    <script src="{{ asset('admin-lte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
-
+    
 
     <script>
         $(function() {
@@ -307,4 +309,5 @@
 
 
 </body>
+
 </html>

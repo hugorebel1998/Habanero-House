@@ -31,20 +31,20 @@
                                 <td>{{ $usuario->id }}</td>
                                 <td>{{ $usuario->name}}</td>
                                 <td>{{ $usuario->apellido_paterno}} {{ $usuario->apellido_materno}}</td>
-                                <td>{{ $usuario->fecha_nacimiento}}</td>
+                                <td>{{ $usuario->fecha_nacimiento }} años</td>
                                 <td>{{ $usuario->telefono }}</td>
                                 <td>{{ $usuario->email }}</td>
                                 
                                 <td class="text-center">
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-info text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-cogs"></i> Acciones
+                                        <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                         <i class="fas fa-cogs"></i> Acciones
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="btn btn-link" href="#"><i class="fas fa-user-edit"></i> Editar información</a>
-                                            <a class="btn btn-link" href="#"><i class="fas fa-key"></i> Cambiar contraseña</a>
+                                          <a class="dropdown-item" href="{{ route('usuarios.edit', $usuario->id) }}"><i class="fas fa-edit"></i> Editar información</a>
+                                          <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Eliminar usuario</a>
                                         </div>
-                                    </div>
+                                      </div>
                                 </td>
                             </tr>
                             @endforeach                     

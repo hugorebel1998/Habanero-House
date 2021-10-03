@@ -33,4 +33,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //usuarios
 Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->middleware('auth');
 Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('auth');
-
+Route::post('/usuarios/store', 'UserController@store')->name('usuarios.store')->middleware('auth');
+Route::get('/usuarios/edit/{usuario}', 'UserController@edit')->name('usuarios.edit')->middleware('auth');
+Route::put('/usuarios/update', 'UserController@update')->name('usuarios.update')->middleware('auth');

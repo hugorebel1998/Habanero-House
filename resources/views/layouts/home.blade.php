@@ -58,11 +58,11 @@
                         <p class="text-center">{{ auth()->user()->name }}</p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="{{ route('usuarios.edit', auth()->user()->id )}}" class="dropdown-item">
                             <i class="fas fa-user-edit mr-2"></i> Editar información
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="{{ route('usuarios.contraseña', auth()->user()->id )}}" class="dropdown-item">
                             <i class="fas fa-unlock-alt mr-2"></i> Cambiar contraseña
                         </a>
                         <div class="dropdown-divider"></div>
@@ -245,68 +245,10 @@
     <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
-    
+     <!-- TableJS -->
+    <script src="{{ asset('js/table.js')}}"></script>
 
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example3').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-                "order": [
-                    [0, 'desc']
-                ],
-                language: {
-                    search: "Buscar:",
-                    "lengthMenu": "Recorrer _MENU_ registros por página",
-                    "zeroRecords": "No hay resultados",
-                    "info": "Página _PAGE_ de _PAGES_",
-                    "infoEmpty": "No hay registros disponibles ",
-                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                    paginate: {
-                        first: "Primera",
-                        previous: "Primera",
-                        next: "Última",
-                        last: "Último"
-                    },
-                }
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-                "order": [
-                    [0, 'desc']
-                ],
-                language: {
-                    search: "Buscar:",
-                    "lengthMenu": "Recorrer _MENU_ registros por página",
-                    "zeroRecords": "No hay resultados",
-                    "info": "Página _PAGE_ de _PAGES_",
-                    "infoEmpty": "No hay registros disponibles ",
-                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                    paginate: {
-                        first: "Primera",
-                        previous: "Primera",
-                        next: "Última",
-                        last: "Último"
-                    },
-                }
-            });
-        });
-    </script>
+   
 
 
   </script>

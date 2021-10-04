@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\ContraseñaRequest;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -44,10 +46,10 @@ class UserController extends Controller
         }
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $usuario = User::findOrFail($id);
         return view('usuarios.show', compact('usuario'));
-
     }
 
     public function edit($id)
@@ -80,23 +82,47 @@ class UserController extends Controller
 
         // dd($usuario);
 
-        if($usuario->save()){
-            alert()->success('Éxito','Usuario actualizado con éxito.');
+        if ($usuario->save()) {
+            alert()->success('Éxito', 'Usuario actualizado con éxito.');
             return redirect()->to(route('usuarios.index'));
-
-        }else{
-            alert()->error('Oops','Error tuvimos un problema.');
+        } else {
+            alert()->error('Oops', 'Error tuvimos un problema.');
             return redirect()->to(route('usuarios.create'));
         }
-
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $usuario = User::findOrFail($id);
         $usuario->delete();
-        alert()->success('Éxito','Usuario eliminado.');
+        alert()->success('Éxito', 'Usuario eliminado.');
         return back();
-        
+    }
 
+    public function contraseña($id)
+    {
+
+        $usuario = $id;
+        // $usuario = User::findOrFail($id);
+        return view('usuarios.password', compact('usuario'));
+    }
+
+    public function updateContraseña(ContraseñaRequest $request)
+    {
+
+        $usuario = User::findOrFail($request->id);
+        $usuario->password;
+
+        if (Hash::check($request->contraseña, $usuario->password)) {
+            $usuario->password = bcrypt($request->nueva_contraseña);
+
+            if ($usuario->save()) {
+                alert()->success('Éxito', 'Cambio de contraseña con éxito.');
+                return redirect()->to(route('home'));
+            }
+        } else {
+            alert()->error('Error', 'La contraseña actual no coincide.');
+            return back();
+        }
     }
 }

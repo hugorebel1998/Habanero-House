@@ -17,22 +17,31 @@ class UserSeeder extends Seeder
         $superadmin = User::create([
             'name'     => 'Super Administrador',
             'email'    => 'superadministrador@habanero.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'permiso'  => '1'
         ]);
+
+        $superadmin->assignRole('super-admin');
 
 
         $administrador = User::create([
             'name'     => 'Administrador',
             'email'    => 'administrador@habanero.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'permiso'  => '2'
         ]);
+
+        $administrador->assignRole('admin');
+
 
 
         $gerente = User::create([
             'name'     => 'Gerente',
             'email'    => 'gerente@habanero.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'permiso'  => '3'
         ]);
 
+        $gerente ->assignRole('gerente');
     }
 }

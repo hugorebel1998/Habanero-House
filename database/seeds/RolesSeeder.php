@@ -16,32 +16,31 @@ class RolesSeeder extends Seeder
     {
         app()['cache']->forget('spatie.permission.cache');
 
-        Permission::create(['name' => 'create user']);
-        Permission::create(['name' => 'read users']);
-        Permission::create(['name' => 'update user']);
-        Permission::create(['name' => 'delete user']);
+        Permission::create(['name' => 'create usuario']);
+        Permission::create(['name' => 'read usuario']);
+        Permission::create(['name' => 'update usuario']);
+        Permission::create(['name' => 'delete usuario']);
+
+        Permission::create(['name' => 'create producto']);
+        Permission::create(['name' => 'read producto']);
+        Permission::create(['name' => 'update producto']);
+        Permission::create(['name' => 'delete producto']);
 
 
-        // $role = Role::create(['name' => 'admin']);
-        // $role->givePermissionTo('create empleado');
-        // $role->givePermissionTo('read empleado');
-        // $role->givePermissionTo('update empleado');
-        // $role->givePermissionTo('delete empleado');
+        $role = Role::create(['name' => 'admin']);
+        $role->givePermissionTo('create usuario');
+        $role->givePermissionTo('read usuario');
+        $role->givePermissionTo('update usuario');
+        // $role->givePermissionTo('delete usuario');
+        $role->givePermissionTo('create producto');
+        $role->givePermissionTo('read producto');
+        $role->givePermissionTo('update producto');
+        // $role->givePermissionTo('delete producto');
 
-        // $role = Role::create(['name' => 'sucursal']);
-        // $role->givePermissionTo('create empleado');
-        // $role->givePermissionTo('read empleado');
-        // $role->givePermissionTo('update empleado');
-        // $role->givePermissionTo('delete empleado');
-
-
-        // $role = Role::create(['name' => 'laboratorio']);
-        // $role->givePermissionTo('nivel empleado');
-        // $role->givePermissionTo('create user');
-        // $role->givePermissionTo('read users');
-        // $role->givePermissionTo('update user');
-        // $role->givePermissionTo('delete user');
-
+        $role = Role::create(['name' => 'gerente']);
+        $role->givePermissionTo('create producto');
+        $role->givePermissionTo('read producto');
+        $role->givePermissionTo('update producto');
 
 
         $role = Role::create(['name' => 'super-admin']);

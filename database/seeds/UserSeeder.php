@@ -14,9 +14,23 @@ class UserSeeder extends Seeder
     public function run()
     {
      
-        User::create([
+        $superadmin = User::create([
+            'name'     => 'Super Administrador',
+            'email'    => 'superadministrador@habanero.com',
+            'password' => bcrypt('12345678')
+        ]);
+
+
+        $administrador = User::create([
             'name'     => 'Administrador',
-            'email'    => 'admin@admin.com',
+            'email'    => 'administrador@habanero.com',
+            'password' => bcrypt('12345678')
+        ]);
+
+
+        $gerente = User::create([
+            'name'     => 'Gerente',
+            'email'    => 'gerente@habanero.com',
             'password' => bcrypt('12345678')
         ]);
 

@@ -212,12 +212,13 @@
         <!-- /.content-wrapper -->
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar sidebar-dark-info navbar-light elevation-2">
+        <aside class="control-sidebar sidebar-dark-info navbar-danger elevation-2">
             <div class="p-3">
-                <h5 class="text-center text-gray"><i class="nav-icon fas fa-users"></i> Usuarios</h5>
-                <a href="{{ route('usuarios.index') }}" class="nav-link active text-gray"><i
+                <h5 class="text-center text-white"><i class="nav-icon fas fa-users"></i> Usuarios</h5>
+                <a href="{{ route('usuarios.index') }}" class="nav-link active text-white"><i
                         class="fas fa-user-friends"></i> Lista de usuarios</a>
-                <a href="#" class="nav-link active text-gray"><i class="fas fa-user-friends"></i> Crear usuario</a>
+                <a href="{{ route('usuarios.create') }}" class="nav-link active text-white"><i class="fas fa-user-friends"></i> Crear usuario</a>
+                <a href="#" class="nav-link active text-white"><i class="fas fa-user-friends"></i> Usuarios eliminados</a>
             </div>
         </aside>
         <!-- /.control-sidebar -->
@@ -226,7 +227,7 @@
         <footer class="main-footer">
 
             <div class="text-center">
-                <p>&copy; <?= date('Y') ?> <strong>Life in Genomics </strong> .</p>
+                <p>&copy; <?= date('Y') ?> <strong>Habanero House </strong> .</p>
             </div>
         </footer>
     </div>
@@ -247,13 +248,7 @@
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
      <!-- TableJS -->
     <script src="{{ asset('js/table.js')}}"></script>
-
-   
-
-
   </script>
-
-
 </body>
 
 </html>

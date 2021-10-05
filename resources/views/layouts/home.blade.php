@@ -21,11 +21,22 @@
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
     <!-- SweetAlert2 -->
+
+    <style>
+        /* .portada {
+            background: url({{ asset('img/logohabanero.jpeg') }} ) no-repeat fixed center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        } */
+
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-    @include('sweetalert::alert')
+        @include('sweetalert::alert')
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark navbar-danger">
@@ -58,11 +69,11 @@
                         <p class="text-center">{{ auth()->user()->name }}</p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('usuarios.edit', auth()->user()->id )}}" class="dropdown-item">
+                        <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
                             <i class="fas fa-user-edit mr-2"></i> Editar información
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('usuarios.contraseña', auth()->user()->id )}}" class="dropdown-item">
+                        <a href="{{ route('usuarios.contraseña', auth()->user()->id) }}" class="dropdown-item">
                             <i class="fas fa-unlock-alt mr-2"></i> Cambiar contraseña
                         </a>
                         <div class="dropdown-divider"></div>
@@ -217,8 +228,10 @@
                 <h5 class="text-center text-white"><i class="nav-icon fas fa-users"></i> Usuarios</h5>
                 <a href="{{ route('usuarios.index') }}" class="nav-link active text-white"><i
                         class="fas fa-user-friends"></i> Lista de usuarios</a>
-                <a href="{{ route('usuarios.create') }}" class="nav-link active text-white"><i class="fas fa-user-friends"></i> Crear usuario</a>
-                <a href="#" class="nav-link active text-white"><i class="fas fa-user-friends"></i> Usuarios eliminados</a>
+                <a href="{{ route('usuarios.create') }}" class="nav-link active text-white"><i
+                        class="fas fa-user-friends"></i> Crear usuario</a>
+                <a href="#" class="nav-link active text-white"><i class="fas fa-user-friends"></i> Usuarios
+                    eliminados</a>
             </div>
         </aside>
         <!-- /.control-sidebar -->
@@ -233,7 +246,7 @@
     </div>
     <!-- ./wrapper -->
 
-    
+
     <!-- jQuery -->
     <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
@@ -246,9 +259,9 @@
     <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
-     <!-- TableJS -->
-    <script src="{{ asset('js/table.js')}}"></script>
-  </script>
+    <!-- TableJS -->
+    <script src="{{ asset('js/table.js') }}"></script>
+    </script>
 </body>
 
 </html>

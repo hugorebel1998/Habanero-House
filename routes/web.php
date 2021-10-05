@@ -30,6 +30,7 @@ return redirect('/');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['middleware' => ['role:super-admin|admin|gerente']], function(){
 //usuarios
 Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->middleware('auth');
 Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('auth');
@@ -40,3 +41,9 @@ Route::put('/usuarios/update/{usuario}', 'UserController@update')->name('usuario
 Route::get('/usuarios/delete/{usuario}', 'UserController@delete')->name('usuarios.delete')->middleware('auth');
 Route::get('/usuarios/contraseña/{usuario}', 'UserController@contraseña')->name('usuarios.contraseña')->middleware('auth');
 Route::post('/usuarios/updatecontraseña', 'UserController@updateContraseña')->name('usuarios.updatecontraseña')->middleware('auth');
+
+});
+
+
+
+

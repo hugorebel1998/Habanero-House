@@ -38,6 +38,9 @@ class RolesSeeder extends Seeder
         // $role->givePermissionTo('delete producto');
 
         $role = Role::create(['name' => 'gerente']);
+        // $role->givePermissionTo('create usuario');
+        $role->givePermissionTo('read usuario');
+        // $role->givePermissionTo('update usuario');
         $role->givePermissionTo('create producto');
         $role->givePermissionTo('read producto');
         $role->givePermissionTo('update producto');

@@ -43,5 +43,13 @@ class UserSeeder extends Seeder
         ]);
 
         $gerente ->assignRole('gerente');
+
+
+        User::create([
+            'name'     => 'Hugo Guillermo',
+            'email'    => 'hugorebel1998@gmail.com',
+            'password' => bcrypt('12345678'),
+            'permiso'  => '3'
+        ]);
     }
 }

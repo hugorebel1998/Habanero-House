@@ -9,7 +9,9 @@
                 <b class="lead font-weight-bold"> Usuarios</b>
                 </div>
                 <div class="d-flex justify-content-end mt-3 mr-4">
-               <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Nuevo usuario</a>
+                    @can('')
+                        <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Nuevo usuario</a>
+                    @endcan
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -36,16 +38,20 @@
                                 <td>{{ $usuario->email }}</td>
                                 
                                 <td class="text-center">
-                                    <div class="dropdown">
+                                    @can('update usuario')
+                                       <div class="dropdown">
                                         <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                          <i class="fas fa-cogs"></i> Acciones
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                           <a class="dropdown-item" href="{{ route('usuarios.show', $usuario->id)}}"><i class="far fa-bookmark"></i> Ver usuario</a>
                                           <a class="dropdown-item" href="{{ route('usuarios.edit', $usuario->id) }}"><i class="fas fa-edit"></i> Editar información</a>
+                                       @can('delete usuario')
                                           <a class="dropdown-item" onclick="return confirm('¿Estas Seguro de eliminar este usuario')" href="{{ route('usuarios.delete',$usuario->id) }}"><i class="far fa-trash-alt"></i> Eliminar usuario</a>
+                                       @endcan
                                         </div>
                                       </div>
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach                     

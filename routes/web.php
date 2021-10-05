@@ -41,6 +41,9 @@ Route::put('/usuarios/update/{usuario}', 'UserController@update')->name('usuario
 Route::get('/usuarios/delete/{usuario}', 'UserController@delete')->name('usuarios.delete')->middleware('auth');
 Route::get('/usuarios/contraseña/{usuario}', 'UserController@contraseña')->name('usuarios.contraseña')->middleware('auth');
 Route::post('/usuarios/updatecontraseña', 'UserController@updateContraseña')->name('usuarios.updatecontraseña')->middleware('auth');
+Route::get('/usuarios/usuarioeliminado', 'UserController@indexDelete')->name('usuarios.indexdelete')->middleware('auth');
+Route::get('/usuarios/usuariorestore/{usuario}', 'UserController@usuarioRestore')->name('usuarios.usuariorestore')->middleware('auth');
+
 
 });
 

@@ -230,7 +230,7 @@
                         class="fas fa-user-friends"></i> Lista de usuarios</a>
                 <a href="{{ route('usuarios.create') }}" class="nav-link active text-white"><i
                         class="fas fa-user-friends"></i> Crear usuario</a>
-                <a href="#" class="nav-link active text-white"><i class="fas fa-user-friends"></i> Usuarios
+                <a href="{{ route('usuarios.indexdelete')}}" class="nav-link active text-white"><i class="fas fa-user-times"></i> Usuarios
                     eliminados</a>
             </div>
         </aside>

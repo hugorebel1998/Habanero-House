@@ -14,14 +14,13 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-   public function __construct()
-   {
-    $this->middleware(['permission:create usuario'], ['only' => 'create', 'store']);
-    $this->middleware(['permission:read usuario'], ['only' => 'index']);
-    $this->middleware(['permission:update usuario'], ['only' => 'edit', 'update']);
-    $this->middleware(['permission:delete usuario'], ['only' => 'delete']);
-       
-   }
+    public function __construct()
+    {
+        $this->middleware(['permission:create usuario'], ['only' => 'create', 'store']);
+        $this->middleware(['permission:read usuario'], ['only' => 'index']);
+        $this->middleware(['permission:update usuario'], ['only' => 'edit', 'update']);
+        $this->middleware(['permission:delete usuario'], ['only' => 'delete']);
+    }
 
     public function index()
     {
@@ -135,5 +134,19 @@ class UserController extends Controller
             alert()->error('Error', 'La contraseña actual no coincide.');
             return back();
         }
+    }
+
+    public function indexDelete()
+    {
+        $usuarios = User::onlyTrashed()->get();
+        return view('usuarios.indexdelete', compact('usuarios'));
+    }
+
+    public function usuarioRestore($id)
+    {
+
+        User::onlyTrashed()->findOrFail($id)->restore();
+        alert()->success('Éxito', 'usuario restablecido.');
+        return redirect()->to(route('usuarios.index'));
     }
 }

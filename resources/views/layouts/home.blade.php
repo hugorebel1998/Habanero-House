@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Habanero House</title>
+    
+    @section('title', 'Habanero House')
+    <title> @yield('title')</title>
+        
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,9 +40,8 @@
     <div class="wrapper">
         @include('sweetalert::alert')
 
-        <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark navbar-danger">
-            <!-- Left navbar links -->
+
             <ul class="navbar-nav ">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
@@ -56,9 +57,6 @@
             </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
-
-                <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <span class="mr-2"><b>|</b></span><span class="mr-2"><b>Perfil</b></span><i
@@ -104,7 +102,7 @@
                             class="img-circle elevation-4" style="opacity: .9;">
                     </div>
                     <div class="info">
-                        <a href="#" class="text-danger">{{ auth()->user()->name }}</a>
+                        <a href="{{ route('usuarios.show', auth()->user()->id )}}" class="text-danger">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
 
@@ -160,14 +158,12 @@
                         </li> --}}
                     </ul>
                 </nav>
-                <!-- /.sidebar-menu -->
             </div>
-            <!-- /.sidebar -->
         </aside>
 
-        <!-- Content Wrapper. Contains page content -->
+
         <div class="content-wrapper portada">
-            <!-- Content Header (Page header) -->
+
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -180,11 +176,11 @@
                                 <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active">Starter Page</li> -->
                             </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.content-header -->
+            
 
             <!-- Main content -->
             <div class="content">

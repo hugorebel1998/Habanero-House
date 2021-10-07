@@ -1,5 +1,6 @@
 @extends('layouts.home')
 @section('content')
+@section('title', 'Editar usuario')
 
 <div class="container">
     <div class="row justify-content-center">

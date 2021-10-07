@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-
+@section('title', 'Creación de usuarios')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">

@@ -92,19 +92,12 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-danger navbar-light elevation-4">
-            <!-- Brand Logo -->
             <a href="index3.html" class="brand-link navbar-white pl-3">
                 <img class="mx-auto d-block" src="{{ asset('img/habanero-logo.png') }}" alt="Habanero House"
                     width="100">
             </a>
-
-            <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="{{ asset('admin-lte/dist/img/user.jpg') }}" alt="User Image"
@@ -115,72 +108,56 @@
                     </div>
                 </div>
 
-                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-close">
+                        <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-users"></i>
+                                <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Empresas
+                                    Productos
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview ">
+                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-dark">
-                                        <!-- <i class="fas fa-list-ul"></i> -->
-                                        <img src="{{ asset('img/Botones/12.png') }}" height="20"
-                                            alt="Gestion de empresas">
-                                        <p>&nbsp;Gestiónar empresas</p>
+                                    <a href="#" class="nav-link text-secondary">
+                                        <i class="fas fa-list-ul nav-icon"></i>
+                                        <p>Gestión de productos</p>
                                     </a>
                                 </li>
-                                <li>
-                                    <div class="dropdown-divider text-dark"></div>
-                                </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-dark">
-                                        <i class="fas fa-plus"></i>
-                                        <p>&nbsp;Agregar empresa</p>
+                                    <a href="#" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear reporte</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-close">
-                            <a href="#" class="nav-link active ">
-                                <img src="{{ asset('img/Botones/8.png') }}" height="20" alt="importar">
+                        {{-- <li class="nav-item ">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Importar
-                                    <i class="right fas fa-angle-left"></i>
+                                    Productos
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview ">
+                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-dark">
-                                        <img src="#" height="20" alt="">
-                                        <p>Colaboradores Corporativo</p>
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p class="text-black">Gestión de productos</p>
                                     </a>
                                 </li>
-                                <li>
-                                    <div class="dropdown-divider text-dark"></div>
-                                </li>
+                             
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-dark">
-                                        <img src="{{ asset('img/Botones/9.png') }}" height="20" alt="">
-                                        <p>Colaboradores Sucursal</p>
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear producto</p>
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-
+                        </li> --}}
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

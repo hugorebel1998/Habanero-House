@@ -64,7 +64,7 @@
                         <span class="badge badge-warning navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <p class="text-center">{{ auth()->user()->name }}</p>
+                        <p class="text-center"> <b>{{ auth()->user()->name }}</b></p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
@@ -91,17 +91,17 @@
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-danger navbar-light elevation-4">
-            <a href="index3.html" class="brand-link navbar-white pl-3">
+            <a href="{{ route('home')}}" class="brand-link navbar-white pl-3">
                 <img class="mx-auto d-block" src="{{ asset('img/habanero-logo.png') }}" alt="Habanero House"
-                    width="100">
+                    width="150">
             </a>
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="{{ asset('admin-lte/dist/img/user.jpg') }}" alt="User Image"
-                            class="img-circle elevation-4" style="opacity: .9;">
+                            class="img-circle elevation-4" style="opacity: .9; height:50px; width:50px"  >
                     </div>
-                    <div class="info">
+                    <div class="info mt-2">
                         <a href="{{ route('usuarios.show', auth()->user()->id )}}" class="text-danger">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-secondary">
+                                    <a href="{{ route('productos.index') }}" class="nav-link text-secondary">
                                         <i class="fas fa-list-ul nav-icon"></i>
                                         <p>Gestión de productos</p>
                                     </a>

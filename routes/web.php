@@ -38,7 +38,7 @@ Route::post('/usuarios/store', 'UserController@store')->name('usuarios.store')->
 Route::get('/usuarios/edit/{usuario}', 'UserController@edit')->name('usuarios.edit')->middleware('auth');
 Route::get('/usuarios/show/{usuario}', 'UserController@show')->name('usuarios.show')->middleware('auth');
 Route::put('/usuarios/update/{usuario}', 'UserController@update')->name('usuarios.update')->middleware('auth');
-Route::get('/usuarios/delete/{usuario}', 'UserController@delete')->name('usuarios.delete')->middleware('auth');
+Route::delete('/usuarios/delete/{usuario}', 'UserController@delete')->name('usuarios.delete')->middleware('auth');
 Route::get('/usuarios/contraseña/{usuario}', 'UserController@contraseña')->name('usuarios.contraseña')->middleware('auth');
 Route::post('/usuarios/updatecontraseña', 'UserController@updateContraseña')->name('usuarios.updatecontraseña')->middleware('auth');
 Route::get('/usuarios/usuarioeliminado', 'UserController@indexDelete')->name('usuarios.indexdelete')->middleware('auth');
@@ -49,4 +49,11 @@ Route::get('/usuarios/usuariorestore/{usuario}', 'UserController@usuarioRestore'
 
 
 
+Route::get('/productos/index', 'ProductController@index')->name('productos.index')->middleware('auth');
+Route::get('/productos/create', 'ProductController@create')->name('productos.create')->middleware('auth');
+Route::post('/productos/store', 'ProductController@store')->name('productos.store')->middleware('auth');
+Route::get('/productos/show/{producto}', 'ProductController@show')->name('productos.show')->middleware('auth');
+Route::get('/productos/edit/{producto}', 'ProductController@edit')->name('productos.edit')->middleware('auth');
+Route::put('/productos/update/{producto}', 'ProductController@update')->name('productos.update')->middleware('auth');
+Route::delete('/productos/delete/{producto}', 'ProductController@delete')->name('productos.delete')->middleware('auth');
 

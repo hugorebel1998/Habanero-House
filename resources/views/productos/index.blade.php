@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')    
-@section('title', 'Lista de usuarios')
+@section('title', 'Lista de productos')
 
 
 <div class="container">
@@ -8,12 +8,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                <b class="lead font-weight-bold"> Usuarios</b>
+                <b class="lead font-weight-bold"> Productos</b>
                 </div>
                 <div class="d-flex justify-content-end mt-3 mr-4">
-                    <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Nuevo usuario</a>
+                    <a href="{{ route('productos.create') }}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Nuevo producto</a>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                         <thead>
@@ -28,37 +27,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($usuarios as $usuario)
+                      
                             <tr>
-                                <td>{{ $usuario->id }}</td>
-                                <td>{{ $usuario->name}}</td>
-                                <td>{{ $usuario->apellido_paterno}} {{ $usuario->apellido_materno}}</td>
-                                <td>{{ $usuario->age }} años</td>
-                                <td>{{ $usuario->telefono }}</td>
-                                <td>{{ $usuario->email }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 
                                 <td class="text-center">
-                                    @can('update usuario')
+                                    
                                        <div class="dropdown">
                                         <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                          <i class="fas fa-cogs"></i> Acciones
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                          <a class="dropdown-item" href="{{ route('usuarios.show', $usuario->id)}}"><i class="far fa-bookmark"></i> Ver usuario</a>
-                                          <a class="dropdown-item" href="{{ route('usuarios.edit', $usuario->id) }}"><i class="fas fa-edit"></i> Editar información</a>
-                                       @can('delete usuario')
-                                       <form action="{{ route('usuarios.delete', $usuario->id)}}" method="POST">
+                                          <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i> Ver producto</a>
+                                          <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Editar producto</a>
+                                       
+                                       <form action="#" method="POST">
                                         @csrf
                                         @method('Delete')
-                                           <button class="dropdown-item" onclick="return confirm('¿Estas Seguro de eliminar este usuario')" href="{{ route('usuarios.delete',$usuario->id) }}"><i class="far fa-trash-alt"></i> Eliminar usuario</button>
+                                           <button class="dropdown-item" onclick="return confirm('¿Estas Seguro de eliminar este usuario')" href="#"><i class="far fa-trash-alt"></i> Eliminar producto</button>
                                        </form>
-                                       @endcan
+                                    
                                         </div>
                                       </div>
-                                    @endcan
+                                    
                                 </td>
                             </tr>
-                            @endforeach                     
+                      
                         </tbody>
                     </table>
                 </div>

@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
-    <!-- SweetAlert2 -->
+    
 
     <style>
         /* .portada {
@@ -111,7 +111,7 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-th"></i>
+                                <i class="nav-icon fas fa-boxes"></i>
                                 <p>
                                     Productos
                                     <i class="right fas fa-angle-left"></i>
@@ -132,11 +132,11 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item ">
+                         <li class="nav-item ">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-table"></i>
+                                <i class="nav-icon fas fa-folder-open"></i>
                                 <p>
-                                    Productos
+                                    Categorias
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -144,7 +144,7 @@
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-list-alt nav-icon"></i>
-                                        <p class="text-black">Gestión de productos</p>
+                                        <p class="text-black">Gestión de categorias</p>
                                     </a>
                                 </li>
                              
@@ -155,7 +155,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
+                        </li> 
                     </ul>
                 </nav>
             </div>
@@ -234,7 +234,7 @@
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
     <!-- TableJS -->
     <script src="{{ asset('js/table.js') }}"></script>
-    </script>
+    
 </body>
 
 </html>

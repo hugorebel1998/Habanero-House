@@ -19,18 +19,14 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Apellidos</th>
-                                <th scope="col">Edad</th>
-                                <th scope="col">Teléfono</th>
-                                <th scope="col">Correo electrónico</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Imagen</th>
                                 <th scope="col" class="text-center">Administrador</th>
                             </tr>
                         </thead>
                         <tbody>
                       
                             <tr>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

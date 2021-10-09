@@ -16,18 +16,12 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
-            $table->string('slug')->unique();
-            $table->bigInteger('cantidad')->unsigned()->default(0);
-            $table->decimal('precio_actual',12,2)->default(0);
-            $table->decimal('precio_anterior',12,2)->default(0);
-            // $table->integer('porcentaje_descuento');
-            $table->text('descripcion_corta');
-            $table->text('descripcion_larga');
-            $table->text('especificaciones');
-            // $table->integer('visitas')->default(0)->nullable();
-            // $table->integer('ventas')->default(0)->nullable();
-            $table->string('status');
-            $table->char('activo',2);
+            // $table->bigInteger('cantidad')->unsigned()->default(0);
+            $table->decimal('precio',12,2)->default(0);
+            $table->decimal('descuento',12,2)->default(0);
+            $table->decimal('indescuento',12,2)->default(0);
+            $table->string('imagen_producto');
+            $table->text('descripcion');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->foreign('user_id')->references('id')->on('users');

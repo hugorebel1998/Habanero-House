@@ -17,13 +17,14 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('nombre')->unique();
             // $table->bigInteger('cantidad')->unsigned()->default(0);
-            $table->decimal('precio',12,2)->default(0);
-            $table->decimal('descuento',12,2)->default(0);
-            $table->decimal('indescuento',12,2)->default(0);
+            $table->decimal('precio')->default(0);
+            $table->decimal('descuento')->default(0);
+            $table->decimal('indescuento')->default(0)->nullable();
             $table->string('imagen_producto');
             $table->text('descripcion');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
+            $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

@@ -9,79 +9,125 @@
                     <div class="card-tittle"><i class="fas fa-box"></i> Crear productos</div>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST" autocomplete="off">
+                    <form action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         <div class="row">
+
                             <div class="col-md-4">
                                 <label for="nombre">Nombre</label>
                                 <input type="text" name="nombre"
-                                    class="form-control @error('nombre') is-invalid @enderror"
-                                    placeholder="Nombre" value="{{ old('nombre') }}">
+                                    class="form-control @error('nombre') is-invalid @enderror" placeholder="Nombre"
+                                    value="{{ old('nombre') }}">
                                 @error('nombre')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
+
+                            {{-- <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Categoria</label>
+                                    <select name="categoria" class="custom-select  select2bs4 @error('categoria') is-invalid @enderror"
+                                        style="width: 100%;" value="{{ old('categoria') }}">
+                                        <option value="" selected>-- Selecciona una categoria--</option>
+                                        @foreach ($categorias as $categoria)
+                                            <option value="{{ $categoria->id }}"> {{ $categoria->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                @error('categoria')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                                </div>
+                            </div> --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Categoria</label>
-                                    <select class="custom-select">
-                                    <option>Categoria 1</option>
-                                    <option>Categoria 2</option>
-                                    
+                                    <select name="categoria" class="custom-select  select2bs4 @error('categoria') is-invalid @enderror"
+                                        style="width: 100%;">
+                                        <option value="" selected>-- Selecciona una categoria--</option>
+                                        @foreach ($categorias as $categoria)
+                                           <option value="{{$categoria->id}}" {{(old('categoria') == $categoria->id ? 'selected' : '')}} > {{$categoria->nombre}} </option>
+                                        @endforeach
                                     </select>
+                                @error('categoria')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                                 </div>
                             </div>
 
+
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="customFile">Imagen destacada</label>
-
+                                    <label for="imagen">Imagen destacada</label>
                                     <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Selecciona imagen</label>
+                                        <input accept="image/*" type="file"
+                                            class="custom-file-input @error('imagen') is-invalid @enderror"
+                                            name="imagen" value="{{ old('imagen') }}">
+                                        <label class="custom-file-label"for="customFile">Selecciona imagen</label>
+                                        @error('imagen')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-4 mt-3">
-                                <label for="fecha_de_nacimiento">Precio</label>
-                                <input type="number" name="fecha_de_nacimiento"
-                                    class="form-control" min="0.00" step="any" >
-                                
-                            </div>
 
                             <div class="col-md-4 mt-3">
-                               <div class="form-group">
+                                <label for="precio">Precio</label>
+                                <input type="number" name="precio"
+                                    class="form-control @error('precio') is-invalid @enderror" min="0.00" step="any"
+                                    value="{{ old('precio') }}" placeholder="0.00">
+                                @error('precio')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+
+                            <div class="col-md-4 mt-3">
+                                <div class="form-group">
                                     <label>¿En descuento?</label>
-                                    <select class="custom-select">
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
-                                    
+                                    <select name="en_descuento" class="custom-select select2bs4 @error('en_descuento') is-invalid @enderror" 
+                                     style="width: 100%;">
+                                         <option value="" selected>-- Selecciona una opción--</option>
+                                        <option value="0" @if ( old('en_descuento') == '0') selected="selected" @endif  }}>No</option>
+                                        <option value="1" @if ( old('en_descuento') == '1') selected="selected" @endif  }}>Si</option>
                                     </select>
+                                @error('en_descuento')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                                 </div>
                             </div>
 
+
                             <div class="col-md-4 mt-3">
-                                <label for="correo_electrónico">Descuento</label>
-                                <input type="number" name="correo_electrónico"
-                                    class="form-control" min="0.00" step="any" >
+                                <label for="descuento">Descuento</label>
+                                <input type="number" name="descuento" class="form-control @error('descuento') is-invalid @enderror" value="{{ old('descuento') }}" min="0.00"
+                                    step="any" placeholder="0.00">
+                                @error('descuento')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
+
                             <div class="col-md-12 mt-4">
-                                 <label>Descripción</label>
-                                <textarea class="form-control" rows="6" placeholder="....."></textarea>
+                                <label for="descripcion">Descripción</label>
+                                <textarea class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" rows="6" required>{{ old('descripcion')}} </textarea>
+                                @error('descripcion')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
+
+
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>
-                                Guardar</button>
+                                Guardar producto</button>
                         </div>
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-   
+
 @endsection

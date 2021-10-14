@@ -15,11 +15,11 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->integer('status')->nullable();
             $table->string('nombre')->unique();
-            // $table->bigInteger('cantidad')->unsigned()->default(0);
-            $table->decimal('precio')->default(0);
-            $table->decimal('descuento')->default(0);
-            $table->decimal('indescuento')->default(0)->nullable();
+            $table->decimal('precio', 11,2)->default(0);
+            $table->integer('indescuento')->default(0)->nullable();
+            $table->integer('descuento')->default(0);
             $table->string('imagen_producto');
             $table->text('descripcion');
             $table->unsignedBigInteger('user_id');

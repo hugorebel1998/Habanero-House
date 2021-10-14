@@ -12,7 +12,7 @@
                     <form action="{{ route('usuarios.store') }}" method="POST" autocomplete="off">
                         @csrf
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="nombre">Nombre</label>
                                 <input type="text" name="nombre"
                                     class="form-control @error('nombre') is-invalid @enderror"

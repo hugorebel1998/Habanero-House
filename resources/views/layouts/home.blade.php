@@ -37,7 +37,7 @@
             -o-background-size: cover;
             background-size: cover;
         } */
-        .custom-file-input ~ .custom-file-label::after{
+        .custom-file-input~.custom-file-label::after {
             content: "Subir"
         }
 
@@ -72,7 +72,7 @@
                         <span class="badge badge-warning navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <p class="text-center"> <b>{{ auth()->user()->name }}</b></p>
+                        <p class="text-center"> <b>{{ auth()->user()->cargo }}</b></p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
@@ -111,7 +111,7 @@
                     </div>
                     <div class="info mt-2">
                         <a href="{{ route('usuarios.show', auth()->user()->id) }}"
-                            class="text-danger">{{ auth()->user()->name }}</a>
+                            class="text-danger">{{ auth()->user()->cargo }}</a>
                     </div>
                 </div>
 
@@ -197,12 +197,9 @@
                     <div class="row">
                         @yield('content')
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                </div>
             </div>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar sidebar-dark-info navbar-danger elevation-2">
@@ -217,9 +214,7 @@
                     eliminados</a>
             </div>
         </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
+        
         <footer class="main-footer">
 
             <div class="text-center">
@@ -227,7 +222,6 @@
             </div>
         </footer>
     </div>
-    <!-- ./wrapper -->
 
 
     <!-- jQuery -->
@@ -249,11 +243,11 @@
     <!-- TableJS -->
     <script src="{{ asset('js/table.js') }}"></script>
     <!--Select2JS-->
-    <script src="{{ asset('js/select2.js')}}"></script>
-    
+    <script src="{{ asset('js/select2.js') }}"></script>
+
     <script>
-        $(function () {
-          bsCustomFileInput.init();
+        $(function() {
+            bsCustomFileInput.init();
         });
     </script>
 </body>

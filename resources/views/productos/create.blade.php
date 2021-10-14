@@ -101,8 +101,8 @@
 
                             <div class="col-md-4 mt-3">
                                 <label for="descuento">Descuento</label>
-                                <input type="number" name="descuento" class="form-control @error('descuento') is-invalid @enderror" value="{{ old('descuento') }}" min="0.00"
-                                    step="any" placeholder="0.00">
+                                <input type="number" name="descuento" class="form-control @error('descuento') is-invalid @enderror" value="{{ old('descuento') }}" 
+                                     placeholder="0.00">
                                 @error('descuento')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

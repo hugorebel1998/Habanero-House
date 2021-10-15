@@ -24,14 +24,15 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'               => 'required|min:3|max:15',
-            'apellido_paterno'     => 'required|max:15',
-            'apellido_materno'     => 'required|max:15',
-            'fecha_de_nacimiento'  => 'required',
-            'teléfono'             => 'required|numeric|min:10',
-            'correo_electrónico'   => 'required|email|unique:users,email',
-            'contraseña'           => 'min:8|required_with:confirmar_contraseña|same:confirmar_contraseña',
-            'confirmar_contraseña' => 'required|min:8'
+            // 'nombre'               => 'required|min:3|max:15',
+            // 'apellido_paterno'     => 'required|max:15',
+            // 'apellido_materno'     => 'required|max:15',
+            // 'fecha_de_nacimiento'  => 'required',
+            // 'teléfono'             => 'required|numeric|min:10',
+            
+            // 'correo_electrónico'   => 'required|email|unique:users,email',
+            // 'contraseña'           => 'min:8|required_with:confirmar_contraseña|same:confirmar_contraseña',
+            // 'confirmar_contraseña' => 'required|min:8'
 
         ];
     }

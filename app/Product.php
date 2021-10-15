@@ -12,4 +12,8 @@ class Product extends Model
     protected $fillable = [
         'status','nombre', 'precio' , 'indescuento', 'descuento',  'imagen_producto', 'descripcion','user_id' ,'category_id'
     ];
+
+    public function categoriaProduct(){
+        return $this->hasOne(Category:: class, 'id', 'category_id');
+    }
 }

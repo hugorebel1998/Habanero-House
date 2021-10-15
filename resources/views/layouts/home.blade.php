@@ -100,10 +100,10 @@
                         </form>
                     </div>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
                             class="fas fa-th-large"></i></a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-danger navbar-light elevation-4">
@@ -173,6 +173,39 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Usuarios
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                
+                                <li class="nav-item">
+                                    <a href="{{ route('usuarios.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p class="text-black">Gestión de usuarios</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('usuarios.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear usuario</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('usuarios.indexdelete') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-user nav-icon"></i>
+                                        <p>Usuarios eliminados</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -210,7 +243,7 @@
         </div>
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar sidebar-dark-info navbar-danger elevation-2">
+        {{-- <aside class="control-sidebar sidebar-dark-info navbar-danger elevation-2">
             <div class="p-3">
                 <h5 class="text-center text-white"><i class="nav-icon fas fa-users"></i> Usuarios</h5>
                 <a href="{{ route('usuarios.index') }}" class="nav-link active text-white"><i
@@ -221,7 +254,7 @@
                         class="fas fa-user-times"></i> Usuarios
                     eliminados</a>
             </div>
-        </aside>
+        </aside> --}}
         
         <footer class="main-footer">
 

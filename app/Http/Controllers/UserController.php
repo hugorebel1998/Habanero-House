@@ -24,8 +24,8 @@ class UserController extends Controller
 
     public function index()
     {
-            $usuarios = User::all();
-            return view('usuarios.index', compact('usuarios'));
+        $usuarios = User::all();
+        return view('usuarios.index', compact('usuarios'));
     }
 
     public function create()
@@ -39,21 +39,55 @@ class UserController extends Controller
         $usuario = new User();
         $usuario->name = $request->nombre;
         $usuario->apellido_paterno = $request->apellido_paterno;
-        $usuario->apellido_materno = $request->apellido_materno;
-        // $usuario->fecha_nacimiento = Carbon::parse($request->fecha_de_nacimiento)->age;
+        $usuario->apellido_materno = $request->apellido_materno;        
         $usuario->fecha_nacimiento = $request->fecha_de_nacimiento;
         $usuario->telefono = $request->teléfono;
+        $usuario->imagen_usuario = $request->file('imagen_');
         $usuario->email = $request->correo_electrónico;
         $usuario->password = bcrypt($request->contraseña);
 
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $url = 'img/users/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuceess = $request->file('imagen')->move($url, $filename);
+            $usuario->imagen_usuario = $url . $filename;
+        }
+        // dd($usuario);
+
 
         if ($usuario->save()) {
-            alert()->success('Éxito', 'Nuevo usuario creado.');
-            return redirect()->to(route('usuarios.index'));
+            $usuario->name = $request->nombre;
+            $usuario->apellido_paterno = $request->apellido_paterno;
+            $usuario->apellido_materno = $request->apellido_materno;
+            $usuario->fecha_nacimiento = $request->fecha_de_nacimiento;
+            $usuario->telefono = $request->teléfono;
+            // $usuario->imagen_usuario = $request->file('imagen_');
+            $usuario->email = $request->correo_electrónico;
+            $usuario->password = bcrypt($request->contraseña);
+            // $usuario->user_id = auth()->user()->id;
+
+            if ($usuario->save()) {
+
+                alert()->success('Éxito', 'Nuevo producto creado.' .  $usuario->nombre);
+                return redirect()->to(route('productos.index'));
+            } else {
+                alert()->error('Error', 'Ops no se pudo crear producto');
+                return redirect()->back();
+            }
         } else {
-            alert()->error('Oops', 'Error tuvimos un problema.');
-            return redirect()->to(route('usuarios.create'));
+            alert()->error('Error al crear producto');
+            return redirect()->to(route('productos.create'));
         }
+
+
+        // if ($usuario->save()) {
+        //     alert()->success('Éxito nuevo usuario','Se registro un nuevo usuario', $usuario->nombre);
+        //     return redirect()->to(route('usuarios.index'));
+        // } else {
+        //     alert()->error('Oops error', 'Al parecer tuvimos un error.');
+        //     return redirect()->to(route('usuarios.create'));
+        // }
     }
 
     public function show($id)
@@ -93,10 +127,10 @@ class UserController extends Controller
         // dd($usuario);
 
         if ($usuario->save()) {
-            alert()->success('Éxito', 'Usuario actualizado con éxito.');
+            alert()->success('Éxito usuario actualizado', 'Se actualizo al usuario.', $usuario->nombre);
             return redirect()->to(route('usuarios.index'));
         } else {
-            alert()->error('Oops', 'Error tuvimos un problema.');
+            alert()->error('Oops error', 'Al parecer tuvimos un error.');
             return redirect()->to(route('usuarios.create'));
         }
     }
@@ -127,11 +161,11 @@ class UserController extends Controller
             $usuario->password = bcrypt($request->nueva_contraseña);
 
             if ($usuario->save()) {
-                alert()->success('Éxito', 'Cambio de contraseña con éxito.');
+                alert()->success('Éxito al cambiar contraseña', 'Haz cambiado tu contraseña con éxito.');
                 return redirect()->to(route('home'));
             }
         } else {
-            alert()->error('Error', 'La contraseña actual no coincide.');
+            alert()->error('Oops error', 'La contraseña actual no coincide.');
             return back();
         }
     }
@@ -145,8 +179,9 @@ class UserController extends Controller
     public function usuarioRestore($id)
     {
 
+        $usuario = User::findOrFail($id);
         User::onlyTrashed()->findOrFail($id)->restore();
-        alert()->success('Éxito', 'usuario restablecido.');
+        alert()->success('Éxito usuario restablecido', 'Se ha restablecido el usuario.', $usuario->nombre);
         return redirect()->to(route('usuarios.index'));
     }
 }

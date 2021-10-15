@@ -4,10 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    
     @section('title', 'Habanero House')
     <title> @yield('title')</title>
-
+    
+    <!--Fuentes -->
+    <link rel="stylesheet" href="{{ asset('css/fuente.css')}}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,6 +30,11 @@
     <link rel="stylesheet"
         href="{{ asset('admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 
+     {{-- Fonts Letra    --}}
+     {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet"> --}}
+
 
     <style>
         /* .portada {
@@ -40,6 +47,7 @@
         .custom-file-input~.custom-file-label::after {
             content: "Subir"
         }
+        
 
     </style>
 </head>

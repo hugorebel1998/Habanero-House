@@ -22,6 +22,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Categoria</th>
                                 <th scope="col">Imagen</th>
+                                <th scope="col">Fecha de creación</th>
                                 <th scope="col" class="text-center">Administrador</th>
                             </tr>
                         </thead>
@@ -31,10 +32,9 @@
                                     <td>{{ $producto->id }}</td>
                                     <td>{{ $producto->nombre }}</td>
                                     <td>Categoria</td>
-                                    <td><img src="{{ url('img/products/$producto->imagen_producto')}}"></td>
-
+                                    <td><img src="{{ asset($producto->imagen_producto)}}" class="rounded mx-auto img-thumbnail" width="80"></td>
+                                    <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp )  }}</td>
                                     <td class="text-center">
-
                                         <div class="dropdown">
                                             <button class="btn btn-sm btn-info dropdown-toggle" type="button"
                                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -42,9 +42,9 @@
                                                 <i class="fas fa-cogs"></i> Acciones
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i> Ver
+                                                <a class="dropdown-item" href="{{ route('productos.show', $producto->id) }}"><i class="far fa-bookmark"></i> Ver
                                                     producto</a>
-                                                <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Editar
+                                                <a class="dropdown-item" href="{{ route('productos.edit', $producto->id) }}"><i class="fas fa-edit"></i> Editar
                                                     producto</a>
 
                                                 <form action="#" method="POST">

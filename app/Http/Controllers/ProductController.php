@@ -33,18 +33,27 @@ class ProductController extends Controller
         $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
         $producto->indescuento = $request->en_descuento;
-        $producto->imagen_producto = $request->file('imagen');
+        // $producto->imagen_producto = $request->file('imagen');
         $producto->descripcion = $request->descripcion;
         $producto->user_id = auth()->user()->id;
 
+        if($request->hasFile('imagen')){
+            $file = $request->file('imagen');
+            $url = 'img/products/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuceess = $request->file('imagen')->move($url, $filename);
+            $producto->imagen_producto = $url . $filename;
 
-        if ($archivo = $request->file('imagen')) {
-            $nombre_imagen = $archivo->getClientOriginalName();
-            $ruta = public_path('img/products');
-            $archivo->move($ruta, $nombre_imagen);
-            $producto['imagen_producto'] = $nombre_imagen;
         }
-        // dd($producto);
+
+        // if ($archivo = $request->file('imagen')) {
+        //     $nombre_imagen = $archivo->getClientOriginalName();
+        //     $ruta = public_path('img/products');
+        //     $archivo->move($ruta, $nombre_imagen);
+        //     $producto['imagen_producto'] = $nombre_imagen;
+        // }
+
+        
 
         if ($producto->save()) {
             $producto->nombre = $request->nombre;
@@ -52,13 +61,13 @@ class ProductController extends Controller
             $producto->precio = $request->precio;
             $producto->descuento = $request->descuento;
             $producto->indescuento = $request->en_descuento;
-            $producto->imagen_producto = $request->file('imagen');
+            // $producto->imagen_producto = $request->file('imagen');
             $producto->descripcion = $request->descripcion;
             $producto->user_id = auth()->user()->id;
 
             if ($producto->save()) {
 
-                alert()->success('Éxito', 'Nuevo producto creado.');
+                alert()->success('Éxito', 'Nuevo producto creado.'.  $producto->nombre );
                 return redirect()->to(route('productos.index'));
             } else {
                 alert()->error('Error', 'Ops no se pudo crear producto');
@@ -72,10 +81,18 @@ class ProductController extends Controller
 
     public function show($id)
     {
+        $categoria = Category::select('id', 'nombre')->get();
+        $producto = Product::findOrFail($id);
+        return view('productos.show', compact('producto', 'categoria'));
+
     }
 
     public function edit($id)
     {
+        $categorias = Category::all();
+        $producto = Product::findOrFail($id);
+        return view('productos.edit', compact('producto', 'categorias'));
+
     }
 
     public function update()

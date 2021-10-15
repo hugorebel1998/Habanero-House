@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Roboto&family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+#tituloshow{
+    font-family: 'Rock Salt', cursive;
+    color: #4A4A4A;
+ }
+
+ #tituloshow :hover{
+    font-family: 'Rock Salt', cursive;
+    color: red;
+ }
+
+ .tittleshow{
+    font-family: 'Grechen Fuemen', cursive;
+    font-size: 2rem;
+    font-weight: 600;
+ }
+
+ .h4show{
+    font-family: 'Grechen Fuemen', cursive;
+    font-size: 1.5rem;
+
+ }

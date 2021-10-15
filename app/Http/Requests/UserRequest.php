@@ -29,6 +29,7 @@ class UserRequest extends FormRequest
             'apellido_materno'     => 'required|max:15',
             'fecha_de_nacimiento'  => 'required',
             'teléfono'             => 'required|numeric|min:10',
+            'imagen'               => 'mimes:jpeg,jpg,png|required|max:10000',
             'correo_electrónico'   => 'required|email|unique:users,email',
             'contraseña'           => 'min:8|required_with:confirmar_contraseña|same:confirmar_contraseña',
             'confirmar_contraseña' => 'required|min:8'

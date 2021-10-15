@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     @section('title', 'Habanero House')
     <title> @yield('title')</title>
-        
+    
+    <!--Fuentes -->
+    <link rel="stylesheet" href="{{ asset('css/fuente.css')}}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +25,16 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
-    
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
+     {{-- Fonts Letra    --}}
+     {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet"> --}}
+
 
     <style>
         /* .portada {
@@ -32,11 +44,15 @@
             -o-background-size: cover;
             background-size: cover;
         } */
+        .custom-file-input~.custom-file-label::after {
+            content: "Subir"
+        }
+        
 
     </style>
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-collapsed">
     <div class="wrapper">
         @include('sweetalert::alert')
 
@@ -64,7 +80,7 @@
                         <span class="badge badge-warning navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <p class="text-center"> <b>{{ auth()->user()->name }}</b></p>
+                        <p class="text-center"> <b>{{ auth()->user()->cargo }}</b></p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
@@ -84,25 +100,26 @@
                         </form>
                     </div>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
                             class="fas fa-th-large"></i></a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-danger navbar-light elevation-4">
-            <a href="{{ route('home')}}" class="brand-link navbar-white pl-3">
-                <img class="mx-auto d-block" src="{{ asset('img/habanero-logo.png') }}" alt="Habanero House"
-                    width="150">
+            <a href="{{ route('home') }}" class="brand-link navbar-white pl-3">
+                <img class="mx-auto d-block" src="{{ asset('img/logohabanero.jpeg') }}" alt="Habanero House"
+                    width="170">
             </a>
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="{{ asset('admin-lte/dist/img/user.jpg') }}" alt="User Image"
-                            class="img-circle elevation-4" style="opacity: .9; height:50px; width:50px"  >
+                            class="img-circle elevation-4" style="opacity: .9; height:50px; width:50px">
                     </div>
                     <div class="info mt-2">
-                        <a href="{{ route('usuarios.show', auth()->user()->id )}}" class="text-danger">{{ auth()->user()->name }}</a>
+                        <a href="{{ route('usuarios.show', auth()->user()->id) }}"
+                            class="text-danger">{{ auth()->user()->cargo }}</a>
                     </div>
                 </div>
 
@@ -125,14 +142,14 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-secondary">
+                                    <a href="{{ route('productos.create') }}" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear reporte</p>
+                                        <p>Crear producto</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                         <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-folder-open"></i>
                                 <p>
@@ -142,20 +159,53 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('categorias.index') }}" class="nav-link text-secondary">
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p class="text-black">Gestión de categorias</p>
                                     </a>
                                 </li>
-                             
+
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="#" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear producto</p>
+                                        <p>Crear categoria</p>
                                     </a>
                                 </li>
                             </ul>
-                        </li> 
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Usuarios
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                
+                                <li class="nav-item">
+                                    <a href="{{ route('usuarios.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p class="text-black">Gestión de usuarios</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('usuarios.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear usuario</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('usuarios.indexdelete') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-users-slash nav-icon"></i>
+                                        <p>Usuarios eliminados</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -180,7 +230,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
             <!-- Main content -->
             <div class="content">
@@ -188,28 +238,24 @@
                     <div class="row">
                         @yield('content')
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                </div>
             </div>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar sidebar-dark-info navbar-danger elevation-2">
+        {{-- <aside class="control-sidebar sidebar-dark-info navbar-danger elevation-2">
             <div class="p-3">
                 <h5 class="text-center text-white"><i class="nav-icon fas fa-users"></i> Usuarios</h5>
                 <a href="{{ route('usuarios.index') }}" class="nav-link active text-white"><i
                         class="fas fa-user-friends"></i> Lista de usuarios</a>
                 <a href="{{ route('usuarios.create') }}" class="nav-link active text-white"><i
                         class="fas fa-user-friends"></i> Crear usuario</a>
-                <a href="{{ route('usuarios.indexdelete')}}" class="nav-link active text-white"><i class="fas fa-user-times"></i> Usuarios
+                <a href="{{ route('usuarios.indexdelete') }}" class="nav-link active text-white"><i
+                        class="fas fa-user-times"></i> Usuarios
                     eliminados</a>
             </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
+        </aside> --}}
+        
         <footer class="main-footer">
 
             <div class="text-center">
@@ -217,7 +263,6 @@
             </div>
         </footer>
     </div>
-    <!-- ./wrapper -->
 
 
     <!-- jQuery -->
@@ -225,16 +270,27 @@
     <!-- Bootstrap 4 -->
     <script src="{{ asset('admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('admin-lte/plugins/select2/js/select2.full.min.js') }}"></script>
     <!-- DataTables -->
     <script src="{{ asset('admin-lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }} "></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
     <!-- TableJS -->
     <script src="{{ asset('js/table.js') }}"></script>
-    
+    <!--Select2JS-->
+    <script src="{{ asset('js/select2.js') }}"></script>
+
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+    </script>
 </body>
 
 </html>

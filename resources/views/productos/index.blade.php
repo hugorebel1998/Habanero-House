@@ -23,6 +23,7 @@
                                 <th scope="col">Categoria</th>
                                 <th scope="col">Imagen</th>
                                 <th scope="col">Fecha de creación</th>
+                                <th scope="col">Fecha de modificación</th>
                                 <th scope="col" class="text-center">Administrador</th>
                             </tr>
                         </thead>
@@ -34,6 +35,7 @@
                                     <td>Categoria</td>
                                     <td><img src="{{ asset($producto->imagen_producto)}}" class="rounded mx-auto img-thumbnail" width="80"></td>
                                     <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp )  }}</td>
+                                    <td> {{ date('d M Y - H:i:s', $producto->updated_at->timestamp ) ?: '--'  }}</td>
                                     <td class="text-center">
                                         <div class="dropdown">
                                             <button class="btn btn-sm btn-info dropdown-toggle" type="button"

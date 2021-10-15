@@ -52,7 +52,7 @@
     </style>
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-collapsed">
     <div class="wrapper">
         @include('sweetalert::alert')
 
@@ -108,8 +108,8 @@
         </nav>
         <aside class="main-sidebar sidebar-dark-danger navbar-light elevation-4">
             <a href="{{ route('home') }}" class="brand-link navbar-white pl-3">
-                <img class="mx-auto d-block" src="{{ asset('img/habanero-logo.png') }}" alt="Habanero House"
-                    width="150">
+                <img class="mx-auto d-block" src="{{ asset('img/logohabanero.jpeg') }}" alt="Habanero House"
+                    width="170">
             </a>
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">

@@ -9,10 +9,10 @@
                     <div class="card-tittle"><i class="fas fa-box"></i> Crear productos</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('productos.update') }}" method="POST" enctype="multipart/form-data"
                         autocomplete="off">
-                        @method('PUT')
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="nombre">Nombre</label>
@@ -29,7 +29,7 @@
                              <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Categoria</label>
-                                    <select name="categoria "
+                                    <select name="categoria"
                                         class="custom-select  select2bs4 @error('categoria') is-invalid @enderror"
                                         style="width: 100%;">
                                         <option value="" selected>-- Selecciona una categoria--</option>
@@ -81,6 +81,21 @@
                             </div>
 
 
+                            {{-- <div class="col-md-4 mt-3">
+                                <div class="form-group">
+                                    <label>¿En descuento?</label>
+                                    <select name="en_descuento"
+                                        class="custom-select select2bs4 @error('en_descuento') is-invalid @enderror"
+                                        style="width: 100%;">
+                                        <option value="" selected>-- Selecciona una opción--</option>
+                                        <option value="0" @if ($producto->en_descuento === '0') selected @endif>No</option>
+                                        <option value="1" @if ($producto->en_descuento === '1') selected @endif>Si</option>
+                                    </select>
+                                    @error('en_descuento')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div> --}}
                             <div class="col-md-4 mt-3">
                                 <div class="form-group">
                                     <label>¿En descuento?</label>
@@ -88,8 +103,7 @@
                                         class="custom-select select2bs4 @error('en_descuento') is-invalid @enderror"
                                         style="width: 100%;">
                                         <option value="" selected>-- Selecciona una opción--</option>
-                                        <option value="0" @if ($producto->en_descuento == 0) selected @endif>No</option>
-                                        <option value="1" @if ($producto->en_descuento == 1) selected @endif>Si</option>
+                                  
                                     </select>
                                     @error('en_descuento')
                                         <div class="text-danger">{{ $message }}</div>

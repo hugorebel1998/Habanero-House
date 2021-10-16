@@ -56,8 +56,9 @@
                         </div>
 
                         <div class="col-md-6">
-                            <img src="{{ asset($producto->imagen_producto) }}" class="img-fluid. max-width: 100%;"
+                            <img src="{{ asset('img/products/'.$producto->imagen_producto) }}" class="img-fluid. max-width: 100%;"
                                 width="100%" height="100%">
+                                
                         </div>
                     </div>
                 </div>

@@ -28,6 +28,7 @@ class ProductController extends Controller
 
     {
         $producto = new Product();
+        $producto->status = '0';
         $producto->nombre = $request->nombre;
         $producto->category_id = $request->input('categoria') ?: null;
         $producto->precio = $request->precio;
@@ -37,22 +38,24 @@ class ProductController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->user_id = auth()->user()->id;
 
-        if($request->hasFile('imagen')){
-            $file = $request->file('imagen');
-            $url = 'img/products/';
-            $filename = time() . '-' . $file->getClientOriginalName();
-            $uploadSuceess = $request->file('imagen')->move($url, $filename);
-            $producto->imagen_producto = $url . $filename;
+        // if($request->hasFile('imagen')){
+        //     $file = $request->file('imagen');
+        //     $url = 'img/products/';
+        //     $filename = time() . '-' . $file->getClientOriginalName();
+        //     $uploadSuceess = $request->file('imagen')->move($url, $filename);
+        //     $producto->imagen_producto = $url . $filename;
 
-        }
-
-        // if ($archivo = $request->file('imagen')) {
-        //     $nombre_imagen = $archivo->getClientOriginalName();
-        //     $ruta = public_path('img/products');
-        //     $archivo->move($ruta, $nombre_imagen);
-        //     $producto['imagen_producto'] = $nombre_imagen;
         // }
-
+        
+        
+        if ($archivo = $request->file('imagen')) {
+                $nombre_imagen = $archivo->getClientOriginalName();
+                $ruta = public_path('img/products/');
+                $archivo->move($ruta, $nombre_imagen);
+                $producto['imagen_producto'] = $nombre_imagen;
+        }
+            
+            // dd($producto);
         
 
         if ($producto->save()) {

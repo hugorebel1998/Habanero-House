@@ -33,7 +33,7 @@
                                     <td>{{ $producto->id }}</td>
                                     <td>{{ $producto->nombre }}</td>
                                     <td>{{ $producto->categoriaProduct->nombre }}</td>
-                                    <td><img src="{{ asset($producto->imagen_producto)}}" class="rounded mx-auto img-thumbnail" width="80"></td>
+                                    <td><img src="{{ asset('img/products/'.$producto->imagen_producto)}}" class="rounded mx-auto img-thumbnail" width="80"></td>
                                     <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp )  }}</td>
                                     <td> {{ date('d M Y - H:i:s', $producto->updated_at->timestamp ) ?: '--'  }}</td>
                                     <td class="text-center">

@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="imagen">Imagen destacada</label>
                                     <div class="custom-file">
-                                        <input accept="image/*" type="file"
+                                        <input accept="image/*" type="file" disabled="disabled"
                                             class="custom-file-input @error('imagen') is-invalid @enderror"
                                             name="imagen" >
                                         <label class="custom-file-label" for="customFile">Selecciona imagen</label>
@@ -145,13 +145,24 @@
             </div>
         </div>
         <div class="col-md-4">
-        <diV class="card card-danger shadow">
-        <div class="card-header">
+          <diV class="card card-danger shadow">
+           <div class="card-header">
               <div class="card-tittle"><i class="fas fa-images"></i> Editar imagen</div>
-        </div>
-        <div class="card-body">
-        
-        </div>
+          </div>
+          <div class="card-body">
+           <div class="row">
+              <div class="col-md-12">
+                     <img src="{{ asset('img/products/'.$producto->imagen_producto)}}" class="rounded mx-auto d-block img-thumbnail" width="300">
+                     <span class="form-text text-muted mt-2 ml-2"> {{ $producto->imagen_producto}}</span>
+              </div>
+
+              <div class="col-md-12">
+              <h1>Icono</h1>
+              </div>
+
+
+           </div>
+          </div>
         
         </diV>
         </div>

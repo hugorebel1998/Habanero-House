@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('status')->nullable();
             $table->string('nombre')->unique();
+            $table->string('slug');
             $table->decimal('precio', 11,2);
             $table->integer('indescuento');
             $table->integer('descuento');

@@ -1,12 +1,12 @@
 @extends('layouts.home')
 @section('content')
 @section('title', 'Editar de productos')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-danger shadow">
                 <div class="card-header">
-                    <div class="card-tittle"><i class="fas fa-box"></i> Crear productos</div>
+                    <div class="card-tittle"><i class="fas fa-box"></i> Editarproducto</div>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('productos.update') }}" method="POST" enctype="multipart/form-data"
@@ -26,7 +26,7 @@
                                 @enderror
                             </div>
 
-                             <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Categoria</label>
                                     <select name="categoria"
@@ -39,7 +39,7 @@
                                                     {{ $categoria->nombre }}
                                                 </option>
                                             @else
-                                                <option value="{{ $categoria->id }}"> 
+                                                <option value="{{ $categoria->id }}">
                                                     {{ $categoria->nombre }}
                                                 </option>
                                             @endif
@@ -51,9 +51,9 @@
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div> 
+                            </div>
 
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="imagen">Imagen destacada</label>
                                     <div class="custom-file">
@@ -67,10 +67,10 @@
                                     </div>
                                     <span class="form-text text-muted">{{ $producto->imagen_producto }}</span>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
-                            <div class="col-md-4 mt-3">
+                            <div class="col-md-4">
                                 <label for="precio">Precio</label>
                                 <input type="number" name="precio"
                                     class="form-control @error('precio') is-invalid @enderror" min="0.00" step="any"
@@ -96,22 +96,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- <div class="col-md-4 mt-3">
-                                <div class="form-group">
-                                    <label>¿En descuento?</label>
-                                    <select name="en_descuento"
-                                        class="custom-select select2bs4 @error('en_descuento') is-invalid @enderror"
-                                        style="width: 100%;">
-                                        <option value="" @if($producto->indescuento == '') ? selected : null @endif disabled>-- Selecciona una opción--</option>
-                                        <option value="0" @if($producto->indescuento == '0') ? selected : null @endif>No</option>
-                                        <option value="1" @if($producto->indescuento == '1') ? selected : null @endif>Si</option>
-                                    </select>
-                                    @error('en_descuento')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                             --}}
+
 
 
                             <div class="col-md-4 mt-3">
@@ -125,6 +110,23 @@
                             </div>
 
 
+                            <div class="col-md-4 mt-3">
+                                <div class="form-group">
+                                    <label>Estatus</label>
+                                    <select name="status"
+                                        class="custom-select select2bs4 @error('status') is-invalid @enderror"
+                                        style="width: 100%;">
+                                        <option value="" selected>-- Selecciona una opción--</option>
+                                        <option value="0" @if ($producto->status == 0) selected @endif>Borrador</option>
+                                        <option value="1" @if ($producto->status == 1) selected @endif>Publico</option>
+                                    </select>
+                                    @error('status')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
                             <div class="col-md-12 mt-4">
                                 <label for="descripcion">Descripción</label>
                                 <textarea class="form-control @error('descripcion') is-invalid @enderror"
@@ -134,8 +136,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>
                                 Guardar producto</button>
@@ -145,28 +145,48 @@
             </div>
         </div>
         <div class="col-md-4">
-          <diV class="card card-danger shadow">
-           <div class="card-header">
-              <div class="card-tittle"><i class="fas fa-images"></i> Editar imagen</div>
-          </div>
-          <div class="card-body">
-           <div class="row">
-              <div class="col-md-12">
-                     <img src="{{ asset('img/products/'.$producto->imagen_producto)}}" class="rounded mx-auto d-block img-thumbnail" width="300">
-                     <span class="form-text text-muted mt-2 ml-2"> {{ $producto->imagen_producto}}</span>
-              </div>
+            <diV class="card card-danger shadow">
+                <div class="card-header">
+                    <div class="card-tittle"><i class="fas fa-image"></i> Imagen destacada</div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
+                                class="rounded mx-auto d-block img-thumbnail" width="300">
+                        </div>
+                    </div>
+                </div>
 
-              <div class="col-md-12">
-              <h1>Icono</h1>
-              </div>
+            </diV>
 
+            <diV class="card card-danger shadow">
+                <div class="card-header">
+                    <div class="card-tittle"><i class="fas fa-images"></i> Galeria</div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                             <form action="#" method="post">
+                                <div class="form-group">
+                                    <label for="#">Imagen destacada</label>
+                                    <div class="custom-file">
+                                        <input accept="image/*" type="file" 
+                                            class="custom-file-input @error('#') is-invalid @enderror"
+                                            name="#" >
+                                        <label class="custom-file-label" for="customFile">Selecciona imagen</label>
+                                        @error('#')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                             </form>
+                        </div>
+                    </div>
+                </div>
 
-           </div>
-          </div>
-        
-        </diV>
+            </diV>
         </div>
-
     </div>
 </div>
 

@@ -8,6 +8,7 @@ use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -30,6 +31,7 @@ class ProductController extends Controller
         $producto = new Product();
         $producto->status = '0';
         $producto->nombre = $request->nombre;
+        $producto->slug = Str::slug($request->nombre);
         $producto->category_id = $request->input('categoria') ?: null;
         $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
@@ -59,6 +61,7 @@ class ProductController extends Controller
         
 
         if ($producto->save()) {
+            $producto->status = '0';
             $producto->nombre = $request->nombre;
             $producto->category_id = $request->input('categoria') ?: null;
             $producto->precio = $request->precio;
@@ -70,7 +73,7 @@ class ProductController extends Controller
 
             if ($producto->save()) {
 
-                alert()->success('Éxito', 'Nuevo producto creado.'.  $producto->nombre );
+                alert()->success('Éxito nuevo pruducto creado', 'Se registro un nuevo producto.'.  $producto->nombre );
                 return redirect()->to(route('productos.index'));
             } else {
                 alert()->error('Error', 'Ops no se pudo crear producto');
@@ -111,6 +114,7 @@ class ProductController extends Controller
             'en_descuento'         => 'required|in:0,1',
         ]);
 
+        $producto->status = $request->status;
         $producto->nombre = $request->nombre;
         $producto->category_id = $request->input('categoria') ?: null;
         $producto->precio = $request->precio;
@@ -131,6 +135,7 @@ class ProductController extends Controller
 
         // dd($producto);
         if ($producto->save()) {
+            $producto->status = $request->status;
             $producto->nombre = $request->nombre;
             $producto->category_id = $request->input('categoria') ?: null;
             $producto->precio = $request->precio;
@@ -142,15 +147,15 @@ class ProductController extends Controller
 
             if ($producto->save()) {
 
-                alert()->success('Éxito', 'Producto actualizado con éxito.'.  $producto->nombre );
-                return redirect()->to(route('productos.index'));
+                alert()->success('Éxito al actualizar', 'Producto actualizado con éxito.'.  $producto->nombre );
+                return redirect()->to(route('productos.edit', $producto->id));
             } else {
-                alert()->error('Error', 'Ops no se pudo crear producto');
+                alert()->error('Error al actualizar', 'Ops no se pudo actualizar producto.');
                 return redirect()->back();
             }
         }else{
-            alert()->error('Error al actualizar producto');
-            return redirect()->to(route('productos.create'));
+            alert()->error('Error al actualizar', 'Ops no se pudo actualizar producto.');
+            return redirect()->to(route('productos.edit', $producto->id));
         }
     }
     public function delete()

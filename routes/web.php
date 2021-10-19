@@ -57,6 +57,10 @@ Route::get('/productos/edit/{producto}', 'ProductController@edit')->name('produc
 Route::put('/productos/update', 'ProductController@update')->name('productos.update')->middleware('auth');
 Route::delete('/productos/delete/{producto}', 'ProductController@delete')->name('productos.delete')->middleware('auth');
 
+//Galeria Productos
+// Route::post('productosgaleria/shore/{productogaleria}', 'ProductController@productGalery')->name('productosgaleria.store')->middleware('auth');
+
+
 // Categorias
 Route::get('/categorias/index', 'CategoryController@index')->name('categorias.index')->middleware('auth');
 Route::get('/categorias/create', 'CategoryController@create')->name('categorias.create')->middleware('auth');

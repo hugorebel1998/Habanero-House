@@ -20,7 +20,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Cargo</th>
+                                <th scope="col">Rol</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellidos</th>
                                 <th scope="col">Edad</th>

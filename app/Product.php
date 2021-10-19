@@ -16,4 +16,8 @@ class Product extends Model
     public function categoriaProduct(){
         return $this->hasOne(Category:: class, 'id', 'category_id');
     }
+
+    public function hetGallery(){
+        return $this->hasMany(GaleryProduct::class, 'product_id', 'id');
+    }
 }

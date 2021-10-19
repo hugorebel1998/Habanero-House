@@ -113,7 +113,7 @@
 
                         <div class="col-md-6">
                         @if ($usuario->imagen_usuario)
-                            <img src="{{ asset($usuario->imagen_usuario) }}" class="img-fluid. max-width: 100%;"
+                            <img src="{{ asset('img/users/'.$usuario->imagen_usuario) }}" class="img-fluid. max-width: 100%;"
                                 width="100%" height="100%">
                             @else
                             <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}" class="img-fluid. max-width: 100%;"

@@ -37,21 +37,27 @@ class UserController extends Controller
     {
 
         $usuario = new User();
-        $usuario->name = $request->nombre;
-        $usuario->apellido_paterno = $request->apellido_paterno;
-        $usuario->apellido_materno = $request->apellido_materno;        
+        $usuario->name = ucwords($request->nombre);
+        $usuario->apellido_paterno = ucwords($request->apellido_paterno);
+        $usuario->apellido_materno = ucwords($request->apellido_materno);        
         $usuario->fecha_nacimiento = $request->fecha_de_nacimiento;
         $usuario->telefono = $request->teléfono;
         // $usuario->imagen_usuario = $request->file('imagen_usuario');
         $usuario->email = $request->correo_electrónico;
         $usuario->password = bcrypt($request->contraseña);
 
-        if ($request->hasFile('imagen')) {
-            $file = $request->file('imagen');
-            $url = 'img/users/';
-            $filename = time() . '-' . $file->getClientOriginalName();
-            $uploadSuceess = $request->file('imagen')->move($url, $filename);
-            $usuario->imagen_usuario = $url . $filename;
+        // if ($request->hasFile('imagen')) {
+        //     $file = $request->file('imagen');
+        //     $url = 'img/users/';
+        //     $filename = time() . '-' . $file->getClientOriginalName();
+        //     $uploadSuceess = $request->file('imagen')->move($url, $filename);
+        //     $usuario->imagen_usuario = $url . $filename;
+        // }
+        if ($archivo = $request->file('imagen')) {
+            $nombre_imagen = $archivo->getClientOriginalName();
+            $ruta = public_path('img/users/');
+            $archivo->move($ruta, $nombre_imagen);
+            $usuario['imagen_usuario'] = $nombre_imagen;
         }
         // dd($usuario);
 

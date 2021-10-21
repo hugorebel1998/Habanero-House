@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                             @foreach ($productos as $producto)
-                                <tr>
+                                <tr @if ($producto->status == 0) class="table-danger" @endif>
                                     <td>{{ $producto->id }}</td>
                                     <td>{{ $producto->nombre }}</td>
                                     <td>{{ $producto->categoriaProduct->nombre }}</td>
@@ -49,14 +49,15 @@
                                                 <a class="dropdown-item" href="{{ route('productos.edit', $producto->id) }}"><i class="fas fa-edit"></i> Editar
                                                     producto</a>
 
-                                                <form action="#" method="POST">
-                                                    @csrf
-                                                    @method('Delete')
-                                                    <button class="dropdown-item"
-                                                        onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
-                                                        href="#"><i class="far fa-trash-alt"></i> Eliminar
-                                                        producto</button>
-                                                </form>
+                                                    <form action="{{ route('productos.delete', $producto->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('Delete')
+                                                        <button class="dropdown-item"
+                                                            onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
+                                                            href="{{ route('productos.delete', $producto->id) }}"><i
+                                                                class="far fa-trash-alt"></i> Eliminar usuario</button>
+                                                    </form>
 
                                             </div>
                                         </div>

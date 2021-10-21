@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-    <div class="col-md-11">
+    <div class="col-md-12">
         <div class="row">
         <div class="col-md-4">
             <div class="card card-danger shadow">
@@ -13,7 +13,7 @@
                     <div class="card-tittle"><i class="fas fa-box"></i> Crear categoria</div>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST" autocomplete="off">
+                    <form action="{{ route('categorias.store') }}" method="POST" autocomplete="off">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -28,16 +28,13 @@
 
                             <div class="col-md-12 mt-3">
                                 <label for="nombre">Descripción</label>
-                                <textarea class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" rows="6" required>{{ old('descripcion')}} </textarea>
+                                <textarea class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" rows="6">{{ old('descripcion')}} </textarea>
                                 @error('descripcion')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
-
-
-                            
+                            </div>        
                         </div>
-                        <div class="text-center mt-4">
+                        <div class="text-center mt-3 mb-3">
                             <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>
                                 Guardar categoria</button>
                         </div>
@@ -46,7 +43,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header">
                 <b class="lead font-weight-bold"> Categorias</b>
                 </div>
@@ -54,7 +51,7 @@
                     {{-- <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Nuevo categoria</a> --}}
                 </div>
                 <div class="card-body">
-                    <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
+                    <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -66,11 +63,13 @@
                         </thead>
                         <tbody>
                       
+                            @foreach ( $categorias as $categoria)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
+                                <td>{{ $categoria->id }}</td>
+                                <td>{{ $categoria->nombre }}</td>
+                                <td>{{ $categoria->descripcion }}</td>
+                                <td>{{ $categoria->created_at }}</td>
                                 
                                 <td class="text-center">
                                     
@@ -79,13 +78,13 @@
                                          <i class="fas fa-cogs"></i> Acciones
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                          <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i> Ver producto</a>
-                                          <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Editar producto</a>
+                                          {{-- <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i> Ver categoria</a> --}}
+                                          <a class="dropdown-item" href="{{ route('categorias.edit', $categoria->id )}}"><i class="fas fa-edit"></i> Editar categoria</a>
                                        
-                                       <form action="#" method="POST">
+                                       <form action="{{ route('categorias.delete', $categoria->id)}}" method="POST">
                                         @csrf
                                         @method('Delete')
-                                           <button class="dropdown-item" onclick="return confirm('¿Estas Seguro de eliminar este usuario')" href="#"><i class="far fa-trash-alt"></i> Eliminar producto</button>
+                                           <a class="dropdown-item" onclick="return confirm('¿Estas Seguro de eliminar este usuario')" href="#"><i class="far fa-trash-alt"></i> Eliminar categoria</a>
                                        </form>
                                     
                                         </div>
@@ -93,6 +92,7 @@
                                     
                                 </td>
                             </tr>
+                            @endforeach
                       
                         </tbody>
                     </table>

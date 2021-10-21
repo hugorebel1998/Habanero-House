@@ -65,9 +65,8 @@ Route::delete('/productos/delete/{producto}', 'ProductController@delete')->name(
 Route::get('/categorias/index', 'CategoryController@index')->name('categorias.index')->middleware('auth');
 Route::get('/categorias/create', 'CategoryController@create')->name('categorias.create')->middleware('auth');
 Route::post('/categorias/store', 'CategoryController@store')->name('categorias.store')->middleware('auth');
-// Route::get('/categorias/show', 'CategoryController@show')->name('categorias.show')->middleware('auth');
-// Route::get('/categorias/edit/{producto}', 'CategoryController@edit')->name('categorias.edit')->middleware('auth');
-// Route::put('/categorias/update/{producto}', 'CategoryController@update')->name('categorias.update')->middleware('auth');
-// Route::delete('/categorias/delete/{producto}', 'CategoryController@delete')->name('categorias.delete')->middleware('auth');
+Route::get('/categorias/edit/{categoria}', 'CategoryController@edit')->name('categorias.edit')->middleware('auth');
+Route::put('/categorias/update/{categoria}', 'CategoryController@update')->name('categorias.update')->middleware('auth');
+Route::delete('/categorias/delete/{categoria}', 'CategoryController@delete')->name('categorias.delete')->middleware('auth');
 
 

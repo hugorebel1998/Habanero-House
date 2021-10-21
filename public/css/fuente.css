@@ -1,28 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Roboto&family=Rock+Salt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Pavanam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Fahkwang:ital@1&family=Pavanam&display=swap');
 
 /* Inicio Vista Home*/
 #tittlehome{
-   font-family: 'Rock Salt', cursive;
+   /* font-family: 'Rock Salt', cursive; */
+   /* font-family: 'Pavanam', sans-serif; */
+   font-family: 'Fahkwang', sans-serif;
    font-size:2rem;
    color:white;
 }
 
 #tittlehomesub{
-   font-family: 'Rock Salt', cursive;
+   /* font-family: 'Rock Salt', cursive; */
+   /* font-family: 'Pavanam', sans-serif; */
+   font-family: 'Fahkwang', sans-serif;
    font-size:1.5rem;
    color: #EDEDED;
 
 }
 #tittledescripcion{
-   font-family: 'Rock Salt', cursive;
-   font-size :2rem:
+   /* font-family: 'Rock Salt', cursive; */
+   /* font-family: 'Atkinson Hyperlegible', sans-serif; */
+   /* font-family: 'Pavanam', sans-serif; */
+   font-family: 'Fahkwang', sans-serif;
+   font-size :1.8rem;
    color: white;
 
 }
 .fa-pepper-hot{
-   font-size: 2rem;
-   padding: 10px; 
+   font-size: 1.6rem;
+   padding: 8px; 
 }
 
 /* Termino Vista Home*/
@@ -30,28 +39,34 @@
 
 /* Inicio Vista Show Producto Usuarios*/
 #tituloshow{
-    font-family: 'Rock Salt', cursive;
+    /* font-family: 'Rock Salt', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+
     color: #4A4A4A;
  }
 
  #tituloshow :hover{
-    font-family: 'Rock Salt', cursive;
+    /* font-family: 'Rock Salt', cursive; */
+    font-family: 'Fahkwang', sans-serif;
     color: red;
  }
 
  .tittleshow{
-    font-family: 'Grechen Fuemen', cursive;
-    font-size: 2rem;
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.8rem;
     font-weight: 600;
  }
 
  .h4show{
-    font-family: 'Grechen Fuemen', cursive;
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
     font-size: 1.5rem;
  }
 
  .h4show :hover{
-   font-family: 'Grechen Fuemen', cursive;
+   /* font-family: 'Grechen Fuemen', cursive; */
+   font-family: 'Fahkwang', sans-serif;
    font-size: 1.5rem;
    color: #efb810;
 }

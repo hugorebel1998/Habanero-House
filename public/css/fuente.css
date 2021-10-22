@@ -4,70 +4,112 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Fahkwang:ital@1&family=Pavanam&display=swap');
 
 /* Inicio Vista Home*/
-#tittlehome{
-   /* font-family: 'Rock Salt', cursive; */
-   /* font-family: 'Pavanam', sans-serif; */
-   font-family: 'Fahkwang', sans-serif;
-   font-size:2rem;
-   color:white;
+
+#tittlehome {
+    /* font-family: 'Rock Salt', cursive; */
+    /* font-family: 'Pavanam', sans-serif; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 2rem;
+    color: white;
 }
 
-#tittlehomesub{
-   /* font-family: 'Rock Salt', cursive; */
-   /* font-family: 'Pavanam', sans-serif; */
-   font-family: 'Fahkwang', sans-serif;
-   font-size:1.5rem;
-   color: #EDEDED;
+#tittlehomesub {
+    /* font-family: 'Rock Salt', cursive; */
+    /* font-family: 'Pavanam', sans-serif; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.5rem;
+    color: #EDEDED;
+}
 
+#tittledescripcion {
+    /* font-family: 'Rock Salt', cursive; */
+    /* font-family: 'Atkinson Hyperlegible', sans-serif; */
+    /* font-family: 'Pavanam', sans-serif; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.8rem;
+    color: white;
 }
-#tittledescripcion{
-   /* font-family: 'Rock Salt', cursive; */
-   /* font-family: 'Atkinson Hyperlegible', sans-serif; */
-   /* font-family: 'Pavanam', sans-serif; */
-   font-family: 'Fahkwang', sans-serif;
-   font-size :1.8rem;
-   color: white;
 
+.fa-pepper-hot {
+    font-size: 1.6rem;
+    padding: 8px;
 }
-.fa-pepper-hot{
-   font-size: 1.6rem;
-   padding: 8px; 
-}
+
 
 /* Termino Vista Home*/
 
 
-/* Inicio Vista Show Producto Usuarios*/
-#tituloshow{
+/* Inicio Vista Show Producto */
+
+#tituloshow {
     /* font-family: 'Rock Salt', cursive; */
     font-family: 'Fahkwang', sans-serif;
-
     color: #4A4A4A;
- }
+}
 
- #tituloshow :hover{
+#tituloshow :hover {
     /* font-family: 'Rock Salt', cursive; */
     font-family: 'Fahkwang', sans-serif;
     color: red;
- }
+}
 
- .tittleshow{
+.tittleshow {
     /* font-family: 'Grechen Fuemen', cursive; */
     font-family: 'Fahkwang', sans-serif;
     font-size: 1.8rem;
     font-weight: 600;
- }
+}
 
- .h4show{
+.h4show {
     /* font-family: 'Grechen Fuemen', cursive; */
     font-family: 'Fahkwang', sans-serif;
     font-size: 1.5rem;
- }
-
- .h4show :hover{
-   /* font-family: 'Grechen Fuemen', cursive; */
-   font-family: 'Fahkwang', sans-serif;
-   font-size: 1.5rem;
-   color: #efb810;
 }
-/* Termino Vista Show Producto Usuarios*/
+
+.h4show :hover {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.5rem;
+    color: #efb810;
+}
+
+
+/* Termino Vista Show Producto */
+
+
+/* Inicio Vista Show Usuari */
+
+#tittleshowuser {
+    /* font-family: 'Rock Salt', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    color: #4A4A4A;
+}
+
+#tittleshowuser :hover {
+    /* font-family: 'Rock Salt', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    color: red;
+}
+
+.tittleshowuser {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.h4showuser {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.3rem;
+}
+
+.h4showuser :hover {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.2rem;
+    color: #efb810;
+}
+
+
+/* Termino Vista Show Usuario */

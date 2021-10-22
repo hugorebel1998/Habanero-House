@@ -11,8 +11,23 @@
                     <b class="lead font-weight-bold"> Productos</b>
                 </div>
                 <div class="d-flex justify-content-end mt-3 mr-4">
-                    <a href="{{ route('productos.create') }}" class="btn btn-sm btn-success"> <i
-                            class="fas fa-plus"></i> Nuevo producto</a>
+                    {{-- <a href="{{ route('productos.create') }}" class="btn btn-sm btn-success"> <i
+                            class="fas fa-plus"></i> Nuevo producto</a> --}}
+
+                
+                  <div class="dropdown">
+                     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
+                     </a>
+
+                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                     <a class="dropdown-item" href="{{ route('productos.indexDelete') }}">
+                    <i class="fas fa-ban"></i>
+                     Productos eliminados
+                     </a>
+                    </div>
+                 </div> 
+
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
@@ -49,16 +64,15 @@
                                                 <a class="dropdown-item" href="{{ route('productos.edit', $producto->id) }}"><i class="fas fa-edit"></i> Editar
                                                     producto</a>
 
-                                                    <form action="{{ route('productos.delete', $producto->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('Delete')
-                                                        <button class="dropdown-item"
-                                                            onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
-                                                            href="{{ route('productos.delete', $producto->id) }}"><i
-                                                                class="far fa-trash-alt"></i> Eliminar usuario</button>
-                                                    </form>
-
+                                                  <form action="{{ route('productos.delete', $producto->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('Delete')
+                                                            <button class="dropdown-item"
+                                                                onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
+                                                                href="{{ route('productos.delete', $producto->id) }}"><i
+                                                                    class="far fa-trash-alt"></i> Eliminar usuario</button>
+                                                 </form>
                                             </div>
                                         </div>
 

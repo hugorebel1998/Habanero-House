@@ -1,55 +1,6 @@
-{{-- @extends('layouts.home')
-@section('content')
-@section('title', 'Ver información')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-danger card-outline shadow">
-                    <div class="card-body box-profile">
-                        <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle"
-                                src="{{ asset('admin-lte/dist/img/user4-128x128.jpg') }} " alt="User profile picture">
-                             <hr>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col-md-6">
-                               <p>Nombre: <b>{{ $usuario->name }}</b></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Apellidos: <b>{{ $usuario->apellido_paterno }} {{ $usuario->apellido_materno }} </b></p>
-                             </div>
-
-                             <div class="col-md-6 mt-3">
-                                <p>Edad: <b>{{ $usuario->age }} años </b></p>
-                             </div>
-
-                             <div class="col-md-6 mt-3">
-                                <p>Cumpleaños: <b>{{ $usuario->fecha_nacimiento }}  </b></p>
-                             </div>
-
-                             <div class="col-md-6 mt-3">
-                                <p>Email: <b>{{ $usuario->email }}  </b></p>
-                             </div>
-                             <div class="col-md-6 mt-3">
-                                <p>No.Telefónico: <b>{{ $usuario->telefono }}  </b></p>
-                             </div>
-                        </div>
-                        <div class="text-center mt-4">
-                            <a href="{{ route('usuarios.index')}}" class="btn btn-sm btn-danger"><i class="far fa-hand-point-left"></i> Atrás</a>
-                     </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-@endsection --}}
-
 
 @extends('layouts.home')
+@section('title', $nombre)
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -62,59 +13,70 @@
                             </a>
                             <div class="row ml-4 mt-5">
                                 <div class="col-md-6 mt-3">
-                                    <h4 class="tittleshow">Cargo</h4>
-                                    <a class="h4show">
+                                    <h4 class="tittleshowuser">Cargo</h4>
+                                    <a class="h4showuser">
                                         <p>{{ $usuario->cargo ?: 'Cliente'}}</p>
                                     </a>
                                 </div>
 
                                 <div class="col-md-6 mt-3">
-                                    <h4 class="tittleshow">Nombres</h4>
-                                    <a class="h4show">
+                                    <h4 class="tittleshowuser">Nombres</h4>
+                                    <a class="h4showuser">
                                         <p>  {{ $usuario->name ?: 'Sin información'}}</p>
                                     </a>
                                 </div>
 
                                 <div class="col-md-6 mt-3">
-                                    <h4 class="tittleshow">Apellidos</h4>
-                                    <a class="h4show">
+                                    <h4 class="tittleshowuser">Apellidos</h4>
+                                    <a class="h4showuser">
                                         <p>  {{ $usuario->apellido_paterno }} {{ $usuario->apellido_materno ? : 'Sin información'}} </p>
                                     </a>
                                 </div>
 
                                  <div class="col-md-6 mt-3">
-                                    <h4 class="tittleshow">Cumpleaños</h4>
-                                    <a class="h4show">
+                                    <h4 class="tittleshowuser">Cumpleaños</h4>
+                                    <a class="h4showuser">
                                         <p> {{ $cumple }}</p>
                                     </a>
                                 </div>
 
                                  <div class="col-md-6 mt-3">
-                                    <h4 class="tittleshow">Teléfono</h4>
-                                    <a class="h4show">
+                                    <h4 class="tittleshowuser">Teléfono</h4>
+                                    <a class="h4showuser">
                                         <p> {{ $usuario->telefono ?: 'Sin información' }}</p>
                                     </a>
                                 </div>
 
                                 <div class="col-md-6 mt-3">
-                                    <h4 class="tittleshow">Correo electrónico</h4>
-                                    <a class="h4show">
+                                    <h4 class="tittleshowuser">Correo electrónico</h4>
+                                    <a class="h4showuser">
                                         <p> {{ $usuario->email }}</p>
                                     </a>
                                 </div>
-
-                              
-
                                 
                             </div>
-                            <a href="{{ route('usuarios.index') }}" class="btn btn-danger mb-2 ml-4 h4show"> <i
+                            <div class="d-flex justify-content-between">
+                                   <div class="p-2">
+                                   <a href="{{ route('usuarios.index') }}" class="btn btn-primary mb-2 ml-4 h4show"> <i
                                     class="far fa-hand-point-left"></i> Regresar</a>
+                                   </div>
+                                   <div class="p-2">
+                                   {{-- <form action="{{ route('usuarios.delete', $usuario->id) }}" method="POST">
+                                      @csrf
+                                      @method('Delete')
+                                    <a class="btn btn-danger"
+                                      onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
+                                      href="{{ route('usuarios.delete', $usuario->id) }}"><i
+                                      class="far fa-trash-alt"></i> Eliminar usuario</a>
+                                 </form> --}}
+                                   </div>
+                             </div>
                         </div>
 
                         <div class="col-md-6">
                         @if ($usuario->imagen_usuario)
                             <img src="{{ asset('img/users/'.$usuario->imagen_usuario) }}" class="img-fluid. max-width: 100%;"
-                                width="100%" height="100%">
+                                id="imagen_user" width="100%" height="100%">
                             @else
                             <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}" class="img-fluid. max-width: 100%;"
                                 width="100%" height="100%">

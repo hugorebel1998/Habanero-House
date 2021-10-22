@@ -80,7 +80,7 @@
                         <span class="badge badge-warning navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <p class="text-center"> <b>{{ auth()->user()->cargo }}</b></p>
+                        <p class="text-center"> <b>{{ auth()->user()->name }} {{ auth()->user()->apellido_paterno }}</b></p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
@@ -119,7 +119,7 @@
                     </div>
                     <div class="info mt-2">
                         <a href="{{ route('usuarios.show', auth()->user()->id) }}"
-                            class="text-danger">{{ auth()->user()->cargo }}</a>
+                            class="text-danger">{{ auth()->user()->name }} {{ auth()->user()->apellido_paterno }}</a>
                     </div>
                 </div>
 
@@ -197,12 +197,12 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('usuarios.indexdelete') }}" class="nav-link text-secondary">
                                         <i class="fas fa-users-slash nav-icon"></i>
                                         <p>Usuarios eliminados</p>
                                     </a>
-                                </li>
+                                </li> --}}
 
                             </ul>
                         </li>

@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('cargo')->nullable();
+            $table->string('rol')->nullable();
             $table->string('name')->nullable();
             $table->string('apellido_paterno')->nullable();
             $table->string('apellido_materno')->nullable();
@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('permiso')->nullable($value = true);
+            $table->unsignedBigInteger('status_id')->nullable()->unsigned();
+            $table->foreign('status_id')->references('id')->on('user_statuses')->onDelete('cascade');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

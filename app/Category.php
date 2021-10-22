@@ -10,6 +10,6 @@ class Category extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'nombre', 'slug' , 'descripcion', 'fecha_nacimiento'
+        'nombre', 'slug' , 'descripcion',
     ];
 }

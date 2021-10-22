@@ -56,6 +56,8 @@ Route::get('/productos/show/{producto}', 'ProductController@show')->name('produc
 Route::get('/productos/edit/{producto}', 'ProductController@edit')->name('productos.edit')->middleware('auth');
 Route::put('/productos/update', 'ProductController@update')->name('productos.update')->middleware('auth');
 Route::delete('/productos/delete/{producto}', 'ProductController@delete')->name('productos.delete')->middleware('auth');
+Route::get('/productos/productoeliminado', 'ProductController@indexDelete')->name('productos.indexDelete')->middleware('auth');
+Route::get('/productos/productorestore/{producto}', 'ProductController@productoRestore')->name('productos.productorestore')->middleware('auth');
 
 //Galeria Productos
 // Route::post('productosgaleria/shore/{productogaleria}', 'ProductController@productGalery')->name('productosgaleria.store')->middleware('auth');
@@ -68,5 +70,5 @@ Route::post('/categorias/store', 'CategoryController@store')->name('categorias.s
 Route::get('/categorias/edit/{categoria}', 'CategoryController@edit')->name('categorias.edit')->middleware('auth');
 Route::put('/categorias/update/{categoria}', 'CategoryController@update')->name('categorias.update')->middleware('auth');
 Route::delete('/categorias/delete/{categoria}', 'CategoryController@delete')->name('categorias.delete')->middleware('auth');
-
-
+Route::get('/categorias/indexdelete', 'CategoryController@indexDelete')->name('categorias.indexdelete')->middleware('auth');
+Route::get('/categorias/categoriarestore/{categoria}', 'CategoryController@categoriaRestore')->name('categorias.categoriarestore')->middleware('auth');

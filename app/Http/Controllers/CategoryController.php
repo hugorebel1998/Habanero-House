@@ -79,4 +79,18 @@ class CategoryController extends Controller
         alert()->success('Éxito al borrar ', 'Se ha borrado la categoria.');
         return back();
     }
+
+    public function indexDelete(){
+        $categorias = Category::onlyTrashed()->get();
+        return view('categorias.indexdelete', compact('categorias'));
+    }
+
+    public function categoriaRestore($id)
+    {
+
+        $categoria = Category::find($id);
+        Category::onlyTrashed()->findOrFail($id)->restore();
+        alert()->success('Éxito categoria restablecida', 'Se ha restablecido la categoria');
+        return redirect()->to(route('categorias.index'));
+    }
 }

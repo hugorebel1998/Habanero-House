@@ -10,9 +10,29 @@
                 <div class="card-header">
                     <b class="lead font-weight-bold"> Usuarios</b>
                 </div>
-                <div class="d-flex justify-content-end mt-3 mr-4">
-                    <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-success"> <i
-                            class="fas fa-plus"></i> Nuevo usuario</a>
+                <div class="d-flex justify-content-end mt-3 mr-5">
+                    {{-- <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-success"> <i
+                            class="fas fa-plus"></i> Nuevo usuario</a> --}}
+                            
+ 
+                  <div class="dropdown">
+                     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
+                     </a>
+
+                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                     <a class="dropdown-item" href="#">
+                     <i class="fas fa-user-friends"></i>
+                     Usurios registrados
+                     </a>
+                     
+                     <a class="dropdown-item" href="{{ route('usuarios.indexdelete') }}">
+                    <i class="fas fa-users-slash"></i>
+                     Usuarios eliminados
+                     </a>
+                    </div>
+                 </div> 
+
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -25,7 +45,7 @@
                                 <th scope="col">Apellidos</th>
                                 <th scope="col">Edad</th>
                                 <th scope="col">Teléfono</th>
-                                <th scope="col">Correo electrónico</th>
+                                {{-- <th scope="col">Correo electrónico</th> --}}
                                 <th scope="col" class="text-center">Administrador</th>
                             </tr>
                         </thead>
@@ -34,13 +54,13 @@
 
                                 <tr>
                                     <td>{{ $usuario->id }}</td>
-                                    <td>{{ $usuario->cargo ?: 'Cliente' }}</td>
+                                    <td>{{ $usuario->rol ?: 'Cliente' }}</td>
                                     <td>{{ $usuario->name ?: 'Sin nombre' }}</td>
                                     <td>{{ $usuario->apellido_paterno }}
                                         {{ $usuario->apellido_materno ?: 'Sin apellidos' }}</td>
                                     <td>{{ $usuario->age ?: 'Sin edad' }} años</td>
                                     <td>{{ $usuario->telefono ?: 'Sin telefono' }}</td>
-                                    <td>{{ $usuario->email }}</td>
+                                    {{-- <td>{{ $usuario->email }}</td> --}}
 
                                     <td class="text-center">
                                         @can('update usuario')
@@ -67,6 +87,7 @@
                                                                 href="{{ route('usuarios.delete', $usuario->id) }}"><i
                                                                     class="far fa-trash-alt"></i> Eliminar usuario</button>
                                                         </form>
+                                                        
                                                     @endcan
                                                 </div>
                                             </div>

@@ -171,6 +171,23 @@ class ProductController extends Controller
         return back();
     }
 
+    public function indexDelete(){
+
+        $productos = Product::onlyTrashed()->get();
+        return view('productos.indexdelete', compact('productos'));
+    }
+
+    public function productoRestore($id)
+    {
+
+        $producto = Product::find($id);
+        Product::onlyTrashed()->findOrFail($id)->restore();
+        alert()->success('Éxito producto restablecido', 'Se ha restablecido el usuario.');
+        return redirect()->to(route('productos.index'));
+    }
+
+
+
     // public function productGalery(Request $request, $id)
     // {
 

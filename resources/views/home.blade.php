@@ -8,7 +8,8 @@
                 
                 <div class="small-box bg-danger shadow">
                     <div class="inner">
-                      <h4 id="tittlehome" class="mt-4">Bienvenido <b id="tittlehomesub">{{ auth()->user()->cargo }}</b></h4>
+                    <h6>{{ auth()->user()->rol }}</h6>
+                      <h4 id="tittlehome" class="mt-4">Bienvenido <b id="tittlehomesub">{{ auth()->user()->name }} {{ auth()->user()->apellido_paterno }}</b></h4>
                       <h4 id="tittledescripcion" class="mt-4 mb-4">Que haremos HOY !!!</h4>
                     </div>
                     <div class="icon">

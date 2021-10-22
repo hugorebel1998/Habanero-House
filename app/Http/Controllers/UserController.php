@@ -7,7 +7,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\ContraseñaRequest;
-
+use App\UserStatus;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,6 +35,7 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
+        $user_status = UserStatus::pluck('id')->first();
 
         $usuario = new User();
         $usuario->name = ucwords($request->nombre);
@@ -45,6 +46,7 @@ class UserController extends Controller
         // $usuario->imagen_usuario = $request->file('imagen_usuario');
         $usuario->email = $request->correo_electrónico;
         $usuario->password = bcrypt($request->contraseña);
+        $usuario->status_id = $user_status;
 
         // if ($request->hasFile('imagen')) {
         //     $file = $request->file('imagen');
@@ -92,9 +94,9 @@ class UserController extends Controller
     {
         $usuario = User::findOrFail($id);
         $cumple = Carbon::parse($usuario->fecha_nacimiento)->format('d M');
-
+        $nombre = "$usuario->name   $usuario->apellido_paterno";  
         
-        return view('usuarios.show', compact('usuario', 'cumple'));
+        return view('usuarios.show', compact('usuario', 'cumple', 'nombre'));
     }
 
     public function edit($id)
@@ -180,9 +182,9 @@ class UserController extends Controller
     public function usuarioRestore($id)
     {
 
-        $usuario = User::findOrFail($id);
+        $usuario = User::find($id);
         User::onlyTrashed()->findOrFail($id)->restore();
-        alert()->success('Éxito usuario restablecido', 'Se ha restablecido el usuario.', $usuario->nombre);
+        alert()->success('Éxito usuario restablecido', 'Se ha restablecido el usuario.');
         return redirect()->to(route('usuarios.index'));
     }
 }

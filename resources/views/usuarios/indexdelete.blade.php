@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                             @foreach ($usuarios as $usuario)
-                            <tr>
+                            <tr @if ($usuario->deleted_at) class="table-danger" @endif>
                                 <td>{{ $usuario->id }}</td>
                                 <td>{{ $usuario->name}}</td>
                                 <td>{{ $usuario->apellido_paterno}} {{ $usuario->apellido_materno}}</td>

@@ -47,8 +47,23 @@
                 <div class="card-header">
                 <b class="lead font-weight-bold"> Categorias</b>
                 </div>
-                <div class="d-flex justify-content-end mt-3 mr-4">
+                <div class="d-flex justify-content-end mt-3 mr-5">
                     {{-- <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Nuevo categoria</a> --}}
+               
+               
+                  <div class="dropdown">
+                     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
+                     </a>
+
+                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                     <a class="dropdown-item" href="{{ route('categorias.indexdelete') }}">
+                    <i class="fas fa-ban"></i>
+                     Categorias eliminados
+                     </a>
+                    </div>
+                 </div> 
+
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">
@@ -81,14 +96,15 @@
                                           {{-- <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i> Ver categoria</a> --}}
                                           <a class="dropdown-item" href="{{ route('categorias.edit', $categoria->id )}}"><i class="fas fa-edit"></i> Editar categoria</a>
                                        
-                                       <form action="{{ route('categorias.delete', $categoria->id)}}" method="POST">
-                                        @csrf
-                                        @method('Delete')
-                                           <a class="dropdown-item" onclick="return confirm('¿Estas Seguro de eliminar este usuario')" href="#"><i class="far fa-trash-alt"></i> Eliminar categoria</a>
-                                       </form>
-                                    
-                                        </div>
-                                      </div>
+                                       <form action="{{ route('categorias.delete', $categoria->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('Delete')
+                                            <button class="dropdown-item"
+                                            onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
+                                            href="{{ route('categorias.delete', $categoria->id) }}"><i
+                                            class="far fa-trash-alt"></i> Eliminar categoria</button>
+                                      </form>
                                     
                                 </td>
                             </tr>

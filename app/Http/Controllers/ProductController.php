@@ -173,8 +173,15 @@ class ProductController extends Controller
     public function delete($id)
     {
         $producto = Product::findOrFail($id);
-        $producto->delete();
-        alert()->success('Éxito al borrar ', 'Se ha borrado el producto.');
+        if($producto->delete() == true){
+
+            alert()->question('Are you sure?','You won\'t be able to revert this!')->showCancelButton()->showConfirmButton()->focusConfirm(false);
+            alert()->success('Éxito al borrar ', 'Se ha borrado el producto.');
+
+        }else{
+            
+        }
+        // $producto->delete();
         return back();
     }
 

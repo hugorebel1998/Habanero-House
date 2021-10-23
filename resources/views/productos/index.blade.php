@@ -71,7 +71,7 @@
                                                             @csrf
                                                             @method('Delete')
                                                             <button class="dropdown-item"
-                                                                onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
+                                                               
                                                                 href="{{ route('productos.delete', $producto->id) }}"><i
                                                                     class="far fa-trash-alt"></i> Eliminar usuario</button>
                                                  </form>

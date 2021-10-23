@@ -67,11 +67,10 @@
                                                     producto</a>
 
                                                   <form action="{{ route('productos.delete', $producto->id) }}"
-                                                            method="POST">
+                                                            method="POST" class="eliminar_producto">
                                                             @csrf
                                                             @method('Delete')
                                                             <button class="dropdown-item"
-                                                               
                                                                 href="{{ route('productos.delete', $producto->id) }}"><i
                                                                     class="far fa-trash-alt"></i> Eliminar usuario</button>
                                                  </form>
@@ -89,5 +88,31 @@
         </div>
     </div>
 </div>
+ @section('alerta')
+ <script>
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   $('.eliminar_producto').submit(function(e){
+
+      e.preventDefault();
+
+     Swal.fire({
+  title: 'Estas seguro de eliminar?',
+  text: "",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, eliminar!'
+}).then((result) => {
+  if (result.isConfirmed) {
+   this.submit();
+    
+  }
+})
+   }); 
+   </script>
+@endsection
+
 @include('components.buscador')
+ 
 @endsection

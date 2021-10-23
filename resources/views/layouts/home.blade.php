@@ -291,6 +291,10 @@
             bsCustomFileInput.init();
         });
     </script>
+
+    {{-- AlertConfirmt --}}
+   @yield('alerta')
+  
 </body>
 
 </html>

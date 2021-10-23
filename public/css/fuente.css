@@ -113,3 +113,12 @@
 
 
 /* Termino Vista Show Usuario */
+
+
+/* Vista editar producto */
+
+#small_codigo_product {
+    color: red;
+    font-size: .9rem;
+    font-weight: 500;
+}

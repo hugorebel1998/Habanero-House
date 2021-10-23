@@ -38,7 +38,8 @@ class ProductController extends Controller
         $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
         $producto->indescuento = $request->en_descuento;
-        // $producto->imagen_producto = $request->file('imagen');
+        $producto->cantidad = $request->cantidad;
+        $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
         $producto->user_id = auth()->user()->id;
 
@@ -65,11 +66,13 @@ class ProductController extends Controller
         if ($producto->save()) {
             $producto->status = '1';
             $producto->nombre = $request->nombre;
+            $producto->slug = Str::slug($request->nombre);
             $producto->category_id = $request->input('categoria') ?: null;
             $producto->precio = $request->precio;
             $producto->descuento = $request->descuento;
             $producto->indescuento = $request->en_descuento;
-            // $producto->imagen_producto = $request->file('imagen');
+            $producto->cantidad = $request->cantidad;
+            $producto->codigo_producto = $request->código_producto;
             $producto->descripcion = $request->descripcion;
             $producto->user_id = auth()->user()->id;
 
@@ -101,26 +104,29 @@ class ProductController extends Controller
         return view('productos.edit', compact('producto', 'categorias'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 
-        $id = $request->user_id;
+        // $id = $request->user_id;
         $producto = Product::findOrFail($id);
         $request->validate([
-            'nombre'               => 'required|max:30|unique:products,nombre,' . $producto->id,
+            'nombre'               => 'required|max:30|unique:products,nombre,'. $producto->id,
             'precio'               => 'required',
             'descuento'            => 'required',
             'descripcion'          => 'required',
             'en_descuento'         => 'required|in:0,1',
+            'cantidad'              => 'min:1|required'
         ]);
 
         $producto->status = $request->status;
         $producto->nombre = $request->nombre;
+        $producto->slug = Str::slug($request->nombre);
         $producto->category_id = $request->input('categoria') ?: null;
         $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
         $producto->indescuento = $request->en_descuento;
-        // $producto->imagen_producto = $request->file('imagen');
+        $producto->cantidad = $request->cantidad;
+        $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
         $producto->user_id = auth()->user()->id;
 
@@ -146,7 +152,8 @@ class ProductController extends Controller
             $producto->precio = $request->precio;
             $producto->descuento = $request->descuento;
             $producto->indescuento = $request->en_descuento;
-            // $producto->imagen_producto = $request->file('imagen');
+            $producto->cantidad = $request->cantidad;
+            $producto->codigo_producto = $request->código_producto;
             $producto->descripcion = $request->descripcion;
             $producto->user_id = auth()->user()->id;
 

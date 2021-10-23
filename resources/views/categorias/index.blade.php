@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-    <div class="col-md-12">
+    <div class="col-md-11">
         <div class="row">
         <div class="col-md-4">
             <div class="card card-danger shadow">
@@ -47,10 +47,9 @@
                 <div class="card-header">
                 <b class="lead font-weight-bold"> Categorias</b>
                 </div>
-                <div class="d-flex justify-content-end mt-3 mr-5">
-                    {{-- <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Nuevo categoria</a> --}}
+                <div class="d-flex flex-row-reverse mr-5">
                
-               
+               <div class="p-2">
                   <div class="dropdown">
                      <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
@@ -63,7 +62,11 @@
                      </a>
                     </div>
                  </div> 
+              </div>
 
+              <div class="p-2">
+                    <a href="{{ route('categorias.create') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Nuevo categoria</a>
+              </div>
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">

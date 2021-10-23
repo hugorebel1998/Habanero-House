@@ -9,7 +9,7 @@
                     <div class="card-tittle"><i class="fas fa-box"></i> Editarproducto</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('productos.update') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data"
                         autocomplete="off">
                         @csrf
                         @method('PUT')
@@ -124,7 +124,25 @@
                                     @enderror
                                 </div>
                             </div>
+                           
+                            <div class="col-md-4 mt-3">
+                                <label for="cantidad">Cantidad</label>
+                                <input type="number" name="cantidad" class="form-control @error('cantidad') is-invalid @enderror"
+                                 value="{{  $producto->cantidad }}" >
+                                @error('cantidad')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
 
+                             <div class="col-md-4 mt-3">
+                                <label for="código_producto">Codigo producto</label>
+                                <input type="text" name="código_producto" class="form-control @error('código_producto') is-invalid @enderror"
+                                 value="{{ $producto->codigo_producto }}" >
+                                {{-- <small id="small_codigo_product">{{ $producto->código_producto ? : 'Sin código'}}</small> --}}
+                                @error('código_producto')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                             <div class="col-md-12 mt-4">
                                 <label for="descripcion">Descripción</label>

@@ -5,34 +5,36 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
                     <b class="lead font-weight-bold"> Usuarios</b>
                 </div>
-                <div class="d-flex justify-content-end mt-3 mr-5">
-                    {{-- <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-success"> <i
-                            class="fas fa-plus"></i> Nuevo usuario</a> --}}
+                <div class="d-flex flex-row-reverse mr-4">
                             
- 
+                 <div class="p-2">
                   <div class="dropdown">
                      <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
-                     </a>
+                       </a>
 
-                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                     <a class="dropdown-item" href="#">
-                     <i class="fas fa-user-friends"></i>
-                     Usurios registrados
-                     </a>
-                     
-                     <a class="dropdown-item" href="{{ route('usuarios.indexdelete') }}">
-                    <i class="fas fa-users-slash"></i>
-                     Usuarios eliminados
-                     </a>
-                    </div>
+                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                             <a class="dropdown-item" href="#">
+                             <i class="fas fa-user-friends"></i>
+                             Usurios registrados
+                            </a>
+                            <a class="dropdown-item" href="{{ route('usuarios.indexdelete') }}">
+                             <i class="fas fa-users-slash"></i>
+                            Usuarios eliminados
+                       </a>
+                     </div>
                  </div> 
+                 </div> 
+                 <div class="p-2">
+                   <a href="{{ route('usuarios.create') }}" class="btn btn-success"> <i
+                            class="fas fa-plus"></i> Nuevo usuario</a>
 
+                </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

@@ -29,6 +29,8 @@ class ProductRequest extends FormRequest
             'descuento'     => 'required',
             'descripcion'   => 'required',
             'en_descuento'  => 'required|in:0,1',
+            'cantidad'      => 'min:1|required',
+            // 'código_producto' => 'required',
             'categoria'     => 'required',   
             'imagen'        => 'mimes:jpeg,jpg,png|required|max:10000',
         ];

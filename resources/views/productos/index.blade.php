@@ -10,24 +10,26 @@
                 <div class="card-header">
                     <b class="lead font-weight-bold"> Productos</b>
                 </div>
-                <div class="d-flex justify-content-end mt-3 mr-4">
-                    {{-- <a href="{{ route('productos.create') }}" class="btn btn-sm btn-success"> <i
-                            class="fas fa-plus"></i> Nuevo producto</a> --}}
-
-                
-                  <div class="dropdown">
+               
+                <div class="d-flex flex-row-reverse mr-4">
+                   <div class="p-2">
+                   <div class="dropdown">
                      <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
                      </a>
 
-                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                     <a class="dropdown-item" href="{{ route('productos.indexDelete') }}">
-                    <i class="fas fa-ban"></i>
-                     Productos eliminados
-                     </a>
-                    </div>
-                 </div> 
-
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                       <a class="dropdown-item" href="{{ route('productos.indexDelete') }}">
+                         <i class="fas fa-ban"></i>
+                           Productos eliminados
+                        </a>
+                      </div>
+                   </div> 
+                   </div>
+                   <div class="p-2">
+                   <a href="{{ route('productos.create') }}" class="btn btn-success"> <i
+                            class="fas fa-plus"></i> Nuevo producto</a>
+                   </div>
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">

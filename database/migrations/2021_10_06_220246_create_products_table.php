@@ -21,6 +21,8 @@ class CreateProductsTable extends Migration
             $table->decimal('precio', 11,2);
             $table->integer('indescuento');
             $table->integer('descuento');
+            $table->integer('cantidad');
+            $table->string('codigo_producto')->nullable();
             $table->string('imagen_producto');
             $table->text('descripcion');
             $table->unsignedBigInteger('user_id');

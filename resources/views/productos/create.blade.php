@@ -108,6 +108,23 @@
                                 @enderror
                             </div>
 
+                            <div class="col-md-4 mt-3">
+                                <label for="cantidad">Cantidad</label>
+                                <input type="number" name="cantidad" class="form-control @error('cantidad') is-invalid @enderror" value="{{ old('cantidad') }}" 
+                                     placeholder="0" min="0">
+                                @error('cantidad')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                             <div class="col-md-4 mt-3">
+                                <label for="código_producto">Codigo producto</label>
+                                <input type="text" name="código_producto" class="form-control @error('código_producto') is-invalid @enderror" value="{{ old('código_producto') }}" >
+                                @error('código_producto')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
 
                             <div class="col-md-12 mt-4">
                                 <label for="descripcion">Descripción</label>

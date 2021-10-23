@@ -89,8 +89,8 @@
     </div>
 </div>
  @section('alerta')
- <script>
  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script>
    $('.eliminar_producto').submit(function(e){
 
       e.preventDefault();

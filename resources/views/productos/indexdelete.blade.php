@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-@section('title', 'Lista de productos')
+@section('title', 'Lista de productos eliminados')
 
 
 <div class="container-fluid">
@@ -29,19 +29,18 @@
                                     <td>{{ $producto->id }}</td>
                                     <td>{{ $producto->nombre }}</td>
                                     <td>{{ $producto->categoriaProduct->nombre }}</td>
-                                    <td><img src="{{ asset('img/products/'.$producto->imagen_producto)}}" class="rounded mx-auto img-thumbnail" width="80"></td>
-                                    <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp )  }}</td>
-                                    <td> {{ date('d M Y - H:i:s', $producto->updated_at->timestamp ) ?: '--'  }}</td>
+                                    <td><img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
+                                            class="rounded mx-auto img-thumbnail" width="80"></td>
+                                    <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp) }}</td>
+                                    <td> {{ date('d M Y - H:i:s', $producto->updated_at->timestamp) ?: '--' }}</td>
                                     <td class="text-center">
-                                       <a 
-                                         href="{{ route('productos.productorestore', $producto->id )}}"
-                                         onclick="return confirm('¿Estas Seguro de restablecer este producto?')"
-                                         class="btn btn-sm btn-info">
-                                            <i class="fas fa-trash-restore"></i> 
+                                        <a href="{{ route('productos.productorestore', $producto->id) }}"
+                                            class="btn btn-sm btn-info restablecer_producto">
+                                            <i class="fas fa-trash-restore"></i>
                                             Restablecer
                                         </a>
 
-                                   </td>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -52,5 +51,35 @@
         </div>
     </div>
 </div>
+
 @include('components.buscador')
+
+@section('alerta')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(".restablecer_producto").click(function(e) {
+            e.preventDefault();
+            const href = $(this).attr('href');
+            Swal.fire({
+                title: 'Estas seguro de querer restablecerlo?',
+                text: `Este poducto sera restablecido`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, restablecer!'
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire(
+                    'Éxito',
+                    'Restableciste este producto.',
+                    'success'
+                    )
+                    document.location.href = href;
+                }
+            })
+        })
+    </script>
+@endsection
+
 @endsection

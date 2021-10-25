@@ -142,7 +142,7 @@ class UserController extends Controller
     {
         $usuario = User::findOrFail($id);
         $usuario->delete();
-        alert()->success('Éxito', 'Usuario eliminado.');
+        // alert()->success('Éxito', 'Usuario eliminado.');
         return back();
     }
 
@@ -184,7 +184,7 @@ class UserController extends Controller
 
         $usuario = User::find($id);
         User::onlyTrashed()->findOrFail($id)->restore();
-        alert()->success('Éxito usuario restablecido', 'Se ha restablecido el usuario.');
+        // alert()->success('Éxito usuario restablecido', 'Se ha restablecido el usuario.');
         return redirect()->to(route('usuarios.index'));
     }
 }

@@ -76,7 +76,7 @@ class CategoryController extends Controller
     public function delete($id){
         $categoria = Category::findOrFail($id);
         $categoria->delete();
-        alert()->success('Éxito al borrar ', 'Se ha borrado la categoria.');
+        // alert()->success('Éxito al borrar ', 'Se ha borrado la categoria.');
         return back();
     }
 
@@ -90,7 +90,7 @@ class CategoryController extends Controller
 
         $categoria = Category::find($id);
         Category::onlyTrashed()->findOrFail($id)->restore();
-        alert()->success('Éxito categoria restablecida', 'Se ha restablecido la categoria');
+        // alert()->success('Éxito categoria restablecida', 'Se ha restablecido la categoria');
         return redirect()->to(route('categorias.index'));
     }
 }

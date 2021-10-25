@@ -189,7 +189,7 @@ class ProductController extends Controller
 
         $producto = Product::find($id);
         Product::onlyTrashed()->findOrFail($id)->restore();
-        alert()->success('Éxito producto restablecido', 'Se ha restablecido el usuario.');
+        // alert()->success('Éxito producto restablecido', 'Se ha restablecido el usuario.');
         return redirect()->to(route('productos.index'));
     }
 

@@ -11,30 +11,31 @@
                     <b class="lead font-weight-bold"> Usuarios</b>
                 </div>
                 <div class="d-flex flex-row-reverse mr-4">
-                            
-                 <div class="p-2">
-                  <div class="dropdown">
-                     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
-                       </a>
 
-                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                             <a class="dropdown-item" href="#">
-                             <i class="fas fa-user-friends"></i>
-                             Usurios registrados
+                    <div class="p-2">
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
                             </a>
-                            <a class="dropdown-item" href="{{ route('usuarios.indexdelete') }}">
-                             <i class="fas fa-users-slash"></i>
-                            Usuarios eliminados
-                       </a>
-                     </div>
-                 </div> 
-                 </div> 
-                 <div class="p-2">
-                   <a href="{{ route('usuarios.create') }}" class="btn btn-success"> <i
-                            class="fas fa-plus"></i> Nuevo usuario</a>
 
-                </div>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user-friends"></i>
+                                    Usurios registrados
+                                </a>
+                                <a class="dropdown-item" href="{{ route('usuarios.indexdelete') }}">
+                                    <i class="fas fa-users-slash"></i>
+                                    Usuarios eliminados
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <a href="{{ route('usuarios.create') }}" class="btn btn-success"> <i
+                                class="fas fa-plus"></i> Nuevo usuario</a>
+
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -81,30 +82,56 @@
                                                             class="fas fa-edit"></i> Editar información</a>
                                                     @can('delete usuario')
                                                         <form action="{{ route('usuarios.delete', $usuario->id) }}"
-                                                            method="POST">
+                                                            method="POST" class="eliminar_usuario">
                                                             @csrf
                                                             @method('Delete')
                                                             <button class="dropdown-item"
-                                                                onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
                                                                 href="{{ route('usuarios.delete', $usuario->id) }}"><i
                                                                     class="far fa-trash-alt"></i> Eliminar usuario</button>
                                                         </form>
-                                                        
+
                                                     @endcan
                                                 </div>
                                             </div>
                                         @endcan
                                     </td>
                                 </tr>
-
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
         </div>
     </div>
 </div>
 @include('components.buscador')
+
+@section('alerta')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $('.eliminar_usuario').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Estas seguro de eliminar?',
+                text: `Este usuario sera eliminado`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Eliminado!',
+                        'Haz eliminado este usuario.',
+                        'success'
+                    )
+                    this.submit();
+
+                }
+            })
+        });
+    </script>
+@endsection
+
 @endsection

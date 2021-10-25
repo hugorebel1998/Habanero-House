@@ -34,28 +34,10 @@
                                 <td>{{ $usuario->age }} años</td>
                                 <td>{{ $usuario->telefono }}</td>
                                 <td>{{ $usuario->email }}</td>
-                                
-                                {{-- <td class="text-center">
-                                    @can('update usuario')
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-cogs"></i> Acciones
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('usuarios.show', $usuario->id)}}"><i class="far fa-bookmark"></i> Ver usuario</a>
-                                        <a class="dropdown-item" href="{{ route('usuarios.edit', $usuario->id) }}"><i class="fas fa-edit"></i> Editar información</a>
-                                    @can('delete usuario')
-                                        <a class="dropdown-item" onclick="return confirm('¿Estas Seguro de eliminar este usuario')" href="{{ route('usuarios.delete',$usuario->id) }}"><i class="far fa-trash-alt"></i> Eliminar usuario</a>
-                                    @endcan
-                                        </div>
-                                    </div>
-                                    @endcan
-                                </td> --}}
                                 <td class="text-center">
                                     <a 
                                     href="{{ route('usuarios.usuariorestore', $usuario->id )}}"
-                                    onclick="return confirm('¿Estas Seguro de restablecer este usuario?')"
-                                    class="btn btn-sm btn-info">
+                                    class="btn btn-sm btn-info restablecer_usuario">
                                      <i class="fas fa-trash-restore"></i> Restablecer</a>
 
                                 </td>
@@ -65,10 +47,38 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
         </div>
     </div>
 </div>
 @include('components.buscador')
+
+@section('alerta')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(".restablecer_usuario").click(function(e) {
+            e.preventDefault();
+            const href = $(this).attr('href');
+            Swal.fire({
+                title: 'Estas seguro de querer restablecerlo?',
+                text: `Este usuario sera restablecido`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, restablecer!'
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire(
+                    'Éxito',
+                    'Restableciste este usuario.',
+                    'success'
+                    )
+                    document.location.href = href;
+                }
+            })
+        })
+    </script>
+@endsection
+
 @endsection

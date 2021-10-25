@@ -57,7 +57,7 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                    <div class="p-2">
-                                   <a href="{{ route('usuarios.index') }}" class="btn btn-primary mb-2 ml-4 h4show"> <i
+                                   <a href="{{ route('admin.usuarios.index') }}" class="btn btn-primary mb-2 ml-4 h4show"> <i
                                     class="far fa-hand-point-left"></i> Regresar</a>
                                    </div>
                                    <div class="p-2">

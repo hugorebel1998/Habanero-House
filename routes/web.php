@@ -32,17 +32,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['role:super-admin|admin|gerente']], function(){
 //usuarios
-Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->middleware('auth');
-Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('auth');
-Route::post('/usuarios/store', 'UserController@store')->name('usuarios.store')->middleware('auth');
-Route::get('/usuarios/edit/{usuario}', 'UserController@edit')->name('usuarios.edit')->middleware('auth');
-Route::get('/usuarios/show/{usuario}', 'UserController@show')->name('usuarios.show')->middleware('auth');
-Route::put('/usuarios/update/{usuario}', 'UserController@update')->name('usuarios.update')->middleware('auth');
-Route::delete('/usuarios/delete/{usuario}', 'UserController@delete')->name('usuarios.delete')->middleware('auth');
-Route::get('/usuarios/contraseña/{usuario}', 'UserController@contraseña')->name('usuarios.contraseña')->middleware('auth');
-Route::post('/usuarios/updatecontraseña', 'UserController@updateContraseña')->name('usuarios.updatecontraseña')->middleware('auth');
-Route::get('/usuarios/usuarioeliminado', 'UserController@indexDelete')->name('usuarios.indexdelete')->middleware('auth');
-Route::get('/usuarios/usuariorestore/{usuario}', 'UserController@usuarioRestore')->name('usuarios.usuariorestore')->middleware('auth');
+Route::get('/usuarios/index', 'UserController@index')->name('admin.usuarios.index')->middleware('auth');
+Route::get('/usuarios/create', 'UserController@create')->name('admin.usuarios.create')->middleware('auth');
+Route::post('/usuarios/store', 'UserController@store')->name('admin.usuarios.store')->middleware('auth');
+Route::get('/usuarios/edit/{usuario}', 'UserController@edit')->name('admin.usuarios.edit')->middleware('auth');
+Route::get('/usuarios/show/{usuario}', 'UserController@show')->name('admin.usuarios.show')->middleware('auth');
+Route::put('/usuarios/update/{usuario}', 'UserController@update')->name('admin.usuarios.update')->middleware('auth');
+Route::delete('/usuarios/delete/{usuario}', 'UserController@delete')->name('admin.usuarios.delete')->middleware('auth');
+Route::get('/usuarios/contraseña/{usuario}', 'UserController@contraseña')->name('admin.usuarios.contraseña')->middleware('auth');
+Route::post('/usuarios/updatecontraseña', 'UserController@updateContraseña')->name('admin.usuarios.updatecontraseña')->middleware('auth');
+Route::get('/usuarios/usuarioeliminado', 'UserController@indexDelete')->name('admin.usuarios.indexdelete')->middleware('auth');
+Route::get('/usuarios/usuariorestore/{usuario}', 'UserController@usuarioRestore')->name('admin.usuarios.usuariorestore')->middleware('auth');
 
 
 // Productos

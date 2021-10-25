@@ -70,7 +70,7 @@
                         <i class="ion ion-person-add"></i>
                     </div>
                 @can('read usuario')
-                    <a href="{{ route('usuarios.create') }}" class="small-box-footer">Ir <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('admin.usuarios.create') }}" class="small-box-footer">Ir <i class="fas fa-arrow-circle-right"></i></a>
                 @endcan
                     </div>
                 </div>

@@ -86,11 +86,11 @@
                         <p class="text-center"> <b>{{ auth()->user()->name }} {{ auth()->user()->apellido_paterno }}</b></p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
+                        <a href="{{ route('admin.usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
                             <i class="fas fa-user-edit mr-2"></i> Editar información
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('usuarios.contraseña', auth()->user()->id) }}" class="dropdown-item">
+                        <a href="{{ route('admin.usuarios.contraseña', auth()->user()->id) }}" class="dropdown-item">
                             <i class="fas fa-unlock-alt mr-2"></i> Cambiar contraseña
                         </a>
                         <div class="dropdown-divider"></div>
@@ -121,7 +121,7 @@
                             class="img-circle elevation-4" style="opacity: .9; height:50px; width:50px">
                     </div>
                     <div class="info mt-2">
-                        <a href="{{ route('usuarios.show', auth()->user()->id) }}"
+                        <a href="{{ route('admin.usuarios.show', auth()->user()->id) }}"
                             class="text-danger">{{ auth()->user()->name }} {{ auth()->user()->apellido_paterno }}</a>
                     </div>
                 </div>
@@ -213,14 +213,14 @@
                             <ul class="nav nav-treeview">
                                 
                                 <li class="nav-item">
-                                    <a href="{{ route('usuarios.index') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('admin.usuarios.index') }}" class="nav-link text-secondary">
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p class="text-black">Gestión de usuarios</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('usuarios.create') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('admin.usuarios.create') }}" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
                                         <p>Crear usuario</p>
                                     </a>

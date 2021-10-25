@@ -25,12 +25,12 @@ class UserController extends Controller
     public function index()
     {
         $usuarios = User::all();
-        return view('usuarios.index', compact('usuarios'));
+        return view('admin.usuarios.index', compact('usuarios'));
     }
 
     public function create()
     {
-        return view('usuarios.create');
+        return view('admin.usuarios.create');
     }
 
     public function store(UserRequest $request)
@@ -72,14 +72,14 @@ class UserController extends Controller
             if ($usuario->save()) {
 
                 alert()->success('Éxito nuevo usuario','Se registro un nuevo usuario', $usuario->nombre);
-                  return redirect()->to(route('usuarios.index'));
+                  return redirect()->to(route('admin.usuarios.index'));
             } else {
                 alert()->error('Oops error', 'Al parecer tuvimos un error.');
                 return redirect()->back();
             }
         } else {
             alert()->error('Oops error', 'Al parecer tuvimos un error.');
-                return redirect()->to(route('usuarios.create'));
+                return redirect()->to(route('admi.usuarios.create'));
         }
 
     }
@@ -90,14 +90,14 @@ class UserController extends Controller
         $cumple = Carbon::parse($usuario->fecha_nacimiento)->format('d M');
         $nombre = "$usuario->name   $usuario->apellido_paterno";  
         
-        return view('usuarios.show', compact('usuario', 'cumple', 'nombre'));
+        return view('admin.usuarios.show', compact('usuario', 'cumple', 'nombre'));
     }
 
     public function edit($id)
     {
 
         $usuario = User::findOrFail($id);
-        return view('usuarios.edit', compact('usuario'));
+        return view('admin.usuarios.edit', compact('usuario'));
     }
 
     public function update(Request $request, $id)
@@ -126,10 +126,10 @@ class UserController extends Controller
 
         if ($usuario->save()) {
             alert()->success('Éxito usuario actualizado', 'Se actualizo al usuario.', $usuario->nombre);
-            return redirect()->to(route('usuarios.index'));
+            return redirect()->to(route('admin.usuarios.index'));
         } else {
             alert()->error('Oops error', 'Al parecer tuvimos un error.');
-            return redirect()->to(route('usuarios.create'));
+            return redirect()->to(route('admin.usuarios.create'));
         }
     }
 
@@ -146,7 +146,7 @@ class UserController extends Controller
 
         $usuario = $id;
         // $usuario = User::findOrFail($id);
-        return view('usuarios.password', compact('usuario'));
+        return view('admin.usuarios.password', compact('usuario'));
     }
 
     public function updateContraseña(ContraseñaRequest $request)
@@ -171,7 +171,7 @@ class UserController extends Controller
     public function indexDelete()
     {
         $usuarios = User::onlyTrashed()->get();
-        return view('usuarios.indexdelete', compact('usuarios'));
+        return view('admin.usuarios.indexdelete', compact('usuarios'));
     }
 
     public function usuarioRestore($id)
@@ -180,6 +180,6 @@ class UserController extends Controller
         $usuario = User::find($id);
         User::onlyTrashed()->findOrFail($id)->restore();
         // alert()->success('Éxito usuario restablecido', 'Se ha restablecido el usuario.');
-        return redirect()->to(route('usuarios.index'));
+        return redirect()->to(route('admin.usuarios.index'));
     }
 }

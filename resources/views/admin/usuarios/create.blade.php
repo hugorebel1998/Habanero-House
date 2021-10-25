@@ -9,7 +9,7 @@
                     <div class="card-tittle"><i class="fas fa-user-plus"></i> Crear usuario</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('usuarios.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off" >
+                    <form action="{{ route('admin.usuarios.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off" >
                         @csrf
                         <div class="row">
                             <div class="col-md-4">

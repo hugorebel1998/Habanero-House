@@ -25,7 +25,7 @@
                                     <i class="fas fa-user-friends"></i>
                                     Usurios registrados
                                 </a>
-                                <a class="dropdown-item" href="{{ route('usuarios.indexdelete') }}">
+                                <a class="dropdown-item" href="{{ route('admin.usuarios.indexdelete') }}">
                                     <i class="fas fa-users-slash"></i>
                                     Usuarios eliminados
                                 </a>
@@ -34,7 +34,7 @@
                         @endcan
                     </div>
                     <div class="p-2">
-                        <a href="{{ route('usuarios.create') }}" class="btn btn-success"> <i
+                        <a href="{{ route('admin.usuarios.create') }}" class="btn btn-success"> <i
                                 class="fas fa-plus"></i> Nuevo usuario</a>
 
                     </div>
@@ -77,18 +77,18 @@
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('usuarios.show', $usuario->id) }}"><i
+                                                        href="{{ route('admin.usuarios.show', $usuario->id) }}"><i
                                                             class="far fa-bookmark"></i> Ver usuario</a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('usuarios.edit', $usuario->id) }}"><i
+                                                        href="{{ route('admin.usuarios.edit', $usuario->id) }}"><i
                                                             class="fas fa-edit"></i> Editar información</a>
                                                     @can('delete usuario')
-                                                        <form action="{{ route('usuarios.delete', $usuario->id) }}"
+                                                        <form action="{{ route('admin.usuarios.delete', $usuario->id) }}"
                                                             method="POST" class="eliminar_usuario">
                                                             @csrf
                                                             @method('Delete')
                                                             <button class="dropdown-item"
-                                                                href="{{ route('usuarios.delete', $usuario->id) }}"><i
+                                                                href="{{ route('admin.usuarios.delete', $usuario->id) }}"><i
                                                                     class="far fa-trash-alt"></i> Eliminar usuario</button>
                                                         </form>
 

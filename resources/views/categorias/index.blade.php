@@ -50,6 +50,7 @@
                         <div class="d-flex flex-row-reverse mr-5">
 
                             <div class="p-2">
+                            @can('delete categoria')
                                 <div class="dropdown">
                                     <a class="btn btn-primary dropdown-toggle" href="#" role="button"
                                         id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -64,12 +65,13 @@
                                         </a>
                                     </div>
                                 </div>
+                                @endcan
                             </div>
 
-                            <div class="p-2">
+                            {{-- <div class="p-2">
                                 <a href="{{ route('categorias.create') }}" class="btn btn-success"> <i
                                         class="fas fa-plus"></i> Nuevo categoria</a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-body">
                             <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">
@@ -93,7 +95,7 @@
                                             <td>{{ $categoria->created_at }}</td>
 
                                             <td class="text-center">
-
+                                             @can('update categoria')
                                                 <div class="dropdown">
                                                     <button class="btn btn-sm btn-info dropdown-toggle" type="button"
                                                         id="dropdownMenuButton" data-toggle="dropdown"
@@ -105,7 +107,7 @@
                                                         <a class="dropdown-item"
                                                             href="{{ route('categorias.edit', $categoria->id) }}"><i
                                                                 class="fas fa-edit"></i> Editar categoria</a>
-
+                                                      @can('delete categoria')
                                                         <form
                                                             action="{{ route('categorias.delete', $categoria->id) }}"
                                                             method="POST" class="categoria_producto">
@@ -116,7 +118,9 @@
                                                                     class="far fa-trash-alt"></i> Eliminar
                                                                 categoria</button>
                                                         </form>
+                                                     @endcan
 
+                                              @endcan
                                             </td>
                                         </tr>
                                     @endforeach

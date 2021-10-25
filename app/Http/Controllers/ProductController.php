@@ -42,16 +42,7 @@ class ProductController extends Controller
         $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
         $producto->user_id = auth()->user()->id;
-
-        // if($request->hasFile('imagen')){
-        //     $file = $request->file('imagen');
-        //     $url = 'img/products/';
-        //     $filename = time() . '-' . $file->getClientOriginalName();
-        //     $uploadSuceess = $request->file('imagen')->move($url, $filename);
-        //     $producto->imagen_producto = $url . $filename;
-
-        // }
-
+        
 
         if ($archivo = $request->file('imagen')) {
             $nombre_imagen = $archivo->getClientOriginalName();
@@ -128,15 +119,9 @@ class ProductController extends Controller
         $producto->cantidad = $request->cantidad;
         $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
-        $producto->user_id = auth()->user()->id;
+        $producto->editor_id = auth()->user()->id;
 
-        // if ($request->hasFile('imagen')) {
-        //     $file = $request->file('imagen');
-        //     $url = 'img/products/';
-        //     $filename = time() . '-' . $file->getClientOriginalName();
-        //     $uploadSuceess = $request->file('imagen')->move($url, $filename);
-        //     $producto->imagen_producto = $url . $filename;
-        // }
+       
         if ($archivo = $request->file('imagen')) {
             $nombre_imagen = $archivo->getClientOriginalName();
             $ruta = public_path('img/products/');
@@ -155,7 +140,7 @@ class ProductController extends Controller
             $producto->cantidad = $request->cantidad;
             $producto->codigo_producto = $request->código_producto;
             $producto->descripcion = $request->descripcion;
-            $producto->user_id = auth()->user()->id;
+            $producto->editor_id = auth()->user()->id;
 
             if ($producto->save()) {
 

@@ -33,27 +33,26 @@
      <div class="row justify-content-center mt-4">
      <div class="col-md-10">
      <div class="row">
-                    <div class="col-lg-4 col-6">
+                    <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info">
+                    <div class="small-box bg-rojo">
                     <div class="inner">
-                        <h3>150</h3>
-
-                        <p>Crear producto</p>
+                        <h3>{{$productoCount}}</h3>
+                        <p>Nuevo producto</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        {{-- <i class="ion ion-bag"></i> --}}
+                        <i class="fas fa-box-open"></i>
                     </div>
                     <a href="{{ route('productos.create')}}" class="small-box-footer">Ir <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-6">
+                <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-rojo">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                        <p>Nuevo reportes</p>
+                        <h3>{{ $categoriaCount }}</h3>
+                        <p>Nueva categoria</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -61,34 +60,33 @@
                     <a href="#" class="small-box-footer">Ir <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-rojo">
                     <div class="inner">
-                        <h3>44</h3>
-
-                        <p>Crear nuevo usuario</p>
+                        <h3>{{ $usuarioCount }}</h3>
+                        <p>Nuevo usuario</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="{{ route('usuarios.create') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                @can('read usuario')
+                    <a href="{{ route('usuarios.create') }}" class="small-box-footer">Ir <i class="fas fa-arrow-circle-right"></i></a>
+                @endcan
                     </div>
                 </div>
-                {{-- <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-rojo">
                     <div class="inner">
                         <h3>65</h3>
 
-                        <p>Unique Visitors</p>
+                        <p>Nuevo reporte</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                </div> --}}
+                </div>
             </div>
             </div>
 

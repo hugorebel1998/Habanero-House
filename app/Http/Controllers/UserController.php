@@ -43,18 +43,12 @@ class UserController extends Controller
         $usuario->apellido_materno = ucwords($request->apellido_materno);        
         $usuario->fecha_nacimiento = $request->fecha_de_nacimiento;
         $usuario->telefono = $request->teléfono;
-        // $usuario->imagen_usuario = $request->file('imagen_usuario');
         $usuario->email = $request->correo_electrónico;
         $usuario->password = bcrypt($request->contraseña);
         $usuario->status_id = $user_status;
+        $usuario->editor_id = auth()->user()->id;
 
-        // if ($request->hasFile('imagen')) {
-        //     $file = $request->file('imagen');
-        //     $url = 'img/users/';
-        //     $filename = time() . '-' . $file->getClientOriginalName();
-        //     $uploadSuceess = $request->file('imagen')->move($url, $filename);
-        //     $usuario->imagen_usuario = $url . $filename;
-        // }
+        
         if ($archivo = $request->file('imagen')) {
             $nombre_imagen = $archivo->getClientOriginalName();
             $ruta = public_path('img/users/');
@@ -73,7 +67,7 @@ class UserController extends Controller
             // $usuario->imagen_usuario = $request->file('imagen_');
             $usuario->email = $request->correo_electrónico;
             $usuario->password = bcrypt($request->contraseña);
-            // $usuario->user_id = auth()->user()->id;
+            $usuario->editor_id = auth()->user()->id;
 
             if ($usuario->save()) {
 
@@ -126,6 +120,7 @@ class UserController extends Controller
         $usuario->fecha_nacimiento = $request->fecha_de_nacimiento;
         $usuario->telefono = $request->teléfono;
         $usuario->email = $request->correo_electrónico;
+        $usuario->editor_id = auth()->user()->id;
 
         // dd($usuario);
 

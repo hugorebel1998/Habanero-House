@@ -48,7 +48,10 @@
             content: "Subir"
         }
         
-
+        .bg-rojo{
+            background:#C62828;
+            color:white;
+        }
     </style>
 </head>
 
@@ -198,6 +201,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @can('read usuario')
                         <li class="nav-item ">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-users"></i>
@@ -231,6 +235,7 @@
 
                             </ul>
                         </li>
+                        @endcan
                     </ul>
                 </nav>
             </div>

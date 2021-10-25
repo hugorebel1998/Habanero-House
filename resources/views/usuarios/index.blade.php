@@ -13,6 +13,7 @@
                 <div class="d-flex flex-row-reverse mr-4">
 
                     <div class="p-2">
+                    @can('delete usuario')
                         <div class="dropdown">
                             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,6 +31,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endcan
                     </div>
                     <div class="p-2">
                         <a href="{{ route('usuarios.create') }}" class="btn btn-success"> <i

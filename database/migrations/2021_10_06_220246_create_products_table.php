@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('codigo_producto')->nullable();
             $table->string('imagen_producto');
             $table->text('descripcion');
+            $table->unsignedBigInteger('editor_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->softDeletes();

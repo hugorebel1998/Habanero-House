@@ -109,7 +109,7 @@
                             </div>
 
                             <div class="col-md-4 mt-3">
-                                <label for="cantidad">Cantidad</label>
+                                <label for="cantidad">Inventario</label>
                                 <input type="number" name="cantidad" class="form-control @error('cantidad') is-invalid @enderror" value="{{ old('cantidad') }}" 
                                      placeholder="0" min="0">
                                 @error('cantidad')

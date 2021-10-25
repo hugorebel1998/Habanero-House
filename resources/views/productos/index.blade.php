@@ -13,6 +13,7 @@
 
                 <div class="d-flex flex-row-reverse mr-4">
                     <div class="p-2">
+                        @can('delete producto')
                         <div class="dropdown">
                             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,6 +27,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endcan
                     </div>
                     <div class="p-2">
                         <a href="{{ route('productos.create') }}" class="btn btn-success"> <i
@@ -56,6 +58,7 @@
                                     <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp) }}</td>
                                     <td> {{ date('d M Y - H:i:s', $producto->updated_at->timestamp) ?: '--' }}</td>
                                     <td class="text-center">
+                                @can('update producto')
                                         <div class="dropdown">
                                             <button class="btn btn-sm btn-info dropdown-toggle" type="button"
                                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -71,7 +74,7 @@
                                                     href="{{ route('productos.edit', $producto->id) }}"><i
                                                         class="fas fa-edit"></i> Editar
                                                     producto</a>
-
+                                               @can('delete producto')
                                                 <form action="{{ route('productos.delete', $producto->id) }}"
                                                     method="POST" class="eliminar_producto">
                                                     @csrf
@@ -80,9 +83,10 @@
                                                         href="{{ route('productos.delete', $producto->id) }}"><i
                                                             class="far fa-trash-alt"></i> Eliminar usuario</button>
                                                 </form>
+                                                @endcan
                                             </div>
                                         </div>
-
+                                    @endcan
                                     </td>
                                 </tr>
                             @endforeach

@@ -45,9 +45,6 @@ Route::get('/usuarios/usuarioeliminado', 'UserController@indexDelete')->name('us
 Route::get('/usuarios/usuariorestore/{usuario}', 'UserController@usuarioRestore')->name('usuarios.usuariorestore')->middleware('auth');
 
 
-});
-
-
 // Productos
 Route::get('/productos/index', 'ProductController@index')->name('productos.index')->middleware('auth');
 Route::get('/productos/create', 'ProductController@create')->name('productos.create')->middleware('auth');
@@ -72,3 +69,7 @@ Route::put('/categorias/update/{categoria}', 'CategoryController@update')->name(
 Route::delete('/categorias/delete/{categoria}', 'CategoryController@delete')->name('categorias.delete')->middleware('auth');
 Route::get('/categorias/indexdelete', 'CategoryController@indexDelete')->name('categorias.indexdelete')->middleware('auth');
 Route::get('/categorias/categoriarestore/{categoria}', 'CategoryController@categoriaRestore')->name('categorias.categoriarestore')->middleware('auth');
+
+});
+
+

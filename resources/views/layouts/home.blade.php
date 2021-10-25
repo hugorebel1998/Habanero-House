@@ -139,13 +139,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('productos.index') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('admin.productos.index') }}" class="nav-link text-secondary">
                                         <i class="fas fa-list-ul nav-icon"></i>
                                         <p>Gestión de productos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('productos.create') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('admin.productos.create') }}" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
                                         <p>Crear producto</p>
                                     </a>
@@ -162,17 +162,17 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('categorias.index') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('admin.categorias.index') }}" class="nav-link text-secondary">
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p class="text-black">Gestión de categorias</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-secondary">
+                                    {{-- <a href="#" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
                                         <p>Crear categoria</p>
-                                    </a>
+                                    </a> --}}
                                 </li>
                             </ul>
                         </li>

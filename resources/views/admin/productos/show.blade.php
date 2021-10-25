@@ -51,7 +51,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <a href="{{ route('productos.index') }}" class="btn btn-danger mb-2 ml-4 h4show"> <i
+                            <a href="{{ route('admin.productos.index') }}" class="btn btn-danger mb-2 ml-4 h4show"> <i
                                     class="far fa-hand-point-left"></i> Regresar</a>
                         </div>
 

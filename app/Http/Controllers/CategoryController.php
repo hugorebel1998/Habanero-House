@@ -12,11 +12,11 @@ class CategoryController extends Controller
 {
     function index(){
         $categorias = Category::all();
-        return view('categorias.index', compact('categorias'));
+        return view('admin.categorias.index', compact('categorias'));
 
     }
     function create(){
-        return view('categorias.create');
+        return view('admin.categorias.create');
     }
 
     function store(Request $request){
@@ -40,13 +40,13 @@ class CategoryController extends Controller
 
         }else{
             alert()->error('Ops algo salio mal');
-            return redirect()->to(route('categorias.index'));
+            return redirect()->to(route('admin.categorias.index'));
         }
 
     }
     public function edit($id){
         $categoria = Category::findOrFail($id);
-        return view('categorias.edit', compact('categoria'));
+        return view('admin.categorias.edit', compact('categoria'));
     }
 
     public function update(Request $request, $id){
@@ -64,11 +64,11 @@ class CategoryController extends Controller
         
         if($categoria->save()){
             alert()->success('Éxito categoria actualizada', 'La categoria se actualizo con el nombre '. $categoria->nombre);
-            return redirect()->to(route('categorias.index'));
+            return redirect()->to(route('admin.categorias.index'));
 
         }else{
             alert()->error('Ops algo salio mal');
-            return redirect()->to(route('categorias.edit'));
+            return redirect()->to(route('admin.categorias.edit'));
         }
 
     }
@@ -82,7 +82,7 @@ class CategoryController extends Controller
 
     public function indexDelete(){
         $categorias = Category::onlyTrashed()->get();
-        return view('categorias.indexdelete', compact('categorias'));
+        return view('admin.categorias.indexdelete', compact('categorias'));
     }
 
     public function categoriaRestore($id)
@@ -91,6 +91,6 @@ class CategoryController extends Controller
         $categoria = Category::find($id);
         Category::onlyTrashed()->findOrFail($id)->restore();
         // alert()->success('Éxito categoria restablecida', 'Se ha restablecido la categoria');
-        return redirect()->to(route('categorias.index'));
+        return redirect()->to(route('admin.categorias.index'));
     }
 }

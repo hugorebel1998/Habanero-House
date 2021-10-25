@@ -18,13 +18,13 @@ class ProductController extends Controller
     {
 
         $productos  = Product::all();
-        return view('productos.index', compact('productos'));
+        return view('admin.productos.index', compact('productos'));
     }
 
     public function create()
     {
         $categorias = Category::all();
-        return view('productos.create', compact('categorias'));
+        return view('admin.productos.create', compact('categorias'));
     }
 
     public function store(ProductRequest $request)
@@ -70,14 +70,14 @@ class ProductController extends Controller
             if ($producto->save()) {
 
                 alert()->success('Éxito nuevo pruducto creado', 'Se registro un nuevo producto.' .  $producto->nombre);
-                return redirect()->to(route('productos.index'));
+                return redirect()->to(route('admin.productos.index'));
             } else {
                 alert()->error('Error', 'Ops no se pudo crear producto');
                 return redirect()->back();
             }
         } else {
             alert()->error('Error al crear producto');
-            return redirect()->to(route('productos.create'));
+            return redirect()->to(route('admin.productos.create'));
         }
     }
 
@@ -85,14 +85,14 @@ class ProductController extends Controller
     {
         $categoria = Category::select('id', 'nombre')->get();
         $producto = Product::findOrFail($id);
-        return view('productos.show', compact('producto', 'categoria'));
+        return view('admin.productos.show', compact('producto', 'categoria'));
     }
 
     public function edit($id)
     {
         $categorias = Category::all();
         $producto = Product::findOrFail($id);
-        return view('productos.edit', compact('producto', 'categorias'));
+        return view('admin.productos.edit', compact('producto', 'categorias'));
     }
 
     public function update(Request $request, $id)
@@ -145,14 +145,14 @@ class ProductController extends Controller
             if ($producto->save()) {
 
                 alert()->success('Éxito al actualizar', 'Producto actualizado con éxito.' .  $producto->nombre);
-                return redirect()->to(route('productos.edit', $producto->id));
+                return redirect()->to(route('admin.productos.edit', $producto->id));
             } else {
                 alert()->error('Error al actualizar', 'Ops no se pudo actualizar producto.');
                 return redirect()->back();
             }
         } else {
             alert()->error('Error al actualizar', 'Ops no se pudo actualizar producto.');
-            return redirect()->to(route('productos.edit', $producto->id));
+            return redirect()->to(route('admin.productos.edit', $producto->id));
         }
     }
     public function delete($id)
@@ -166,7 +166,7 @@ class ProductController extends Controller
     public function indexDelete(){
 
         $productos = Product::onlyTrashed()->get();
-        return view('productos.indexdelete', compact('productos'));
+        return view('admin.productos.indexdelete', compact('productos'));
     }
 
     public function productoRestore($id)
@@ -175,7 +175,7 @@ class ProductController extends Controller
         $producto = Product::find($id);
         Product::onlyTrashed()->findOrFail($id)->restore();
         // alert()->success('Éxito producto restablecido', 'Se ha restablecido el usuario.');
-        return redirect()->to(route('productos.index'));
+        return redirect()->to(route('admin.productos.index'));
     }
 
 

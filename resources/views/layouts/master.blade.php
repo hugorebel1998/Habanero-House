@@ -40,6 +40,56 @@
         font-weight: 500;
     }
 
+	  #button-up {
+            width: 50px;
+            height: 50px;
+            background:transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:gray;
+            font-size: 20px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            cursor: pointer;
+            border: 1px solid gray;
+            transition: all 300ms ease;
+            transform: scale(0);
+			z-index: 99999;
+        }
+        #button-up:hover {
+            transform: scale(1.1);
+            border-color: rgba(0, 0, 0, 0.808)
+        }
+        #button-whatsaap{
+            width: 60px;
+            height: 60px;
+            background-color:#00bb2d;
+            color:grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            cursor: pointer;
+            border: 4px solid transparent;
+            transition: all 300ms ease;
+        }
+        #button-whatsaap:hover {
+            transform: scale(1.1);
+            border-color: rgba(0, 0, 0, 0.1)
+        }
+        #button-whatsaap a {
+            color: white;
+            text-decoration: none;
+        }
+        
+
 </style>
 </head>
 <body>
@@ -115,6 +165,16 @@
     </div>
     <!-- End Contact info -->
 
+	<div class="container">
+        <div id="button-up">
+            <i class="fal fa-long-arrow-up"></i>
+        </div>
+        <div id="button-whatsaap">
+        <a href="https://api.whatsapp.com/send?phone=525560685209&text=Me%20interesa%20más%20información" target="_blank"><i class="fab fa-whatsapp"></i></a>            
+        </div>
+    </div>
+
+
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
         <div class="container">
@@ -184,6 +244,30 @@
 	<script src="{{ asset('js/master/form-validator.min.js')}} "></script>
     <script src="{{ asset('js/master/contact-form-script.js')}} "></script>
     <script src="{{ asset('js/master/custom.js')}} "></script>
+
+	 <script>
+      
+      document.getElementById("button-up").addEventListener('click', scrollUp);
+      function scrollUp(){
+        const $scroll = document.documentElement.scrollTop;
+        
+        if($scroll > 0 ){
+          window.requestAnimationFrame(scrollUp);
+          window.scrollTo(0,$scroll - ($scroll/13));
+        }
+      }
+      const $buton = document.getElementById("button-up");
+      window.onscroll = function(){
+        
+        const $scrollDos = document.documentElement.scrollTop;
+        if($scrollDos > 200){
+          
+          $buton.style.transform="scale(1)";
+        }else if($scrollDos < 200){
+          $buton.style.transform="scale(0)";
+        }
+      }
+    </script>
     
 </body>
 

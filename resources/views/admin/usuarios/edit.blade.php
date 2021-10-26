@@ -10,7 +10,7 @@
                     <div class="card-tittle"><i class="fas fa-user-edit"></i> Editar usuario</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('usuarios.update', $usuario->id) }}" method="POST" autocomplete="off">
+                    <form action="{{ route('admin.usuarios.update', $usuario->id) }}" method="POST" autocomplete="off">
                         @csrf
                         @method('PUT')
                         <div class="row">

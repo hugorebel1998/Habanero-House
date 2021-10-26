@@ -34,7 +34,7 @@
                                     <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp) }}</td>
                                     <td> {{ date('d M Y - H:i:s', $producto->updated_at->timestamp) ?: '--' }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('productos.productorestore', $producto->id) }}"
+                                        <a href="{{ route('admin.productos.productorestore', $producto->id) }}"
                                             class="btn btn-sm btn-info restablecer_producto">
                                             <i class="fas fa-trash-restore"></i>
                                             Restablecer

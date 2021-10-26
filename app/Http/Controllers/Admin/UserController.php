@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\User;
-use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
-use App\Http\Requests\ContraseñaRequest;
+use App\User;
 use App\UserStatus;
 use Carbon\Carbon;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\ContraseñaRequest;
 use Illuminate\Support\Facades\Hash;
-
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware(['permission:create usuario'], ['only' => 'create', 'store']);
@@ -21,6 +19,8 @@ class UserController extends Controller
         $this->middleware(['permission:update usuario'], ['only' => 'edit', 'update']);
         $this->middleware(['permission:delete usuario'], ['only' => 'delete']);
     }
+
+
 
     public function index()
     {
@@ -124,6 +124,13 @@ class UserController extends Controller
 
         // dd($usuario);
 
+        if ($archivo = $request->file('imagen')) {
+            $nombre_imagen = $archivo->getClientOriginalName();
+            $ruta = public_path('img/users/');
+            $archivo->move($ruta, $nombre_imagen);
+            $usuario['imagen_usuario'] = $nombre_imagen;
+        }
+
         if ($usuario->save()) {
             alert()->success('Éxito usuario actualizado', 'Se actualizo al usuario.', $usuario->nombre);
             return redirect()->to(route('admin.usuarios.index'));
@@ -139,7 +146,7 @@ class UserController extends Controller
         $usuario->delete();
         // alert()->success('Éxito', 'Usuario eliminado.');
         return back();
-    }
+    }   
 
     public function contraseña($id)
     {

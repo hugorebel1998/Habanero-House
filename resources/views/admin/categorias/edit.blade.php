@@ -9,7 +9,7 @@
                     <div class="card-tittle"><i class="fas fa-edit"></i> Editar categoria</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('categorias.update', $categoria->id)}}" method="POST" autocomplete="off">
+                    <form action="{{ route('admin.categorias.update', $categoria->id)}}" method="POST" autocomplete="off">
                         @method('PUT')
                         @csrf
                         <div class="row">

@@ -12,7 +12,7 @@
                             <div class="card-tittle"><i class="fas fa-box"></i> Crear categoria</div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('categorias.store') }}" method="POST" autocomplete="off">
+                            <form action="{{ route('admin.categorias.store') }}" method="POST" autocomplete="off">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12 mt-2">
@@ -59,7 +59,7 @@
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="{{ route('categorias.indexdelete') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.categorias.indexdelete') }}">
                                             <i class="fas fa-ban"></i>
                                             Categorias eliminados
                                         </a>
@@ -105,16 +105,16 @@
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         {{-- <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i> Ver categoria</a> --}}
                                                         <a class="dropdown-item"
-                                                            href="{{ route('categorias.edit', $categoria->id) }}"><i
+                                                            href="{{ route('admin.categorias.edit', $categoria->id) }}"><i
                                                                 class="fas fa-edit"></i> Editar categoria</a>
                                                       @can('delete categoria')
                                                         <form
-                                                            action="{{ route('categorias.delete', $categoria->id) }}"
+                                                            action="{{ route('admin.categorias.delete', $categoria->id) }}"
                                                             method="POST" class="categoria_producto">
                                                             @csrf
                                                             @method('Delete')
                                                             <button class="dropdown-item"
-                                                                href="{{ route('categorias.delete', $categoria->id) }}"><i
+                                                                href="{{ route('admin.categorias.delete', $categoria->id) }}"><i
                                                                     class="far fa-trash-alt"></i> Eliminar
                                                                 categoria</button>
                                                         </form>

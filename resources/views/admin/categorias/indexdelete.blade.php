@@ -33,7 +33,7 @@
                                     <td>{{ $categoria->created_at }}</td>
 
                                     <td class="text-center">
-                                        <a href="{{ route('categorias.categoriarestore', $categoria->id) }}"
+                                        <a href="{{ route('admin.categorias.categoriarestore', $categoria->id) }}"
                                             class="btn btn-sm btn-info restablecer_categoria">
                                             <i class="fas fa-trash-restore"></i> Restablecer</a>
                                     </td>

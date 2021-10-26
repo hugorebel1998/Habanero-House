@@ -21,7 +21,7 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="{{ route('productos.indexDelete') }}">
+                                <a class="dropdown-item" href="{{ route('admin.productos.indexDelete') }}">
                                     <i class="fas fa-ban"></i>
                                     Productos eliminados
                                 </a>
@@ -30,7 +30,7 @@
                         @endcan
                     </div>
                     <div class="p-2">
-                        <a href="{{ route('productos.create') }}" class="btn btn-success"> <i
+                        <a href="{{ route('admin.productos.create') }}" class="btn btn-success"> <i
                                 class="fas fa-plus"></i> Nuevo producto</a>
                     </div>
                 </div>
@@ -67,20 +67,20 @@
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item"
-                                                    href="{{ route('productos.show', $producto->id) }}"><i
+                                                    href="{{ route('admin.productos.show', $producto->id) }}"><i
                                                         class="far fa-bookmark"></i> Ver
                                                     producto</a>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('productos.edit', $producto->id) }}"><i
+                                                    href="{{ route('admin.productos.edit', $producto->id) }}"><i
                                                         class="fas fa-edit"></i> Editar
                                                     producto</a>
                                                @can('delete producto')
-                                                <form action="{{ route('productos.delete', $producto->id) }}"
+                                                <form action="{{ route('admin.productos.delete', $producto->id) }}"
                                                     method="POST" class="eliminar_producto">
                                                     @csrf
                                                     @method('Delete')
                                                     <button class="dropdown-item"
-                                                        href="{{ route('productos.delete', $producto->id) }}"><i
+                                                        href="{{ route('admin.productos.delete', $producto->id) }}"><i
                                                             class="far fa-trash-alt"></i> Eliminar usuario</button>
                                                 </form>
                                                 @endcan

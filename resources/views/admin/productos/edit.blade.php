@@ -9,7 +9,7 @@
                     <div class="card-tittle"><i class="fas fa-box"></i> Editarproducto</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('admin.productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data"
                         autocomplete="off">
                         @csrf
                         @method('PUT')

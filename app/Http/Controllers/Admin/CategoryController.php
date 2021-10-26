@@ -36,7 +36,7 @@ class CategoryController extends Controller
 
         if($categoria->save()){
             alert()->success('Éxito nueva categoria creada', 'Se registro una nueva categoria '. $categoria->nombre);
-            return redirect()->to(route('categorias.index'));
+            return redirect()->to(route('admin.categorias.index'));
 
         }else{
             alert()->error('Ops algo salio mal');

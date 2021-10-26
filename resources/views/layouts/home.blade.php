@@ -68,7 +68,7 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
 
-                    <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+                    <a href="{{ route('admin.home') }}" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
                 </li>
                 <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -110,7 +110,7 @@
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-danger navbar-light elevation-4">
-            <a href="{{ route('home') }}" class="brand-link navbar-white pl-3">
+            <a href="{{ route('admin.home') }}" class="brand-link navbar-white pl-3">
                 <img class="mx-auto d-block" src="{{ asset('img/logohabanero.jpeg') }}" alt="Habanero House"
                     width="170">
             </a>

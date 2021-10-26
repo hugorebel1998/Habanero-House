@@ -36,7 +36,7 @@
                                 <td>{{ $usuario->email }}</td>
                                 <td class="text-center">
                                     <a 
-                                    href="{{ route('usuarios.usuariorestore', $usuario->id )}}"
+                                    href="{{ route('admin.usuarios.usuariorestore', $usuario->id )}}"
                                     class="btn btn-sm btn-info restablecer_usuario">
                                      <i class="fas fa-trash-restore"></i> Restablecer</a>
 

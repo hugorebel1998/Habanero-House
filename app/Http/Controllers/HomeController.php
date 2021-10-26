@@ -26,10 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $productoCount = Product::count();
-        $categoriaCount = Category::count();
-        $usuarioCount = User::count();
-        return view('home', compact('productoCount', 'categoriaCount', 'usuarioCount'));
+        
+        return view('home');
 
     }
 }

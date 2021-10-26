@@ -43,21 +43,21 @@
 	  #button-up {
             width: 50px;
             height: 50px;
-            background:transparent;
+            background:#EF5350;
             display: flex;
             justify-content: center;
             align-items: center;
-            color:gray;
-            font-size: 20px;
+            color:white;
+            font-size: 27px;
             border-radius: 50%;
             position: fixed;
             bottom: 50px;
             right: 50px;
             cursor: pointer;
-            border: 1px solid gray;
+            border: 1px solid #EF5350;
             transition: all 300ms ease;
             transform: scale(0);
-			z-index: 99999;
+			z-index: 10;
         }
         #button-up:hover {
             transform: scale(1.1);
@@ -79,6 +79,7 @@
             cursor: pointer;
             border: 4px solid transparent;
             transition: all 300ms ease;
+            z-index: 10;
         }
         #button-whatsaap:hover {
             transform: scale(1.1);

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/admin', 'AdminHomeController@index')->name('admin.home');
+Route::get('/', 'AdminHomeController@index')->name('admin.home');
 
 
 Route::group(['middleware' => ['role:super-admin|admin|gerente']], function () {

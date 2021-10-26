@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Category;
-use App\Http\Requests\ProductRequest;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 use App\Product;
 use App\GaleryProduct;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Category;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {

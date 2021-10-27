@@ -160,11 +160,14 @@
                         ac eleifend arcu ultrices.</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h3>Horario de apertura</h3>
-                    <p><span class="text-color">Monday: </span>Closed</p>
-                    <p><span class="text-color">Tue-Wed :</span> 9:Am - 10PM</p>
-                    <p><span class="text-color">Thu-Fri :</span> 9:Am - 10PM</p>
-                    <p><span class="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
+                    <h3>Horario</h3>
+                    <p>Domingo: 11:00 - 19:00</p>
+                    <p>Lunes: 11:00 - 19:00</p>
+                    <p>Martes: 11:00 - 19:00</p>
+                    <p>Miercoles: 11:00 - 19:00</p>
+                    <p>Jueves: 11:00 - 19:00</p>
+                    <p>Viernes: 11:00 - 19:00</p>
+                    <p>Sábado: 11:00 - 19:00</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h3>Contacto</h3>
@@ -174,35 +177,26 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h3>Redes sociales</h3>
-                    <div class="subscribe_form">
-                        {{-- <form class="subscribe_form">
-                            <input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..." type="email">
-                            <button type="submit" class="submit">SUBSCRIBE</button>
-                            <div class="clearfix"></div>
-                        </form> --}}
-                    </div>
                     <ul class="list-inline f-social">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/HabaneroHouse" target="_blank"><i class="fab fa-facebook-square test-white"></i></a></li>
+                        {{-- <li class="list-inline-item"><a href="#"><i class="fab fa-twitter-square"></i></a></li> --}}
+                        {{-- <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li> --}}
+                        <li class="list-inline-item"><a href="https://www.google.com/search?q=habanero+house+&sxsrf=AOaemvIkeYptiEKGvtFafRsEXUfZk7s31A%3A1635294742924&ei=Fp54YdnpN-e5qtsP3sWU-Ao&ved=0ahUKEwjZzITSq-nzAhXnnGoFHd4iBa8Q4dUDCA4&uact=5&oq=habanero+house+&gs_lcp=Cgdnd3Mtd2l6EAMyBAgjECc6CggjELACELADECc6BwgjEOoCECc6DQguEMcBEKMCEOoCECc6BAguEEM6CAgAEIAEELEDOg4ILhCABBCxAxDHARCjAjoICAAQsQMQgwE6DgguEIAEELEDEMcBENEDOgsILhCABBDHARCjAjoECAAQQzoKCC4QxwEQrwEQJzoHCC4QsQMQQzoLCAAQgAQQsQMQgwE6EAguEIAEEIcCEMcBEK8BEBQ6CAguEIAEELEDOgUIABCABDoGCAAQChATOgYILhAKEBM6CAgAEAoQHhATOgYIABAeEBNKBAhBGAFQ3lhYt5EBYK6UAWgEcAB4AIABkweIAcovkgENMC4yLjIuMi4xLjIuM5gBAKABAbABCsgBAcABAQ&sclient=gws-wiz" target="_blank"><i class="fab fa-google-plus-square"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/habanero_house_oficial/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="copyright">
+        <div class="derechos-autor">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <p class="company-name">All Rights Reserved. &copy; 2018 <a href="#">Yamifood Restaurant</a> Design By :
-                            <a href="https://html.design/">html design</a></p>
+                        <p><?= date('Y')?> | Habanero House:
                     </div>
                 </div>
             </div>
         </div>
-
     </footer>
     <!-- End Footer -->
 

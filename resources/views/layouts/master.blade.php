@@ -18,7 +18,7 @@
     
 <style>
    .qt-background {
-    background: url({{ asset('img/home/qt-bg.jpg')}}) no-repeat;
+    background: url("{{ asset('img/home/qt-bg.jpg')}}") no-repeat;
     background-size: cover;
     padding: 100px 0;
     background-attachment: fixed;
@@ -89,7 +89,20 @@
             color: white;
             text-decoration: none;
         }
-        
+        .bg-f {
+        background-image: url("{{ asset('img/home/footer.jpg')}}");
+        background-attachment: scroll;
+        background-clip: initial;
+        background-color: rgba(0, 0, 0, 0);
+        background-origin: initial;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+    .navbar-brand img{
+        width:120px;
+    }
 
 </style>
 </head>
@@ -98,26 +111,51 @@
     <header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
-				<a class="navbar-brand" href="#">
-					<img src="" alt="" />
+				<a class="navbar-brand" href="{{ route('home')}}">
+					<img src="{{ asset('img/logohabanero.jpeg')}}" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href=""><i class="fas fa-home"></i> Inicio</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-utensils"></i> Menú</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-anchor"></i> N osotros</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.html"><i class="far fa-id-badge"></i>Contacto</a></li>
-						<li class="nav-item dropdown">
+						<li class="nav-item active"><a class="nav-link" href="{{ route('home')}}"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-utensils"></i> Menú</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-anchor"></i> Nosotros</a></li>
+						<li class="nav-item"><a class="nav-link" href="contact.html"><i class="far fa-id-badge"></i> Contacto</a></li>
+						@guest
+                        <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><i class="fas fa-sign-in-alt"></i> Login</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="#"> Inisiar sesión</a>
-								<a class="dropdown-item" href="#">Registrarse</a>
+								<a class="dropdown-item" href="{{ route('login')}}"> Iniciar sesión</a>
+								@if(Route::has('register'))
+                                <a class="dropdown-item" href="{{ route('register')}}">Registrarse</a>
+                                @endif
 							</div>
+  
 						</li>
-						
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} {{ Auth::user()->apellido_paterno }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('edit.perfil', auth()->user()->id )}}">
+                                       <i class="fas fa-user-edit"></i> {{ __('Editar indormación') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       <i class="fas fa-sign-in-alt"></i> {{ __('Cerrar sesión') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
 					</ul>
 				</div>
 			</div>
@@ -130,75 +168,9 @@
         @yield('content')
     </main>
 
- <!-- Start Contact info -->
-    <div class="contact-imfo-box">
-        <div class="container">
-            <div class="row">
-                <!--Linea de color-->
-            </div>
-        </div>
-    </div>
-    <!-- End Contact info -->
-
-	<div class="container">
-        <div id="button-up">
-            <i class="fal fa-long-arrow-up"></i>
-        </div>
-        <div id="button-whatsaap">
-        <a href="https://api.whatsapp.com/send?phone=525560685209&text=Me%20interesa%20más%20información" target="_blank"><i class="fab fa-whatsapp"></i></a>            
-        </div>
-    </div>
 
 
-    <!-- Start Footer -->
-    <footer class="footer-area bg-f">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <h3>Sobre nosotros</h3>
-                    <p>Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui, at ornare turpis ultrices sit amet. Nulla cursus lorem ut nisi porta,
-                        ac eleifend arcu ultrices.</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3>Horario</h3>
-                    <p>Domingo: 11:00 - 19:00</p>
-                    <p>Lunes: 11:00 - 19:00</p>
-                    <p>Martes: 11:00 - 19:00</p>
-                    <p>Miercoles: 11:00 - 19:00</p>
-                    <p>Jueves: 11:00 - 19:00</p>
-                    <p>Viernes: 11:00 - 19:00</p>
-                    <p>Sábado: 11:00 - 19:00</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3>Contacto</h3>
-                    <p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
-                    <p class="lead"><a href="#">+01 2000 800 9999</a></p>
-                    <p><a href="#"> info@admin.com</a></p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3>Redes sociales</h3>
-                    <ul class="list-inline f-social">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/HabaneroHouse" target="_blank"><i class="fab fa-facebook-square test-white"></i></a></li>
-                        {{-- <li class="list-inline-item"><a href="#"><i class="fab fa-twitter-square"></i></a></li> --}}
-                        {{-- <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li> --}}
-                        <li class="list-inline-item"><a href="https://www.google.com/search?q=habanero+house+&sxsrf=AOaemvIkeYptiEKGvtFafRsEXUfZk7s31A%3A1635294742924&ei=Fp54YdnpN-e5qtsP3sWU-Ao&ved=0ahUKEwjZzITSq-nzAhXnnGoFHd4iBa8Q4dUDCA4&uact=5&oq=habanero+house+&gs_lcp=Cgdnd3Mtd2l6EAMyBAgjECc6CggjELACELADECc6BwgjEOoCECc6DQguEMcBEKMCEOoCECc6BAguEEM6CAgAEIAEELEDOg4ILhCABBCxAxDHARCjAjoICAAQsQMQgwE6DgguEIAEELEDEMcBENEDOgsILhCABBDHARCjAjoECAAQQzoKCC4QxwEQrwEQJzoHCC4QsQMQQzoLCAAQgAQQsQMQgwE6EAguEIAEEIcCEMcBEK8BEBQ6CAguEIAEELEDOgUIABCABDoGCAAQChATOgYILhAKEBM6CAgAEAoQHhATOgYIABAeEBNKBAhBGAFQ3lhYt5EBYK6UAWgEcAB4AIABkweIAcovkgENMC4yLjIuMi4xLjIuM5gBAKABAbABCsgBAcABAQ&sclient=gws-wiz" target="_blank"><i class="fab fa-google-plus-square"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.instagram.com/habanero_house_oficial/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="derechos-autor">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p><?= date('Y')?> | Habanero House:
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- End Footer -->
+    
 
     <script src="{{ asset('js/master/jquery-3.2.1.min.js')}} "></script> 
 	<script src="{{ asset('js/master/popper.min.js')}} "></script>

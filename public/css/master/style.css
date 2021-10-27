@@ -150,6 +150,7 @@
     /*------------------------------------------------------------------
     LOADER 
 -------------------------------------------------------------------*/
+
     /*------------------------------------------------------------------
     HEADER
 -------------------------------------------------------------------*/
@@ -160,7 +161,7 @@
     }
     
     .top-navbar .navbar {
-        padding: 15px 0px;
+        padding: 5px 0px;
         position: fixed;
         width: 100%;
         transition: height .3s ease-out, background .3s ease-out, box-shadow .3s ease-out;
@@ -559,9 +560,9 @@
     Contact info
 -------------------------------------------------------------------*/
     
-    .contact-imfo-box {
+    /* .contact-imfo-box {
         background: #EF5350;
-        padding: 5px 0;
+        padding: 2px 0;
     }
     
     .overflow-hidden {
@@ -599,7 +600,7 @@
         margin: 0px;
         color: #ffffff;
         font-weight: 300;
-    }
+    } */
     /*------------------------------------------------------------------
     Footer
 -------------------------------------------------------------------*/
@@ -609,17 +610,6 @@
         padding-bottom: 0px;
     }
     
-    .bg-f {
-        background-image: url("../images/footer-bg.jpg");
-        background-attachment: scroll;
-        background-clip: initial;
-        background-color: rgba(0, 0, 0, 0);
-        background-origin: initial;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-    }
     
     .bg-f::before {
         background: #010101;
@@ -748,7 +738,7 @@
     All Pages
 -------------------------------------------------------------------*/
     
-    .page-breadcrumb {
+     .page-breadcrumb {
         padding: 250px 0 150px;
         background: url(../images/all-bg.jpg) no-repeat;
         background-attachment: fixed;
@@ -1220,29 +1210,29 @@
     .comment-item-right i {
         padding-right: 10px;
     }
-    
+     
     .comment-form-respond input {
         min-height: 38px;
         border: 1px solid #010101;
         border-radius: 0px;
         padding: 10px;
-    }
+    } 
     
-    .comment-form-respond textarea {
+     .comment-form-respond textarea {
         border: 1px solid #010101;
         border-radius: 0px;
         padding: 10px;
         min-height: 110px;
-    }
+    } 
     
-    .btn-submit {
+     .btn-submit {
         color: #EF5350;
         background-color: transparent;
         background-image: none;
         border-color: #EF5350;
-    }
+    } 
     
-    .btn-submit:hover {
+     .btn-submit:hover {
         color: #ffffff;
         background-color: #EF5350;
         border-color: #EF5350;
@@ -1412,4 +1402,4 @@
         text-decoration: none;
         transition: opacity 0.2s ease-out;
         font-size: 30px;
-    }
+    } 

@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        return view('home');
+        $usuario = User::select('id')->get();
+        return view('home', compact('usuario'));
 
     }
 }

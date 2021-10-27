@@ -279,4 +279,63 @@
 		</div>
 	</div>
 	<!-- End Gallery -->
+	<div class="container">
+        <div id="button-up">
+            <i class="fal fa-long-arrow-up"></i>
+        </div>
+        <div id="button-whatsaap">
+        <a href="https://api.whatsapp.com/send?phone=525560685209&text=Me%20interesa%20más%20información" target="_blank"><i class="fab fa-whatsapp"></i></a>            
+        </div>
+    </div>
+
+<!-- Start Footer -->
+    <footer class="footer-area bg-f">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <h3>Sobre nosotros</h3>
+                    <p>Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui, at ornare turpis ultrices sit amet. Nulla cursus lorem ut nisi porta,
+                        ac eleifend arcu ultrices.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Horario</h3>
+                    <p>Domingo: 11:00 - 19:00</p>
+                    <p>Lunes: 11:00 - 19:00</p>
+                    <p>Martes: 11:00 - 19:00</p>
+                    <p>Miercoles: 11:00 - 19:00</p>
+                    <p>Jueves: 11:00 - 19:00</p>
+                    <p>Viernes: 11:00 - 19:00</p>
+                    <p>Sábado: 11:00 - 19:00</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Contacto</h3>
+                    <p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
+                    <p class="lead"><a href="#">+01 2000 800 9999</a></p>
+                    <p><a href="#"> info@admin.com</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Redes sociales</h3>
+                    <ul class="list-inline f-social">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/HabaneroHouse" target="_blank"><i class="fab fa-facebook-square test-white"></i></a></li>
+                        {{-- <li class="list-inline-item"><a href="#"><i class="fab fa-twitter-square"></i></a></li> --}}
+                        {{-- <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li> --}}
+                        <li class="list-inline-item"><a href="https://www.google.com/search?q=habanero+house+&sxsrf=AOaemvIkeYptiEKGvtFafRsEXUfZk7s31A%3A1635294742924&ei=Fp54YdnpN-e5qtsP3sWU-Ao&ved=0ahUKEwjZzITSq-nzAhXnnGoFHd4iBa8Q4dUDCA4&uact=5&oq=habanero+house+&gs_lcp=Cgdnd3Mtd2l6EAMyBAgjECc6CggjELACELADECc6BwgjEOoCECc6DQguEMcBEKMCEOoCECc6BAguEEM6CAgAEIAEELEDOg4ILhCABBCxAxDHARCjAjoICAAQsQMQgwE6DgguEIAEELEDEMcBENEDOgsILhCABBDHARCjAjoECAAQQzoKCC4QxwEQrwEQJzoHCC4QsQMQQzoLCAAQgAQQsQMQgwE6EAguEIAEEIcCEMcBEK8BEBQ6CAguEIAEELEDOgUIABCABDoGCAAQChATOgYILhAKEBM6CAgAEAoQHhATOgYIABAeEBNKBAhBGAFQ3lhYt5EBYK6UAWgEcAB4AIABkweIAcovkgENMC4yLjIuMi4xLjIuM5gBAKABAbABCsgBAcABAQ&sclient=gws-wiz" target="_blank"><i class="fab fa-google-plus-square"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/habanero_house_oficial/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="derechos-autor">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p><?= date('Y')?> | Habanero House:
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+	
 @endsection

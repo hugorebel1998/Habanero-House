@@ -14,7 +14,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Auth::routes(['register' => false]);
-Route::match(['get', 'post'], 'register', function () {
-    return redirect('/');
-});
+// Auth::routes(['register' => false]);
+// Route::match(['get', 'post'], 'register', function () {
+//     return redirect('/');
+// });

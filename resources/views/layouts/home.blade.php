@@ -30,12 +30,6 @@
     <link rel="stylesheet"
         href="{{ asset('admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 
-     {{-- Fonts Letra    --}}
-     {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet"> --}}
-
-
     <style>
         /* .portada {
             background: url({{ asset('img/logohabanero.jpeg') }} ) no-repeat fixed center;

@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,7 +106,7 @@
 </style>
 </head>
 <body>
-
+    @include('sweetalert::alert')
     <header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
@@ -141,9 +140,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('edit.perfil', auth()->user()->id )}}">
+                                    <a class="dropdown-item" href="{{ route('usuario.edit.perfil', auth()->user()->id )}}">
                                        <i class="fas fa-user-edit"></i> {{ __('Editar indormación') }}
                                     </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-unlock-alt"></i> {{ __('Cambiar contraseña') }}
+                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -164,10 +166,17 @@
 
 
 
-    <main class="login">
+    {{-- <main class="login">
         @yield('content')
-    </main>
-
+    </main> --}}
+    
+        
+        <main class="master">
+            @yield('content')
+        </main>
+        
+        
+    
 
 
     
@@ -185,8 +194,15 @@
 	<script src="{{ asset('js/master/form-validator.min.js')}} "></script>
     <script src="{{ asset('js/master/contact-form-script.js')}} "></script>
     <script src="{{ asset('js/master/custom.js')}} "></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }} "></script>
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+    </script>
 
-	 <script>
+     <script>
       
       document.getElementById("button-up").addEventListener('click', scrollUp);
       function scrollUp(){

@@ -46,6 +46,11 @@
             background:#C62828;
             color:white;
         }
+       
+        .sidebar-dark-danger .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-danger .nav-sidebar > .nav-item > .nav-link.active {
+         background-color: #C62828;
+         color: #ffffff;
+           }
     </style>
 </head>
 
@@ -53,16 +58,16 @@
     <div class="wrapper">
         @include('sweetalert::alert')
 
-        <nav class="main-header navbar navbar-expand navbar-dark navbar-danger">
+        <nav class="main-header navbar navbar-expand navbar-dark bg-rojo">
 
             <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                    <a class="nav-link text-white" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
 
-                    <a href="{{ route('admin.home') }}" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+                    <a href="{{ route('admin.home') }}" class="nav-link text-white"><i class="fas fa-home"></i> Inicio</a>
                 </li>
                 <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -71,7 +76,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    <a class="nav-link text-white" data-toggle="dropdown" href="#">
                         <span class="mr-2"><b>|</b></span><span class="mr-2"><b>Perfil</b></span><i
                             class="fas fa-user"></i>
                         <span class="badge badge-warning navbar-badge"></span>
@@ -123,29 +128,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-boxes"></i>
-                                <p>
-                                    Productos
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.productos.index') }}" class="nav-link text-secondary">
-                                        <i class="fas fa-list-ul nav-icon"></i>
-                                        <p>Gestión de productos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.productos.create') }}" class="nav-link text-secondary">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear producto</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                       
                         <li class="nav-item ">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-folder-open"></i>
@@ -170,6 +153,56 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-boxes"></i>
+                                <p>
+                                    Productos
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.productos.index') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-list-ul nav-icon"></i>
+                                        <p>Gestión de productos</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.productos.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear producto</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fab fa-first-order-alt"></i>
+                                <p>
+                                    Ordenes
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link text-secondary">
+                                        <i class="fas fa-list-ul nav-icon"></i>
+                                        <p>Gestión de ordenes</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear orden</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                         <li class="nav-item ">
                             <a href="#" class="nav-link active">
                                 
@@ -230,6 +263,24 @@
                             </ul>
                         </li>
                         @endcan
+                         <li class="nav-item ">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tools"></i>
+                                <p>
+                                   Configuraciones
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.usuarios.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p class="text-black">Configurar página</p>
+                                    </a>
+                                </li>                              
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>

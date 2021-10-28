@@ -102,6 +102,9 @@
     .navbar-brand img{
         width:120px;
     }
+     .custom-file-input~.custom-file-label::after {
+            content: "Subir"
+        }
 
 </style>
 </head>
@@ -143,7 +146,7 @@
                                     <a class="dropdown-item" href="{{ route('usuario.edit.perfil', auth()->user()->id )}}">
                                        <i class="fas fa-user-edit"></i> {{ __('Editar indormación') }}
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('usuario.contraseña.perfile', auth()->user()->id )}}">
                                         <i class="fas fa-unlock-alt"></i> {{ __('Cambiar contraseña') }}
                                      </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

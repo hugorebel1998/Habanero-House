@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-4 mt-5">
+            <div class="col-md-4 mt-5">
                 <br>
                 <diV class="card shadow mt-5">
                     <div class="card-header">
@@ -98,17 +98,16 @@
                             <div class="col-md-12">
                                 @if ($perfile->imagen_usuario)
                                 <img src="{{ asset('img/users/' . $perfile->imagen_usuario) }}"
-                                    class="img-fluid. max-width: 100%;" id="imagen_user" width="50%" height="50%">
+                                    class="rounded mx-auto d-block" id="imagen_user" width="78%" height="78%">
                                 @else
-                                <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}" class="rounded mx-auto d-block "
+                                <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}" class="rounded mx-auto d-block"
                                     width="78%" height="78%">
                                 @endif
                             </div>
                         
                     </div>
                 </diV>
-            </div> --}}
-
+            </div>
         </div>
     </div>
 

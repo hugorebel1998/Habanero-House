@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContraseñaRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -69,5 +70,32 @@ class UserEditController extends Controller
             alert()->error('Oops error', 'Al parecer tuvimos un error.');
             return redirect()->to(route('admi.usuarios.create'));
         }
+    }
+
+    public function contraseñaPerfil($id)
+    {
+
+        $perfile = $id;
+        return view('usuarios.contraseña_perfil', compact('perfile'));
+    }
+
+    public function contraseñaUpdatePerfil(ContraseñaRequest $request)
+    {
+        $perfile = User::findOrFail($request->id);
+        $perfile->password;
+
+        if (Hash::check($request->contraseña, $perfile->password)) {
+            $perfile->password = bcrypt($request->nueva_contraseña);
+
+            if ($perfile->save()) {
+                alert()->success('Éxito cambiaste tu contraseña');
+                return redirect()->to(route('usuario.edit.perfil', $perfile->id));
+            }
+        } else {
+            alert()->error('Oops error', 'La contraseña actual no coincide.');
+            return back();
+        }
+
+
     }
 }

@@ -4,13 +4,13 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-7">
-            <div class="card card-danger shadow">
+        <div class="col-md-7 mt-5"><br>
+            <div class="card shadow mt-5">
                 <div class="card-header">
                     <div class="card-tittle"><i class="fas fa-unlock-alt"></i> Cambiar contraseña</div>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST" autocomplete="off">
+                    <form action="{{ route('usuario.contraseña.update')}}" method="POST" autocomplete="off">
                         @csrf
                         <div class="row">
                             <div class="col-md-12 mt-3">
@@ -20,7 +20,7 @@
                                     value="{{ old('contraseña') }}">
                                 <input type="hidden" name="id"
                                     class="form-control @error('contraseña') is-invalid @enderror"
-                                    value="{{ $usuario }}">
+                                    value="{{ $perfile }}">
                                 @error('contraseña')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

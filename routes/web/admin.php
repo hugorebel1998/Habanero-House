@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'AdminHomeController@index')->name('admin.home');
 
 
-Route::group(['middleware' => ['role:super-admin|admin|gerente']], function () {
+Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], function () {
     //usuarios
     Route::get('/usuarios/index', 'UserController@index')->name('admin.usuarios.index')->middleware('auth');
     Route::get('/usuarios/create', 'UserController@create')->name('admin.usuarios.create')->middleware('auth');
@@ -48,4 +48,9 @@ Route::group(['middleware' => ['role:super-admin|admin|gerente']], function () {
     Route::delete('/categorias/delete/{categoria}', 'CategoryController@delete')->name('admin.categorias.delete')->middleware('auth');
     Route::get('/categorias/indexdelete', 'CategoryController@indexDelete')->name('admin.categorias.indexdelete')->middleware('auth');
     Route::get('/categorias/categoriarestore/{categoria}', 'CategoryController@categoriaRestore')->name('admin.categorias.categoriarestore')->middleware('auth');
+
+    //Settings
+    Route::get('/restaurante/index', 'RestaurantController@index')->name('admin.ajustes.index')->middleware('auth');
+    Route::get('/restaurante/edit/{restaurat}', 'RestaurantController@edit')->name('admin.ajustes.edit')->middleware('auth');
+    Route::put('/restaurante/update/', 'RestaurantController@update')->name('admin.ajustes.update')->middleware('auth');
 });

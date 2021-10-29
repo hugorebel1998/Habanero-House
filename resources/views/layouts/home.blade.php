@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     @section('title', 'Habanero House')
-    <title> @yield('title')</title>
+    <title> @yield('title') - CMS</title>
     
     <!--Fuentes -->
     <link rel="stylesheet" href="{{ asset('css/fuente.css')}}">
@@ -274,7 +274,7 @@
                             <ul class="nav nav-treeview">
                                 
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.usuarios.index') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('admin.ajustes.index') }}" class="nav-link text-secondary">
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p class="text-black">Configurar página</p>
                                     </a>

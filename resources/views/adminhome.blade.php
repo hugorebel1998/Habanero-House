@@ -4,9 +4,8 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-7">
-                <div class="small-box bg-danger">
-
-                    <div class="small-box bg-danger shadow">
+                <div class="small-box bg-rojo">
+                    <div class="small-box bg-rojo shadow">
                         <div class="inner">
                             @if (Auth::check())
                                 

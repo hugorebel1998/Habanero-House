@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-11">
             <div class="card">
                 <div class="card-header">
                     <b class="lead font-weight-bold"> Productos</b>

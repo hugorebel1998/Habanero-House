@@ -69,22 +69,22 @@ class ProductController extends Controller
 
             if ($producto->save()) {
 
-                alert()->success('Éxito nuevo pruducto creado', 'Se registro un nuevo producto.' .  $producto->nombre);
+                alert()->success('Éxito nuevo platillo creado', 'Se registro un nuevo platillo.');
                 return redirect()->to(route('admin.productos.index'));
             } else {
-                alert()->error('Error', 'Ops no se pudo crear producto');
+                alert()->error('Error', 'Ops no se pudo crear este platillo');
                 return redirect()->back();
             }
         } else {
-            alert()->error('Error al crear producto');
+            alert()->error('Error','Ops no se pudo crear este platillo');
             return redirect()->to(route('admin.productos.create'));
         }
     }
 
     public function show($id)
     {
-        $categoria = Category::select('id', 'nombre')->get();
         $producto = Product::findOrFail($id);
+        $categoria = Category::findOrFail($producto->category_id);
         return view('admin.productos.show', compact('producto', 'categoria'));
     }
 
@@ -176,6 +176,17 @@ class ProductController extends Controller
         Product::onlyTrashed()->findOrFail($id)->restore();
         // alert()->success('Éxito producto restablecido', 'Se ha restablecido el usuario.');
         return redirect()->to(route('admin.productos.index'));
+    }
+
+    public function productoCategoria(Request $request, $id)
+    {
+        $productoListas = Product::where('category_id', $id)->get();
+        
+        // dd($productoListas);
+        return view('admin.productos.productcategory', compact('productoListas'));
+        
+
+
     }
 
 

@@ -1,12 +1,6 @@
-    /*------------------------------------------------------------------
-    IMPORT FONTS
--------------------------------------------------------------------*/
     
-    @import url('https://fonts.googleapis.com/css?family=Arbutus+Slab');
-    @import url('https://fonts.googleapis.com/css?family=Athiti:400,500,600');
-    /*------------------------------------------------------------------
-    IMPORT FILES
--------------------------------------------------------------------*/
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
     
     @import url(animate.css);
     @import url(superslides.css);
@@ -18,12 +12,12 @@
     body {
         color: #666666;
         font-size: 15px;
-        font-family: 'Athiti', sans-serif;
+        font-family: 'Nanum Gothic', sans-serif;
         line-height: 1.80857;
     }
     
     a {
-        color: #1f1f1f;
+        color: black;
         text-decoration: none !important;
         outline: none !important;
         -webkit-transition: all .3s ease-in-out;
@@ -45,7 +39,7 @@
         padding: 0 0 10px 0;
         font-weight: normal;
         line-height: 120% !important;
-        color: #1f1f1f;
+        color: black;
         margin: 0
     }
     
@@ -79,7 +73,7 @@
     h4 a,
     h5 a,
     h6 a {
-        color: #212121;
+        color: black;
         text-decoration: none!important;
         opacity: 1
     }
@@ -94,7 +88,7 @@
     }
     
     a {
-        color: #1f1f1f;
+        color: black;
         text-decoration: none;
         outline: none;
     }
@@ -110,26 +104,26 @@
         transition: all .3s ease-in-out;
     }
     
-    .btn-custom {
+    /* .btn-custom {
         margin-top: 20px;
         background-color: transparent !important;
         border: 2px solid #ddd;
         padding: 12px 40px;
         font-size: 16px;
-    }
+    } */
     
-    .lead {
+    /* .lead {
         font-size: 18px;
         line-height: 30px;
         color: #767676;
         margin: 0;
         padding: 0;
-    }
+    } */
     
-    blockquote {
+    /* blockquote {
         margin: 20px 0 20px;
         padding: 30px;
-    }
+    } */
     
     ul,
     li,
@@ -154,6 +148,9 @@
     /*------------------------------------------------------------------
     HEADER
 -------------------------------------------------------------------*/
+.bg-light {
+    background: rgba(169,169,169,0.67) !important;
+}
     
     .top-navbar {
         position: relative;
@@ -319,10 +316,6 @@
     
     .about-section-box {
         padding: 70px 0px;
-    }
-    
-    .about-section-box .img-fluid {
-        box-shadow: -10px -10px 0px #EF5350;
     }
     
     .inner-column {}

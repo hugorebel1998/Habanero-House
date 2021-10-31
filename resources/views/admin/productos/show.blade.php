@@ -1,8 +1,8 @@
 @extends('layouts.home')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="card card-danger card-outline shadow">
                     <div class="row">
                         <div class="col-md-6">
@@ -10,6 +10,12 @@
                                 <h1 class="text-center mt-3">Habanero House </h1>
                             </a>
                             <div class="row ml-4 mt-5">
+                                <div class="col-md-6 mt-3">
+                                    <h4 class="tittleshow">Categoria</h4>
+                                    <a class="h4show">
+                                        <p>{{ $categoria->nombre }}</p>
+                                    </a>
+                                </div>
                                 <div class="col-md-6 mt-3">
                                     <h4 class="tittleshow">Nombre</h4>
                                     <a class="h4show">
@@ -44,6 +50,14 @@
                                         <p> {{ $producto->descuento }} %</p>
                                     </a>
                                 </div>
+
+                                <div class="col-md-6 mt-3">
+                                    <h4 class="tittleshow">Codigo</h4>
+                                    <a class="h4show">
+                                        <p> {{ $producto->codigo_producto }}</p>
+                                    </a>
+                                </div>
+
                                 <div class="col-md-12 mt-3">
                                     <h4 class="tittleshow">Descripción de producto</h4>
                                     <a class="h4show">
@@ -56,7 +70,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <img src="{{ asset('img/products/'.$producto->imagen_producto) }}" class="img-fluid. max-width: 100%;"
+                            <img src="{{ asset('img/products/'.$producto->imagen_producto) }}" class="rounded mx-auto d-block"
                                 width="100%" height="100%">
                                 
                         </div>

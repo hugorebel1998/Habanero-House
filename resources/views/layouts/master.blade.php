@@ -110,8 +110,8 @@
 </head>
 <body>
     @include('sweetalert::alert')
-    <header class="top-navbar">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header id="navbar-scroll" class="top-navbar">
+		<nav  class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="{{ route('home')}}">
 					<img src="{{ asset('img/logohabanero.jpeg')}}" alt="" />
@@ -122,9 +122,9 @@
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="{{ route('home')}}"><i class="fas fa-home"></i> Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-utensils"></i> Menú</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-anchor"></i> Nosotros</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.html"><i class="far fa-id-badge"></i> Contacto</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('usuario.mostrar.menu') }}"><i class="fas fa-utensils"></i> Menú</a></li>
+						<li class="nav-item "><a class="nav-link" href="{{ route('usuario.about.nosotros') }}"> <i class="fas fa-anchor"></i> Nosotros</a></li>
+						<li class="nav-item "><a class="nav-link" href="#"><i class="far fa-id-badge"></i> Contacto</a></li>
 						@guest
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><i class="fas fa-sign-in-alt"></i> Login</a>
@@ -139,7 +139,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} {{ Auth::user()->apellido_paterno }}
+                                    <i class="fas fa-user"></i> {{ Auth::user()->name }} {{ Auth::user()->apellido_paterno }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -229,6 +229,18 @@
       }
     </script>
     
+    <script>
+        let preScroll = window.pageYOffset;
+        window.onscroll = function(){
+            let currentScroll = window.pageYOffset;
+            if(preScroll > currentScroll ){
+                document.getElementById('navbar-scroll').style.top = "0";
+            }else{
+                document.getElementById('navbar-scroll').style.top = "-120px"; 
+            }
+            preScroll = currentScroll;
+        }
+    </script>
 </body>
 
 </html>

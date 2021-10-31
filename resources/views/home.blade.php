@@ -56,7 +56,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-12">
-					<img src="{{ asset('img/home/nosotros.jpg')}}" alt="" class="img-fluid">
+					<img src="{{ asset('img/home/nosotros.jpg')}}" alt="" class="img-fluid shadow">
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
 					<div class="inner-column">
@@ -292,12 +292,12 @@
     <footer class="footer-area bg-f">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                {{-- <div class="col-lg-3 col-md-6">
                     <h3>Sobre nosotros</h3>
                     <p>Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui, at ornare turpis ultrices sit amet. Nulla cursus lorem ut nisi porta,
                         ac eleifend arcu ultrices.</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
+                </div> --}}
+                <div class="col-lg-4 col-md-4">
                     <h3>Horario</h3>
                     <p>Domingo: 11:00 - 19:00</p>
                     <p>Lunes: 11:00 - 19:00</p>
@@ -307,13 +307,11 @@
                     <p>Viernes: 11:00 - 19:00</p>
                     <p>Sábado: 11:00 - 19:00</p>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3>Contacto</h3>
-                    <p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
-                    <p class="lead"><a href="#">+01 2000 800 9999</a></p>
-                    <p><a href="#"> info@admin.com</a></p>
+                <div class="col-lg-4 col-md-4">
+                    <h3>Dirección</h3>
+                    <p class="lead">Sindicato Nacional de Electricistas 16, Hab Electra, 54060 Tlalnepantla de Baz, Méx</p>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-4">
                     <h3>Redes sociales</h3>
                     <ul class="list-inline f-social">
                         <li class="list-inline-item"><a href="https://www.facebook.com/HabaneroHouse" target="_blank"><i class="fab fa-facebook-square test-white"></i></a></li>

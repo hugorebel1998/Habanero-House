@@ -14,21 +14,41 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'nombre' => 'Del dia de la casa',
-            'slug' => 'del dia de la casa',
-            'descripcion' => 'Categoria de productos'
+            'nombre' => 'Entradas',
+            'slug' => 'fusión-europea-y-peninsula',
+            'descripcion' => 'Categoria fusión europea y peninsula'
+        ]);
+        Category::create([
+            'nombre' => 'Sopas',
+            'slug' => 'sopas',
+            'descripcion' => 'Categoria sopas'
         ]);
 
         Category::create([
-            'nombre' => 'Degustación',
-            'slug' => 'degustación',
-            'descripcion' => 'Categoria de productos'
+            'nombre' => 'Ensaladas',
+            'slug' => 'ensaladas',
+            'descripcion' => 'Categoria ensaladas'
         ]);
 
         Category::create([
-            'nombre' => 'Fijo',
-            'slug' => 'fijo',
-            'descripcion' => 'Categoria de productos'
-        ]);   
+            'nombre' => 'Antojitos regionales',
+            'slug' => 'antojitos-regionales',
+            'descripcion' => 'Categoria antogitos regionales'
+        ]);
+
+        Category::create([
+            'nombre' => 'Fusión Europea y Peninsula',
+            'slug' => 'fusión-europea-y-peninsula',
+            'descripcion' => 'Categoria fusión europea y peninsula'
+        ]);
+
+        
+
+
+
+        
+
+        
     }
 }
+

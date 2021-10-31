@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card card-danger shadow">
@@ -59,6 +59,7 @@
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        
                                         <a class="dropdown-item" href="{{ route('admin.categorias.indexdelete') }}">
                                             <i class="fas fa-ban"></i>
                                             Categorias eliminados
@@ -103,7 +104,7 @@
                                                         <i class="fas fa-cogs"></i> Acciones
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        {{-- <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i> Ver categoria</a> --}}
+                                                        <a class="dropdown-item" href="{{ route('admin.productos.categoria', $categoria->id ) }}"><i class="far fa-bookmark"></i> Ver produstos</a>
                                                         <a class="dropdown-item"
                                                             href="{{ route('admin.categorias.edit', $categoria->id) }}"><i
                                                                 class="fas fa-edit"></i> Editar categoria</a>

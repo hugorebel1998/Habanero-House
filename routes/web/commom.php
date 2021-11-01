@@ -16,3 +16,11 @@ Route::get('/sobre-nosotros', 'AboutController@mostrar')->name('usuario.about.no
 
 //Route Menu de productos
 Route::get('/menu', 'MenuController@mostrar')->name('usuario.mostrar.menu');
+
+//Route Coctact
+Route::get('/contacto', 'ContactController@mostrar')->name('usuario.mostrar.contacto');
+Route::post('/contacto/mensaje/store', 'ContactController@store')->name('usuario.contacto.sotre');
+
+
+
+

@@ -15,8 +15,25 @@ class MenuController extends Controller
 
     public function mostrar()
     {
-        $productos = Product::all();
-        return view('menu.mostrar', compact('productos'));
+        // $productosAntojitos = Product::select('nombre', 'precio', 'imagen_producto', 'descripcion')
+        //                            ->where('category_id',1)->get();
+
+        $productosSopas = Product::select('nombre', 'precio', 'imagen_producto', 'descripcion')
+                                   ->where('category_id',2)
+                                   ->where('status', 1)->get();
+
+        $productosEnsaladas = Product::select('nombre', 'precio', 'imagen_producto', 'descripcion')
+                                   ->where('category_id',3)
+                                   ->where('status', 1)->get();
+
+
+        $productosAntojitos = Product::select('nombre', 'precio', 'imagen_producto', 'descripcion')
+                                   ->where('category_id',4)
+                                   ->where('status', 1)->get();
+
+        
+
+        return view('menu.mostrar', compact('productosAntojitos', 'productosSopas', 'productosEnsaladas'));
 
     }
 }

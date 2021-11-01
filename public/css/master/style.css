@@ -416,7 +416,7 @@
         bottom: -100%;
         right: 0;
         height: 100%;
-        background: rgba(207, 166, 113, 0.9);
+        background: rgba(2, 2, 2, 0.7);
         padding: 12px 12px;
         -webkit-transition: all .3s ease;
         transition: all .3s ease;
@@ -426,13 +426,13 @@
         color: #ffffff;
         font-size: 24px;
         font-weight: 500;
-        font-family: 'Arbutus Slab', serif;
+        font-family: 'Nanum Gothic', sans-serif;
     }
     
     .why-text p {
         color: #ffffff;
-        font-size: 18px;
-        border-bottom: 1px dashed #010101;
+        font-size: 14px;
+        border-bottom: 2px solid #010101;
         margin: 0px;
         padding-bottom: 15px;
         margin-top: 15px;

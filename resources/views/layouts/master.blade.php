@@ -124,7 +124,7 @@
 						<li class="nav-item active"><a class="nav-link" href="{{ route('home')}}"><i class="fas fa-home"></i> Inicio</a></li>
                         <li class="nav-item "><a class="nav-link" href="{{ route('usuario.mostrar.menu') }}"><i class="fas fa-utensils"></i> Menú</a></li>
 						<li class="nav-item "><a class="nav-link" href="{{ route('usuario.about.nosotros') }}"> <i class="fas fa-anchor"></i> Nosotros</a></li>
-						<li class="nav-item "><a class="nav-link" href="#"><i class="far fa-id-badge"></i> Contacto</a></li>
+						<li class="nav-item "><a class="nav-link" href="{{ route('usuario.mostrar.contacto') }}"><i class="far fa-id-badge"></i> Contacto</a></li>
 						@guest
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><i class="fas fa-sign-in-alt"></i> Login</a>
@@ -229,7 +229,7 @@
       }
     </script>
     
-    <script>
+    {{-- <script>
         let preScroll = window.pageYOffset;
         window.onscroll = function(){
             let currentScroll = window.pageYOffset;
@@ -240,7 +240,7 @@
             }
             preScroll = currentScroll;
         }
-    </script>
+    </script> --}}
 </body>
 
 </html>

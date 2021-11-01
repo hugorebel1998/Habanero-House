@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     @section('title', 'Habanero House')
     <title> @yield('title') - CMS</title>
-    
+
     <!--Fuentes -->
-    <link rel="stylesheet" href="{{ asset('css/fuente.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/fuente.css') }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,6 +30,9 @@
     <link rel="stylesheet"
         href="{{ asset('admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }} ">
+
     <style>
         /* .portada {
             background: url({{ asset('img/logohabanero.jpeg') }} ) no-repeat fixed center;
@@ -41,16 +44,18 @@
         .custom-file-input~.custom-file-label::after {
             content: "Subir"
         }
-        
-        .bg-rojo{
-            background:#C62828;
-            color:white;
+
+        .bg-rojo {
+            background: #C62828;
+            color: white;
         }
-       
-        .sidebar-dark-danger .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-danger .nav-sidebar > .nav-item > .nav-link.active {
-         background-color: #C62828;
-         color: #ffffff;
-           }
+
+        .sidebar-dark-danger .nav-sidebar>.nav-item>.nav-link.active,
+        .sidebar-light-danger .nav-sidebar>.nav-item>.nav-link.active {
+            background-color: #C62828;
+            color: #ffffff;
+        }
+
     </style>
 </head>
 
@@ -67,7 +72,8 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
 
-                    <a href="{{ route('admin.home') }}" class="nav-link text-white"><i class="fas fa-home"></i> Inicio</a>
+                    <a href="{{ route('admin.home') }}" class="nav-link text-white"><i class="fas fa-home"></i>
+                        Inicio</a>
                 </li>
                 <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -82,14 +88,16 @@
                         <span class="badge badge-warning navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <p class="text-center"> <b>{{ auth()->user()->name }} {{ auth()->user()->apellido_paterno }}</b></p>
+                        <p class="text-center"> <b>{{ auth()->user()->name }}
+                                {{ auth()->user()->apellido_paterno }}</b></p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('admin.usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
                             <i class="fas fa-user-edit mr-2"></i> Editar información
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('admin.usuarios.contraseña', auth()->user()->id) }}" class="dropdown-item">
+                        <a href="{{ route('admin.usuarios.contraseña', auth()->user()->id) }}"
+                            class="dropdown-item">
                             <i class="fas fa-unlock-alt mr-2"></i> Cambiar contraseña
                         </a>
                         <div class="dropdown-divider"></div>
@@ -121,14 +129,15 @@
                     </div>
                     <div class="info mt-2">
                         <a href="{{ route('admin.usuarios.show', auth()->user()->id) }}"
-                            class="text-danger">{{ auth()->user()->name }} {{ auth()->user()->apellido_paterno }}</a>
+                            class="text-danger">{{ auth()->user()->name }}
+                            {{ auth()->user()->apellido_paterno }}</a>
                     </div>
                 </div>
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                       
+
                         <li class="nav-item ">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-folder-open"></i>
@@ -205,7 +214,7 @@
 
                         <li class="nav-item ">
                             <a href="#" class="nav-link active">
-                                
+
                                 <i class="nav-icon fab fa-accusoft"></i>
                                 <p>
                                     Reportes
@@ -229,56 +238,74 @@
                             </ul>
                         </li>
                         @can('read usuario')
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Usuarios
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.usuarios.index') }}" class="nav-link text-secondary">
-                                        <i class="far fa-list-alt nav-icon"></i>
-                                        <p class="text-black">Gestión de usuarios</p>
-                                    </a>
-                                </li>
+                            <li class="nav-item ">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Usuarios
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
 
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.usuarios.create') }}" class="nav-link text-secondary">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear usuario</p>
-                                    </a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.usuarios.index') }}" class="nav-link text-secondary">
+                                            <i class="far fa-list-alt nav-icon"></i>
+                                            <p class="text-black">Gestión de usuarios</p>
+                                        </a>
+                                    </li>
 
-                                {{-- <li class="nav-item">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.usuarios.create') }}" class="nav-link text-secondary">
+                                            <i class="fas fa-plus nav-icon"></i>
+                                            <p>Crear usuario</p>
+                                        </a>
+                                    </li>
+
+                                    {{-- <li class="nav-item">
                                     <a href="{{ route('usuarios.indexdelete') }}" class="nav-link text-secondary">
                                         <i class="fas fa-users-slash nav-icon"></i>
                                         <p>Usuarios eliminados</p>
                                     </a>
                                 </li> --}}
 
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
                         @endcan
-                         <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tools"></i>
+                                <i class="nav-icon fas fa-mail-bulk"></i>
                                 <p>
-                                   Configuraciones
+                                    Mensajes
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.mensajes.index') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-envelope-open-text"></i>
+                                        <p class="text-black">Gestion de mensajes </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tools"></i>
+                                <p>
+                                    Configuraciones
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
                                 <li class="nav-item">
                                     <a href="{{ route('admin.ajustes.index') }}" class="nav-link text-secondary">
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p class="text-black">Configurar página</p>
                                     </a>
-                                </li>                              
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -330,7 +357,7 @@
                     eliminados</a>
             </div>
         </aside> --}}
-        
+
         <footer class="main-footer">
 
             <div class="text-center">
@@ -367,9 +394,31 @@
         });
     </script>
 
-    {{-- AlertConfirmt --}}
-   @yield('alerta')
+    <!-- Page specific script -->
+<script>
+    $(function () {
+      //Enable check and uncheck all functionality
+      $('.checkbox-toggle').click(function () {
+        var clicks = $(this).data('clicks')
+        if (clicks) {
+          //Uncheck all checkboxes
+          $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+          $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+        } else {
+          //Check all checkboxes
+          $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+          $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+        }
+        $(this).data('clicks', !clicks)
+      })
   
+      
+    })
+  </script>
+
+    {{-- AlertConfirmt --}}
+    @yield('alerta')
+
 </body>
 
 </html>

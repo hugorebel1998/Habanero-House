@@ -17,17 +17,20 @@ class ContactController extends Controller
         $mensaje = new Contact();
 
         $request->validate([
+            'asunto' => 'required',
             'nombre' => 'required',
             'correo_electrónico'  => 'required',
             'descripción' => 'required|min:5'
         ]);
 
+        $mensaje->asunto = $request->asunto;
         $mensaje->nombre = $request->nombre;
         $mensaje->email = $request->correo_electrónico;
         $mensaje->descripcion = $request->descripción;
 
         // dd($mensaje);
         if ($mensaje->save()) {
+            $mensaje->asunto = $request->asunto;
             $mensaje->nombre = $request->nombre;
             $mensaje->email = $request->correo_electrónico;
             $mensaje->descripcion = $request->descripción;

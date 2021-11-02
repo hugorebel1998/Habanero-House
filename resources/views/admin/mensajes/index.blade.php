@@ -47,7 +47,7 @@
                                     <td>{{ date('d M Y - H:i:s', $mensaje->created_at->timestamp) }}</td>
                                     <td class="d-flex justify-content-center">
                                         <div class="p-2">
-                                            <a href="#" class="btn btn-sm btn-success"><i class="far fa-envelope"></i> Enviar email</a>
+                                            <a href="{{ route('admin.contacto.mensaje',$mensaje->id)}}" class="btn btn-sm btn-success"><i class="far fa-envelope"></i> Enviar email</a>
                                         </div>
                                         <div class="p-2">
                                             <div class="dropdown">

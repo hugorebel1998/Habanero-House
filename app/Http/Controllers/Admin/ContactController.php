@@ -6,6 +6,9 @@ use App\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMailable;
+use App\User;
 
 class ContactController extends Controller
 {
@@ -24,6 +27,20 @@ class ContactController extends Controller
         $date = $date->toFormattedDateString();
         return view('admin.mensajes.index', compact('mensajes'));
 
+    }
+
+    public function ContactanosMensaje($id){
+        $mensaje = Contact::findOrFail($id);
+
+        
+            Mail::to($mensaje->email)->send(new ContactMailable($mensaje));
+            alert()->success('Éxito mensaje enviado');
+            return redirect()->to(route('admin.contacto.index'));
+        
+
+        
+
+        
     }
 
     public function show($id)

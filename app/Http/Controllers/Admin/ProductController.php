@@ -185,8 +185,6 @@ class ProductController extends Controller
         // dd($productoListas);
         return view('admin.productos.productcategory', compact('productoListas'));
         
-
-
     }
 
 

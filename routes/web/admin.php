@@ -50,11 +50,12 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::get('/categorias/categoriarestore/{categoria}', 'CategoryController@categoriaRestore')->name('admin.categorias.categoriarestore')->middleware('auth');
 
     //Mensajes
-    Route::get('/mensajes/index', 'ContactController@index')->name('admin.mensajes.index')->middleware('auth');
+    Route::get('/contacto/index', 'ContactController@index')->name('admin.contacto.index')->middleware('auth');
+    Route::get('/contacto/mensaje/{mensaje}', 'ContactController@ContactanosMensaje')->name('admin.contacto.mensaje')->middleware('auth');
 
     //Settings
-    Route::get('/restaurante/index', 'RestaurantController@index')->name('admin.ajustes.index')->middleware('auth');
-    Route::get('/restaurante/edit/{restaurat}', 'RestaurantController@edit')->name('admin.ajustes.edit')->middleware('auth');
-    Route::put('/restaurante/update/', 'RestaurantController@update')->name('admin.ajustes.update')->middleware('auth');
+    // Route::get('/restaurante/index', 'RestaurantController@index')->name('admin.ajustes.index')->middleware('auth');
+    // Route::get('/restaurante/edit/{restaurat}', 'RestaurantController@edit')->name('admin.ajustes.edit')->middleware('auth');
+    // Route::put('/restaurante/update/', 'RestaurantController@update')->name('admin.ajustes.update')->middleware('auth');
 
 });

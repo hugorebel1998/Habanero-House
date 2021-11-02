@@ -283,14 +283,14 @@
                             <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.mensajes.index') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('admin.contacto.index') }}" class="nav-link text-secondary">
                                         <i class="fas fa-envelope-open-text"></i>
                                         <p class="text-black">Gestion de mensajes </p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item ">
+                        {{-- <li class="nav-item ">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tools"></i>
                                 <p>
@@ -307,7 +307,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
             </div>

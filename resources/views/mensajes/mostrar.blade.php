@@ -1,8 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Contacto')
 @section('content')
-
-    <div class="container">
+    <div class="container mb-5">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="row">
@@ -35,6 +34,17 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
+                                            <label for="asunto">Asunto</label>
+                                            <input type="text" name="asunto"
+                                                class="form-control @error('asunto') is-invalid @enderror"
+                                                value="{{ old('asunto') }}">
+                                            @error('asunto')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+
+                                        <div class="col-md-6">
                                             <label for="nombre">Nombre</label>
                                             <input type="text" name="nombre"
                                                 class="form-control @error('nombre') is-invalid @enderror"
@@ -44,7 +54,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <label for="correo_electrónico">Correo electrónico</label>
                                             <input type="email" name="correo_electrónico"
                                                 class="form-control @error('correo_electrónico') is-invalid @enderror"
@@ -75,6 +85,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><br><br>
     </div>
 @endsection

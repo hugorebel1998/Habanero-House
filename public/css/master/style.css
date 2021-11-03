@@ -1,5 +1,7 @@
     
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,700&family=Oxygen&display=swap');
 
     
     @import url(animate.css);
@@ -13,7 +15,7 @@
         background: white;
         color: #666666;
         font-size: 15px;
-        font-family: 'Nanum Gothic', sans-serif;
+        font-family: 'Oxygen', sans-serif;
         line-height: 1.80857;
     }
     
@@ -185,7 +187,7 @@
         color: #ffffff;
         border-radius: 4px;
     }
-    
+  
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         border: none;
         box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.5);
@@ -208,25 +210,26 @@
     }
     
     .slides-navigation a {
-        background: #EF5350;
+        background: hsla(10, 89%, 49%, 0.59);
         position: absolute;
-        height: 70px;
-        width: 70px;
+        height: 65px;
+        width: 65px;
         top: 50%;
         font-size: 20px;
         display: block;
         color: #fff;
-        line-height: 80px;
+        line-height: 74px;
         text-align: center;
         transition: all .3s ease-in-out;
+        border-radius: 50%;
     }
     
     .slides-navigation a i {
-        font-size: 40px;
+        font-size: 35px;
     }
     
     .slides-navigation a:hover {
-        background: #010101;
+        background: #991F05;
     }
     
     .cover-slides .container {
@@ -292,8 +295,8 @@
     }
     
     .cover-slides h1 {
-        font-family: 'Arbutus Slab', serif;
-        font-weight: 500;
+        font-family: 'Oxygen', sans-serif;
+        font-weight: 300;
         font-size: 64px;
         color: #fff;
     }
@@ -319,10 +322,10 @@
         padding: 70px 0px;
     }
     
-    .inner-column {}
+    /* .inner-column {} */
     
     .inner-column h1 {
-        font-family: 'Arbutus Slab', serif;
+        font-family: 'Oxygen', sans-serif;
         font-size: 30px;
         color: #010101;
     }
@@ -332,21 +335,16 @@
     }
     
     .inner-column h4 {
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 20px;
+        font-weight: 700;
     }
     
     .inner-column p {
+        font-family: 'Oxygen', sans-serif;
         font-size: 18px;
     }
     
-    .inner-column .btn-outline-new-white {
-        color: #EF5350;
-    }
-    
-    .inner-column .btn-outline-new-white:hover {
-        color: #ffffff;
-    }
+  
     /*------------------------------------------------------------------
     QT
 -------------------------------------------------------------------*/
@@ -365,7 +363,7 @@
     .heading-title h2 {
         color: #010101;
         font-size: 28px;
-        font-family: 'Arbutus Slab', serif;
+        font-family: 'Oxygen', sans-serif;
     }
     
     .heading-title p {
@@ -448,11 +446,16 @@
     
     .gallery-single:hover .why-text {
         bottom: 0px;
-    }
+    } 
     /*------------------------------------------------------------------
     Gallery
 -------------------------------------------------------------------*/
-    
+
+     .gallery-box h1{
+      font-size: 2rem;
+      font-family: 'Oxygen', sans-serif;
+     }
+
     .gallery-box {
         padding: 70px 0px;
     }
@@ -625,16 +628,20 @@
     .footer-area h3 {
         color:white;
         text-transform: uppercase;
-        font-size: 27px;
+        font-size: 20px;
         border-bottom: 3px solid #EF5350;
         margin-bottom: 10px;
     }
     
     .footer-area p {
-        font-size: 20px;
+        font-size: 15px;
         color: white;
         margin: 0;
         padding-bottom: 10px;
+    }
+    .footer-area p a {
+        font-size: 15px;
+        color: #ffffff;
     }
     
     .footer-area p.lead {
@@ -652,52 +659,6 @@
         color: #EF5350;
     }
     
-    .footer-area p a {
-        font-size: 18px;
-        color: #ffffff;
-    }
-    
-    .footer-area p a:hover {
-        color: #EF5350;
-    }
-    
-    /* .subscribe_form {
-        display: block;
-        text-align: center;
-        padding: 5px 0;
-    }
-    
-    .subscribe_form .form_input {
-        display: block;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        border: none;
-        font-size: 19px;
-        line-height: 50px;
-        padding: 0 10px;
-        float: left;
-        width: 100%;
-        transition: all 0.5s ease-in-out;
-    }
-    
-    .subscribe_form .submit {
-        background-color: #EF5350;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 50px;
-        display: inline-block;
-        padding: 0 10px;
-        float: left;
-        width: 100%;
-        border: none;
-        cursor: pointer;
-        transition: all 0.5s ease-in-out;
-    }
-    
-    .subscribe_form .submit:hover {
-        background: #010101;
-    } */
     
     .f-social {
         padding-bottom: 10px;
@@ -722,7 +683,7 @@
     }
     
     .derechos-autor p {
-        font-size: 20px;
+        font-size: 15px;
         text-align: center;
         color: white;
     }

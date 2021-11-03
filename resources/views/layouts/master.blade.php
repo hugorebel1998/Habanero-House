@@ -24,12 +24,22 @@
     background-position: center center;
     position: relative;
 }
+ .qt-background:before {
+    content:'';
+    position: absolute;
+    top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.5);
+   
+}
 .qt-background p {
         font-size: 40px;
         font-weight: 300;
         line-height: 44px;
         color: #fff;
-        font-family: 'Arbutus Slab', serif;
+        font-family: 'Karla', sans-serif;
         margin-bottom: 20px;
     }
     
@@ -114,7 +124,7 @@
 		<nav  class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="{{ route('home')}}">
-					<img src="{{ asset('img/logohabanero.jpeg')}}" alt="" />
+					<img src="{{ asset('img/logohabanero.jpeg')}}" alt="Habanero House" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
@@ -187,13 +197,13 @@
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <h3><i class="fas fa-calendar-week"></i> Horario</h3>
-                <p>Domingo: 11:00 - 19:00</p>
                 <p>Lunes: 11:00 - 19:00</p>
                 <p>Martes: 11:00 - 19:00</p>
-                <p>Miercoles: 11:00 - 19:00</p>
+                <p>Miércoles: 11:00 - 19:00</p>
                 <p>Jueves: 11:00 - 19:00</p>
                 <p>Viernes: 11:00 - 19:00</p>
                 <p>Sábado: 11:00 - 19:00</p>
+                <p>Domingo: 11:00 - 19:00</p>
             </div>
             <div class="col-lg-4 col-md-4">
                 <h3><i class="fas fa-map-marker-alt"></i> Dirección</h3>

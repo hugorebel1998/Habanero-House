@@ -16,6 +16,8 @@ Route::get('/sobre-nosotros', 'AboutController@mostrar')->name('usuario.about.no
 
 //Route Menu de productos
 Route::get('/menu', 'MenuController@mostrar')->name('usuario.mostrar.menu');
+Route::get('/menu/ver-producto/{producto}', 'MenuController@show')->name('usuario.menu.show');
+
 
 //Route Coctact
 Route::get('/contacto', 'ContactController@mostrar')->name('usuario.mostrar.contacto');

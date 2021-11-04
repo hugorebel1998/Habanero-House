@@ -47,6 +47,15 @@
                                 <h4>{{ $productosAntojito->nombre }}</h4>
                                 <p>{{ $productosAntojito->descripcion }}</p>
                                 <h5> $ {{ $productosAntojito->precio }}</h5>
+                                <div class="d-flex justify-content-end">
+                                    <div class="p-2">
+                                        <a href="{{ route('usuario.mostrar.show',$productosAntojito->id ) }}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
+                                    </div>
+                                    
+                                    <div class="p-2">
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-arrow-down"></i></a>
+                                    </div>
+                                  </div>
                             </div>
                         </div>
                     </div>

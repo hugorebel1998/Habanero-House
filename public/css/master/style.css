@@ -437,6 +437,12 @@
         margin-top: 15px;
         margin-bottom: 15px;
     }
+
+    .why-text a {
+        color: #ffffff;
+        font-size: 16px;
+        
+    }
     
     .why-text h5 {
         font-size: 28px;
@@ -447,6 +453,30 @@
     .gallery-single:hover .why-text {
         bottom: 0px;
     } 
+
+    /*------------------------------------------------------------------
+    Show Pages
+-------------------------------------------------------------------*/
+.tituloshow{
+    font-size: 29px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 600;
+}
+
+.tittleshow{
+    font-size: 18px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 500;
+}
+.h4show{
+    font-size: 15px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+
+
+
+
     /*------------------------------------------------------------------
     Gallery
 -------------------------------------------------------------------*/
@@ -1344,3 +1374,4 @@
         transition: opacity 0.2s ease-out;
         font-size: 30px;
     } 
+

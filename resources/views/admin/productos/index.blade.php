@@ -75,7 +75,7 @@
                                                         class="fas fa-edit"></i> Editar
                                                     platillo</a>
                                                 <a class="dropdown-item"
-                                                    href="#"><i class="fas fa-clipboard-check"></i> 
+                                                    href="{{ route('admin.productos.inventario', $producto->id)}}"><i class="fas fa-clipboard-check"></i> 
                                                         Inventario platillo</a>
                                                @can('delete producto')
                                                 <form action="{{ route('admin.productos.delete', $producto->id) }}"

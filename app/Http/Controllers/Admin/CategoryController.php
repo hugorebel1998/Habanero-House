@@ -25,11 +25,13 @@ class CategoryController extends Controller
         $request->validate([
 
             'nombre'      => 'required|unique:categories,nombre',
+            'icono'       => 'required',
             'descripcion' => "required"
         ]);
 
         $categoria->nombre      = $request->nombre;
         $categoria->slug        = Str::slug($request->nombre);
+        $categoria->icono       = $request->icono;
         $categoria->descripcion = $request->descripcion;
 
         // dd($categoria);
@@ -55,11 +57,13 @@ class CategoryController extends Controller
         $request->validate([
 
             'nombre'      => 'required|unique:categories,nombre,'. $categoria->id,
+            'icono'       => 'required',
             'descripcion' => "required"
         ]);
 
         $categoria->nombre      = $request->nombre;
         $categoria->slug        = Str::slug($request->nombre);
+        $categoria->icono       = $request->icono;
         $categoria->descripcion = $request->descripcion;
         
         if($categoria->save()){

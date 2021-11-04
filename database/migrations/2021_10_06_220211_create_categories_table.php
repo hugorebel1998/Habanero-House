@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->string('slug')->nullable();
+            $table->string('icono')->nullable();
             $table->text('descripcion')->nullable();
             $table->unsignedBigInteger('editor_id')->nullable();
             $table->softDeletes();

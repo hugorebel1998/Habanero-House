@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <b class="lead font-weight-bold"> Productos</b>
@@ -42,8 +42,8 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Categoria</th>
                                 <th scope="col">Imagen</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col">Fecha de creación</th>
-                                <th scope="col">Fecha de modificación</th>
                                 <th scope="col" class="text-center">Administrador</th>
                             </tr>
                         </thead>
@@ -55,8 +55,8 @@
                                     <td>{{ $producto->categoriaProduct->nombre }}</td>
                                     <td><img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
                                             class="rounded mx-auto img-thumbnail" width="80"></td>
+                                   <td>$ {{ $producto->precio }}</td>
                                     <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp) }}</td>
-                                    <td> {{ date('d M Y - H:i:s', $producto->updated_at->timestamp) ?: '--' }}</td>
                                     <td class="text-center">
                                 @can('update producto')
                                         <div class="dropdown">
@@ -69,11 +69,14 @@
                                                 <a class="dropdown-item"
                                                     href="{{ route('admin.productos.show', $producto->id) }}"><i
                                                         class="far fa-bookmark"></i> Ver
-                                                    producto</a>
+                                                    platillo</a>
                                                 <a class="dropdown-item"
                                                     href="{{ route('admin.productos.edit', $producto->id) }}"><i
                                                         class="fas fa-edit"></i> Editar
-                                                    producto</a>
+                                                    platillo</a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('admin.productos.inventario', $producto->id)}}"><i class="fas fa-clipboard-check"></i> 
+                                                        Inventario platillo</a>
                                                @can('delete producto')
                                                 <form action="{{ route('admin.productos.delete', $producto->id) }}"
                                                     method="POST" class="eliminar_producto">
@@ -114,7 +117,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire(
-                        'Deleted!',
+                        'Eliminado',
                         'Haz eliminado este producto.',
                         'success'
                     )

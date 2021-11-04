@@ -187,6 +187,14 @@ class ProductController extends Controller
         
     }
 
+    public function productoInventario($id)
+    {
+        $productoInven = Product::findOrFail($id);
+        return view('admin.productos.productinventary', compact('productoInven'));
+
+    }
+
+
 
 
     // public function productGalery(Request $request, $id)
@@ -221,4 +229,5 @@ class ProductController extends Controller
     //         return redirect()->back();
     //     }
     // }
+
 }

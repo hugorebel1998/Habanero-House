@@ -16,6 +16,16 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12 mt-2">
+                                        <label for="icono">Icono</label>
+                                        <input type="text" name="icono"
+                                            class="form-control @error('icono') is-invalid @enderror"
+                                            value="{{ old('icono') }}">
+                                        @error('icono')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-12 mt-2">
                                         <label for="nombre">Nombre</label>
                                         <input type="text" name="nombre"
                                             class="form-control @error('nombre') is-invalid @enderror"
@@ -80,8 +90,8 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Nombre</th>
+                                        <th scope="col">Icono</th>
                                         <th scope="col">Descripcion</th>
-                                        <th scope="col">Fecha de creación</th>
                                         <th scope="col" class="text-center">Administrador</th>
                                     </tr>
                                 </thead>
@@ -92,8 +102,8 @@
 
                                             <td>{{ $categoria->id }}</td>
                                             <td>{{ $categoria->nombre }}</td>
+                                            <td>{{ $categoria->icono }}</td>
                                             <td>{{ $categoria->descripcion }}</td>
-                                            <td>{{ $categoria->created_at }}</td>
 
                                             <td class="text-center">
                                              @can('update categoria')

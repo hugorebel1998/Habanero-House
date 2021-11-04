@@ -55,15 +55,15 @@
                             <div class="why-text">
                                 <p>{{ $productosAntojito->descripcion }}</p>
                                 <h5> $ {{ $productosAntojito->precio }}</h5>
-                                <h4>{{ $productosAntojito->nombre }}</h4>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
-                                        <a href="{{ Route('usuario.menu.show', $productosAntojito->id)}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
+                                        <a href="{{ route('usuario.mostrar.show',$productosAntojito->id ) }}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
                                     </div>
+                                    
                                     <div class="p-2">
-                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-plus"></i></a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-arrow-down"></i></a>
                                     </div>
-                               </div>
+                                  </div>
                             </div>
                         </div>
                     </div>

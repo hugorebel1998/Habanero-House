@@ -126,6 +126,18 @@
 </style>
 </head>
 <body>
+
+    <div class="loader" id="loader">
+        <div class="box">
+            <div class="car">
+                <img src="{{ asset('img/bandeja.png')}}" >
+            </div>
+            <div class="load">
+                <img src="{{ asset('img/loader.svg')}}" >
+            </div>
+        </div>
+
+    </div>
     @include('sweetalert::alert')
     <header id="navbar-scroll" class="top-navbar">
 		<nav  class="navbar navbar-expand-lg navbar-light bg-light">
@@ -255,8 +267,11 @@
 	<script src="{{ asset('js/master/form-validator.min.js')}} "></script>
     <script src="{{ asset('js/master/contact-form-script.js')}} "></script>
     <script src="{{ asset('js/master/custom.js')}} "></script>
-<!-- bs-custom-file-input -->
-<script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }} "></script>
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }} "></script>
+    <!--slider-->
+    <script src="{{ asset('js/sitio.js') }}"></script>
+
     <script>
         $(function() {
             bsCustomFileInput.init();

@@ -37,9 +37,9 @@ class MenuController extends Controller
         return view('menu.mostrar', compact('productosAntojitos', 'productosSopas', 'productosEnsaladas'));
 
     }
+
     public function show($id)
     {
-
         $producto = Product::findOrFail($id);
         $categoria = Category::findOrFail($producto->category_id);
         return view('menu.show', compact('producto', 'categoria'));

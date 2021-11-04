@@ -437,6 +437,12 @@
         margin-top: 15px;
         margin-bottom: 15px;
     }
+
+    .why-text a {
+        color: #ffffff;
+        font-size: 16px;
+        
+    }
     
     .why-text h5 {
         font-size: 28px;
@@ -452,6 +458,30 @@
     .gallery-single:hover .why-text {
         bottom: 0px;
     } 
+
+    /*------------------------------------------------------------------
+    Show Pages
+-------------------------------------------------------------------*/
+.tituloshow{
+    font-size: 29px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 600;
+}
+
+.tittleshow{
+    font-size: 18px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 500;
+}
+.h4show{
+    font-size: 15px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+
+
+
+
     /*------------------------------------------------------------------
     Gallery
 -------------------------------------------------------------------*/
@@ -1342,3 +1372,61 @@
         transition: opacity 0.2s ease-out;
         font-size: 30px;
     } 
+.loader{
+    background-color: rgba(255, 255, 255, .9);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    left: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1000;
+}
+.box{
+    display: block;
+    width: 320px;
+}
+.car{
+    
+    overflow: hidden;
+    width: 100%;
+}
+.car img{
+    animation: loading_image 2s linear infinite;
+    margin-left: -100%;
+    opacity: 0;
+    display: block;
+    position: relative;
+    width: 120px;
+}
+
+.load{
+    display: block;
+    margin-left: calc(50% - 15%);
+    height: 80px;
+    width: 80px;
+}
+.load img{
+    display: block;
+    width: 100%;
+}
+
+@keyframes loading_image {
+    0%{
+         margin-left: -100%;
+         opacity: 0;
+    }
+    23%{
+        opacity: 1;
+
+    }
+    77%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+         margin-left: 100%;
+        }
+}

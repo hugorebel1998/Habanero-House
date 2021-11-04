@@ -147,6 +147,8 @@
                         <li class="nav-item "><a class="nav-link" href="{{ route('usuario.mostrar.menu') }}"><i class="fas fa-utensils"></i> Menú</a></li>
 						<li class="nav-item "><a class="nav-link" href="{{ route('usuario.about.nosotros') }}"> <i class="fas fa-anchor"></i> Nosotros</a></li>
 						<li class="nav-item "><a class="nav-link" href="{{ route('usuario.mostrar.contacto') }}"><i class="far fa-id-badge"></i> Contacto</a></li>
+						<li class="nav-item "><a class="nav-link" href="#"><i class="fas fa-cart-plus"></i> 0 </a></li>
+
 						@guest
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><i class="fas fa-sign-in-alt"></i> Login</a>

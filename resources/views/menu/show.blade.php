@@ -5,8 +5,13 @@
     <div class="container-fluid"><br><br>
         <div class="row justify-content-center">
             <div class="col-md-10 mt-5 mb-5"><br>
-                <div class="card card-danger card-outline shadow">
+                <div class="card shadow-lg">
                     <div class="row">
+                        <div class="col-md-6">
+                            <img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
+                                class="rounded mx-auto d-block" width="100%" height="100%">
+
+                        </div>
                         <div class="col-md-6">
                                 <h1 class="text-center tituloshow mt-3">Habanero House </h1>
                             <div class="row ml-4 mt-5">
@@ -60,12 +65,6 @@
                                         <i class="fas fa-shopping-cart"></i> Agregar al carrito</a>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
-                                class="rounded mx-auto d-block" width="100%" height="100%">
-
                         </div>
                     </div>
                 </div>

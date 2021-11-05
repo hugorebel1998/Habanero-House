@@ -16,10 +16,10 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12 mt-2">
-                                        <label for="icono">Icono</label>
+                                        <label for="icono">Ícono</label>
                                         <input type="text" name="icono"
                                             class="form-control @error('icono') is-invalid @enderror"
-                                            value="{{ old('icono') }}">
+                                            value="{{ old('icono') }}" placeholder="Ícono">
                                         @error('icono')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -90,7 +90,7 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Nombre</th>
-                                        <th scope="col">Icono</th>
+                                        <th scope="col"></th>
                                         <th scope="col">Descripcion</th>
                                         <th scope="col" class="text-center">Administrador</th>
                                     </tr>
@@ -102,7 +102,7 @@
 
                                             <td>{{ $categoria->id }}</td>
                                             <td>{{ $categoria->nombre }}</td>
-                                            <td>{{ $categoria->icono }}</td>
+                                            <td style="font-size: 30px">{!! $categoria->icono !!}</td>
                                             <td>{{ $categoria->descripcion }}</td>
 
                                             <td class="text-center">

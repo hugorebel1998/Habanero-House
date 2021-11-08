@@ -123,6 +123,22 @@
         background-position: 0 0;
         position: relative;
     }
+
+    #add_to_cart{
+        display: block;
+    width: 100px;
+    height: calc(1.5em + 0.3rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
 </style>
 </head>
 <body>

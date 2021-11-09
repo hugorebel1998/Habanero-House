@@ -16,7 +16,7 @@
                                 @csrf
                                 <div class="row">
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-1">
                                         <label for="nombre">Nombre</label>
                                         <input type="text" name="nombre"
                                             class="form-control @error('nombre') is-invalid @enderror"
@@ -26,7 +26,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-12 mt-4">
+                                    <div class="col-md-12 mt-3">
                                         <label for="cantidad">Cantidad de inventario</label>
                                         <input type="number" name="cantidad"
                                         min="1" class="form-control @error('cantidad') is-invalid @enderror"
@@ -37,7 +37,7 @@
                                     </div>
 
 
-                                    <div class="col-md-12 mt-4">
+                                    <div class="col-md-12 mt-3">
                                         <label for="precio">Precio</label>
                                         <input type="number" name="precio"
                                             class="form-control @error('precio') is-invalid @enderror" min="1"
@@ -47,7 +47,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-12 mt-4">
+                                    <div class="col-md-12 mt-3">
                                         <div class="form-group">
                                             <label>Limite de inventario</label>
                                             <select name="limitado"
@@ -63,7 +63,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12 mt-4">
+                                    <div class="col-md-12 mt-3">
                                         <label for="minimo">Inventario minimo</label>
                                         <input type="number" name="minimo"
                                             class="form-control @error('minimo') is-invalid @enderror" min="1"
@@ -75,9 +75,7 @@
 
                                 </div>
 
-
-
-                                <div class="text-center mt-4">
+                                <div class="text-center mt-3">
                                     <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>
                                         Guardar inventario</button>
                                 </div>
@@ -102,7 +100,7 @@
                                     </a>
         
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ route('admin.productos.inventario.indexDelete') }}">
                                             <i class="fas fa-ban"></i>
                                             Inventarios eliminados
                                         </a>
@@ -126,7 +124,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($inventarios as $inventario)
+                                    @foreach ($productoInven->getInventary as $inventario)
                                         
                                     <tr>
                                         <td>{{ $inventario->id}}</td>
@@ -150,19 +148,19 @@
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item"
-                                                            href="#"><i class="fas fa-edit"></i> 
+                                                            href="{{ route('admin.productos.inventario.edit',$inventario->id)}}"><i class="fas fa-edit"></i> 
                                                                 Editar</a>
                                                                 <a class="dropdown-item"
                                                                 href="#"><i class="fas fa-box-open"></i>
                                                                     Variantes</a>
                                                                 
                                                        @can('delete producto')
-                                                        <form action="#"
-                                                            method="POST" class="eliminar_producto">
+                                                        <form action="{{ route('admin.productos.inventario.delete', $inventario->id)}}"
+                                                            method="POST" class="eliminar_inventario">
                                                             @csrf
                                                             @method('Delete')
                                                             <button class="dropdown-item"
-                                                                href="#"><i
+                                                                href="{{ route('admin.productos.inventario.delete', $inventario->id)}}"><i
                                                                     class="far fa-trash-alt"></i> Eliminar</button>
                                                         </form>
                                                         @endcan
@@ -185,5 +183,33 @@
         </div>
     </div>
 </div>
+
+@section('alerta')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $('.eliminar_inventario').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Estas seguro de eliminar?',
+                text: `Este inventario sera eliminado`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Eliminado',
+                        'Haz eliminado este inventario.',
+                        'success'
+                    )
+                    this.submit();
+
+                }
+            })
+        });
+    </script>
+@endsection
 
 @endsection

@@ -191,8 +191,9 @@ class ProductController extends Controller
     public function productoInventario($id)
     {
         $productoInven = Product::findOrFail($id);
-        $inventarios    =  ProductInventary::all();
-        return view('admin.productos.productinventary', compact('productoInven', 'inventarios'));
+        // $inventarios    =  ProductInventary::all();
+        // return view('admin.productos.productinventary', compact('productoInven', 'inventarios'));
+        return view('admin.productos.productinventary', compact('productoInven'));
     }
 
     public function storeProductInventary(Request $request, $id)
@@ -240,7 +241,75 @@ class ProductController extends Controller
     }
 
 
+    public function editProductInventary($id){
+        $inventario = ProductInventary::findOrFail($id);
+        // $productoInven = Product::findOrFail($inventario->product_id);
+        return view('admin.productos.editproductinventary', compact('inventario'));
 
+    }
+
+    public function updateProductInventary(Request $request, $id){
+
+        $inventario = ProductInventary::findOrFail($id);
+        $request->validate([
+            'nombre'               => 'required|max:30',
+            'cantidad'             => 'min:1|required',
+            'precio'               => 'required',
+            'limitado'             => 'required',
+            'minimo'               => 'required',
+        ]);
+        $inventario->nombre = $request->nombre;
+        $inventario->cantidad_inventario = $request->cantidad;
+        $inventario->precio = $request->precio;
+        $inventario->limitado_inventario = $request->limitado;
+        $inventario->inventario_minimo = $request->minimo;
+
+        // dd($inventario);
+        // return view('admin.productos.editproductinventary', compact('inventario'));
+
+        if ($inventario->save()) {
+            $inventario->nombre = $request->nombre;
+            $inventario->cantidad_inventario = $request->cantidad;
+            $inventario->precio = $request->precio;
+            $inventario->limitado_inventario = $request->limitado;
+            $inventario->inventario_minimo = $request->minimo;
+            
+
+            if ($inventario->save()) {
+
+                alert()->success('Actualizado con éxito');
+                return redirect()->to(route('admin.productos.inventario',$inventario->product_id));
+            } else {
+                alert()->error('Error', 'Ops no se pudo actualizar');
+                return redirect()->back();
+            }
+        } else {
+            alert()->error('Error', 'Ops no se pudo actualizar');
+            return redirect()->back();
+        }
+
+    }
+
+
+    public function deleteProductInventary($id){
+        $inventario = ProductInventary::findOrFail($id);
+        $inventario->delete();
+        return redirect()->back();        
+    }
+
+    public function indexDeleteInventario()
+    {
+        $inventarios = ProductInventary::onlyTrashed()->get();
+        return view('admin.productos.indexdeleteinventario', compact('inventarios'));
+    }
+
+    public function inventarioRestore($id)
+    {
+
+        $inventario = ProductInventary::find($id);
+        ProductInventary::onlyTrashed()->findOrFail($id)->restore();
+        return redirect()->to(route('admin.productos.inventario.indexDelete'));
+    }
 
     // public function productGalery(Request $request, $id)
     // {

@@ -95,6 +95,6 @@ class CategoryController extends Controller
         $categoria = Category::find($id);
         Category::onlyTrashed()->findOrFail($id)->restore();
         // alert()->success('Éxito categoria restablecida', 'Se ha restablecido la categoria');
-        return redirect()->to(route('admin.categorias.index'));
+        return redirect()->to(route('admin.categorias.indexdelete'));
     }
 }

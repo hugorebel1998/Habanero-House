@@ -1,12 +1,12 @@
 @extends('layouts.home')
 @section('content')
-@section('title', 'Lista de usuarios')
+@section('title', 'Gestión usuarios')
 
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
+        <div class="col-md-11">
+            <div class="card transparente">
                 <div class="card-header">
                     <b class="lead font-weight-bold"> Usuarios</b>
                 </div>
@@ -14,7 +14,7 @@
 
                     <div class="p-2">
                     @can('delete usuario')
-                        <div class="dropdown">
+                        <div class="dropdown dropleft">
                             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-sort-amount-up-alt"></i> Filtrar por

@@ -43,11 +43,11 @@
                         <div class="small-box bg-rojo">
                             <div class="inner">
                                 <h3>{{ $productoCount }}</h3>
-                                <p>Nuevo producto</p>
+                                <p>Nuevo platillo</p>
                             </div>
                             <div class="icon">
                                 {{-- <i class="ion ion-bag"></i> --}}
-                                <i class="fas fa-box-open"></i>
+                                <i class="fas fa-utensils"></i>
                             </div>
                             <a href="{{ route('admin.productos.create') }}" class="small-box-footer">Ir <i
                                     class="fas fa-arrow-circle-right"></i></a>

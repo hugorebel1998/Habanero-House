@@ -64,7 +64,7 @@ $(function() {
         "info": true,
         "autoWidth": false,
         "responsive": true,
-        "iDisplayLength": 3,
+        "iDisplayLength": 5,
         "order": [
             [0, 'desc']
         ],

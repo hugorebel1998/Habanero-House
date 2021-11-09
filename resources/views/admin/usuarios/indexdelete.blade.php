@@ -1,15 +1,12 @@
 @extends('layouts.home')
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
+        <div class="col-md-11">
+            <div class="card transparente">
                 <div class="card-header">
                 <b class="lead font-weight-bold"> Usuarios eliminados</b>
-                </div>
-                <div class="d-flex justify-content-end mt-3 mr-4">
-                        {{-- <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Nuevo usuario</a> --}}
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

@@ -7,7 +7,7 @@
         <div class="col-md-10">
           <div class="row">
               <div class="col-md-12 mt-5">
-                  <div class="card">
+                  <div class="card transparente">
                       <div class="card-body">
                         <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                             <thead>

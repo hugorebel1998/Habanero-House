@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     @section('title', 'Habanero House')
-    <title> @yield('title') - CMS</title>
+    <title> @yield('title') | CMS</title>
 
     <!--Fuentes -->
     <link rel="stylesheet" href="{{ asset('css/fuente.css') }}">
@@ -34,13 +34,14 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }} ">
 
     <style>
-        /* .portada {
-            background: url({{ asset('img/logohabanero.jpeg') }} ) no-repeat fixed center;
+        .portada {
+            background: url({{ asset('img/fondo.png') }} ) no-repeat fixed center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            background-size: cover;
-        } */
+            background-size: cover;            
+        }
+        
         .custom-file-input~.custom-file-label::after {
             content: "Subir"
         }
@@ -54,6 +55,10 @@
         .sidebar-light-danger .nav-sidebar>.nav-item>.nav-link.active {
             background-color: #C62828;
             color: #ffffff;
+        }
+        .transparente {
+            background-color: rgb(249, 249, 249);
+            opacity: 0.84;
         }
 
     </style>
@@ -165,9 +170,9 @@
 
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-boxes"></i>
+                                <i class="nav-icon fas fa-utensils"></i>
                                 <p>
-                                    Productos
+                                    Platillos
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -175,13 +180,13 @@
                                 <li class="nav-item">
                                     <a href="{{ route('admin.productos.index') }}" class="nav-link text-secondary">
                                         <i class="fas fa-list-ul nav-icon"></i>
-                                        <p>Gestión de productos</p>
+                                        <p>Gestión de platillos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('admin.productos.create') }}" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear producto</p>
+                                        <p>Crear platillo</p>
                                     </a>
                                 </li>
                             </ul>
@@ -315,7 +320,6 @@
 
 
         <div class="content-wrapper portada">
-
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">

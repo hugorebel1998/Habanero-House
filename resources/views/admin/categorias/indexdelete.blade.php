@@ -1,13 +1,13 @@
 @extends('layouts.home')
 @section('content')
-@section('title', 'Lista de categorias')
+@section('title', 'Gestión categorias eliminadas')
 
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-7">
+        <div class="col-md-11">
 
-            <div class="card shadow">
+            <div class="card shadow transparente">
                 <div class="card-header">
                     <b class="lead font-weight-bold">Categorias eliminadas</b>
                 </div>
@@ -17,6 +17,7 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
+                                <th scope="col"></th>
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">Fecha de creación</th>
                                 <th scope="col" class="text-center">Administrador</th>
@@ -29,6 +30,7 @@
 
                                     <td>{{ $categoria->id }}</td>
                                     <td>{{ $categoria->nombre }}</td>
+                                    <td style="font-size: 30px">{!! $categoria->icono !!}</td>
                                     <td>{{ $categoria->descripcion }}</td>
                                     <td>{{ $categoria->created_at }}</td>
 

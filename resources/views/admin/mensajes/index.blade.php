@@ -1,18 +1,18 @@
 @extends('layouts.home')
 @section('content')
-@section('title', 'Mensajes')
+@section('title', 'Gestión Mensajes')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-11">
-            <div class="card">
+            <div class="card transparente">
                 <div class="card-header">
                     <b class="lead font-weight-bold"> Mensajes</b>
                 </div>
                 <div class="d-flex flex-row-reverse mr-4">
                     <div class="p-2">
 
-                        <div class="dropdown">
+                        <div class="dropdown dropleft">
                             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-sort-amount-up-alt"></i> Filtrar por

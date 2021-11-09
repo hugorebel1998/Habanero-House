@@ -37,6 +37,11 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::get('/productos/productocategoria/{id}', 'ProductController@productoCategoria')->name('admin.productos.categoria')->middleware('auth');
     Route::get('/productos/producto-inventario/{producto}', 'ProductController@productoInventario')->name('admin.productos.inventario')->middleware('auth');
     Route::post('/productos/producto-inventario-store/{producto}','ProductController@storeProductInventary')->name('admin.productos.inventario.store')->middleware('auth');
+    Route::get('/productos/producto-inventario-edit/{producto}', 'ProductController@editProductInventary')->name('admin.productos.inventario.edit')->middleware('auth');
+    Route::put('/productos/producto-inventario-update/{producto}', 'ProductController@updateProductInventary')->name('admin.productos.inventario.update')->middleware('auth');
+    Route::delete('/productos/producto-inventario-delete/{producto}', 'ProductController@deleteProductInventary')->name('admin.productos.inventario.delete')->middleware('auth');
+    Route::get('/productos/producto-inventario-eliminados', 'ProductController@indexDeleteInventario')->name('admin.productos.inventario.indexDelete')->middleware('auth');
+    Route::get('/productos/producto-inventario-eliminado-restore/{producto}', 'ProductController@inventarioRestore')->name('admin.productos.inventario.inventariorestore')->middleware('auth');
     //Galeria Productos
     // Route::post('productosgaleria/shore/{productogaleria}', 'ProductController@productGalery')->name('productosgaleria.store')->middleware('auth');
 

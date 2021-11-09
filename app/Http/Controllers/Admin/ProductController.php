@@ -145,14 +145,14 @@ class ProductController extends Controller
 
             if ($producto->save()) {
 
-                alert()->success('Éxito al actualizar', 'Producto actualizado con éxito.' .  $producto->nombre);
+                alert()->success('Éxito al actualizar', 'Platillo actualizado con éxito.' .  $producto->nombre);
                 return redirect()->to(route('admin.productos.edit', $producto->id));
             } else {
-                alert()->error('Error al actualizar', 'Ops no se pudo actualizar producto.');
+                alert()->error('Error al actualizar', 'Ops no se pudo actualizar el platillo.');
                 return redirect()->back();
             }
         } else {
-            alert()->error('Error al actualizar', 'Ops no se pudo actualizar producto.');
+            alert()->error('Error al actualizar', 'Ops no se pudo actualizar el platillo.');
             return redirect()->to(route('admin.productos.edit', $producto->id));
         }
     }

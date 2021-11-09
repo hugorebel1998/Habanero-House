@@ -13,5 +13,10 @@ class ProductInventary extends Model
         'nombre', 'cantidad_inventario' , 'precio', 'limitado_inventario','inventario_minimo',
         'product_id'
     ];
+
+    public function getProduct()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }
 

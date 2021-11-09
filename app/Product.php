@@ -21,4 +21,8 @@ class Product extends Model
     public function hetGallery(){
         return $this->hasMany(GaleryProduct::class, 'product_id', 'id');
     }
+
+    public function getInventary(){
+        return $this->hasMany(ProductInventary::class , 'product_id', 'id');
+    }
 }

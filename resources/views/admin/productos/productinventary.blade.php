@@ -1,91 +1,187 @@
 @extends('layouts.home')
 @section('content')
 @section('title', 'Inventario producto')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-11">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-danger shadow">
-                    <div class="card-header">
-                        <div class="card-tittle"><i class="fas fa-clipboard-check"></i> Crear inventario</div>
-                    </div>
-                    <div class="card-body">
-                        <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
-                            @csrf
-                            <div class="row">
-    
-                                <div class="col-md-12">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" name="nombre"
-                                        class="form-control @error('nombre') is-invalid @enderror" placeholder="Nombre"
-                                        value="{{ old('nombre') }}">
-                                    @error('nombre')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-    
-                                <div class="col-md-12 mt-4">
-                                    <label for="cantidad_invventario">Cantidad de inventario</label>
-                                    <input type="number" name="cantidad_invventario"
-                                        class="form-control @error('cantidad_invventario') is-invalid @enderror"
-                                        value="1" min="1" >
-                                    @error('cantidad_invventario')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-    
-    
-                                <div class="col-md-12 mt-4">
-                                    <label for="precio">Precio</label>
-                                    <input type="number" name="precio"
-                                        class="form-control @error('precio') is-invalid @enderror" min="1" step="any"
-                                        value="{{ old('precio') }}" placeholder="0.00">
-                                    @error('precio')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-danger shadow">
+                        <div class="card-header">
+                            <div class="card-tittle"><i class="fas fa-clipboard-check"></i> Crear inventario</div>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('admin.productos.inventario.store', $productoInven->id) }}"
+                                method="POST" enctype="multipart/form-data" autocomplete="off">
+                                @csrf
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" name="nombre"
+                                            class="form-control @error('nombre') is-invalid @enderror"
+                                            placeholder="Nombre" value="{{ old('nombre') }}">
+                                        @error('nombre')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="cantidad">Cantidad de inventario</label>
+                                        <input type="number" name="cantidad"
+                                        min="1" class="form-control @error('cantidad') is-invalid @enderror"
+                                            value="1" >
+                                        @error('cantidad')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="precio">Precio</label>
+                                        <input type="number" name="precio"
+                                            class="form-control @error('precio') is-invalid @enderror" min="1"
+                                            step="any" value="{{ old('precio') }}" placeholder="0.00">
+                                        @error('precio')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <div class="form-group">
+                                            <label>Limite de inventario</label>
+                                            <select name="limitado"
+                                                class="custom-select select2bs4 @error('limitado') is-invalid @enderror"
+                                                style="width: 100%;">
+                                                {{-- <option value="" selected>-- Selecciona una opción--</option> --}}
+                                                <option value="0" @if (old('limitado') == '0') selected="selected" @endif }}>Limitado</option>
+                                                <option value="1" @if (old('limitado') == '1') selected="selected" @endif }}>Ilimitado</option>
+                                            </select>
+                                            @error('limitado')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="minimo">Inventario minimo</label>
+                                        <input type="number" name="minimo"
+                                            class="form-control @error('minimo') is-invalid @enderror" min="1"
+                                            value="1">
+                                        @error('minimo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
                                 </div>
 
-                                <div class="col-md-12 mt-4">
-                                    <div class="form-group">
-                                        <label>Limite de inventario</label>
-                                        <select name="limitado_inventario" class="custom-select select2bs4 @error('limitado_inventario') is-invalid @enderror" 
-                                         style="width: 100%;">
-                                             <option value="" selected>-- Selecciona una opción--</option>
-                                            <option value="0" @if ( old('limitado_inventario') == '0') selected="selected" @endif  }}>Limitado</option>
-                                            <option value="1" @if ( old('limitado_inventario') == '1') selected="selected" @endif  }}>Ilimitado</option>
-                                        </select>
-                                    @error('limitado_inventario')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+
+
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>
+                                        Guardar inventario</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <b class="lead font-weight-bold"> Inventario</b>
+                        </div>
+        
+                        <div class="d-flex flex-row-reverse mr-4">
+                            <div class="p-2">
+                                @can('delete producto')
+                                <div class="dropdown dropleft">
+                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
+                                    </a>
+        
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-ban"></i>
+                                            Inventarios eliminados
+                                        </a>
                                     </div>
                                 </div>
-
-                                <div class="col-md-12 mt-4">
-                                    <label for="inventario_minimo">Inventario minimo</label>
-                                    <input type="number" name="inventario_minimo"
-                                        class="form-control @error('inventario_minimo') is-invalid @enderror" min="1" 
-                                        value="1" >
-                                    @error('inventario_minimo')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
+                                @endcan
                             </div>
-
-    
-    
-                            <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>
-                                    Guardar inventario</button>
+                            <div class="p-2">
+                                
                             </div>
-                        </form>
+                        </div>
+                        <div class="card-body">
+                            <table class="order-table table table-hover" cellspacing="0" width="100%" id="example4">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Existencia</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col" class="text-center">Administrador</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($inventarios as $inventario)
+                                        
+                                    <tr>
+                                        <td>{{ $inventario->id}}</td>
+                                        <td>{{ $inventario->nombre}}</td>
+                                            <td>
+                                                @if ($inventario->limitado_inventario == "1")
+                                                    Ilimitada
+                                                @else
+                                                    {{$inventario->cantidad_inventario}}
+                                                @endif
+                                            </td>
+                                            <td>$ {{ $inventario->precio }} MXN</td>
+                                            
+                                            <td class="text-center">
+                                        @can('update producto')
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-info dropdown-toggle" type="button"
+                                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        <i class="fas fa-cogs"></i> Acciones
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item"
+                                                            href="#"><i class="fas fa-edit"></i> 
+                                                                Editar</a>
+                                                                <a class="dropdown-item"
+                                                                href="#"><i class="fas fa-box-open"></i>
+                                                                    Variantes</a>
+                                                                
+                                                       @can('delete producto')
+                                                        <form action="#"
+                                                            method="POST" class="eliminar_producto">
+                                                            @csrf
+                                                            @method('Delete')
+                                                            <button class="dropdown-item"
+                                                                href="#"><i
+                                                                    class="far fa-trash-alt"></i> Eliminar</button>
+                                                        </form>
+                                                        @endcan
+                                                    </div>
+                                                </div>
+                                            @endcan
+                                            </td>
+                                        </tr>
+                                    
+                                        @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
+
                 </div>
 
             </div>
-
-        </div>
         </div>
     </div>
 </div>

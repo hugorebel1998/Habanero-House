@@ -11,6 +11,7 @@ use App\User;
 use Illuminate\Support\Str;
 use App\Category;
 use App\Http\Requests\ProductRequest;
+use App\ProductInventary;
 
 class ProductController extends Controller
 {
@@ -42,7 +43,7 @@ class ProductController extends Controller
         $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
         $producto->user_id = auth()->user()->id;
-        
+
 
         if ($archivo = $request->file('imagen')) {
             $nombre_imagen = $archivo->getClientOriginalName();
@@ -76,7 +77,7 @@ class ProductController extends Controller
                 return redirect()->back();
             }
         } else {
-            alert()->error('Error','Ops no se pudo crear este platillo');
+            alert()->error('Error', 'Ops no se pudo crear este platillo');
             return redirect()->to(route('admin.productos.create'));
         }
     }
@@ -101,7 +102,7 @@ class ProductController extends Controller
         // $id = $request->user_id;
         $producto = Product::findOrFail($id);
         $request->validate([
-            'nombre'               => 'required|max:30|unique:products,nombre,'. $producto->id,
+            'nombre'               => 'required|max:30|unique:products,nombre,' . $producto->id,
             'precio'               => 'required',
             'descuento'            => 'required',
             'descripcion'          => 'required',
@@ -121,7 +122,7 @@ class ProductController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->editor_id = auth()->user()->id;
 
-       
+
         if ($archivo = $request->file('imagen')) {
             $nombre_imagen = $archivo->getClientOriginalName();
             $ruta = public_path('img/products/');
@@ -163,7 +164,8 @@ class ProductController extends Controller
         return back();
     }
 
-    public function indexDelete(){
+    public function indexDelete()
+    {
 
         $productos = Product::onlyTrashed()->get();
         return view('admin.productos.indexdelete', compact('productos'));
@@ -181,17 +183,60 @@ class ProductController extends Controller
     public function productoCategoria(Request $request, $id)
     {
         $productoListas = Product::where('category_id', $id)->get();
-        
+
         // dd($productoListas);
         return view('admin.productos.productcategory', compact('productoListas'));
-        
     }
 
     public function productoInventario($id)
     {
         $productoInven = Product::findOrFail($id);
-        return view('admin.productos.productinventary', compact('productoInven'));
+        $inventarios    =  ProductInventary::all();
+        return view('admin.productos.productinventary', compact('productoInven', 'inventarios'));
+    }
 
+    public function storeProductInventary(Request $request, $id)
+    {
+        
+        $productInventary = new ProductInventary();
+
+        $request->validate([
+            'nombre'               => 'required|max:30',
+            'cantidad'             => 'min:1|required',
+            'precio'               => 'required',
+            'limitado'             => 'required',
+            'minimo'               => 'required',
+        ]);
+
+        $productInventary-> product_id = $id;
+        $productInventary->nombre = $request->nombre;
+        $productInventary->cantidad_inventario = $request->cantidad;
+        $productInventary->precio = $request->precio;
+        $productInventary->limitado_inventario = $request->limitado;
+        $productInventary->inventario_minimo = $request->minimo;
+        // $productInventary->save();
+
+        // dd($productInventary);   
+        if ($productInventary->save()) {
+            $productInventary->nombre = $request->nombre;
+            $productInventary->cantidad_inventario = $request->cantidad;
+            $productInventary->precio = $request->precio;
+            $productInventary->limitado_inventario = $request->limitado;
+            $productInventary->inventario_minimo = $request->minimo;
+            $productInventary-> product_id = $id;
+
+            if ($productInventary->save()) {
+
+                alert()->success('Guardado con éxito');
+                return redirect()->back();
+            } else {
+                alert()->error('Error', 'Ops no se pudo crear el inventario');
+                return redirect()->back();
+            }
+        } else {
+            alert()->error('Error', 'Ops no se pudo crear el inventario');
+            return redirect()->to(route('admin.productos.inventario'));
+        }
     }
 
 

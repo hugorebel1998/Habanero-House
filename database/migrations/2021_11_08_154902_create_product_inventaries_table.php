@@ -16,7 +16,7 @@ class CreateProductInventariesTable extends Migration
         Schema::create('product_inventaries', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->integer('cantidad_invventario');
+            $table->integer('cantidad_inventario');
             $table->decimal('precio', 11,2);
             $table->integer('limitado_inventario');
             $table->integer('inventario_minimo');

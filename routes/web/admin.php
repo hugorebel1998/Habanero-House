@@ -36,6 +36,7 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::get('/productos/productorestore/{producto}', 'ProductController@productoRestore')->name('admin.productos.productorestore')->middleware('auth');
     Route::get('/productos/productocategoria/{id}', 'ProductController@productoCategoria')->name('admin.productos.categoria')->middleware('auth');
     Route::get('/productos/producto-inventario/{producto}', 'ProductController@productoInventario')->name('admin.productos.inventario')->middleware('auth');
+    Route::post('/productos/producto-inventario-store/{producto}','ProductController@storeProductInventary')->name('admin.productos.inventario.store')->middleware('auth');
     //Galeria Productos
     // Route::post('productosgaleria/shore/{productogaleria}', 'ProductController@productGalery')->name('productosgaleria.store')->middleware('auth');
 

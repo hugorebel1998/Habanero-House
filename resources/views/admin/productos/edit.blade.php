@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-@section('title', 'Editar de productos')
+@section('title', 'Editar platillo')
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -69,7 +69,7 @@
                             </div>
 
 
-                            <div class="col-md-3 mt-3">
+                            {{-- <div class="col-md-3 mt-3">
                                 <label for="precio">Precio</label>
                                 <input type="number" name="precio"
                                     class="form-control @error('precio') is-invalid @enderror" min="0.00" step="any"
@@ -77,7 +77,7 @@
                                 @error('precio')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
 
                             <div class="col-md-3 mt-3">
@@ -125,16 +125,16 @@
                                 </div>
                             </div>
                            
-                            <div class="col-md-4 mt-3">
+                            {{-- <div class="col-md-4 mt-3">
                                 <label for="cantidad">Cantidad</label>
                                 <input type="number" name="cantidad" class="form-control @error('cantidad') is-invalid @enderror"
                                  value="{{  $producto->cantidad }}" >
                                 @error('cantidad')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
-                             <div class="col-md-4 mt-3">
+                             <div class="col-md-3 mt-3">
                                 <label for="código_producto">Codigo producto</label>
                                 <input type="text" name="código_producto" class="form-control @error('código_producto') is-invalid @enderror"
                                  value="{{ $producto->codigo_producto }}" >
@@ -155,7 +155,7 @@
                         </div>
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>
-                                Guardar producto</button>
+                                Actualizar platillo</button>
                         </div>
                     </form>
                 </div>

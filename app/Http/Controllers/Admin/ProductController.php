@@ -37,14 +37,14 @@ class ProductController extends Controller
 
     {
         $producto = new Product();
-        $producto->status = '0';
+        $producto->status = '1';
         $producto->nombre = $request->nombre;
         $producto->slug = Str::slug($request->nombre);
         $producto->category_id = $request->input('categoria') ?: null;
-        $producto->precio = $request->precio;
+        // $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
         $producto->indescuento = $request->en_descuento;
-        $producto->cantidad = $request->cantidad;
+        // $producto->cantidad = $request->cantidad;
         $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
         $producto->user_id = auth()->user()->id;
@@ -65,10 +65,10 @@ class ProductController extends Controller
             $producto->nombre = $request->nombre;
             $producto->slug = Str::slug($request->nombre);
             $producto->category_id = $request->input('categoria') ?: null;
-            $producto->precio = $request->precio;
+            // $producto->precio = $request->precio;
             $producto->descuento = $request->descuento;
             $producto->indescuento = $request->en_descuento;
-            $producto->cantidad = $request->cantidad;
+            // $producto->cantidad = $request->cantidad;
             $producto->codigo_producto = $request->código_producto;
             $producto->descripcion = $request->descripcion;
             $producto->user_id = auth()->user()->id;
@@ -119,10 +119,10 @@ class ProductController extends Controller
         $producto->nombre = $request->nombre;
         $producto->slug = Str::slug($request->nombre);
         $producto->category_id = $request->input('categoria') ?: null;
-        $producto->precio = $request->precio;
+        // $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
         $producto->indescuento = $request->en_descuento;
-        $producto->cantidad = $request->cantidad;
+        // $producto->cantidad = $request->cantidad;
         $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
         $producto->editor_id = auth()->user()->id;
@@ -140,10 +140,10 @@ class ProductController extends Controller
             $producto->status = $request->status;
             $producto->nombre = $request->nombre;
             $producto->category_id = $request->input('categoria') ?: null;
-            $producto->precio = $request->precio;
+            // $producto->precio = $request->precio;
             $producto->descuento = $request->descuento;
             $producto->indescuento = $request->en_descuento;
-            $producto->cantidad = $request->cantidad;
+            // $producto->cantidad = $request->cantidad;
             $producto->codigo_producto = $request->código_producto;
             $producto->descripcion = $request->descripcion;
             $producto->editor_id = auth()->user()->id;

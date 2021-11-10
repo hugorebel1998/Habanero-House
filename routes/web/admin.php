@@ -42,6 +42,10 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::delete('/productos/producto-inventario-delete/{producto}', 'ProductController@deleteProductInventary')->name('admin.productos.inventario.delete')->middleware('auth');
     Route::get('/productos/producto-inventario-eliminados', 'ProductController@indexDeleteInventario')->name('admin.productos.inventario.indexDelete')->middleware('auth');
     Route::get('/productos/producto-inventario-eliminado-restore/{producto}', 'ProductController@inventarioRestore')->name('admin.productos.inventario.inventariorestore')->middleware('auth');
+    Route::get('/productos/producto-variante/{variante}', 'ProductController@productVariant')->name('admin.producto.variante')->middleware('auth');
+    Route::post('/productos/producto-variante-store/{variante}', 'ProductController@productVariantstore')->name('admin.producto.variante.store')->middleware('auth');
+    Route::delete('/productos/producto-variante-delete/{variante}', 'ProductController@deleteProductVariant')->name('admin.productos.variante.delete');
+    
     //Galeria Productos
     // Route::post('productosgaleria/shore/{productogaleria}', 'ProductController@productGalery')->name('productosgaleria.store')->middleware('auth');
 

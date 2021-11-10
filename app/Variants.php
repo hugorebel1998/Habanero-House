@@ -5,13 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class GaleryProduct extends Model
+class Variants extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'galery_products';
-    
+
+    protected $table = 'product_variants';
+
     protected $fillable = [
-        'imagen', 'product_id'
+        'nombre', 'product_id', 'inventory_id'
     ];
+
+   
 }

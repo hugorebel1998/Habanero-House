@@ -11,15 +11,15 @@
                             <div class="card-tittle"><i class="fas fa-clipboard-check"></i> Crear variante</div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.producto.variante.store', $variante->id)}}" method="POST"
+                            <form action="#" method="POST"
                                 enctype="multipart/form-data" autocomplete="off">
                                 @csrf
                                 <div class="row">
 
                                     <div class="col-md-12 mt-1">
                                         <label for="nombre">Nombre</label>
-                                        <input type="hidden" name="product_id" value="{{ $variante->product_id}}">
-                                        <input type="hidden" name="inventory_id" value="{{ $variante->inventory_id}}">
+                                        {{-- <input type="hidden" name="product_id" value="{{ $variante->product_id}}">
+                                        <input type="hidden" name="inventory_id" value="{{ $variante->inventory_id}}"> --}}
                                         <input type="text" name="nombre"
                                             class="form-control @error('nombre') is-invalid @enderror"
                                             placeholder="Nombre" value="{{ old('nombre') }}">

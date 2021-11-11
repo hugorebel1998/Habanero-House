@@ -327,7 +327,7 @@ class ProductController extends Controller
 
     public function productVariant($id)
     {
-        $variante = Product::findOrFail($id);
+        $variante = Product::find($id);
         $variants = Variants::all();
         return view('admin.productos.productovariantes', compact('variante', 'variants'));
     }
@@ -335,7 +335,7 @@ class ProductController extends Controller
     public function productVariantstore(Request $request, $id)
     {
 
-        $inventario = ProductInventary::findOrFail($id);
+        $inventario = ProductInventary::find($id);
         $variante = new Variants();
         $request->validate([
             'nombre' => 'required|max:30',

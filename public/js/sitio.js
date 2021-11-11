@@ -5,6 +5,6 @@ window.onload = function () {
     setTimeout(() => {
         loader.style.visibility = 'hidden';
         loader.style.display = 'none';
-    }, 1000)
+    }, 10)
 }
 

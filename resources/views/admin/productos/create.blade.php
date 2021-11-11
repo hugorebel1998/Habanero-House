@@ -1,12 +1,12 @@
 @extends('layouts.home')
 @section('content')
-@section('title', 'Creación de productos')
+@section('title', 'Crear platillo')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-11">
             <div class="card card-danger shadow">
                 <div class="card-header">
-                    <div class="card-tittle"><i class="fas fa-box"></i> Crear productos</div>
+                    <div class="card-tittle"><i class="fas fa-utensils"></i> Crear platillo</div>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.productos.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">

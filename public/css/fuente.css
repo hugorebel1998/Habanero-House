@@ -47,11 +47,7 @@
     color: #4A4A4A;
 }
 
-#tituloshow :hover {
-    /* font-family: 'Rock Salt', cursive; */
-    font-family: 'Fahkwang', sans-serif;
-    color: red;
-}
+
 
 .tittleshow {
     /* font-family: 'Grechen Fuemen', cursive; */
@@ -66,12 +62,6 @@
     font-size: 1.2rem;
 }
 
-.h4show :hover {
-    /* font-family: 'Grechen Fuemen', cursive; */
-    font-family: 'Fahkwang', sans-serif;
-    font-size: 1.5rem;
-    color: #efb810;
-}
 
 
 /* Termino Vista Show Producto */

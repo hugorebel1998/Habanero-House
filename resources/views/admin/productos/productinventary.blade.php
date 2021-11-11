@@ -151,7 +151,7 @@
                                                             href="{{ route('admin.productos.inventario.edit',$inventario->id)}}"><i class="fas fa-edit"></i> 
                                                                 Editar</a>
                                                                 <a class="dropdown-item"
-                                                                href="#"><i class="fas fa-box-open"></i>
+                                                                href="{{ route('admin.producto.variante', $inventario->id)}}"><i class="fas fa-box-open"></i>
                                                                     Variantes</a>
                                                                 
                                                        @can('delete producto')

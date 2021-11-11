@@ -327,7 +327,7 @@ class ProductController extends Controller
 
     public function productVariant($id)
     {
-        $variante = Product::find($id);
+        $variante = ProductInventary::find($id);
         $variants = Variants::all();
         return view('admin.productos.productovariantes', compact('variante', 'variants'));
     }
@@ -342,6 +342,7 @@ class ProductController extends Controller
 
         ]);
 
+        
         $variante->nombre = $request->nombre;
         $variante->product_id = $inventario->product_id;
         $variante->inventory_id = $id;

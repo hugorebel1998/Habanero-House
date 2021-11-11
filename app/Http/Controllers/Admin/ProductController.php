@@ -137,6 +137,7 @@ class ProductController extends Controller
 
         // dd($producto);
         if ($producto->save()) {
+            $this->getUpdateMinPrecio($producto->id);
             $producto->status = $request->status;
             $producto->nombre = $request->nombre;
             $producto->category_id = $request->input('categoria') ?: null;
@@ -164,9 +165,11 @@ class ProductController extends Controller
     public function delete($id)
     {
         $producto = Product::findOrFail($id);
-        $producto->delete();
+        if ($producto->delete()) {
+            return back();
+        }
+        
         // alert()->success('Éxito al borrar ', 'Se ha borrado el producto.');
-        return back();
     }
 
     public function indexDelete()
@@ -224,6 +227,7 @@ class ProductController extends Controller
 
         // dd($productInventary);   
         if ($productInventary->save()) {
+            $this->getUpdateMinPrecio($productInventary->product_id);
             $productInventary->nombre = $request->nombre;
             $productInventary->cantidad_inventario = $request->cantidad;
             $productInventary->precio = $request->precio;
@@ -274,6 +278,7 @@ class ProductController extends Controller
         // return view('admin.productos.editproductinventary', compact('inventario'));
 
         if ($inventario->save()) {
+            $this->getUpdateMinPrecio($inventario->product_id);
             $inventario->nombre = $request->nombre;
             $inventario->cantidad_inventario = $request->cantidad;
             $inventario->precio = $request->precio;
@@ -299,8 +304,11 @@ class ProductController extends Controller
     public function deleteProductInventary($id)
     {
         $inventario = ProductInventary::findOrFail($id);
-        $inventario->delete();
-        return redirect()->back();
+        //Hacer una condicion 
+        if($inventario->delete()){
+            $this->getUpdateMinPrecio($inventario->product_id);
+            return redirect()->back();
+        }
     }
 
     public function indexDeleteInventario()
@@ -312,7 +320,7 @@ class ProductController extends Controller
     public function inventarioRestore($id)
     {
 
-        $inventario = ProductInventary::findOrFail($id);
+        $inventario = ProductInventary::find($id);
         ProductInventary::onlyTrashed()->findOrFail($id)->restore();
         return redirect()->to(route('admin.productos.inventario.indexDelete'));
     }
@@ -391,5 +399,16 @@ class ProductController extends Controller
     //         return redirect()->back();
     //     }
     // }
+
+    // hacer un helper para esta funcion
+    public function getUpdateMinPrecio($id)
+    {
+        $producto = Product::find($id);
+        $precio = $producto->getPrice->min('precio');
+        $producto->precio = $precio;
+        $producto->save();
+
+
+    }
 
 }

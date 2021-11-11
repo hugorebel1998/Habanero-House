@@ -12,7 +12,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'status','nombre' , 'indescuento', 'descuento','codigo_producto',
+        'status','nombre' , 'indescuento','precio' ,'descuento','codigo_producto',
          'imagen_producto', 'descripcion','user_id' ,'category_id'
     ];
 
@@ -29,6 +29,6 @@ class Product extends Model
     }
 
     public function getPrice(){
-        return $this->hasMany(ProductInventary::class, 'product_id', 'id')->min('precio');
+        return $this->hasMany(ProductInventary::class, 'product_id', 'id');
     }
 }

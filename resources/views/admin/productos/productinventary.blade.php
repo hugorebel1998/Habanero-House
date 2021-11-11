@@ -1,8 +1,8 @@
 @extends('layouts.home')
 @section('content')
 @section('title', 'Inventario producto')
-<h3 style="color: white">Platillo </h3>
 <div class="container-fluid">
+    <h4 class="text-right text-white"> <i class="fas fa-utensils"></i> {{ ucfirst($productoInven->nombre) }}</h4>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="row">

@@ -62,6 +62,26 @@
     font-size: 1.2rem;
 }
 
+.show-menu{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 2.2rem;
+    color: #7a1b0c;
+}
+.h1envios{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 3rem;
+    color: #7a1b0c;
+}
+.penviaos{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.3rem;
+    color: black;
+}
+.penviaosHorario{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.1rem;
+    color: black;
+}
 
 
 /* Termino Vista Show Producto */

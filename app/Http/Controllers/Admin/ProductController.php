@@ -108,12 +108,12 @@ class ProductController extends Controller
         // $id = $request->user_id;
         $producto = Product::findOrFail($id);
         $request->validate([
-            'nombre'               => 'required|max:30|unique:products,nombre,' . $producto->id,
-            'precio'               => 'required',
+            'nombre'               => 'required|max:100|unique:products,nombre,' . $producto->id,
+            // 'precio'               => 'required',
             'descuento'            => 'required',
-            'descripcion'          => 'required',
-            'en_descuento'         => 'required|in:0,1',
-            'cantidad'              => 'min:1|required'
+            // 'descripcion'          => 'required',
+            // 'en_descuento'         => 'required|in:0,1',
+            // 'cantidad'              => 'min:1|required'
         ]);
 
         $producto->status = $request->status;
@@ -169,7 +169,7 @@ class ProductController extends Controller
         if ($producto->delete()) {
             return back();
         }
-        
+
         // alert()->success('Éxito al borrar ', 'Se ha borrado el producto.');
     }
 
@@ -306,7 +306,7 @@ class ProductController extends Controller
     {
         $inventario = ProductInventary::findOrFail($id);
         //Hacer una condicion 
-        if($inventario->delete()){
+        if ($inventario->delete()) {
             $this->getUpdateMinPrecio($inventario->product_id);
             return redirect()->back();
         }
@@ -343,7 +343,7 @@ class ProductController extends Controller
 
         ]);
 
-        
+
         $variante->nombre = $request->nombre;
         $variante->product_id = $inventario->product_id;
         $variante->inventory_id = $id;
@@ -407,8 +407,5 @@ class ProductController extends Controller
         $precio = $producto->getPrice->min('precio');
         $producto->precio = $precio;
         $producto->save();
-
-
     }
-
 }

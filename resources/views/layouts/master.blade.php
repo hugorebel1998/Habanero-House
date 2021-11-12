@@ -17,6 +17,8 @@
     <link href="{{ asset('css/master/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/master/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('css/master/custom.css') }}" rel="stylesheet">
+    <!--Fuentes -->
+    <link rel="stylesheet" href="{{ asset('css/fuente.css') }}">
 
 
     <style>

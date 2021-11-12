@@ -10,6 +10,12 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+        {
+                $this->middleware('auth');
+                $this->middleware('isAdmin');
+        }
+        
     function index(){
         $categorias = Category::all();
         return view('admin.categorias.index', compact('categorias'));

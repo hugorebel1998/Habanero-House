@@ -19,6 +19,7 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin');
     }
     public function index()
     {
@@ -348,8 +349,6 @@ class ProductController extends Controller
             alert()->error('Error', 'Ops no se pudo crear la variante');
             return redirect()->back();
         }
-
-
     }
 
     public function deleteProductVariant($id)

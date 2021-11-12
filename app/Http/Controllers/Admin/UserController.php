@@ -14,6 +14,8 @@ class UserController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
+        $this->middleware('isAdmin');
         $this->middleware(['permission:create usuario'], ['only' => 'create', 'store']);
         $this->middleware(['permission:read usuario'], ['only' => 'index']);
         $this->middleware(['permission:update usuario'], ['only' => 'edit', 'update']);

@@ -2,6 +2,7 @@
 @section('content')
 @section('title', 'Inventario producto')
 <div class="container-fluid">
+    <h4 class="text-right text-white"> <i class="fas fa-utensils"></i> {{ ucfirst($productoInven->nombre) }}</h4>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="row">

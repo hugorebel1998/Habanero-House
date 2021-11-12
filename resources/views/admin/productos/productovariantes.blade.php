@@ -18,8 +18,8 @@
 
                                     <div class="col-md-12 mt-1">
                                         <label for="nombre">Nombre</label>
-                                        <input type="hidden" name="product_id" value="{{ $variante->product_id}}">
-                                        <input type="hidden" name="inventory_id" value="{{ $variante->inventory_id}}">
+                                        {{-- <input type="hidden" name="product_id" value="{{ $variante->product_id}}">
+                                        <input type="hidden" name="inventory_id" value="{{ $variante->inventory_id}}"> --}}
                                         <input type="text" name="nombre"
                                             class="form-control @error('nombre') is-invalid @enderror"
                                             placeholder="Nombre" value="{{ old('nombre') }}">
@@ -43,30 +43,6 @@
                     <div class="card">
                         <div class="card-header">
                             <b class="lead font-weight-bold"> Variantes</b>
-                        </div>
-
-                        <div class="d-flex flex-row-reverse mr-4">
-                            <div class="p-2">
-                                <!-- @can('delete producto')
-                                <div class="dropdown dropleft">
-                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button"
-                                        id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
-                                    </a>
-
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="">
-                                            <i class="fas fa-ban"></i>
-                                            Inventarios eliminados
-                                        </a>
-                                    </div>
-                                </div>
-                                @endcan -->
-                            </div>
-                            <div class="p-2">
-
-                            </div>
                         </div>
                         <div class="card-body">
                             <table class="order-table table table-hover" cellspacing="0" width="100%" id="example4">

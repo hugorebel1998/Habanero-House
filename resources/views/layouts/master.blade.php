@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="routeName" content="{{ Route::currentRouteName() }}">
     <title>@yield('title') - Habanero House </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -19,6 +20,8 @@
     <link href="{{ asset('css/master/custom.css') }}" rel="stylesheet">
     <!--Fuentes -->
     <link rel="stylesheet" href="{{ asset('css/fuente.css') }}">
+
+    @yield('custom_meta')
 
 
     <style>
@@ -333,8 +336,8 @@
     <script src="{{ asset('js/master/images-loded.min.js') }}"></script>
     <script src="{{ asset('js/master/isotope.min.js') }} "></script>
     <script src="{{ asset('js/master/baguetteBox.min.js') }} "></script>
-    <script src="{{ asset('js/master/form-validator.min.js') }} "></script>
-    <script src="{{ asset('js/master/contact-form-script.js') }} "></script>
+    {{-- <script src="{{ asset('js/master/form-validator.min.js') }} "></script>
+    <script src="{{ asset('js/master/contact-form-script.js') }} "></script> --}}
     <script src="{{ asset('js/master/custom.js') }} "></script>
     <!-- bs-custom-file-input -->
     <script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }} "></script>

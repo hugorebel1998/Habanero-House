@@ -2,7 +2,7 @@
 @section('content')
 @section('title', 'Inventario producto')
 <div class="container-fluid">
-    <h4 class="text-right text-white"> <i class="fas fa-utensils"></i> {{ ucfirst($productoInven->nombre) }}</h4>
+    <h4 class="text-right text-white"> <i class="fas fa-utensils"></i> {{ ucfirst($product->nombre) }}</h4>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="row">
@@ -12,7 +12,7 @@
                             <div class="card-tittle"><i class="fas fa-clipboard-check"></i> Crear inventario</div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.productos.inventario.store', $productoInven->id) }}"
+                            <form action="{{ route('admin.productos.inventario.store', $product->id) }}"
                                 method="POST" enctype="multipart/form-data" autocomplete="off">
                                 @csrf
                                 <div class="row">
@@ -125,8 +125,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($productoInven->getInventary as $inventario)
+                                    {{-- @foreach ($product->getInventary as $inventario) --}}
                                         
+                                    @foreach ($inventarios as $inventario)
                                     <tr>
                                         <td>{{ $inventario->id}}</td>
                                         <td>{{ $inventario->nombre}}</td>

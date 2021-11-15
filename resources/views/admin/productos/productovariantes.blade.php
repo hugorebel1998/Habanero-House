@@ -2,6 +2,7 @@
 @section('content')
 @section('title', 'Inventario producto')
 <div class="container-fluid">
+    <h4 class="text-right text-white"> <i class="fas fa-utensils"></i> {{ ucfirst($inventario->nombre) }}</h4>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="row">
@@ -11,7 +12,7 @@
                             <div class="card-tittle"><i class="fas fa-clipboard-check"></i> Crear variante</div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.producto.variante.store', $variante->id)}}" method="POST"
+                            <form action="{{ route('admin.producto.variante.store', $inventario->id)}}" method="POST"
                                 enctype="multipart/form-data" autocomplete="off">
                                 @csrf
                                 <div class="row">
@@ -55,18 +56,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($variants as $variant)
+                                    @foreach ($variantes as $variante)
                                     <tr>
-                                        <td>{{ $variant->id}}</td>
-                                        <td>{{ $variant->nombre}}</td>
+                                        <td>{{ $variante->id}}</td>
+                                        <td>{{ $variante->nombre}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('admin.productos.variante.delete', $variant->id)}}"
+                                            <form action="{{ route('admin.productos.variante.delete', $variante->id)}}"
                                                 method="POST" class="eliminar_variante">
                                                 @csrf
                                                 @method('Delete')
                                                 <button class="btn btn-sm btn-danger"
-                                                    href="{{ route('admin.productos.variante.delete', $variant->id)}}"><i class="far fa-trash-alt"></i> Eliminar</button>
+                                                    href="{{ route('admin.productos.variante.delete', $variante->id)}}"><i class="far fa-trash-alt"></i> Eliminar</button>
                                             </form>
                                         </td>
                                     </tr>

@@ -1,6 +1,10 @@
 @extends('layouts.master')
 @section('title', 'Sobre nosotros')
+@section('custom_meta')
+<meta name="product_id" content="{{ $producto->id }}">
+@stop
 @section('content')
+    
 
     <div class="container-fluid"><br><br>
         <div class="row justify-content-center">
@@ -13,21 +17,36 @@
                                     Regresar al catálogo
                                 </h3>
                             </a>
-                            <form action="" method="POST">
+                            <form action="#" method="POST">
                                 <div class="row ml-4 mt-3">
                                     @csrf
+                                    <input type="hidden" name="inventory" id="field_invenory">
                                     <div class="col-md-7">
                                         <p class="show-menu">{{ strtoupper($producto->nombre) }}</p>
                                     </div>
 
                                     <div class="col-md-12 mb-5">
-                                        @foreach ($producto->getInventary as $inventario)
+                                        {{-- @foreach ($producto->getInventary as $inventario)
                                             <a href="#" style="font-size: 13px" class="badge badge-info p-2">
                                                 <i class="fas fa-cloud-meatball"></i>
                                                 {{ $inventario->nombre }} - $ {{ $inventario->precio }} </a>
-                                        @endforeach
+                                        @endforeach --}}
+                                        <div class="variantes">
+                                            <ul id="inventario">
+                                                @foreach ($producto->getInventary as $inventario)
+                                                    <li>
+                                                        <a href="#" class="inventario"
+                                                            data-inventory-id="{{ $inventario->id }}">{{ $inventario->nombre }} - <b>${{ number_format($inventario->precio), 2, '.', ','}}</b></a>
+                                                    </li>
+                                                @endforeach
+
+                                            </ul>
+
+                                        </div>
+                                        
                                     </div>
                                 </div>
+                                
 
                                 <div class="d-flex flex-row-reverse">
                                     <div class="p-2">

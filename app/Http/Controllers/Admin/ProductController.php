@@ -199,10 +199,10 @@ class ProductController extends Controller
 
     public function productoInventario($id)
     {
-        $productoInven = Product::findOrFail($id);
-        // $inventarios    =  ProductInventary::all();
-        // return view('admin.productos.productinventary', compact('productoInven', 'inventarios'));
-        return view('admin.productos.productinventary', compact('productoInven'));
+        $product = Product::findOrFail($id);
+        $inventarios    =  ProductInventary::all();
+        return view('admin.productos.productinventary', compact('product', 'inventarios'));
+        // return view('admin.productos.productinventary', compact('product'));
     }
 
     public function storeProductInventary(Request $request, $id)
@@ -229,12 +229,12 @@ class ProductController extends Controller
         // dd($productInventary);   
         if ($productInventary->save()) {
             $this->getUpdateMinPrecio($productInventary->product_id);
+            $productInventary->product_id = $id;
             $productInventary->nombre = $request->nombre;
             $productInventary->cantidad_inventario = $request->cantidad;
             $productInventary->precio = $request->precio;
             $productInventary->limitado_inventario = $request->limitado;
             $productInventary->inventario_minimo = $request->minimo;
-            $productInventary->product_id = $id;
 
             if ($productInventary->save()) {
 
@@ -328,15 +328,15 @@ class ProductController extends Controller
 
     public function productVariant($id)
     {
-        $variante = ProductInventary::find($id);
-        $variants = Variants::all();
-        return view('admin.productos.productovariantes', compact('variante', 'variants'));
+        $inventario = ProductInventary::findOrFail($id);
+        $variantes = Variants::select('id', 'nombre', 'inventory_id')->where('inventory_id', '=', $id)->get();
+        return view('admin.productos.productovariantes', compact('inventario', 'variantes'));
     }
 
     public function productVariantstore(Request $request, $id)
     {
 
-        $inventario = ProductInventary::find($id);
+        $inventario = ProductInventary::findOrFail($id);
         $variante = new Variants();
         $request->validate([
             'nombre' => 'required|max:30',

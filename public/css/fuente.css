@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Roboto&family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Pavanam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Fahkwang:ital@1&family=Pavanam&display=swap');
+
+/* Inicio Vista Home*/
+
+#tittlehome {
+    /* font-family: 'Rock Salt', cursive; */
+    /* font-family: 'Pavanam', sans-serif; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 2rem;
+    color: white;
+}
+
+#tittlehomesub {
+    /* font-family: 'Rock Salt', cursive; */
+    /* font-family: 'Pavanam', sans-serif; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.5rem;
+    color: #EDEDED;
+}
+
+#tittledescripcion {
+    /* font-family: 'Rock Salt', cursive; */
+    /* font-family: 'Atkinson Hyperlegible', sans-serif; */
+    /* font-family: 'Pavanam', sans-serif; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.fa-pepper-hot {
+    font-size: 1.6rem;
+    padding: 8px;
+}
+
+
+/* Termino Vista Home*/
+
+
+/* Inicio Vista Show Producto */
+
+#tituloshow {
+    /* font-family: 'Rock Salt', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    color: #4A4A4A;
+}
+
+
+
+.tittleshow {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.h4show {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.2rem;
+}
+
+.show-menu{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 2.2rem;
+    color: #7a1b0c;
+}
+.h1envios{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 3rem;
+    color: #7a1b0c;
+}
+.penviaos{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.3rem;
+    color: black;
+}
+.penviaosHorario{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.1rem;
+    color: black;
+}
+
+
+/* Termino Vista Show Producto */
+
+
+/* Inicio Vista Show Usuari */
+
+#tittleshowuser {
+    /* font-family: 'Rock Salt', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    color: #4A4A4A;
+}
+
+#tittleshowuser :hover {
+    /* font-family: 'Rock Salt', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    color: red;
+}
+
+.tittleshowuser {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.h4showuser {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.3rem;
+}
+
+.h4showuser :hover {
+    /* font-family: 'Grechen Fuemen', cursive; */
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 1.2rem;
+    color: #efb810;
+}
+
+
+/* Termino Vista Show Usuario */
+
+
+/* Vista editar producto */
+
+#small_codigo_product {
+    color: red;
+    font-size: .9rem;
+    font-weight: 500;
+}

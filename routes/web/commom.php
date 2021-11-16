@@ -24,6 +24,9 @@ Route::post('/platillo/inventario/{inventario}', 'ApiJsController@productInvento
 Route::get('/contacto', 'ContactController@mostrar')->name('usuario.mostrar.contacto');
 Route::post('/contacto/mensaje/store', 'ContactController@store')->name('usuario.contacto.sotre');
 
+//Route Arrito de compras
+Route::get('/cart', 'CartController@getCart')->name('usuario.cart');
+
 
 
 

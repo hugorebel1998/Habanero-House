@@ -199,20 +199,19 @@
                         <li class="nav-item "><a class="nav-link"
                                 href="{{ route('usuario.mostrar.contacto') }}"><i class="far fa-id-badge"></i>
                                 Contacto</a></li>
-                        {{-- <li class="nav-item dropdown">
+                        <li class="nav-item">
                         
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" href="{{ route('usuario.cart')}}">
                                 <i class="fas fa-cart-plus"></i></i> 0
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">
                                     <img src="{{ asset('img/products/panuchos.png') }}"
                                         class="rounded mx-auto img-thumbnail" width="80">
                                     
                                 </a>
-                            </div>
-                        </li> --}}
+                            </div> --}}
+                        </li>
                         @guest
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><i

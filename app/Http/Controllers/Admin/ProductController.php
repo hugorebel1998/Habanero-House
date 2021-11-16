@@ -200,7 +200,9 @@ class ProductController extends Controller
     public function productoInventario($id)
     {
         $product = Product::findOrFail($id);
-        $inventarios    =  ProductInventary::all();
+        // $inventarios    =  ProductInventary::all();
+        $inventarios = ProductInventary::select('id', 'nombre', 'cantidad_inventario','precio')->where('product_id', '=', $id)->get();
+
         return view('admin.productos.productinventary', compact('product', 'inventarios'));
         // return view('admin.productos.productinventary', compact('product'));
     }

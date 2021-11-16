@@ -21,6 +21,7 @@
                                 <div class="row ml-4 mt-3">
                                     @csrf
                                     <input type="hidden" name="inventory" id="field_invenory">
+                                    <input type="hidden" name="variant" id="field_variant">
                                     <div class="col-md-7">
                                         <p class="show-menu">{{ strtoupper($producto->nombre) }}</p>
                                     </div>
@@ -41,6 +42,10 @@
                                                 @endforeach
 
                                             </ul>
+                                        </div>
+                                        <hr>
+                                        <div class="variantes mt-3" id="variantes_div">
+                                            <ul id="variantes"></ul>
 
                                         </div>
                                         

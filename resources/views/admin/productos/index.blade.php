@@ -8,7 +8,7 @@
         <div class="col-md-11">
             <div class="card transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold"> Productos</b>
+                    <b class="lead font-weight-bold"> <i class="fas fa-utensils"></i> Platillos</b>
                 </div>
 
                 <div class="d-flex flex-row-reverse mr-4">

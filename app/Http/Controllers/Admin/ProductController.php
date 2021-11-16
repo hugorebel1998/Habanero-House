@@ -328,15 +328,16 @@ class ProductController extends Controller
 
     public function productVariant($id)
     {
-        $inventario = ProductInventary::findOrFail($id);
-        $variantes = Variants::select('id', 'nombre', 'inventory_id')->where('inventory_id', '=', $id)->get();
+        $inventario = ProductInventary::find($id);
+        $variantes = Variants::select('id', 'nombre', 'product_id','inventory_id')->where('inventory_id', '=', $id)->get();
+        // $variantes = Variants::all();
         return view('admin.productos.productovariantes', compact('inventario', 'variantes'));
     }
 
     public function productVariantstore(Request $request, $id)
     {
 
-        $inventario = ProductInventary::findOrFail($id);
+        $inventario = ProductInventary::find($id);
         $variante = new Variants();
         $request->validate([
             'nombre' => 'required|max:30',

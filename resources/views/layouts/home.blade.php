@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }} ">
 
     <style>
+          .content-header {
+           padding: 10px 0.5rem;
+           }
         .portada {
             background: url({{ asset('img/fondo.png') }} ) no-repeat fixed center;
             -webkit-background-size: cover;

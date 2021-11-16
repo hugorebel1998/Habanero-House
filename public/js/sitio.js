@@ -52,12 +52,12 @@ function load_product_variants() {
             data = JSON.parse(data);
             if (data.length > 0) {
                 document.getElementById('variantes_div').style.display = 'block';
-                data.forEach(function(element, index) {
+                data.forEach(function (element, index) {
                     variant = '';
-                    variant += '<li>'; 
-                       variant += '<a href="#" onclick="document.getElementById(\'field_variant\').value='+element.id+'; return false;">';
-                           variant += element.nombre;
-                       variant += '</a>';
+                    variant += '<li>';
+                    variant += '<a href="#" class="variante" onclick="variantes_remove(); document.getElementById(\'field_variant\').value=' + element.id + '; this.classList.add(\'active\'); return false;">';
+                    variant += element.nombre;
+                    variant += '</a>';
                     variant += '</li>';
                     document.getElementById('variantes').innerHTML += variant;
 
@@ -70,5 +70,12 @@ function load_product_variants() {
 
 }
 
+function variantes_remove()
+{
+    let variants_list = document.getElementsByClassName('variante');
+    for (i = 0; i < variants_list.length; i++) {
+        variants_list[i].classList.remove('active');
+    }    
+}
 
 

@@ -17,7 +17,7 @@
                                     Regresar al catálogo
                                 </h3>
                             </a>
-                            <form action="#" method="POST">
+                            <form action="{{ route('usuario.cart.store',$producto->id)}}" method="POST">
                                 <div class="row ml-4 mt-3">
                                     @csrf
                                     <input type="hidden" name="inventory" id="field_invenory">
@@ -55,8 +55,8 @@
 
                                 <div class="d-flex flex-row-reverse">
                                     <div class="p-2">
-                                        <a href="#" class="btn btn-sm btn-primary"> <i
-                                                class="fas fa-cart-arrow-down"></i> Agregar al carrito</a>
+                                        <button type="submit" class="btn btn-sm btn-primary"> <i
+                                                class="fas fa-cart-arrow-down"></i> Agregar al carrito</button>
                                     </div>
                                     <div class="p-1">
                                         <a href="#" class="btn btn-sm btn-success amount_action" data-action="minus"> <i
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="p-1">
                                         <input type="number" id="add_to_cart" name="cantidad" class="form-control"
-                                            value="1" min="1">
+                                            value="1">
                                     </div>
                                     <div class="p-1 ">
                                         <a href="#" class="btn btn-sm btn-success amount_action" data-action="plus"> <i

@@ -22,9 +22,9 @@ if (route) {
     }
     let amount_action = document.getElementsByClassName('amount_action');
     for (i = 0; i < amount_action.length; i++) {
-        amount_action[i].addEventListener('click',function(e){
-         e.preventDefault();
-         product_sigle_amount()
+        amount_action[i].addEventListener('click', function (e) {
+            e.preventDefault();
+            product_sigle_amount(this.getAttribute('data-action'));
         });
     }
 
@@ -77,12 +77,26 @@ function load_product_variants() {
 
 }
 
-function variantes_remove()
-{
+function variantes_remove() {
     let variants_list = document.getElementsByClassName('variante');
     for (i = 0; i < variants_list.length; i++) {
         variants_list[i].classList.remove('active');
-    }    
+    }
 }
 
+function product_sigle_amount(action) {
+    var cantidad = document.getElementById('add_to_cart');
+    var nueva_cantidad;
+    if (action == "plus") {
+        nueva_cantidad = parseInt(cantidad.value) + parseInt(1);
+        cantidad.value = nueva_cantidad;
+    } else if (action == 'minus') {
+        if (parseInt(cantidad.value) > 1) {
+            nueva_cantidad = parseInt(cantidad.value) - parseInt(1);
+            cantidad.value = nueva_cantidad;
+        }
+    }
+
+
+}
 

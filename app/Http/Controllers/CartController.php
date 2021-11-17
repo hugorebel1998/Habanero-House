@@ -16,9 +16,10 @@ class CartController extends Controller
     public function getCart()
     {
         $orden = $this->getUserOrder();
-        $orden_id = $this->getUserOrder()->id;
-        return count(collect($orden->getItems));
-        return view('cart.index');
+        // $orden_id = $this->getUserOrder()->i
+        $items = $orden->getItems;
+        
+        return view('cart.index', compact('orden', 'items'));
     }
 
     public function getUserOrder()

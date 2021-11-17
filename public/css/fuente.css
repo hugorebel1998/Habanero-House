@@ -132,3 +132,10 @@
     font-size: .9rem;
     font-weight: 500;
 }
+
+/*Carrito de compras */
+#no-card-text{
+    font-size: 1rem;
+    color: black;
+    text-align: center;
+}

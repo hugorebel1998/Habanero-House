@@ -427,6 +427,13 @@
         font-weight: 500;
         font-family: 'Nanum Gothic', sans-serif;
     }
+    .why-text h2 {
+        color: #ffffff;
+        font-size: 28px;
+        border-bottom: 2px solid white;
+        font-weight: 500;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
     
     .why-text p {
         color: #ffffff;
@@ -477,6 +484,40 @@
     font-size: 15px;
     font-family: 'Oxygen', sans-serif;
 }
+
+.variantes ul{
+    margin: 0px;
+    padding: 0px;
+}
+
+.variantes ul li{
+    display: inline-block;
+    padding: 8px;
+}
+
+.variantes ul li a{
+    border: 1px solid #d6d6d6;
+    border-radius: 18px;
+    color: #333;
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.variantes ul li a:hover{
+    background-color: #58C3BB !important;
+    border: 1px solid white !important;
+    color: white !important;
+}
+
+.variantes ul li a.active{
+    background-color: #58C3BB !important;
+    border: 1px solid white !important;
+    color: white !important;
+}
+
 
 
 

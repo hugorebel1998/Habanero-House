@@ -8,7 +8,7 @@
         <div class="col-md-11">
             <div class="card transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold"> Productos</b>
+                    <b class="lead font-weight-bold"> <i class="fas fa-utensils"></i> Platillos</b>
                 </div>
 
                 <div class="d-flex flex-row-reverse mr-4">
@@ -55,7 +55,9 @@
                                     <td>{{ $producto->categoriaProduct->nombre }}</td>
                                     <td><img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
                                             class="rounded mx-auto img-thumbnail" width="80"></td>
-                                   <td>$ {{ $producto->precio }}</td>
+                                   <td>
+                                       $ {{ $producto->precio }}
+                                   </td>
                                     <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp) }}</td>
                                     <td class="text-center">
                                 @can('update producto')

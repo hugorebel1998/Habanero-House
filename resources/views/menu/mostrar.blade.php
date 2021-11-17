@@ -53,7 +53,7 @@
                             <img src="{{ asset('img/products/' . $productosAntojito->imagen_producto) }}" class="img-fluid"
                                 alt="{{ $productosAntojito->nombre }}">
                             <div class="why-text">
-                                <p>{{ $productosAntojito->descripcion }}</p>
+                                <h2>{{ $productosAntojito->nombre }}</h2>
                                 <h5> $ {{ $productosAntojito->precio }}</h5>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
@@ -78,7 +78,7 @@
                                 class="img-fluid" alt="{{ $productosSopa->nmbre }}">
                             <div class="why-text">
                                 <h4>{{ $productosSopa->nombre }}</h4>
-                                <p>{{ $productosSopa->descripcion }}</p>
+                                {{-- <p>{{ $productosSopa->descripcion }}</p> --}}
                                 <h5> $ {{ $productosSopa->precio }}</h5>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
@@ -102,7 +102,7 @@
                                 class="img-fluid" alt="{{ $productosEnsalada->nmbre }}">
                             <div class="why-text">
                                 <h4>{{ $productosEnsalada->nombre }}</h4>
-                                <p>{{ $productosEnsalada->descripcion }}</p>
+                                {{-- <p>{{ $productosEnsalada->descripcion }}</p> --}}
                                 <h5> $ {{ $productosEnsalada->precio }}</h5>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">

@@ -19,6 +19,7 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin');
     }
     public function index()
     {
@@ -37,14 +38,14 @@ class ProductController extends Controller
 
     {
         $producto = new Product();
-        $producto->status = '0';
+        $producto->status = '1';
         $producto->nombre = $request->nombre;
         $producto->slug = Str::slug($request->nombre);
         $producto->category_id = $request->input('categoria') ?: null;
-        $producto->precio = $request->precio;
+        // $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
         $producto->indescuento = $request->en_descuento;
-        $producto->cantidad = $request->cantidad;
+        // $producto->cantidad = $request->cantidad;
         $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
         $producto->user_id = auth()->user()->id;
@@ -65,10 +66,10 @@ class ProductController extends Controller
             $producto->nombre = $request->nombre;
             $producto->slug = Str::slug($request->nombre);
             $producto->category_id = $request->input('categoria') ?: null;
-            $producto->precio = $request->precio;
+            // $producto->precio = $request->precio;
             $producto->descuento = $request->descuento;
             $producto->indescuento = $request->en_descuento;
-            $producto->cantidad = $request->cantidad;
+            // $producto->cantidad = $request->cantidad;
             $producto->codigo_producto = $request->código_producto;
             $producto->descripcion = $request->descripcion;
             $producto->user_id = auth()->user()->id;
@@ -107,22 +108,22 @@ class ProductController extends Controller
         // $id = $request->user_id;
         $producto = Product::findOrFail($id);
         $request->validate([
-            'nombre'               => 'required|max:30|unique:products,nombre,' . $producto->id,
-            'precio'               => 'required',
+            'nombre'               => 'required|max:100|unique:products,nombre,' . $producto->id,
+            // 'precio'               => 'required',
             'descuento'            => 'required',
-            'descripcion'          => 'required',
-            'en_descuento'         => 'required|in:0,1',
-            'cantidad'              => 'min:1|required'
+            // 'descripcion'          => 'required',
+            // 'en_descuento'         => 'required|in:0,1',
+            // 'cantidad'              => 'min:1|required'
         ]);
 
         $producto->status = $request->status;
         $producto->nombre = $request->nombre;
         $producto->slug = Str::slug($request->nombre);
         $producto->category_id = $request->input('categoria') ?: null;
-        $producto->precio = $request->precio;
+        // $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
         $producto->indescuento = $request->en_descuento;
-        $producto->cantidad = $request->cantidad;
+        // $producto->cantidad = $request->cantidad;
         $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
         $producto->editor_id = auth()->user()->id;
@@ -137,13 +138,14 @@ class ProductController extends Controller
 
         // dd($producto);
         if ($producto->save()) {
+            $this->getUpdateMinPrecio($producto->id);
             $producto->status = $request->status;
             $producto->nombre = $request->nombre;
             $producto->category_id = $request->input('categoria') ?: null;
-            $producto->precio = $request->precio;
+            // $producto->precio = $request->precio;
             $producto->descuento = $request->descuento;
             $producto->indescuento = $request->en_descuento;
-            $producto->cantidad = $request->cantidad;
+            // $producto->cantidad = $request->cantidad;
             $producto->codigo_producto = $request->código_producto;
             $producto->descripcion = $request->descripcion;
             $producto->editor_id = auth()->user()->id;
@@ -164,9 +166,11 @@ class ProductController extends Controller
     public function delete($id)
     {
         $producto = Product::findOrFail($id);
-        $producto->delete();
+        if ($producto->delete()) {
+            return back();
+        }
+
         // alert()->success('Éxito al borrar ', 'Se ha borrado el producto.');
-        return back();
     }
 
     public function indexDelete()
@@ -195,10 +199,12 @@ class ProductController extends Controller
 
     public function productoInventario($id)
     {
-        $productoInven = Product::findOrFail($id);
+        $product = Product::findOrFail($id);
         // $inventarios    =  ProductInventary::all();
-        // return view('admin.productos.productinventary', compact('productoInven', 'inventarios'));
-        return view('admin.productos.productinventary', compact('productoInven'));
+        $inventarios = ProductInventary::select('id', 'nombre', 'cantidad_inventario','precio')->where('product_id', '=', $id)->get();
+
+        return view('admin.productos.productinventary', compact('product', 'inventarios'));
+        // return view('admin.productos.productinventary', compact('product'));
     }
 
     public function storeProductInventary(Request $request, $id)
@@ -224,12 +230,13 @@ class ProductController extends Controller
 
         // dd($productInventary);   
         if ($productInventary->save()) {
+            $this->getUpdateMinPrecio($productInventary->product_id);
+            $productInventary->product_id = $id;
             $productInventary->nombre = $request->nombre;
             $productInventary->cantidad_inventario = $request->cantidad;
             $productInventary->precio = $request->precio;
             $productInventary->limitado_inventario = $request->limitado;
             $productInventary->inventario_minimo = $request->minimo;
-            $productInventary->product_id = $id;
 
             if ($productInventary->save()) {
 
@@ -274,6 +281,7 @@ class ProductController extends Controller
         // return view('admin.productos.editproductinventary', compact('inventario'));
 
         if ($inventario->save()) {
+            $this->getUpdateMinPrecio($inventario->product_id);
             $inventario->nombre = $request->nombre;
             $inventario->cantidad_inventario = $request->cantidad;
             $inventario->precio = $request->precio;
@@ -299,8 +307,11 @@ class ProductController extends Controller
     public function deleteProductInventary($id)
     {
         $inventario = ProductInventary::findOrFail($id);
-        $inventario->delete();
-        return redirect()->back();
+        //Hacer una condicion 
+        if ($inventario->delete()) {
+            $this->getUpdateMinPrecio($inventario->product_id);
+            return redirect()->back();
+        }
     }
 
     public function indexDeleteInventario()
@@ -312,27 +323,29 @@ class ProductController extends Controller
     public function inventarioRestore($id)
     {
 
-        $inventario = ProductInventary::findOrFail($id);
+        $inventario = ProductInventary::find($id);
         ProductInventary::onlyTrashed()->findOrFail($id)->restore();
         return redirect()->to(route('admin.productos.inventario.indexDelete'));
     }
 
     public function productVariant($id)
     {
-        $variante = Product::findOrFail($id);
-        $variants = Variants::all();
-        return view('admin.productos.productovariantes', compact('variante', 'variants'));
+        $inventario = ProductInventary::find($id);
+        $variantes = Variants::select('id', 'nombre', 'product_id','inventory_id')->where('inventory_id', '=', $id)->get();
+        // $variantes = Variants::all();
+        return view('admin.productos.productovariantes', compact('inventario', 'variantes'));
     }
 
     public function productVariantstore(Request $request, $id)
     {
 
-        $inventario = ProductInventary::findOrFail($id);
+        $inventario = ProductInventary::find($id);
         $variante = new Variants();
         $request->validate([
             'nombre' => 'required|max:30',
 
         ]);
+
 
         $variante->nombre = $request->nombre;
         $variante->product_id = $inventario->product_id;
@@ -348,8 +361,6 @@ class ProductController extends Controller
             alert()->error('Error', 'Ops no se pudo crear la variante');
             return redirect()->back();
         }
-
-
     }
 
     public function deleteProductVariant($id)
@@ -392,4 +403,12 @@ class ProductController extends Controller
     //     }
     // }
 
+    // hacer un helper para esta funcion
+    public function getUpdateMinPrecio($id)
+    {
+        $producto = Product::find($id);
+        $precio = $producto->getPrice->min('precio');
+        $producto->precio = $precio;
+        $producto->save();
+    }
 }

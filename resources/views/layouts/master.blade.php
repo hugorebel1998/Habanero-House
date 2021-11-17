@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="routeName" content="{{ Route::currentRouteName() }}">
     <title>@yield('title') - Habanero House </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -17,6 +18,10 @@
     <link href="{{ asset('css/master/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/master/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('css/master/custom.css') }}" rel="stylesheet">
+    <!--Fuentes -->
+    <link rel="stylesheet" href="{{ asset('css/fuente.css') }}">
+
+    @yield('custom_meta')
 
 
     <style>
@@ -194,20 +199,19 @@
                         <li class="nav-item "><a class="nav-link"
                                 href="{{ route('usuario.mostrar.contacto') }}"><i class="far fa-id-badge"></i>
                                 Contacto</a></li>
-                        {{-- <li class="nav-item dropdown">
+                        <li class="nav-item">
                         
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" href="{{ route('usuario.cart')}}">
                                 <i class="fas fa-cart-plus"></i></i> 0
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">
                                     <img src="{{ asset('img/products/panuchos.png') }}"
                                         class="rounded mx-auto img-thumbnail" width="80">
                                     
                                 </a>
-                            </div>
-                        </li> --}}
+                            </div> --}}
+                        </li>
                         @guest
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><i
@@ -331,8 +335,8 @@
     <script src="{{ asset('js/master/images-loded.min.js') }}"></script>
     <script src="{{ asset('js/master/isotope.min.js') }} "></script>
     <script src="{{ asset('js/master/baguetteBox.min.js') }} "></script>
-    <script src="{{ asset('js/master/form-validator.min.js') }} "></script>
-    <script src="{{ asset('js/master/contact-form-script.js') }} "></script>
+    {{-- <script src="{{ asset('js/master/form-validator.min.js') }} "></script>
+    <script src="{{ asset('js/master/contact-form-script.js') }} "></script> --}}
     <script src="{{ asset('js/master/custom.js') }} "></script>
     <!-- bs-custom-file-input -->
     <script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }} "></script>

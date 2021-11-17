@@ -9,7 +9,7 @@
                     <div class="card-tittle"><i class="fas fa-utensils"></i> Crear platillo</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.productos.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <form action="{{ route('admin.productos.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
 
@@ -72,7 +72,7 @@
                             </div>
 
 
-                            <div class="col-md-4 mt-3">
+                            {{-- <div class="col-md-4 mt-3">
                                 <label for="precio">Precio</label>
                                 <input type="number" name="precio"
                                     class="form-control @error('precio') is-invalid @enderror" min="0.00" step="any"
@@ -80,7 +80,7 @@
                                 @error('precio')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
 
                             <div class="col-md-4 mt-3">
@@ -108,14 +108,14 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4 mt-3">
+                            {{-- <div class="col-md-4 mt-3">
                                 <label for="cantidad">Inventario</label>
                                 <input type="number" name="cantidad" class="form-control @error('cantidad') is-invalid @enderror" value="{{ old('cantidad') }}" 
                                      placeholder="0" min="0">
                                 @error('cantidad')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                              <div class="col-md-4 mt-3">
                                 <label for="código_producto">Codigo producto</label>

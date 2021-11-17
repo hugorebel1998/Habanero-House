@@ -12,8 +12,8 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'status','nombre', 'precio' , 'indescuento', 'descuento','cantidad',
-        'codigo_producto', 'imagen_producto', 'descripcion','user_id' ,'category_id'
+        'status','nombre' , 'indescuento','precio' ,'descuento','codigo_producto',
+         'imagen_producto', 'descripcion','user_id' ,'category_id'
     ];
 
     public function categoriaProduct(){
@@ -26,5 +26,9 @@ class Product extends Model
 
     public function getInventary(){
         return $this->hasMany(ProductInventary::class , 'product_id', 'id');
+    }
+
+    public function getPrice(){
+        return $this->hasMany(ProductInventary::class, 'product_id', 'id');
     }
 }

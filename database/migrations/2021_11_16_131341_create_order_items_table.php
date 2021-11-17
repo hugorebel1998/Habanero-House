@@ -21,7 +21,7 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedBigInteger('inventory_id');
             $table->unsignedBigInteger('variant_id');
             $table->text('label_item')->nullable();
-            $table->text('cantidad')->default(1);
+            $table->integer('cantidad')->default(1);
             $table->integer('descuento_status')->default(0);
             $table->integer('descuento')->default(0);
             $table->decimal('precio_unitario', 11,2);

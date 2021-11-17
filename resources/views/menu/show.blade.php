@@ -55,11 +55,11 @@
 
                                 <div class="d-flex flex-row-reverse">
                                     <div class="p-2">
-                                        <a href="#" class="btn btn-sm btn-primary" data-action="minus"> <i
+                                        <a href="#" class="btn btn-sm btn-primary"> <i
                                                 class="fas fa-cart-arrow-down"></i> Agregar al carrito</a>
                                     </div>
                                     <div class="p-1">
-                                        <a href="#" class="btn btn-sm btn-success" data-action="minus"> <i
+                                        <a href="#" class="btn btn-sm btn-success amount_action" data-action="minus"> <i
                                                 class="fas fa-minus"></i></a>
                                     </div>
                                     <div class="p-1">
@@ -67,7 +67,7 @@
                                             value="1" min="1">
                                     </div>
                                     <div class="p-1 ">
-                                        <a href="#" class="btn btn-sm btn-success" data-action="plus"> <i
+                                        <a href="#" class="btn btn-sm btn-success amount_action" data-action="plus"> <i
                                                 class="fas fa-plus"></i></a>
                                     </div>
                                 </div>

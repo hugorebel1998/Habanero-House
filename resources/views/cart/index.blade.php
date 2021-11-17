@@ -13,7 +13,7 @@
                    animate a agregar uno de nuestros increibles platillos. <i class="fas fa-utensils"></i>
                 </p>
                 <div class="text-center">
-                    <a href="{{ route('usuario.mostrar.menu')}}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Ir al menú</a>
+                    <a href="{{ route('usuario.mostrar.menu')}}" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Ir al menú</a>
 
                 </div>
                 </div>

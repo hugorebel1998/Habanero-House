@@ -20,6 +20,13 @@ if (route) {
     for (i = 0; i < inventory.length; i++) {
         inventory[i].addEventListener('click', load_product_variants);
     }
+    let amount_action = document.getElementsByClassName('amount_action');
+    for (i = 0; i < amount_action.length; i++) {
+        amount_action[i].addEventListener('click',function(e){
+         e.preventDefault();
+         product_sigle_amount()
+        });
+    }
 
 }
 

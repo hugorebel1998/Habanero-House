@@ -26,7 +26,7 @@ Route::post('/contacto/mensaje/store', 'ContactController@store')->name('usuario
 
 //Route Arrito de compras
 Route::get('/cart', 'CartController@getCart')->name('usuario.cart');
-
+Route::post('/cart/add/{product}','CartController@postCart')->name('usuario.cart.store');
 
 
 

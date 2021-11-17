@@ -41,42 +41,67 @@ class CartController extends Controller
     }
     public function postCart(Request $request, $id)
     {
-        $orden = $this->getUserOrder();
-        $producto = Product::find($id);
-        $inventario = ProductInventary::find($request->inventory);
-
-        if ($request->cantidad < 1) {
-            alert()->error('Error', 'Es necesario ingresar la cantidad que deseas ordenar');
+        if (is_null($request->inventory)) {
+            alert()->error('Porfavor selecciona un platillo');
             return redirect()->back();
+            // } elseif (is_null($request->variant)) {
+            //     alert()->error('Porfavor selecciona una variante');
+            //     return redirect()->back();
         } else {
-            $oitem = new OrdenItem();
-            $total = $producto->precio * $request->cantidad;
-            if ($request->variant) {
-                $variante = Variants::find($request->variant);
-                $variante_label = '/' . $variante->nombre;
-            } else {
-                $variante_label = '';
-            }
-            $label = $producto->nombre . '/' . $inventario->nombre . $variante_label;
-            $oitem->user_id = Auth::user()->id;
-            $oitem->orden_id = $orden->id;
-            $oitem->product_id = $id;
-            $oitem->inventory_id = $request->inventory;
-            $oitem->variant_id = $request->variant;
-            $oitem->variant_id = $request->variant;
-            $oitem->label_item = $label;
-            $oitem->cantidad = $request->cantidad;
-            $oitem->descuento_status = $producto->indescuento;
-            $oitem->descuento = $producto->descuento;
-            $oitem->precio_unitario = $producto->precio;
-            $oitem->total = $total;
+            $inventario = ProductInventary::where('id', $request->inventory)->count();
 
-            if ($oitem->save()) {
-                alert()->success('Platillo agregado al carrido de compras');
+
+            if ($inventario == '0') {
+                alert()->error('La opción seleccionada no éxiste');
                 return redirect()->back();
-            }
-        }
+            } else {
+                $inventario = ProductInventary::find($request->inventory);
+                if ($inventario->product_id != $id) {
+                    alert()->error('No podemos agregar este platillo al carritoo de compras');
+                    return redirect()->back();
+                } else {
 
-        // dd($oitem);
+                    $orden = $this->getUserOrder();
+                    $producto = Product::find($id);
+                    if ($request->cantidad < 1) {
+                        alert()->error('Error', 'Es necesario ingresar la cantidad que deseas ordenar');
+                        return redirect()->back();
+                    } else {
+                        if (count(collect($inventario->getVariants)) > "0") {
+                            if (is_null($request->variant)) {
+                                alert()->error('Seleciona una variante para el platillo');
+                                return redirect()->back();
+                            }
+                        }
+                        $oitem = new OrdenItem();
+                        $total = $producto->precio * $request->cantidad;
+                        if ($request->variant) {
+                            $variante = Variants::find($request->variant);
+                            $variante_label = '/' . $variante->nombre;
+                        } else {
+                            $variante_label = '';
+                        }
+                        $label = $producto->nombre . '/' . $inventario->nombre . $variante_label;
+                        $oitem->user_id = Auth::user()->id;
+                        $oitem->orden_id = $orden->id;
+                        $oitem->product_id = $id;
+                        $oitem->inventory_id = $request->inventory;
+                        $oitem->variant_id = $request->variant;
+                        $oitem->label_item = $label;
+                        $oitem->cantidad = $request->cantidad;
+                        $oitem->descuento_status = $producto->indescuento;
+                        $oitem->descuento = $producto->descuento;
+                        $oitem->precio_unitario = $producto->precio;
+                        $oitem->total = $total;
+
+                        if ($oitem->save()) {
+                            alert()->success('Platillo agregado al carrido de compras');
+                            return redirect()->back();
+                        }
+                    }
+                }
+            }
+            // dd($oitem);
+        }
     }
 }

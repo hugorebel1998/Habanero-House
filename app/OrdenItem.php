@@ -11,7 +11,7 @@ class OrdenItem extends Model
 
     protected $fillable = [
         'user_id', 'orden_id', 'product_id', 'inventory_id', 'variant_id', 'label_item',
-        'cantidad','descuento_status','descuento', 'precio_unitario', 'total'
+        'cantidad','descuento_status','descuento', 'precio_original' ,'precio_unitario', 'total'
     ];
 
 }

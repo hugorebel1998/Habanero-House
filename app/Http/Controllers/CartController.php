@@ -73,8 +73,10 @@ class CartController extends Controller
                                 return redirect()->back();
                             }
                         }
+
                         $oitem = new OrdenItem();
-                        $total = $producto->precio * $request->cantidad;
+                        $precio = $this->getCalcularPrecio($producto->indescuento, $producto->descuento, $inventario->precio);
+                        $total = $precio * $request->cantidad;
                         if ($request->variant) {
                             $variante = Variants::find($request->variant);
                             $variante_label = '/' . $variante->nombre;
@@ -91,9 +93,11 @@ class CartController extends Controller
                         $oitem->cantidad = $request->cantidad;
                         $oitem->descuento_status = $producto->indescuento;
                         $oitem->descuento = $producto->descuento;
-                        $oitem->precio_unitario = $producto->precio;
+                        $oitem->precio_original = $inventario->precio;
+                        $oitem->precio_unitario = $precio;
                         $oitem->total = $total;
 
+                        // dd($oitem);
                         if ($oitem->save()) {
                             alert()->success('Platillo agregado al carrido de compras');
                             return redirect()->back();
@@ -103,5 +107,16 @@ class CartController extends Controller
             }
             // dd($oitem);
         }
+    }
+
+    public function getCalcularPrecio($indescuento, $descuento, $precio )
+    {
+     $precio_final = $precio;
+     if ($indescuento == "1") {
+         $calcular_descuento = '0.'.$descuento;
+         $calcular_descuento_valor = $precio * $calcular_descuento;
+         $precio_final  = $precio - $calcular_descuento_valor;
+     }
+     return $precio_final;
     }
 }

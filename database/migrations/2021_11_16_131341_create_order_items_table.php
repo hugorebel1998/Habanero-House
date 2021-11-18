@@ -24,6 +24,7 @@ class CreateOrderItemsTable extends Migration
             $table->integer('cantidad')->default(1);
             $table->integer('descuento_status')->default(0);
             $table->integer('descuento')->default(0);
+            $table->decimal('precio_original',11,2)->nullable();
             $table->decimal('precio_unitario', 11,2);
             $table->decimal('total', 11,2);
             $table->foreign('user_id')->references('id')->on('users');

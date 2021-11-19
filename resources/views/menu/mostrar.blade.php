@@ -82,7 +82,7 @@
                                 <h5> $ {{ $productosSopa->precio }}</h5>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
-                                        <a href="{{ route('usuario.mostrar.show', [$productosAntojito->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
+                                        <a href="{{ route('usuario.mostrar.show', [$productosSopa->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
                                     </div>
                                     <div class="p-2">
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-plus"></i></a>
@@ -106,7 +106,7 @@
                                 <h5> $ {{ $productosEnsalada->precio }}</h5>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
-                                        <a href="{{ route('usuario.mostrar.show', [$productosAntojito->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
+                                        <a href="{{ route('usuario.mostrar.show', [$productosEnsalada->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
                                     </div>
                                     <div class="p-2">
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-plus"></i></a>

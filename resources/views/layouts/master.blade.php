@@ -147,8 +147,8 @@
             display: block;
             width: 100px;
             height: calc(1.5em + 0.3rem + 2px);
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
+            padding: 1.120rem 0.75rem;
+            font-size: 1.3rem;
             font-weight: 400;
             line-height: 1.5;
             color: #495057;

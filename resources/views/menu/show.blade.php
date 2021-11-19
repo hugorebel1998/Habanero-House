@@ -9,20 +9,15 @@
     <div class="container-fluid"><br><br>
         <div class="row justify-content-center">
             <div class="col-md-11 mt-5 mb-5"><br>
-                <div class="card card-danger card-outline shadow">
+                <div class="card card-danger card-outline shadow-lg">
                     <div class="row">
                         <div class="col-md-5">
-                            <a href="#">
-                                <h3 class="ml-5 mt-3">
-                                    Regresar al catálogo
-                                </h3>
-                            </a>
                             <form action="{{ route('usuario.cart.store',$producto->id)}}" method="POST">
                                 <div class="row ml-4 mt-3">
                                     @csrf
                                     <input type="hidden" name="inventory" id="field_invenory" value="">
                                     <input type="hidden" name="variant" id="field_variant" value="">
-                                    <div class="col-md-7">
+                                    <div class="col-md-9">
                                         <p class="show-menu">{{ strtoupper($producto->nombre) }}</p>
                                     </div>
 
@@ -55,11 +50,11 @@
 
                                 <div class="d-flex flex-row-reverse">
                                     <div class="p-2">
-                                        <button type="submit" class="btn btn-sm btn-primary"> <i
+                                        <button type="submit" class="btn btn-primary"> <i
                                                 class="fas fa-cart-arrow-down"></i> Agregar al carrito</button>
                                     </div>
                                     <div class="p-1">
-                                        <a href="#" class="btn btn-sm btn-success amount_action" data-action="minus"> <i
+                                        <a href="#" class="btn btn-success amount_action" data-action="minus"> <i
                                                 class="fas fa-minus"></i></a>
                                     </div>
                                     <div class="p-1">
@@ -67,13 +62,13 @@
                                             value="1">
                                     </div>
                                     <div class="p-1 ">
-                                        <a href="#" class="btn btn-sm btn-success amount_action" data-action="plus"> <i
+                                        <a href="#" class="btn btn-success amount_action" data-action="plus"> <i
                                                 class="fas fa-plus"></i></a>
                                     </div>
                                 </div>
-                                <div class="row ml-4">
+                                <div class="row ml-4 mt-3">
                                     <div class="col-md-12">
-                                        <p>{{ $producto->descripcion }}</p>
+                                        <p class="show-menu-description">{{ $producto->descripcion }}</p>
                                     </div>
 
                                 </div>

@@ -58,6 +58,15 @@ class CartController extends Controller
                 }
             }
         }
+        //Validacion de existencia de inventario
+        if ($inventario->limitado_inventario == '0') {
+            if ($request->cantidad > $inventario->cantidad_inventario) {
+                alert()->error('No contamos con esa cantidad en el inventario');
+                return redirect()->back();
+            }
+        }
+
+
         // Validacion de Variante Productos
         if (count(collect($inventario->getVariants)) > "0") {
             if (is_null($request->variant)) {
@@ -94,27 +103,36 @@ class CartController extends Controller
         // Operacion para sacar el total del platillo precio * cantidad
         $precio = $this->getCalcularPrecio($producto->indescuento, $producto->descuento, $inventario->precio);
         $total = $precio * $request->cantidad;
-        $orden_item = new OrdenItem();
-        $label = $producto->nombre . '/' . $inventario->nombre . $variante_label;
-        $orden_item->user_id          = Auth::user()->id;
-        $orden_item->orden_id         = $orden->id;
-        $orden_item->product_id       = $id;
-        $orden_item->inventory_id     = $request->inventory;
-        $orden_item->variant_id       = $request->variant;
-        $orden_item->label_item       = $label;
-        $orden_item->cantidad         = $request->cantidad;
-        $orden_item->descuento_status = $producto->indescuento;
-        $orden_item->descuento        = $producto->descuento;
-        $orden_item->precio_original  = $inventario->precio;
-        $orden_item->precio_unitario  = $precio;
-        $orden_item->total            = $total;
-        // dd($orden_item);
 
-        if ($orden_item->save()) {
-            alert()->success('Platillo agregado al carrito');
-            return redirect()->back();
-        } else {
-            alert()->error('Ops no sepuedo agregar el platillo alcarrito');
+        //Validacion para orden existente en el carrito de compras
+        $orden_existente = OrdenItem::where('orden_id', $orden->id)->where('product_id', $producto->id)->count();
+        if ($orden_existente == 0) {
+
+            $orden_item = new OrdenItem();
+            $label = $producto->nombre . '/' . $inventario->nombre . $variante_label;
+            $orden_item->user_id          = Auth::user()->id;
+            $orden_item->orden_id         = $orden->id;
+            $orden_item->product_id       = $id;
+            $orden_item->inventory_id     = $request->inventory;
+            $orden_item->variant_id       = $request->variant;
+            $orden_item->label_item       = $label;
+            $orden_item->cantidad         = $request->cantidad;
+            $orden_item->descuento_status = $producto->indescuento;
+            $orden_item->descuento        = $producto->descuento;
+            $orden_item->precio_original  = $inventario->precio;
+            $orden_item->precio_unitario  = $precio;
+            $orden_item->total            = $total;
+            // dd($orden_item);
+
+            if ($orden_item->save()) {
+                alert()->success('Platillo agregado al carrito');
+                return redirect()->back();
+            } else {
+                alert()->error('Ops no sepuedo agregar el platillo alcarrito');
+                return redirect()->back();
+            }
+        }else{
+            alert()->error('Este platillo ya se encuentra en tu carrito de compras');
             return redirect()->back();
         }
     }

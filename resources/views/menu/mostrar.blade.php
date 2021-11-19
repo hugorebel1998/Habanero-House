@@ -54,7 +54,7 @@
                                 alt="{{ $productosAntojito->nombre }}">
                             <div class="why-text">
                                 <h2>{{ $productosAntojito->nombre }}</h2>
-                                <h5> $ {{ $productosAntojito->precio }}</h5>
+                                <h5 class="mt-3"> $ {{ $productosAntojito->precio }}</h5>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
                                         <a href="{{ route('usuario.mostrar.show', [$productosAntojito->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
@@ -77,9 +77,9 @@
                             <img src="{{ asset('img/products/' . $productosSopa->imagen_producto) }}"
                                 class="img-fluid" alt="{{ $productosSopa->nmbre }}">
                             <div class="why-text">
-                                <h4>{{ $productosSopa->nombre }}</h4>
+                                <h2>{{ $productosSopa->nombre }}</h2>
                                 {{-- <p>{{ $productosSopa->descripcion }}</p> --}}
-                                <h5> $ {{ $productosSopa->precio }}</h5>
+                                <h5 class="mt-3"> $ {{ $productosSopa->precio }}</h5>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
                                         <a href="{{ route('usuario.mostrar.show', [$productosSopa->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
@@ -101,9 +101,9 @@
                             <img src="{{ asset('img/products/' . $productosEnsalada->imagen_producto) }}"
                                 class="img-fluid" alt="{{ $productosEnsalada->nmbre }}">
                             <div class="why-text">
-                                <h4>{{ $productosEnsalada->nombre }}</h4>
+                                <h2>{{ $productosEnsalada->nombre }}</h2>
                                 {{-- <p>{{ $productosEnsalada->descripcion }}</p> --}}
-                                <h5> $ {{ $productosEnsalada->precio }}</h5>
+                                <h5 class="mt-3"> $ {{ $productosEnsalada->precio }}</h5>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
                                         <a href="{{ route('usuario.mostrar.show', [$productosEnsalada->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>

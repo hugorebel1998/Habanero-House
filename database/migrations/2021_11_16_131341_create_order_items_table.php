@@ -19,7 +19,7 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedBigInteger('orden_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('inventory_id');
-            $table->unsignedBigInteger('variant_id');
+            $table->unsignedBigInteger('variant_id')->nullable();
             $table->text('label_item')->nullable();
             $table->integer('cantidad')->default(1);
             $table->integer('descuento_status')->default(0);

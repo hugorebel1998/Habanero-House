@@ -11,13 +11,13 @@
             <div class="col-md-11 mt-5 mb-5"><br>
                 <div class="card card-danger card-outline shadow-lg">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <form action="{{ route('usuario.cart.store',$producto->id)}}" method="POST">
                                 <div class="row ml-4 mt-3">
                                     @csrf
                                     <input type="hidden" name="inventory" id="field_invenory" value="">
                                     <input type="hidden" name="variant" id="field_variant" value="">
-                                    <div class="col-md-9">
+                                    <div class="col-md-10">
                                         <p class="show-menu">{{ strtoupper($producto->nombre) }}</p>
                                     </div>
 
@@ -75,7 +75,7 @@
                         </div>
                         </form>
 
-                        <div class="col-md-7">
+                        <div class="col-md-6">
                             <img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
                                 class="rounded mx-auto d-block" width="100%" height="100%">
 

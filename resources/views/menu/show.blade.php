@@ -20,8 +20,8 @@
                             <form action="{{ route('usuario.cart.store',$producto->id)}}" method="POST">
                                 <div class="row ml-4 mt-3">
                                     @csrf
-                                    <input type="hidden" value="null" name="inventory" id="field_invenory" value="null">
-                                    <input type="hidden" value="null" name="variant" id="field_variant" value="null">
+                                    <input type="hidden" name="inventory" id="field_invenory" value="">
+                                    <input type="hidden" name="variant" id="field_variant" value="">
                                     <div class="col-md-7">
                                         <p class="show-menu">{{ strtoupper($producto->nombre) }}</p>
                                     </div>

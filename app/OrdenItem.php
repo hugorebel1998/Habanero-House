@@ -14,4 +14,9 @@ class OrdenItem extends Model
         'cantidad','descuento_status','descuento', 'precio_original' ,'precio_unitario', 'total'
     ];
 
+    public function getProduct()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
+
 }

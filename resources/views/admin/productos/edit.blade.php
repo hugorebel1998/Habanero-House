@@ -80,7 +80,7 @@
                             </div> --}}
 
 
-                            <div class="col-md-3 mt-3">
+                            <div class="col-md-4 mt-3">
                                 <div class="form-group">
                                     <label>¿En descuento?</label>
                                     <select name="en_descuento"
@@ -98,12 +98,23 @@
 
 
 
-                            <div class="col-md-3 mt-3">
+                            <div class="col-md-4 mt-3">
                                 <label for="descuento">Descuento</label>
                                 <input type="number" name="descuento"
                                     class="form-control @error('descuento') is-invalid @enderror"
                                     value="{{ $producto->descuento }}">
                                 @error('descuento')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="col-md-4 mt-3">
+                                <label for="fecha_caduca_descuento">Fecha de descuento</label>
+                                <input type="date" name="fecha_caduca_descuento"
+                                    class="form-control @error('fecha_caduca_descuento') is-invalid @enderror"
+                                    value="{{ $producto->fecha_caduca_descuento }}">
+                                    <small id="emailHelp" class="form-text text-muted">Ingresa la fecha de caducidad de descuento</small>
+                                @error('fecha_caduca_descuento')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>

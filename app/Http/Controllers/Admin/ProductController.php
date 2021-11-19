@@ -123,6 +123,7 @@ class ProductController extends Controller
         // $producto->precio = $request->precio;
         $producto->descuento = $request->descuento;
         $producto->indescuento = $request->en_descuento;
+        $producto->fecha_caduca_descuento = $request->fecha_caduca_descuento;
         // $producto->cantidad = $request->cantidad;
         $producto->codigo_producto = $request->código_producto;
         $producto->descripcion = $request->descripcion;
@@ -136,7 +137,7 @@ class ProductController extends Controller
             $producto['imagen_producto'] = $nombre_imagen;
         }
 
-        // dd($producto);
+         dd($producto);
         if ($producto->save()) {
             $this->getUpdateMinPrecio($producto->id);
             $producto->status = $request->status;

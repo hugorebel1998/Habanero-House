@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->decimal('precio', 11,2)->default('0.00')->nullable();
             $table->integer('indescuento');
             $table->integer('descuento');
+            $table->date('fecha_caduca_descuento')->nullable();
             // $table->integer('cantidad'); //Inventario
             $table->string('codigo_producto')->nullable();
             $table->string('imagen_producto');

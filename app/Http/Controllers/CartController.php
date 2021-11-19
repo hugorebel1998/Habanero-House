@@ -18,11 +18,10 @@ class CartController extends Controller
     }
 
     public function getCart()
-    {
+    {  
         $orden = $this->getUserOrder();
         // $orden_id = $this->getUserOrder()->i
-        $items = $orden->getItems;
-
+        $items = $orden->getItems;  
         return view('cart.index', compact('orden', 'items'));
     }
 

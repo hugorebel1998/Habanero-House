@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Sobre nosotros')
+@section('title', 'Platillo')
 @section('custom_meta')
 <meta name="product_id" content="{{ $producto->id }}">
 @stop

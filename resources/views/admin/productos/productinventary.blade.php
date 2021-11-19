@@ -4,12 +4,12 @@
     <div class="container-fluid">
         {{-- <h4 class="text-right text-white"> <i class="fas fa-utensils"></i> {{ ucfirst($product->nombre) }}</h4> --}}
         <div class="row justify-content-center">
-            {{-- <div class="col-md-12">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item active"><a href="{{ route('admin.productos.index')}}"><i class="fas fa-utensils"></i> Gestion de platillos</a></li>
-                    <li class="breadcrumb-item active"><a href="{{ route('admin.productos.inventario', $product->id)}}"><i class="fas fa-cloud-meatball"></i> {{ $product->nombre}}</a></li>
+            <div class="col-md-12">
+                <ol class="breadcrumb float-sm-right transparente">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.productos.index')}}" class="text-danger"><i class="fas fa-utensils"></i> Gestion de platillos</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.productos.inventario', $product->id)}}" class="text-danger"><i class="fas fa-cloud-meatball"></i> {{ $product->nombre}}</a></li>
                   </ol>
-            </div> --}}
+            </div>
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-4">

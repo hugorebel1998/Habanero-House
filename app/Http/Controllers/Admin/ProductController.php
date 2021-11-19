@@ -330,6 +330,7 @@ class ProductController extends Controller
 
     public function productVariant($id)
     {
+        
         $inventario = ProductInventary::find($id);
         $variantes = Variants::select('id', 'nombre', 'product_id','inventory_id')->where('inventory_id', '=', $id)->get();
         // $variantes = Variants::all();

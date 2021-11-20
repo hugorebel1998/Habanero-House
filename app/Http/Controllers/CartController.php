@@ -136,6 +136,17 @@ class CartController extends Controller
         }
     }
 
+    public function updateCart($id)
+    {
+
+        $orden = $this->getUserOrder();
+        $orden_item = OrdenItem::find($id);
+        $inventario = ProductInventary::find($orden_item->inventory_id);
+        
+    }
+
+
+
     public function getCalcularPrecio($indescuento, $descuento, $precio)
     {
         $precio_final = $precio;

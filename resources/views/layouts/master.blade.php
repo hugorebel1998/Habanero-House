@@ -159,6 +159,23 @@
             transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
 
+        #cantidad_cart {
+            display:initial;
+            width: 20%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgb(73 80 87);
+            background-color: rgb(255 255 255);
+            background-clip: padding-box;
+            border: 1px solid rgb(206 212 218);
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+        }
+
     </style>
 </head>
 
@@ -200,8 +217,8 @@
                                 href="{{ route('usuario.mostrar.contacto') }}"><i class="far fa-id-badge"></i>
                                 Contacto</a></li>
                         <li class="nav-item">
-                        
-                            <a class="nav-link" href="{{ route('usuario.cart')}}">
+
+                            <a class="nav-link" href="{{ route('usuario.cart') }}">
                                 <i class="fas fa-cart-plus"></i></i> 0
                             </a>
                             {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -241,8 +258,9 @@
                                         href="{{ route('usuario.contraseña.perfile', auth()->user()->id) }}">
                                         <i class="fas fa-unlock-alt"></i> {{ __('Cambiar contraseña') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                             document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-in-alt"></i> {{ __('Cerrar sesión') }}
                                     </a>
 
@@ -322,7 +340,7 @@
 
 
 
-    
+
     <script src="{{ asset('js/master/jquery-3.2.1.min.js') }} "></script>
     <script src="{{ asset('js/master/popper.min.js') }} "></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"

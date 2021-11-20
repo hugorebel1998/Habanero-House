@@ -30,9 +30,9 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover">
                             <thead class="bg-danger text-white">
-                                <tr>
+                                <tr class="text-center">
                                     <th scope="col"></th>
     
                                     <th scope="col">Producto</th>
@@ -44,7 +44,7 @@
                             <tbody>
                                 @foreach ($items as $item)
     
-                                <tr>
+                                <tr class="text-center">
                                     <th>
                                         <img src="{{ asset('img/products/' . $item->getProduct->imagen_producto) }}"
                                             class="rounded mx-auto img-thumbnail" width="80">
@@ -54,7 +54,14 @@
                                         <a href="{{ route('usuario.mostrar.show',  $item->getProduct->id)}}">{{
                                             $item->label_item}}</a>
                                     </td>
-                                    <td>{{ $item->cantidad }}</td>
+                                    <td>
+                                        <form action="#" method="POST">
+                                            <input type="number" name="cantidad" class="form-control" id="cantidad_cart" value="{{ $item->cantidad }}">
+                                            <button type="submit" class="btn btn-outline-primary ml-2">
+                                                <i class="far fa-save"></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                     <td>$ {{ $item->total }} MXN</td>
                                     <td>
                                         <a href="#" class="btn btn-danger">
@@ -76,7 +83,6 @@
                         <div class="car-body">
                          <p>
                              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore repellendus cupiditate cumque sint distinctio, maxime quo blanditiis inventore quaerat rerum, ratione, nesciunt delectus quam hic corporis nihil vero at illo.
-                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum, praesentium recusandae! Error, alias iure magni labore temporibus recusandae eius blanditiis consectetur? Ut voluptatum magnam nobis totam consequatur maiores, ea accusantium.
                          </p>
                         </div>
                     </div>

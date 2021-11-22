@@ -26,7 +26,7 @@
 @else
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-9 mt-5 mb-5"><br><br><br>
+        <div class="col-md-12 mt-5 mb-5"><br><br><br>
             <div class="row">
                 <div class="col-md-8">
                     <div class="table-responsive">
@@ -55,7 +55,9 @@
                                             $item->label_item}}</a>
                                     </td>
                                     <td>
-                                        <form action="#" method="POST">
+                                        <form action="{{ route('usuario.cart.update', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
                                             <input type="number" name="cantidad" class="form-control" id="cantidad_cart" value="{{ $item->cantidad }}">
                                             <button type="submit" class="btn btn-outline-primary ml-2">
                                                 <i class="far fa-save"></i>

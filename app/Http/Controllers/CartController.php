@@ -18,10 +18,10 @@ class CartController extends Controller
     }
 
     public function getCart()
-    {  
+    {
         $orden = $this->getUserOrder();
         // $orden_id = $this->getUserOrder()->i
-        $items = $orden->getItems;  
+        $items = $orden->getItems;
         return view('cart.index', compact('orden', 'items'));
     }
 
@@ -130,19 +130,34 @@ class CartController extends Controller
                 alert()->error('Ops no sepuedo agregar el platillo alcarrito');
                 return redirect()->back();
             }
-        }else{
+        } else {
             alert()->error('Este platillo ya se encuentra en tu carrito de compras');
             return redirect()->back();
         }
     }
 
-    public function updateCart($id)
+    public function updateCart(Request $request, $id)
     {
 
         $orden = $this->getUserOrder();
         $orden_item = OrdenItem::find($id);
         $inventario = ProductInventary::find($orden_item->inventory_id);
-        
+
+        if ($orden->id != $orden_item->orden_id) {
+            alert()->error('No podemos actualizar la cantidad de este platillo');
+            return redirect()->back();
+        } else {
+            if ($inventario->limitado_inventario == '0') {
+                if ($request->cantidad > $inventario->cantidad_inventario) {
+                    alert()->error('La cantidad ingresada supera el inventario');
+                    return redirect()->back();                }
+            }
+        }
+        $orden_item->cantidad = $request->cantidad;
+            if ($orden_item->save()) {
+                alert()->success('Cantidad actualizada');
+                return redirect()->back();
+            }
     }
 
 

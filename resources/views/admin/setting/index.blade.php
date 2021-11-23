@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <p class=""><i class="fas fa-dungeon"></i>  Nombre razón social</p>
-                            <b class="">{{ $restaurante->nombre_razon_social }}</b>
+                            <b class="">{{ $setting->nombre_razon_social }}</b>
                             <hr>
                         </div>
                         <div class="col-md-4">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="text-right mt-4 mb-4 mr-5">
-                    <a href="{{ route('admin.ajustes.edit', $restaurante->id)}}" class="btn btn-danger"><i class="fas fa-edit"></i> Editar</a>
+                    <a href="#" class="btn btn-danger"><i class="fas fa-edit"></i> Editar</a>
 
                 </div>
             </div>

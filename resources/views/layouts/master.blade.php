@@ -252,6 +252,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                   @if (Auth::user()->id == 1 || Auth::user()->id == 2 || Auth::user()->id == 3)
+                                   <a class="dropdown-item"
+                                   href="{{ route('admin.home') }}">
+                                   <i class="fas fa-tachometer-alt"></i> {{ __('Administración') }}
+                                   @endif
+                                </a>
                                     <a class="dropdown-item"
                                         href="{{ route('usuario.edit.perfil', auth()->user()->id) }}">
                                         <i class="fas fa-user-edit"></i> {{ __('Editar indormación') }}

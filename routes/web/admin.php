@@ -65,8 +65,8 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::get('/contacto/mensaje/{mensaje}', 'ContactController@ContactanosMensaje')->name('admin.contacto.mensaje');
 
     //Settings
-    // Route::get('/restaurante/index', 'RestaurantController@index')->name('admin.ajustes.index')->middleware('auth');
-    // Route::get('/restaurante/edit/{restaurat}', 'RestaurantController@edit')->name('admin.ajustes.edit')->middleware('auth');
-    // Route::put('/restaurante/update/', 'RestaurantController@update')->name('admin.ajustes.update')->middleware('auth');
+    Route::get('/setting/index/{restaurant}', 'SettingController@index')->name('admin.ajustes.index');
+    Route::get('/setting/edit/{restaurat}', 'SettingController@edit')->name('admin.ajustes.edit');
+    Route::put('/setting/update/', 'SettingController@update')->name('admin.ajustes.update');
 
 });

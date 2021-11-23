@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-7 mt-5"><br>
-            <div class="card shadow mt-5">
+            <div class="card card-danger shadow mt-5 mb-5">
                 <div class="card-header">
                     <div class="card-tittle"><i class="fas fa-unlock-alt"></i> Cambiar contraseña</div>
                 </div>

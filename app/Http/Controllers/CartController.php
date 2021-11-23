@@ -118,6 +118,7 @@ class CartController extends Controller
             $orden_item->cantidad         = $request->cantidad;
             $orden_item->descuento_status = $producto->indescuento;
             $orden_item->descuento        = $producto->descuento;
+            $orden_item->fecha_caduca_descuento   = $producto->fecha_caduca_descuento;
             $orden_item->precio_original  = $inventario->precio;
             $orden_item->precio_unitario  = $precio;
             $orden_item->total            = $total;
@@ -154,10 +155,21 @@ class CartController extends Controller
             }
         }
         $orden_item->cantidad = $request->cantidad;
+        $total = $orden_item->precio_unitario * $request->cantidad;
+        $orden_item->total = $total;
+
             if ($orden_item->save()) {
                 alert()->success('Cantidad actualizada');
                 return redirect()->back();
             }
+    }
+
+    public function deleteCart($id){
+        $orden_item = OrdenItem::find($id);
+        if ($orden_item->delete()) {
+            return back();
+        }
+
     }
 
 

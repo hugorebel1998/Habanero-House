@@ -137,7 +137,7 @@ class ProductController extends Controller
             $producto['imagen_producto'] = $nombre_imagen;
         }
 
-         dd($producto);
+        //  dd($producto);
         if ($producto->save()) {
             $this->getUpdateMinPrecio($producto->id);
             $producto->status = $request->status;

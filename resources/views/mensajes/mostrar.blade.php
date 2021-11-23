@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-4 mt-5">
                         <br><br><br>
-                        <div class="card shadow mt-5">
+                        <div class="card card-danger card-outline shadow mt-5">
                             <div class="body text-center">
                              <h2 class="mt-3 text-danger">Habanero house</h2>
                              <p>Sindicato Nacional de Electricistas 16, Hab Electra, 54060 Tlalnepantla de Baz, Méx.</p>
@@ -23,9 +23,9 @@
                         </div>
                     </div>
                     <div class="col-md-8 mt-5"><br>
-                        <h3 class="mt-5 mb-3">Envíenos sus dudas y comentarios, nos pondremos en contacto con usted
+                        {{-- <h3 class="mt-5 mb-3">Envíenos sus dudas y comentarios, nos pondremos en contacto con usted --}}
                         </h3>
-                        <div class="card shadow">
+                        <div class="card card-danger shadow mt-5">
                             <div class="card-header">
                                 <div class="card-tittle"><i class="fas fa-envelope-open-text"></i> Contáctanos</div>
                             </div>

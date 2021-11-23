@@ -20,6 +20,8 @@
     <link href="{{ asset('css/master/custom.css') }}" rel="stylesheet">
     <!--Fuentes -->
     <link rel="stylesheet" href="{{ asset('css/fuente.css') }}">
+    <!-- Style css -->
+    <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
 
     @yield('custom_meta')
 
@@ -161,7 +163,7 @@
 
         #cantidad_cart {
             display:initial;
-            width: 20%;
+            width: 25%;
             height: calc(1.5em + .75rem + 2px);
             padding: .375rem .75rem;
             font-size: 1rem;
@@ -390,6 +392,8 @@
             }
         }
     </script>
+        {{-- AlertConfirmt --}}
+        @yield('alerta')
 
     {{-- <script>
         let preScroll = window.pageYOffset;

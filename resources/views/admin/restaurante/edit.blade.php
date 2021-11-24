@@ -2,19 +2,19 @@
 @section('content')
 @section('title', 'Editar información')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-10">
             <div class="card card-danger shadow">
                 <div class="card-header">
                     <div class="card-tittle"><i class="fas fa-toolbox"></i> Editar información</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.ajustes.update') }}" method="POST">
+                    <form action="{{ route('admin.ajustes.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="nombre_encargado">Nombre del encargado</label>
                                 <input type="hidden" name="id_restaurant" value="{{ $restaurante->id }}">
                                 <input type="text" name="nombre_encargado"
@@ -24,7 +24,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="nombre_razón_social">Nombre razón social</label>
                                 <input type="text" name="nombre_razón_social"
                                     class="form-control @error('nombre_razón_social') is-invalid @enderror"
@@ -33,7 +33,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-6 mt-4">
+                            <div class="col-md-4">
                                 <label for="teléfono">Teléfono</label>
                                 <input type="number" name="teléfono"
                                     class="form-control @error('teléfono') is-invalid @enderror"
@@ -42,7 +42,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-6 mt-4">
+                            <div class="col-md-4 mt-4">
                                 <label for="correo_electrónico">Correo electrónico</label>
                                 <input type="email" name="correo_electrónico"
                                     class="form-control @error('correo_electrónico') is-invalid @enderror"
@@ -51,6 +51,38 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            
+                            <div class="col-md-4 mt-4">
+                                <div class="form-group">
+                                    <label>Modo mantenimiento</label>
+                                    <select name="mantenimiento"
+                                        class="custom-select select2bs4 @error('mantenimiento') is-invalid @enderror"
+                                        style="width: 100%;">
+                                        <option value="" selected>-- Selecciona una opción--</option>
+                                        <option value="0" @if ($restaurante->mantenimiento == 0) selected @endif>Desactivado</option>
+                                        <option value="1" @if ($restaurante->mantenimiento == 1) selected @endif>Activado</option>
+                                    </select>
+                                    @error('mantenimiento')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mt-4">
+                                <div class="form-group">
+                                    <label for="imagen">Imagen destacada</label>
+                                    <div class="custom-file">
+                                        <input accept="image/*" type="file"
+                                            class="custom-file-input @error('imagen') is-invalid @enderror"
+                                            name="imagen">
+                                        <label class="custom-file-label"for="customFile">Selecciona imagen</label>
+                                        @error('imagen')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-6 mt-4">
                                 <label for="dirección">Direccion</label>
                                 <input type="text" name="dirección"
@@ -62,7 +94,8 @@
                             </div>
                         </div>
                         <div class="text-center mt-4 mb-4">
-                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-save"></i> Actualizar
+                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-save"></i>
+                                Actualizar
                                 información</button>
                         </div>
                     </form>

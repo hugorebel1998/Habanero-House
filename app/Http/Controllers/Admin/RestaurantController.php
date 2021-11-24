@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('isAdmin');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('isAdmin');
+    // }
     public function index()
     {
         $restaurante = Restaurant::firstWhere('nombre_razon_social', 'Habanero House');
@@ -38,6 +38,8 @@ class RestaurantController extends Controller
         $restaurante->telefono_razon_social = $request->teléfono;
         $restaurante->direccion_razon_social = $request->dirección;
         $restaurante->email_razon_social = $request->correo_electrónico;
+        $restaurante->mantenimiento = $request->mantenimiento;
+        // $restaurante->email_razon_social = $request->correo_electrónico;
         // dd($restaurante);
         if ($restaurante->save()) {
 

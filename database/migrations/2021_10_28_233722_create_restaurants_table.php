@@ -20,6 +20,8 @@ class CreateRestaurantsTable extends Migration
             $table->string('telefono_razon_social');
             $table->string('email_razon_social')->nullable();
             $table->string('direccion_razon_social')->nullable();
+            $table->string('mantenimiento')->nullable()->default(0);
+            $table->string('restaurante_galeria')->nullable();
             $table->timestamps();
         });
     }

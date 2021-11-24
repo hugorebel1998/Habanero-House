@@ -42,21 +42,45 @@
                             <b class="">{{ $restaurante->email_razon_social }}</b>
                             <hr>
                         </div>
-                        <div class="col-md-5 mt-4">
+                        <div class="col-md-4 mt-4">
                             <p class=""><i class="fas fa-email"></i> Modo mantenimiento</p>
                             <h5 class="">
                                 @if ($restaurante->mantenimiento == 0)
-                                <span class="badge badge-primary p-2">
-                                    <i class="fas fa-check-square"></i>  Desactivado
-                                </span>
+                                    <span class="badge badge-primary p-1">
+                                        <i class="fas fa-check-square"></i> Desactivado
+                                    </span>
                                 @else
-                                <span class="badge badge-danger">
-                                    <i class="fas fa-tools"></i> En mantenimiento
-                                </span>
+                                    <span class="badge badge-danger">
+                                        <i class="fas fa-tools"></i> En mantenimiento
+                                    </span>
                                 @endif
                             </h5>
                             <hr>
                         </div>
+
+                        <div class="col-md-4 mt-4 mb-1">
+                            <p class=""><i class="fas fa-phone-volume"></i> Configración de precio de
+                                envío</p>
+                            <b class="">
+                                @if ($restaurante->precio_envio == 0)
+                                    Gratis
+                                @elseif($restaurante-> precio_envio == 1)
+                                    Valor fijo
+                                @elseif($restaurante-> precio_envio == 2)
+                                    Valor variable por ubicación
+                                @elseif($restaurante-> precio_envio == 3)
+                                    Valor fijo por profucto
+                                @endif
+                            </b>
+                            <hr>
+                        </div>
+
+                        <div class="col-md-4 mt-4">
+                            <p class=""><i class="fas fa-phone-volume"></i> Valor del envio</p>
+                            <b class="">{{ $restaurante->valor_por_defecto }}</b>
+                            <hr>
+                        </div>
+
                     </div>
                     <div class="text-right mt-4 mb-4 mr-5">
                         <a href="{{ route('admin.ajustes.edit', $restaurante->id) }}" class="btn btn-danger"><i

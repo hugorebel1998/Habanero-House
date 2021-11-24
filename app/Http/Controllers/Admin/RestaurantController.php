@@ -39,11 +39,13 @@ class RestaurantController extends Controller
         $restaurante->direccion_razon_social = $request->dirección;
         $restaurante->email_razon_social = $request->correo_electrónico;
         $restaurante->mantenimiento = $request->mantenimiento;
-        // $restaurante->email_razon_social = $request->correo_electrónico;
+        $restaurante->precio_envio = $request->precio_envio;
+        $restaurante->	valor_por_defecto = $request->valor_por_defecto;
+
         // dd($restaurante);
         if ($restaurante->save()) {
 
-            alert()->success('Éxito', 'Información actualizada');
+            alert()->success('Información actualizada');
             return redirect()->to(route('admin.ajustes.index'));
 
         } else {

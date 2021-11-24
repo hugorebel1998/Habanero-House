@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="card card-danger shadow">
                 <div class="card-header">
                     <div class="card-tittle"><i class="fas fa-toolbox"></i> Editar información</div>
@@ -83,12 +83,39 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 mt-4">
-                                <label for="dirección">Direccion</label>
+                            <div class="col-md-4 mt-4">
+                                <label for="dirección">Ubicación</label>
                                 <input type="text" name="dirección"
                                     class="form-control @error('dirección') is-invalid @enderror"
                                     value="{{ $restaurante->direccion_razon_social }}">
                                 @error('dirección')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-4 mt-4">
+                                <div class="form-group">
+                                    <label>Configración de precio de envío</label>
+                                    <select name="precio_envio"
+                                        class="custom-select select2bs4 @error('precio_envio') is-invalid @enderror"
+                                        style="width: 100%;">
+                                        {{-- <option value="" selected>-- Selecciona una opción--</option> --}}
+                                        <option value="0" @if ($restaurante->precio_envio == 0) selected @endif>Gratis</option>
+                                        <option value="1" @if ($restaurante->precio_envio == 1) selected @endif>Valor fijo</option>
+                                        <option value="2" @if ($restaurante->precio_envio == 2) selected @endif>Valor variable por ubicación</option>
+                                        <option value="3" @if ($restaurante->precio_envio == 3) selected @endif>Valor fijo por profucto</option>
+                                        
+                                    </select>
+                                    @error('precio_envio')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-4">
+                                <label for="valor_por_defecto">Valor del envio</label>
+                                <input type="number" name="valor_por_defecto"
+                                    class="form-control @error('valor_por_defecto') is-invalid @enderror"
+                                    value="{{ $restaurante->valor_por_defecto}}">
+                                @error('valor_por_defecto')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>

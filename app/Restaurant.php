@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     protected $fillable = [
-        'nombre_encargado', 'nombre_razon_social' , 'telefono_razon_social', 'email_razon_social', 'direccion_razon_social'
+        'nombre_encargado', 'nombre_razon_social' , 'telefono_razon_social', 
+        'email_razon_social', 'direccion_razon_social', 'mantenimiento','restaurante_galeria',
+        'precio_envio', 'valor_por_defecto'
     ];
 }

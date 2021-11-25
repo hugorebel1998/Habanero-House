@@ -69,4 +69,9 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::get('/setting/edit/{restaurat}', 'RestaurantController@edit')->name('admin.ajustes.edit');
     Route::put('/setting/update/', 'RestaurantController@update')->name('admin.ajustes.update');
 
+
+    //Covertura de envios
+    Route::get('/covertura/index', 'CoverturaController@index')->name('admin.covertura.index');
+    Route::post('covertura/storage', 'CoverturaController@store')->name('admin.covertura.store');
+
 });

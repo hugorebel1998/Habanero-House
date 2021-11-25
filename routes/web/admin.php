@@ -65,7 +65,7 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::get('/contacto/mensaje/{mensaje}', 'ContactController@ContactanosMensaje')->name('admin.contacto.mensaje');
 
     //Settings
-    Route::get('/setting/index/{restaurant}', 'SettingController@index')->name('admin.ajustes.index');
+    Route::get('/setting/index', 'SettingController@index')->name('admin.ajustes.index');
     Route::get('/setting/edit/{restaurat}', 'SettingController@edit')->name('admin.ajustes.edit');
     Route::put('/setting/update/', 'SettingController@update')->name('admin.ajustes.update');
 

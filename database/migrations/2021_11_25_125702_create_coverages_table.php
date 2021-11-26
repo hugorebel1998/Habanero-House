@@ -15,6 +15,7 @@ class CreateCoveragesTable extends Migration
     {
         Schema::create('coverages', function (Blueprint $table) {
             $table->id();
+            $table->integer('status')->default(1);
             $table->string('nombre');
             $table->integer('tipo_covertura');
             $table->decimal('precio', 11,2);

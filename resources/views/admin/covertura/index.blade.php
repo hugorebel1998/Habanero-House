@@ -12,7 +12,7 @@
                             <div class="card-tittle"><i class="fas fa-truck"></i> Crear covertura de envio</div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.covertura.store')}}" method="POST" >
+                            <form action="{{ route('admin.covertura.store')}}" method="POST">
                                 @csrf
                                 <div class="row">
 
@@ -84,13 +84,14 @@
                                         @enderror
                                     </div>
 
-                                </div>  --}}
+                                </div> --}}
                                 <div class="col-md-12 mt-4">
                                     <div class="form-group">
                                         <label>Valor del envio</label>
-                                        <input type="number" name="precio" class="form-control @error('precio') is-invalid @enderror"
-                                        value="{{ $setting}}">  
-                                         @error('precio')
+                                        <input type="number" name="precio"
+                                            class="form-control @error('precio') is-invalid @enderror"
+                                            value="{{ $setting}}">
+                                        @error('precio')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -106,10 +107,85 @@
                         </form>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-8">
 
-        </div>
-    </div>
-</div>
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <b class="lead font-weight-bold"> Categorias</b>
+                        </div>
+                        <div class="d-flex flex-row-reverse mr-5">
+
+                            <div class="p-2">
+                                @can('delete categoria')
+                                <div class="dropdown dropleft">
+                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button"
+                                        id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-ban"></i>
+                                            Coverturas eliminados
+                                        </a>
+                                    </div>
+                                </div>
+                                @endcan
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Precio de envío</th>
+                                        <th scope="col" class="text-center">Administrador</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($coverturas as $covertura)
+                                        
+                                    
+                                    <tr>
+
+                                        <td>{{ $covertura->status }}</td>
+                                        <td>{{ $covertura->nombre }}</td>
+                                        <td>$ {{ $covertura->precio }} MXN</td>
+                                        
+                                        <td class="text-center">
+                                            
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-info dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <i class="fas fa-cogs"></i> Acciones
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i>
+                                                    Ver productos</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Editar
+                                                        categoria</a>>
+                                                        
+                                                        
+                                                        
+                                                    </td>
+                                                </tr>
+                                                
+
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
 
 @endsection

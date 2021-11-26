@@ -12,11 +12,12 @@ class CoverturaController extends Controller
 {
     public function index()
     {
+        $coverturas = Coverage::orderBy('id','desc')->get();
         $valor_estados = Coverage::where('tipo_covertura', 0)->get();
         // $settings = Restaurant::select('id', 'valor_por_defecto')->get();
         $setting = Restaurant::pluck('valor_por_defecto')->first();
 
-        return view('admin.covertura.index', compact('setting', 'valor_estados'));
+        return view('admin.covertura.index', compact('coverturas','setting', 'valor_estados'));
     }
     
     public function store(CovegareRequest $request)

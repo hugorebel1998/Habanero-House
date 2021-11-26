@@ -24,9 +24,9 @@ class CovegareRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'nombre'            => 'required',
-            // 'tipo_covertura'    => 'required',
-            // 'valor_por_defecto' => 'required'
+            'nombre'            => 'required',
+            'tipo_covertura'    => 'required',
+            'precio'            => 'required'
         ];
     }
 }

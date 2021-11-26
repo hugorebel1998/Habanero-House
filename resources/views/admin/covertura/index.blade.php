@@ -12,7 +12,7 @@
                             <div class="card-tittle"><i class="fas fa-truck"></i> Crear covertura de envio</div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.covertura.store')}}" method="POST" autocomplete="off">
+                            <form action="{{ route('admin.covertura.store')}}" method="POST" >
                                 @csrf
                                 <div class="row">
 
@@ -52,7 +52,7 @@
                                             <select name="valor_estado"
                                                 class="custom-select  select2bs4 @error('valor_estado') is-invalid @enderror"
                                                 style="width: 100%;">
-                                                <option value="">Estado</option>
+                                                <option value="0">Estado</option>
                                                 @foreach ($valor_estados as $valor_estado)
                                                 <option value="{{$valor_estado->id}}"
                                                     {{(old('valor_por_defecto')==$valor_estado->id ? 'selected' : '')}}
@@ -68,19 +68,29 @@
                                 </div>
 
 
-                                <div class="col-md-12 mt-4">
+                                {{-- <div class="col-md-12 mt-4">
                                     <div class="form-group">
                                         <label>Valor del envio</label>
                                         <select name="valor_por_defecto"
                                             class="custom-select  select2bs4 @error('valor_por_defecto') is-invalid @enderror"
                                             style="width: 100%;">
-
                                             @foreach ($settings as $setting)
                                             <option value="{{$setting->id}}" {{(old('valor_por_defecto')==$setting->id ?
                                                 'selected' : '')}} > {{$setting->valor_por_defecto}} </option>
                                             @endforeach
                                         </select>
                                         @error('valor_por_defecto')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                </div>  --}}
+                                <div class="col-md-12 mt-4">
+                                    <div class="form-group">
+                                        <label>Valor del envio</label>
+                                        <input type="number" name="precio" class="form-control @error('precio') is-invalid @enderror"
+                                        value="{{ $setting}}">  
+                                         @error('precio')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

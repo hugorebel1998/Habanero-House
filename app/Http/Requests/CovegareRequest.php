@@ -25,7 +25,8 @@ class CovegareRequest extends FormRequest
     {
         return [
             'nombre' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            
         ];
     }
 }

@@ -72,7 +72,7 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
 
     //Covertura de envios
     Route::get('/covertura/index', 'CoverturaController@index')->name('admin.covertura.index');
-    Route::post('covertura/storage', 'CoverturaController@store')->name('admin.covertura.store');
+    Route::post('covertura/store', 'CoverturaController@store')->name('admin.covertura.store');
     Route::get('/covertura/edit/{coverage}', 'CoverturaController@edit')->name('admin.covertura.edit');
     Route::put('/covertura/update/{coverage}', 'CoverturaController@update')->name('admin.covertura.update');
     Route::delete('/covertura/delete/{coverage}', 'CoverturaController@delete')->name('admin.covertura.delete');
@@ -80,6 +80,10 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::get('/covertura/index/delete/restore/{coverage}', 'CoverturaController@coverturaRestore')->name('admin.covertura.index.restore');
     //Covertura de envios municipios o delegaciones
     Route::get('/coverturas/localidad/{localidad}', 'CoverturaController@localidad')->name('admin.covertura.localidad');
+    Route::post('covertura/localidad/store', 'CoverturaController@localidadStore')->name('admin.covertura.localidad.store');
+    Route::get('/coverturas/localidad/edit/{localidad}', 'CoverturaController@editLocalidad')->name('admin.covertura.localidad.edit');
+    Route::put('/coverturas/localidad/update/{localidad}', 'CoverturaController@updateLocalidad')->name('admin.covertura.localidad.update');
+    Route::delete('covertura/localidad/delete/{localidad}', 'CoverturaController@delateLocalidad')->name('admin.covertura.localidad.delete');
 
     
     

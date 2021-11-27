@@ -12,8 +12,8 @@ class CoverturaController extends Controller
 {
     public function index()
     {
-        $coverturas = Coverage::orderBy('id', 'desc')->get();
-        // $valor_estados = Coverage::where('tipo_covertura', 0)->get();
+        // $coverturas = Coverage::orderBy('id', 'desc')->get();
+        $coverturas = Coverage::where('tipo_covertura', 0)->orderBy('id', 'desc')->get();
         // $settings = Restaurant::select('id', 'valor_por_defecto')->get();
         // $setting = Restaurant::pluck('valor_por_defecto')->first();
 
@@ -85,7 +85,7 @@ class CoverturaController extends Controller
     {
         $coverturas = Coverage::onlyTrashed()->get();
         return view('admin.covertura.indexdelete', compact('coverturas'));
-
+        $restaurante = Restaurant::pluck('id')->first();
     }
 
     public function coverturaRestore($id)
@@ -97,9 +97,83 @@ class CoverturaController extends Controller
     }
 
 
-    public function localidad($id){
-        $localidad = Coverage::where('state_id', $id)->get();
-        return view('admin.covertura.localidad',compact('localidad'));
+    public function localidad($id)
+    {
 
+        $setting = Restaurant::pluck('valor_por_defecto')->first();
+
+        $localidades = Coverage::where('state_id', $id)->get();
+        return view('admin.covertura.localidad', compact('localidades', 'setting', 'id'));
+    }
+
+    public function localidadStore(Request $request)
+    {
+
+        $restaurante = Restaurant::pluck('id')->first();
+        $localidad = new Coverage();
+        $request->validate([
+            'nombre' => 'required',
+            'precio' => 'required'
+        ]);
+
+        $localidad->nombre = $request->nombre;
+        $localidad->precio = $request->precio;
+        $localidad->tipo_covertura = 1;
+        $localidad->state_id = $request->state_id;
+        $localidad->restaurant_id = $restaurante;
+
+        // dd($localidad);
+        if ($localidad->save()) {
+            alert()->success('Localidad guardada con éxito');
+            return redirect()->back();
+        } else {
+            alert()->errror('Error');
+            return redirect()->back();
+        }
+    }
+
+
+    public function editLocalidad($id)
+    {
+        $localidad = Coverage::find($id);
+        return view('admin.covertura.editLocal', compact('localidad'));
+    }
+
+
+    public function updateLocalidad(Request $request, $id)
+    {
+        $localidad = Coverage::findOrFail($id);
+        $restaurante = Restaurant::pluck('id')->first();
+        
+        $request->validate([
+            'nombre' => 'required',
+            'precio' => 'required'
+        ]);
+
+        $localidad->status = $request->status;
+        $localidad->nombre = $request->nombre;
+        $localidad->precio = $request->precio;
+        $localidad->restaurant_id  = $restaurante;
+
+
+        // dd($covertura);
+        if ($localidad->save()) {
+            alert()->success('Covertura actalizada con éxito');
+            return redirect()->to(route('admin.covertura.index'));
+        } else {
+            alert()->errror('Error');
+            return redirect()->back();
+        }
+    }
+
+
+
+    public function delateLocalidad($id){
+        
+        $localidad = Coverage::find($id);
+        if ($localidad->delete()) {
+            alert()->success('Localidad eliminada conéxito con éxito');
+            return redirect()->to(route('admin.covertura.index'));
+        }
     }
 }

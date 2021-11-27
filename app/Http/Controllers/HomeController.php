@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\OrdenItem;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -29,6 +30,8 @@ class HomeController extends Controller
     {
         $usuario = User::select('id')->get();
         return view('home', compact('usuario'));
+
+        
 
     }
 }

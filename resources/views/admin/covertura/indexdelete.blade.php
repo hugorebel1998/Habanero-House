@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-@section('title', 'Gestión de categorias eliminadas')
+@section('title', 'Gestión de coverturas eliminadas')
 
 
 <div class="container-fluid">
@@ -9,34 +9,29 @@
 
             <div class="card shadow transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold">Categorias eliminadas</b>
+                    <b class="lead font-weight-bold">Coverturas eliminadas</b>
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col"></th>
-                                <th scope="col">Descripcion</th>
-                                <th scope="col">Fecha de creación</th>
+                                <th scope="col">Precio de envío</th>
                                 <th scope="col" class="text-center">Administrador</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($categorias as $categoria)
-                                <tr @if ($categoria->deleted_at) class="table-danger" @endif>
+                            @foreach ($coverturas as $covertura)
+                                <tr @if ($covertura->deleted_at) class="table-danger" @endif>
 
-                                    <td>{{ $categoria->id }}</td>
-                                    <td>{{ $categoria->nombre }}</td>
-                                    <td style="font-size: 30px">{!! $categoria->icono !!}</td>
-                                    <td>{{ $categoria->descripcion }}</td>
-                                    <td>{{ $categoria->created_at }}</td>
-
+                                    <td>{{ $covertura->status }}</td>
+                                    <td>{{ $covertura->nombre }}</td>
+                                    <td>{{ $covertura->precio }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('admin.categorias.categoriarestore', $categoria->id) }}"
-                                            class="btn btn-sm btn-info restablecer_categoria">
+                                        <a href="{{ route('admin.covertura.index.restore', $covertura->id) }}"
+                                            class="btn btn-sm btn-info restablecer_covertura">
                                             <i class="fas fa-trash-restore"></i> Restablecer</a>
                                     </td>
                                 </tr>
@@ -55,12 +50,12 @@
 @section('alerta')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(".restablecer_categoria").click(function(e) {
+        $(".restablecer_covertura").click(function(e) {
             e.preventDefault();
             const href = $(this).attr('href');
             Swal.fire({
                 title: 'Estas seguro de querer restablecerlo?',
-                text: `Esta categoria sera restablecida`,
+                text: `Esta covertura sera restablecida`,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -70,7 +65,7 @@
                 if (result.value) {
                     Swal.fire(
                         'Éxito',
-                        'Restableciste esta categoria.',
+                        'Restableciste esta covertura.',
                         'success'
                     )
                     document.location.href = href;

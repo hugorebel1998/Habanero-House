@@ -75,6 +75,13 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::post('covertura/storage', 'CoverturaController@store')->name('admin.covertura.store');
     Route::get('/covertura/edit/{coverage}', 'CoverturaController@edit')->name('admin.covertura.edit');
     Route::put('/covertura/update/{coverage}', 'CoverturaController@update')->name('admin.covertura.update');
+    Route::delete('/covertura/delete/{coverage}', 'CoverturaController@delete')->name('admin.covertura.delete');
+    Route::get('/covertura/index/delete', 'CoverturaController@indexDelete')->name('admin.covertura.index.delete');
+    Route::get('/covertura/index/delete/restore/{coverage}', 'CoverturaController@coverturaRestore')->name('admin.covertura.index.restore');
+    
+
+    
+    
 
 
 

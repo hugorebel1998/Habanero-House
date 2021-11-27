@@ -11,7 +11,7 @@ class Coverage extends Model
     protected $table = 'coverages';
 
     protected $fillable = [
-        'nombre','tipo_covertura', 'precio', 'restaurant_id', 'state_id',
+        'status','nombre','tipo_covertura', 'precio', 'restaurant_id', 'state_id',
         
     ];
 }

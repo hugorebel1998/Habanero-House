@@ -221,7 +221,8 @@
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('usuario.cart') }}">
-                                <i class="fas fa-cart-plus"></i></i> 0
+                                <i class="fas fa-cart-plus"></i></i> 
+                                0
                             </a>
                             {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">

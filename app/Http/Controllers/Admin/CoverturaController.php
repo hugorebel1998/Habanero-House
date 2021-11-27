@@ -52,12 +52,15 @@ class CoverturaController extends Controller
     {
         $covertura = Coverage::find($id);
         $restaurante = Restaurant::pluck('id')->first();
+        $valor_estados = Coverage::where('tipo_covertura', 0)->get();
         // $restautante_valor = Restaurant::pluck('valor_por_defecto')->first();
+        $covertura->status = $request->status;
         $covertura->nombre = $request->nombre;
         $covertura->tipo_covertura = $request->tipo_covertura;
         $covertura->state_id = $request->valor_estado;
         $covertura->precio = $request->precio;
         $covertura->restaurant_id  = $restaurante;
+        $covertura->state_id = $request->valor_estado;
 
         // dd($covertura);
         if ($covertura->save()) {
@@ -68,4 +71,29 @@ class CoverturaController extends Controller
             return redirect()->back();
         }
     }
+
+    public function delete($id)
+    {
+        $covertura = Coverage::findOrFail($id);
+        if ($covertura->delete()) {
+            alert()->success('Covertura eliminada conéxito con éxito');
+            return redirect()->to(route('admin.covertura.index'));
+        }
+    }
+
+    public function indexDelete()
+    {
+        $coverturas = Coverage::onlyTrashed()->get();
+        return view('admin.covertura.indexdelete', compact('coverturas'));
+
+    }
+
+    public function coverturaRestore($id)
+    {
+
+        $covertura = Coverage::find($id);
+        Coverage::onlyTrashed()->findOrFail($id)->restore();
+        return redirect()->to(route('admin.covertura.index'));
+    }
+
 }

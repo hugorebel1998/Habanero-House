@@ -9,7 +9,7 @@
                 <div class="col-md-4">
                     <div class="card card-danger shadow">
                         <div class="card-header">
-                            <div class="card-tittle"><i class="fas fa-truck"></i> Crear covertura de envio</div>
+                            <div class="card-tittle"><i class="fas fa-archway"></i> Crear municipio / Delegación</div>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('admin.covertura.store') }}" method="POST">
@@ -28,79 +28,30 @@
 
                                     <div class="col-md-12 mt-4">
                                         <div class="form-group">
-                                            <label>Tipo de covertura</label>
-                                            <select name="tipo_covertura"
-                                                class="custom-select select2bs4 @error('tipo_covertura') is-invalid @enderror"
+                                            <label>Status</label>
+                                            <select name="status"
+                                                class="custom-select select2bs4 @error('status') is-invalid @enderror"
                                                 style="width: 100%;">
                                                 <option value="" selected>-- Selecciona una opción--</option>
-                                                <option value="0" @if (old('tipo_covertura') == '0') selected="selected"
-                                                    @endif }}>Estado de méxico</option>
-                                                <option value="1" @if (old('tipo_covertura') == '1') selected="selected"
-                                                    @endif }}>Ciudad de méxico</option>
+                                                <option value="0" @if ( old('status') == '0') selected="selected" @endif  }}> No activo</option>
+                                                <option value="1" @if ( old('status') == '1') selected="selected" @endif  }}> Activo</option>
                                             </select>
-                                            @error('tipo_covertura')
+                                            @error('status')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-
                                     </div>
 
 
-                                    <div class="col-md-12 mt-4">
-                                        <div class="form-group">
-                                            <label>Estados</label>
-                                            <select name="valor_estado"
-                                                class="custom-select  select2bs4 @error('valor_estado') is-invalid @enderror"
-                                                style="width: 100%;">
-                                                <option value="0">Estado</option>
-                                                @foreach ($valor_estados as $valor_estado)
-                                                    <option value="{{ $valor_estado->id }}"
-                                                        {{ old('valor_por_defecto') == $valor_estado->id ? 'selected' : '' }}>
-                                                        {{ $valor_estado->nombre }} </option>
-                                                @endforeach
-                                            </select>
-                                            @error('valor_por_defecto')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                    </div>
-                                </div>
 
 
-                                {{-- <div class="col-md-12 mt-4">
-                                    <div class="form-group">
-                                        <label>Valor del envio</label>
-                                        <select name="valor_por_defecto"
-                                            class="custom-select  select2bs4 @error('valor_por_defecto') is-invalid @enderror"
-                                            style="width: 100%;">
-                                            @foreach ($settings as $setting)
-                                            <option value="{{$setting->id}}" {{(old('valor_por_defecto')==$setting->id ?
-                                                'selected' : '')}} > {{$setting->valor_por_defecto}} </option>
-                                            @endforeach
-                                        </select>
-                                        @error('valor_por_defecto')
-                                        <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
 
-                                </div> --}}
-                                <div class="col-md-12 mt-4">
-                                    <div class="form-group">
-                                        <label>Valor del envio</label>
-                                        <input type="number" name="precio"
-                                            class="form-control @error('precio') is-invalid @enderror"
-                                            value="{{ $setting }}">
-                                        @error('precio')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
 
+                                  
                                 </div>
                         </div>
 
-
-                        <div class="text-center mt-5 mb-4">
+                        <div class="text-center mt-2 mb-4">
                             <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>
                                 Guardar covertura</button>
                         </div>
@@ -111,7 +62,7 @@
 
                     <div class="card shadow">
                         <div class="card-header">
-                            <b class="lead font-weight-bold"> <i class="fas fa-truck"></i> Coverturas de envio</b>
+                            <b class="lead font-weight-bold"> <i class="fas fa-archway"></i> Municipios / Delegaciones</b>
                         </div>
                         <div class="d-flex flex-row-reverse mr-5">
 
@@ -126,7 +77,7 @@
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-                                            <a class="dropdown-item" href="{{ route('admin.covertura.index.delete')}}">
+                                            <a class="dropdown-item" href="{{ route('admin.covertura.index.delete') }}">
                                                 <i class="fas fa-ban"></i>
                                                 Coverturas eliminados
                                             </a>
@@ -141,7 +92,7 @@
                                     <tr>
                                         <th scope="col">Status</th>
                                         <th scope="col">Nombre</th>
-                                        <th scope="col">Precio de envío</th>
+
                                         <th scope="col" class="text-center">Administrador</th>
                                     </tr>
                                 </thead>
@@ -151,14 +102,16 @@
                                         <tr>
 
                                             <td>
-                                                @if ( $covertura->status == 1)
-                                                <span class="badge badge-pill badge-info p-2" style="font-size: .8rem">Activo</span>    
+                                                @if ($covertura->status == 1)
+                                                    <span class="badge badge-pill badge-info p-2"
+                                                        style="font-size: .8rem">Activo</span>
                                                 @else
-                                                <span class="badge badge-pill badge-danger p-2" style="font-size: .8rem">No activo</span>
+                                                    <span class="badge badge-pill badge-danger p-2"
+                                                        style="font-size: .8rem">No activo</span>
                                                 @endif
                                             </td>
                                             <td>{{ $covertura->nombre }}</td>
-                                            <td>$ {{ $covertura->precio }} MXN</td>
+                                            {{-- <td>$ {{ $covertura->precio }} MXN</td> --}}
 
                                             <td class="text-center">
 
@@ -174,14 +127,20 @@
                                                             <i class="fas fa-edit"></i>
                                                             Editar covertura
                                                         </a>
-                                                        <form action="{{ route('admin.covertura.delete', $covertura->id) }}"
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('admin.covertura.localidad', $covertura->id) }}">
+                                                            <i class="fas fa-map-marked-alt"></i>
+                                                            Localidades
+                                                        </a>
+                                                        <form
+                                                            action="{{ route('admin.covertura.delete', $covertura->id) }}"
                                                             method="POST" class="covertura_platillo">
                                                             @csrf
                                                             @method('Delete')
                                                             <button class="dropdown-item"
                                                                 href="{{ route('admin.covertura.delete', $covertura->id) }}"><i
-                                                                    class="far fa-trash-alt"></i> 
-                                                                    Eliminar covertura</button>
+                                                                    class="far fa-trash-alt"></i>
+                                                                Eliminar covertura</button>
                                                         </form>
 
 

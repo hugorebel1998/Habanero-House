@@ -13,11 +13,11 @@ class CoverturaController extends Controller
     public function index()
     {
         $coverturas = Coverage::orderBy('id', 'desc')->get();
-        $valor_estados = Coverage::where('tipo_covertura', 0)->get();
+        // $valor_estados = Coverage::where('tipo_covertura', 0)->get();
         // $settings = Restaurant::select('id', 'valor_por_defecto')->get();
-        $setting = Restaurant::pluck('valor_por_defecto')->first();
+        // $setting = Restaurant::pluck('valor_por_defecto')->first();
 
-        return view('admin.covertura.index', compact('coverturas', 'setting', 'valor_estados'));
+        return view('admin.covertura.index', compact('coverturas'));
     }
 
     public function store(CovegareRequest $request)
@@ -26,9 +26,10 @@ class CoverturaController extends Controller
         // $restautante_valor = Restaurant::pluck('valor_por_defecto')->first();
         $coverage = new Coverage();
         $coverage->nombre = $request->nombre;
-        $coverage->tipo_covertura = $request->tipo_covertura;
-        $coverage->state_id = $request->valor_estado;
-        $coverage->precio = $request->precio;
+        $coverage->status = $request->status;
+        $coverage->tipo_covertura = 0;
+        $coverage->state_id = 0;
+        $coverage->precio = 0;
         $coverage->restaurant_id  = $restaurante;
 
         // dd($coverage);
@@ -52,15 +53,14 @@ class CoverturaController extends Controller
     {
         $covertura = Coverage::find($id);
         $restaurante = Restaurant::pluck('id')->first();
-        $valor_estados = Coverage::where('tipo_covertura', 0)->get();
         // $restautante_valor = Restaurant::pluck('valor_por_defecto')->first();
         $covertura->status = $request->status;
         $covertura->nombre = $request->nombre;
-        $covertura->tipo_covertura = $request->tipo_covertura;
-        $covertura->state_id = $request->valor_estado;
-        $covertura->precio = $request->precio;
+        $covertura->tipo_covertura = 0;
+        $covertura->state_id = 0;
+        $covertura->precio = 0;
         $covertura->restaurant_id  = $restaurante;
-        $covertura->state_id = $request->valor_estado;
+
 
         // dd($covertura);
         if ($covertura->save()) {
@@ -96,4 +96,10 @@ class CoverturaController extends Controller
         return redirect()->to(route('admin.covertura.index'));
     }
 
+
+    public function localidad($id){
+        $localidad = Coverage::where('state_id', $id)->get();
+        return view('admin.covertura.localidad',compact('localidad'));
+
+    }
 }

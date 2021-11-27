@@ -39,49 +39,6 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-
-                            <div class="col-md-12 mt-3">
-                                <div class="form-group">
-                                    <label>Tipo de covertura</label>
-                                    <select name="tipo_covertura"
-                                        class="custom-select select2bs4 @error('tipo_covertura') is-invalid @enderror"
-                                        style="width: 100%;">
-                                        <option value="0" @if ($covertura->tipo_covertura == 0) selected @endif>Estado de méxico</option>
-                                        <option value="1" @if ($covertura->tipo_covertura == 1) selected @endif>Ciudad de méxico</option>
-                                    </select>
-                                    @error('tipo_covertura')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                            </div>
-                            <div class="col-md-12 mt-4">
-                                <div class="form-group">
-                                    <label>Estados</label>
-                                    <select name="valor_estado"
-                                        class="custom-select  select2bs4 @error('valor_estado') is-invalid @enderror"
-                                        style="width: 100%;">
-                                        <option value="0">Estado</option>
-                                    </select>
-                                    @error('valor_por_defecto')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <label for="precio">Precio de envio</label>
-                                <input type="number" name="precio"
-                                    class="form-control @error('precio') is-invalid @enderror"
-                                    value="{{ $covertura->precio }}">
-                                @error('precio')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-
-
-
                         </div>
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-save"></i>

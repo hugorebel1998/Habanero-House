@@ -78,7 +78,8 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::delete('/covertura/delete/{coverage}', 'CoverturaController@delete')->name('admin.covertura.delete');
     Route::get('/covertura/index/delete', 'CoverturaController@indexDelete')->name('admin.covertura.index.delete');
     Route::get('/covertura/index/delete/restore/{coverage}', 'CoverturaController@coverturaRestore')->name('admin.covertura.index.restore');
-    
+    //Covertura de envios municipios o delegaciones
+    Route::get('/coverturas/localidad/{localidad}', 'CoverturaController@localidad')->name('admin.covertura.localidad');
 
     
     

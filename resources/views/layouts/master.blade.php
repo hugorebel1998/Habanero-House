@@ -162,7 +162,7 @@
         }
 
         #cantidad_cart {
-            display:initial;
+            display: initial;
             width: 25%;
             height: calc(1.5em + .75rem + 2px);
             padding: .375rem .75rem;
@@ -221,10 +221,11 @@
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('usuario.cart') }}">
-                                <i class="fas fa-cart-plus"></i></i> 
+                                <i class="fas fa-cart-plus"></i></i>
                                 0
                             </a>
-                            {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {{-- <div class="dropdown-menu" aria$cartCount = OrdenItem::count();
+        return view('master', compact('cartCount'));-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">
                                     <img src="{{ asset('img/products/panuchos.png') }}"
                                         class="rounded mx-auto img-thumbnail" width="80">
@@ -253,12 +254,16 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                   @if (Auth::user()->id == 1 || Auth::user()->id == 2 || Auth::user()->id == 3)
-                                   <a class="dropdown-item"
-                                   href="{{ route('admin.home') }}">
-                                   <i class="fas fa-tachometer-alt"></i> {{ __('Administración') }}
-                                   @endif
-                                </a>
+                                    @if (Auth::user()->id == 1 || Auth::user()->id == 2 || Auth::user()->id == 3)
+                                        <a class="dropdown-item" href="{{ route('admin.home') }}">
+                                            <i class="fas fa-tachometer-alt"></i> {{ __('Administración') }}
+                                    @endif
+                                    </a>
+
+                                    <a class="dropdown-item"
+                                        href="{{ route('usuario.edit.perfil', auth()->user()->id) }}">
+                                        <i class="fas fa-map-marker-alt"></i> {{ __('Dirección entrega') }}
+                                    </a>
                                     <a class="dropdown-item"
                                         href="{{ route('usuario.edit.perfil', auth()->user()->id) }}">
                                         <i class="fas fa-user-edit"></i> {{ __('Editar indormación') }}
@@ -269,7 +274,7 @@
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
+                                                                                 document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-in-alt"></i> {{ __('Cerrar sesión') }}
                                     </a>
 
@@ -399,8 +404,8 @@
             }
         }
     </script>
-        {{-- AlertConfirmt --}}
-        @yield('alerta')
+    {{-- AlertConfirmt --}}
+    @yield('alerta')
 
     {{-- <script>
         let preScroll = window.pageYOffset;

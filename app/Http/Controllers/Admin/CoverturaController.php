@@ -12,14 +12,14 @@ class CoverturaController extends Controller
 {
     public function index()
     {
-        $coverturas = Coverage::orderBy('id','desc')->get();
+        $coverturas = Coverage::orderBy('id', 'desc')->get();
         $valor_estados = Coverage::where('tipo_covertura', 0)->get();
         // $settings = Restaurant::select('id', 'valor_por_defecto')->get();
         $setting = Restaurant::pluck('valor_por_defecto')->first();
 
-        return view('admin.covertura.index', compact('coverturas','setting', 'valor_estados'));
+        return view('admin.covertura.index', compact('coverturas', 'setting', 'valor_estados'));
     }
-    
+
     public function store(CovegareRequest $request)
     {
         $restaurante = Restaurant::pluck('id')->first();
@@ -30,16 +30,42 @@ class CoverturaController extends Controller
         $coverage->state_id = $request->valor_estado;
         $coverage->precio = $request->precio;
         $coverage->restaurant_id  = $restaurante;
-      
+
         // dd($coverage);
         if ($coverage->save()) {
             alert()->success('Covertura guardada con éxito');
             return redirect()->to(route('admin.covertura.index'));
-        }else{
+        } else {
             alert()->errror('Error');
             return redirect()->back();
         }
-        
-        
+    }
+
+    public function edit($id)
+    {
+        $covertura = Coverage::find($id);
+        return view('admin.covertura.edit', compact('covertura'));
+    }
+
+
+    public function update(CovegareRequest $request, $id)
+    {
+        $covertura = Coverage::find($id);
+        $restaurante = Restaurant::pluck('id')->first();
+        // $restautante_valor = Restaurant::pluck('valor_por_defecto')->first();
+        $covertura->nombre = $request->nombre;
+        $covertura->tipo_covertura = $request->tipo_covertura;
+        $covertura->state_id = $request->valor_estado;
+        $covertura->precio = $request->precio;
+        $covertura->restaurant_id  = $restaurante;
+
+        // dd($covertura);
+        if ($covertura->save()) {
+            alert()->success('Covertura actalizada con éxito');
+            return redirect()->to(route('admin.covertura.index'));
+        } else {
+            alert()->errror('Error');
+            return redirect()->back();
+        }
     }
 }

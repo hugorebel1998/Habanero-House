@@ -73,5 +73,9 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     //Covertura de envios
     Route::get('/covertura/index', 'CoverturaController@index')->name('admin.covertura.index');
     Route::post('covertura/storage', 'CoverturaController@store')->name('admin.covertura.store');
+    Route::get('/covertura/edit/{coverage}', 'CoverturaController@edit')->name('admin.covertura.edit');
+    Route::put('/covertura/update/{coverage}', 'CoverturaController@update')->name('admin.covertura.update');
+
+
 
 });

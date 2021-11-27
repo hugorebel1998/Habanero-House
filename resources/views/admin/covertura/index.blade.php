@@ -111,7 +111,7 @@
 
                     <div class="card shadow">
                         <div class="card-header">
-                            <b class="lead font-weight-bold"> Categorias</b>
+                            <b class="lead font-weight-bold"> <i class="fas fa-truck"></i> Coverturas de envio</b>
                         </div>
                         <div class="d-flex flex-row-reverse mr-5">
 
@@ -147,45 +147,42 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($coverturas as $covertura)
-                                        
-                                    
+
                                     <tr>
 
                                         <td>{{ $covertura->status }}</td>
                                         <td>{{ $covertura->nombre }}</td>
                                         <td>$ {{ $covertura->precio }} MXN</td>
-                                        
+
                                         <td class="text-center">
-                                            
+
                                             <div class="dropdown">
                                                 <button class="btn btn-sm btn-info dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                <i class="fas fa-cogs"></i> Acciones
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i>
-                                                    Ver productos</a>
-                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Editar
-                                                        categoria</a>>
-                                                        
-                                                        
-                                                        
-                                                    </td>
-                                                </tr>
-                                                
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    <i class="fas fa-cogs"></i> Acciones
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" 
+                                                    href="{{ route('admin.covertura.edit', $covertura->id)}}">
+                                                    <i class="fas fa-edit"></i> 
+                                                    Editar covertura
+                                                </a>
 
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.card-body -->
-                                </div>
-                            </div>
+
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        
+                        <!-- /.card-body -->
                     </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+</div>
 
 @endsection

@@ -68,7 +68,7 @@
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-                                            <a class="dropdown-item" href="">
+                                            <a class="dropdown-item" href="{{ route('admin.covertura.index.local.delete')}}">
                                                 <i class="fas fa-ban"></i>
                                                 Localidades eliminados
                                             </a>

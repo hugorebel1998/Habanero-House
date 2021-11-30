@@ -101,7 +101,7 @@
                                                 @endif
                                             </td>
                                             <td>{{ $localidad->nombre }}</td>
-                                            <td>{{ $localidad->precio }}</td>
+                                            <td>$ {{ $localidad->precio }} MXN</td>
 
                                             <td class="text-center">
 

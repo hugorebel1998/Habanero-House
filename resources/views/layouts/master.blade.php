@@ -261,7 +261,7 @@
                                     </a>
 
                                     <a class="dropdown-item"
-                                        href="{{ route('usuario.edit.perfil', auth()->user()->id) }}">
+                                        href="{{ route('usuario.address')}}">
                                         <i class="fas fa-map-marker-alt"></i> {{ __('Dirección entrega') }}
                                     </a>
                                     <a class="dropdown-item"

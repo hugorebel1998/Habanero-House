@@ -31,4 +31,5 @@ Route::put('/cart/update/{product}','CartController@updateCart')->name('usuario.
 Route::delete('/cart/delete/{product}','CartController@deleteCart')->name('usuario.cart.delete');
 
 
-
+//Route Address
+Route::get('/usuario/address', 'UserEditController@address')->name('usuario.address');

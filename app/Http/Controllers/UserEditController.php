@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Coverage;
 use App\Http\Requests\ContraseñaRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -96,6 +97,13 @@ class UserEditController extends Controller
             return back();
         }
 
+
+    }
+
+    public function address()
+    {
+        $coverturas = Coverage::where('tipo_covertura', 0)->select('id', 'nombre')->get();
+        return view('usuarios.address', compact('coverturas'));
 
     }
 }

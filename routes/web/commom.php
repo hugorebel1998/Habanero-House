@@ -33,5 +33,6 @@ Route::delete('/cart/delete/{product}','CartController@deleteCart')->name('usuar
 
 //Route Address
 Route::get('/usuario/address', 'UserEditController@address')->name('usuario.address');
+Route::post('/usuario/address', 'UserEditController@storeAddress')->name('usuario.address.store');
 Route::post('/usuario/address/cities/{cities}', 'ApiJsController@postCities');
 

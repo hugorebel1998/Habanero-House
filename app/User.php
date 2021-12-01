@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function getAgeAttribute(){
         return Carbon::parse($this->attributes['fecha_nacimiento'])->age;
     }
+
+    public function getAddress(){
+        return $this->hasMany(UserAddes::class,'user_id', 'id');
+    }
 }

@@ -12,15 +12,15 @@
                                 <i class="fas fa-map-marked-alt"></i> Agregar direccioón
                             </div>
                             <div class="card-body">
-                                <form action="" method="POST">
+                                <form action="{{ route('usuario.address.store')}}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <label for="nombre">Nombre</label>
-                                            <input type="text" name="nombre"
-                                                class="form-control @error('nombre') is-invalid @enderror"
-                                                value="{{ old('nombre') }}">
-                                            @error('nombre')
+                                            <label for="nombre_referencia">Nombre</label>
+                                            <input type="text" name="nombre_referencia"
+                                                class="form-control @error('nombre_referencia') is-invalid @enderror"
+                                                value="{{ old('nombre_referencia') }}">
+                                            @error('nombre_referencia')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
 
@@ -58,22 +58,22 @@
                                         </div>
 
                                         <div class="col-md-12 mt-3">
-                                            <label for="calle_av">Calle / Avenida</label>
-                                            <input type="text" name="calle_av"
-                                                class="form-control @error('calle_av') is-invalid @enderror"
-                                                value="{{ old('calle_av') }}">
-                                            @error('calle_av')
+                                            <label for="calle_o_avenida">Calle / Avenida</label>
+                                            <input type="text" name="calle_o_avenida"
+                                                class="form-control @error('calle_o_avenida') is-invalid @enderror"
+                                                value="{{ old('calle_o_avenida') }}">
+                                            @error('calle_o_avenida')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
 
                                         </div>
 
                                         <div class="col-md-12 mt-3">
-                                            <label for="casa_dp">Casa / Departamento No.</label>
-                                            <input type="text" name="casa_dp"
-                                                class="form-control @error('casa_dp') is-invalid @enderror"
-                                                value="{{ old('casa_dp') }}">
-                                            @error('casa_dp')
+                                            <label for="casa_o_departamento">No. Casa / Departamento</label>
+                                            <input type="number" name="casa_o_departamento"
+                                                class="form-control @error('casa_o_departamento') is-invalid @enderror"
+                                                value="{{ old('casa_o_departamento') }}">
+                                            @error('casa_o_departamento')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
 

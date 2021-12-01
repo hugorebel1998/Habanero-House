@@ -111,21 +111,29 @@ if( route == 'usuario.address'){
 }
 function load_cities()
 {
-    let state_id = document.getElementById('state').value;
-    let url = base + '/platillo/inventario/' + inventario;
+    let state_id = document.getElementById('state');
+    let cities_select = document.getElementById('address_city');
+    cities_select.innerHTML = '';
+    let url = base + '/usuario/address/cities/' + state_id.value;
     http.open('POST', url, true);
     http.setRequestHeader('X-CSRF-TOKEN', csrfToken);
     http.send();
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            loader.style.display = 'none';
+            
             let data = this.responseText;
             data = JSON.parse(data);
             
-            
+            if (data.length > 0) {
+                data.forEach(function(element, index){
+                    cities_select.innerHTML += '<option value="'+element.id+'">'+element.nombre+'</option>';
+                });
+            }
 
+            
         }
     }
+    
 
 }
 

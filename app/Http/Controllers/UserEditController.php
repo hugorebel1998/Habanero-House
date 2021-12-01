@@ -102,8 +102,9 @@ class UserEditController extends Controller
 
     public function address()
     {
-        $coverturas = Coverage::where('tipo_covertura', 0)->select('id', 'nombre')->get();
-        return view('usuarios.address', compact('coverturas'));
+        $states = Coverage::where('tipo_covertura', 0)->select('id', 'nombre')->get();
+        // $states  = Coverage::where('tipo_covertura', 0)->pluck('id', 'nombre');
+        return view('usuarios.address', compact('states'));
 
     }
 }

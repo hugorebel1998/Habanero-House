@@ -372,8 +372,12 @@
     <script src="{{ asset('js/master/custom.js') }} "></script>
     <!-- bs-custom-file-input -->
     <script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }} "></script>
+    <!-- Select2 -->
+    <script src="{{ asset('admin-lte/plugins/select2/js/select2.full.min.js') }}"></script>
     <!--slider-->
     <script src="{{ asset('js/sitio.js') }}"></script>
+    <!--Select2JS-->
+    <script src="{{ asset('js/select2.js') }}"></script>
 
     <script>
         $(function() {

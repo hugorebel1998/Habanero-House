@@ -15,12 +15,11 @@ class ApiJsController extends Controller
 
     }
 
-     public function postCoverageCities($state)
-    {
-         $cities = Coverage::where('tipo_covertura',1)
-                            ->where('state_id', $state)
-                            ->select('id', 'nombre')->get();
-         return response()->json($cities);
+    public function postCities($state){
+        $cities = Coverage::where('tipo_covertura', 1)
+                           ->where('state_id', $state)
+                           ->select('nombre','id')->get();
+       return response()->json($cities);
 
-     }
+    }
 }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Coverage;
 use App\Http\Requests\ContraseñaRequest;
 use App\User;
+use App\UserAddes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserEditController extends Controller
@@ -96,14 +98,49 @@ class UserEditController extends Controller
             alert()->error('Oops error', 'La contraseña actual no coincide.');
             return back();
         }
-
-
     }
 
     public function address()
     {
-        $coverturas = Coverage::where('tipo_covertura', 0)->select('id', 'nombre')->get();
-        return view('usuarios.address', compact('coverturas'));
+        $states = Coverage::where('tipo_covertura', 0)->select('id', 'nombre')->get();
+        // $states  = Coverage::where('tipo_covertura', 0)->pluck('id', 'nombre');
+        return view('usuarios.address', compact('states'));
+    }
 
+    public function storeAddress(Request $request)
+    {
+        
+        
+        $direccion = new UserAddes();
+        
+        $request->validate([
+            'nombre_referencia' => 'required',
+            'calle_o_avenida' => 'required',
+            'casa_o_departamento' => 'required',
+            'referencia' => 'required'
+        ]);
+
+
+        $direccion->nombre = $request->nombre_referencia;
+        $direccion->calle_av = $request->calle_o_avenida;
+        $direccion->casa_dp = $request->casa_o_departamento;
+        $direccion->referencia = $request->referencia;
+        $direccion->user_id = Auth::user()->id;
+        $direccion->state_id = $request->state;
+        $direccion->city_id = $request->city;
+        
+         if (count(collect(Auth::user()->getAddress)) == '0') {
+
+             $direccion->direccion_default = '1';
+         }
+        
+        if ($direccion->save()) {
+
+            alert()->success('Ubicación agregada con éxito');
+            return redirect()->back();
+        } else {
+            alert()->error('Error');
+            return redirect()->back();
+        }
     }
 }

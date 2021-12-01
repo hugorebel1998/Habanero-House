@@ -28,9 +28,9 @@
                                         <div class="col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>Delegaciones / Municipios</label>
-                                                <select name="state"  id="state" class="custom-select  select2bs4 @error('state') is-invalid @enderror"
+                                                <select name="state"  id="state" class="form-control @error('state') is-invalid @enderror"
                                                     style="width: 100%;">
-                                                    <option value="" selected>-- Selecciona una categoria--</option>
+                                                    
                                                     @foreach ($coverturas as $covertura)
                                                        <option value="{{$covertura->id}}" {{(old('state') == $covertura->id ? 'selected' : '')}} > {{$covertura->nombre}} </option>
                                                     @endforeach
@@ -44,7 +44,7 @@
                                         <div class="col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>Colonias </label>
-                                                <select name="city" class="custom-select  select2bs4 @error('city') is-invalid @enderror"
+                                                <select name="city" class="form-control @error('city') is-invalid @enderror"
                                                     style="width: 100%;">
                                                        <option value="" id="address_city[]" multiple accept="image/*"> </option>
                                                 </select>

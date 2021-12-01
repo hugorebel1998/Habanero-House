@@ -14,4 +14,10 @@ class Coverage extends Model
         'status','nombre','tipo_covertura', 'precio', 'restaurant_id', 'state_id',
         
     ];
+
+    public function getState()
+    {
+        return $this->hasOne(Coverage::class, 'id', 'state_id');
+
+    }
 }

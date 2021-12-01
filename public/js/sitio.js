@@ -111,21 +111,7 @@ if( route == 'usuario.address'){
 }
 function load_cities()
 {
-    let state_id = document.getElementById('state').value;
-    let url = base + '/platillo/inventario/' + inventario;
-    http.open('POST', url, true);
-    http.setRequestHeader('X-CSRF-TOKEN', csrfToken);
-    http.send();
-    http.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            loader.style.display = 'none';
-            let data = this.responseText;
-            data = JSON.parse(data);
-            
-            
-
-        }
-    }
-
+    let state_id = document.getElementById('state');
+    console.log(state_id);
 }
 

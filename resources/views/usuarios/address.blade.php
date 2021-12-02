@@ -129,14 +129,14 @@
                                     <td>
                                         <p>{{$direccion->getStates->nombre }} </p>
                                         @if ($direccion->direccion_default == "0")
-                                        <p>
-                                           <a href="{{ route('usuario.address.default', $direccion->id)}}">
+                                        <p >
+                                           <a href="{{ route('usuario.address.default', $direccion->id)}}" class="badge badge-dark">
                                         
-                                        <?= $direccion->id?>
+                                        Dirección secundaria
                                         </a>
                                         </p>
                                         @else
-                                        <p>Referencia principal</p>
+                                        <p class="badge badge-primary">Referencia principal</p>
                                         @endif
 
 

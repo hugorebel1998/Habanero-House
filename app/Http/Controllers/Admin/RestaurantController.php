@@ -40,7 +40,7 @@ class RestaurantController extends Controller
         $restaurante->email_razon_social = $request->correo_electrónico;
         $restaurante->mantenimiento = $request->mantenimiento;
         $restaurante->precio_envio = $request->precio_envio;
-        $restaurante->	valor_por_defecto = $request->valor_por_defecto;
+        $restaurante->valor_por_defecto = $request->valor_por_defecto;
 
         // dd($restaurante);
         if ($restaurante->save()) {

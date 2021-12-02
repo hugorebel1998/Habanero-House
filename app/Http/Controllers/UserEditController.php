@@ -145,9 +145,11 @@ class UserEditController extends Controller
         }
     }
 
-    public function getAccounAddressDefault(UserAddes $direccion)
+    public function getAccounAddressDefault($direccion_id)
     {
-        return $direccion;
+
+        $direccion = UserAddes::find($direccion_id);
+        dd($direccion);
         
         // return  Auth::user()->getAddressDefault->id;
         // dd(Auth::user()->id != $direccion->user_id);
@@ -165,7 +167,7 @@ class UserEditController extends Controller
 
         $direccion->direccion_default = '1';
         if ($direccion->save()) {
-            alert()->success('éxito');
+            alert()->success('Direccion cambiada con éxito');
             return redirect()->back();
         }
 

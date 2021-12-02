@@ -35,6 +35,6 @@ Route::delete('/cart/delete/{product}','CartController@deleteCart')->name('usuar
 Route::get('/usuario/address', 'UserEditController@address')->name('usuario.address');
 Route::post('/usuario/address', 'UserEditController@storeAddress')->name('usuario.address.store');
 Route::post('/usuario/address/cities/{cities}', 'ApiJsController@postCities');
-Route::get('/usuario/address/{default}', 'UserEditController@getAccounAddressDefault')->name('usuario.address.default');
+Route::get('/usuario/address/default/{default}', 'UserEditController@getAccounAddressDefault')->name('usuario.address.default');
 Route::delete('/usuario/address/delete/{cities}', 'UserEditController@deleteAddrees')->name('usuario.addreess.delet');
 

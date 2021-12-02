@@ -120,27 +120,27 @@
 
 
                                 <tr class="text-center">
-                                    <td> 
-                                        <p>
-                                            {{ $direccion->nombre }}</td>
-                                        </p>
-                                        
                                     <td>
                                         <p>
-                                            {{$direccion->getStates->nombre }}
-                                            @if ($direccion-> direccion_default	 == '0')
-                                            <p class="badge badge-dark">
-                                                <a href="{{ route('usuario.address.default', $direccion->id)}}"
-                                                    class="text-white">
-                                                    Convertir en principal
-                                                </a>
-                                            </p>
-                                             @else
-                                             <p class="badge badge-success">Referencia principal</p>    
-                                            @endif
-                                            
-                                        </p>
+                                            {{ $direccion->nombre }}
+                                    </td>
+                                    </p>
+
+                                    <td>
+                                        <p>{{$direccion->getStates->nombre }} </p>
+                                        @if ($direccion->direccion_default == "0")
+                                        <p>
+                                           <a href="{{ route('usuario.address.default', $direccion->id)}}">
                                         
+                                        <?= $direccion->id?>
+                                        </a>
+                                        </p>
+                                        @else
+                                        <p>Referencia principal</p>
+                                        @endif
+
+
+
                                     </td>
                                     <td>
                                         <p>
@@ -165,8 +165,8 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <form action="{{ route('usuario.addreess.delet', $direccion->id) }}" method="POST"
-                                            class="eliminar_address">
+                                        <form action="{{ route('usuario.addreess.delet', $direccion->id) }}"
+                                            method="POST" class="eliminar_address">
                                             @csrf
                                             @method('Delete')
                                             <button class="btn btn-outline-danger"
@@ -189,30 +189,30 @@
 </div>
 
 @section('alerta')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        $('.eliminar_address').submit(function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Estas seguro de eliminar?',
-                text: `Esta dirección sera eliminada`,
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, eliminar!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Eliminado',
-                        'Haz eliminado esta dirección.',
-                        'success'
-                    )
-                    this.submit();
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $('.eliminar_address').submit(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Estas seguro de eliminar?',
+            text: `Esta dirección sera eliminada`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, eliminar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Eliminado',
+                    'Haz eliminado esta dirección.',
+                    'success'
+                )
+                this.submit();
 
-                }
-            })
-        });
-    </script>
+            }
+        })
+    });
+</script>
 @endsection
 @endsection

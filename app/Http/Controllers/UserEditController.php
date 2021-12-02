@@ -104,8 +104,7 @@ class UserEditController extends Controller
     {
         $states = Coverage::where('tipo_covertura', 0)->select('id', 'nombre')->get();
         // $states  = Coverage::where('tipo_covertura', 0)->pluck('id', 'nombre');
-        $direcciones = UserAddes::select('id', 'nombre', 'calle_av', 'casa_dp', 'referencia')
-            ->orderBy('id', 'ASC')->get();
+        $direcciones = UserAddes::all();
 
         return view('usuarios.address', compact('states', 'direcciones'));
     }
@@ -131,9 +130,9 @@ class UserEditController extends Controller
         $direccion->casa_dp = $request->casa_o_departamento;
         $direccion->referencia = $request->referencia;
 
-        if (count(collect(Auth::user()->getAddress)) == '0') {
+        if (count(collect(Auth::user()->getAddress)) == "0") {
 
-            $direccion->direccion_default = '1';
+            $direccion->direccion_default = "1";
         }
 
         if ($direccion->save()) {
@@ -148,6 +147,8 @@ class UserEditController extends Controller
 
     public function getAccounAddressDefault(UserAddes $direccion)
     {
+        return $direccion;
+        
         // return  Auth::user()->getAddressDefault->id;
         // dd(Auth::user()->id != $direccion->user_id);
         if (Auth::id() != $direccion->user_id) {

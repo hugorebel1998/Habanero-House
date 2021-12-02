@@ -16,7 +16,7 @@ class UserAddes extends Model
         'direccion_default	','nombre','calle_av', 'casa_dp','referencia','user_id','state_id', 'city_id'
     ];
 
-    public function getStates(){
+    public function getStates(){  
         return $this->hasOne(Coverage::class,'id', 'state_id');
     }
     public function getCities(){

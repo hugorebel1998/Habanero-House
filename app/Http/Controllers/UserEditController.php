@@ -113,7 +113,6 @@ class UserEditController extends Controller
     public function storeAddress(Request $request)
     {
 
-        
         $request->validate([
             'nombre_referencia' => 'required',
             'calle_o_avenida' => 'required',
@@ -146,8 +145,11 @@ class UserEditController extends Controller
         }
     }
 
-    public function getAccounAddressDefault(UserAddes $direccion)
+    public function getAccounAddressDefault($direccion_id)
     {
+
+        $direccion = UserAddes::find($direccion_id);
+        // return $direccion;
         // return  Auth::user()->getAddressDefault->id;
         // dd(Auth::user()->id != $direccion->user_id);
         if (Auth::id() != $direccion->user_id) {
@@ -164,11 +166,9 @@ class UserEditController extends Controller
 
         $direccion->direccion_default = '1';
         if ($direccion->save()) {
-            alert()->success('éxito');
+            alert()->success('Ubicacion actualizada con éxito');
             return redirect()->back();
         }
-
-
     }
 
     public function deleteAddrees($id)

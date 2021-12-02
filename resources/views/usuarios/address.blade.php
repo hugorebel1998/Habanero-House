@@ -2,9 +2,9 @@
 @section('title', 'Dirección')
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="row">
                 <div class="col-md-4 mt-5"> <br>
                     <div class="card card-danger shadow mt-5 mb-5">
@@ -126,21 +126,20 @@
                                         </p>
                                         
                                     <td>
-                                        <p>
-                                            {{$direccion->getStates->nombre }}
+                                        <p>{{$direccion->getStates->nombre }} </p>
                                             @if ($direccion-> direccion_default	 == '0')
                                             <p class="badge badge-dark">
-                                                <a href="{{ route('usuario.address.default', $direccion->id)}}"
+                                                <a href="{{ route('usuario.address.default', $direccion->id )}}"
                                                     class="text-white">
                                                     Convertir en principal
                                                 </a>
                                             </p>
+                                            {{-- <p class="badge badge-dark">
+                                                Referencia secundaria
+                                            </p> --}}
                                              @else
-                                             <p class="badge badge-success">Referencia principal</p>    
-                                            @endif
-                                            
-                                        </p>
-                                        
+                                             <p class="badge badge-primary">Referencia principal</p>    
+                                            @endif      
                                     </td>
                                     <td>
                                         <p>

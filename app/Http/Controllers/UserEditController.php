@@ -104,14 +104,15 @@ class UserEditController extends Controller
     {
         $states = Coverage::where('tipo_covertura', 0)->select('id', 'nombre')->get();
         // $states  = Coverage::where('tipo_covertura', 0)->pluck('id', 'nombre');
-        return view('usuarios.address', compact('states'));
+        $direcciones = UserAddes::select('id', 'nombre', 'calle_av', 'casa_dp', 'referencia')
+            ->orderBy('id', 'ASC')->get();
+
+        return view('usuarios.address', compact('states', 'direcciones'));
     }
 
     public function storeAddress(Request $request)
     {
-        
-        
-        $direccion = new UserAddes();
+
         
         $request->validate([
             'nombre_referencia' => 'required',
@@ -119,21 +120,22 @@ class UserEditController extends Controller
             'casa_o_departamento' => 'required',
             'referencia' => 'required'
         ]);
-
-
+        
+        
+        $direccion = new UserAddes();
+        $direccion->user_id = Auth::id();
+        $direccion->state_id = $request->state;
+        $direccion->city_id = $request->city;
         $direccion->nombre = $request->nombre_referencia;
         $direccion->calle_av = $request->calle_o_avenida;
         $direccion->casa_dp = $request->casa_o_departamento;
         $direccion->referencia = $request->referencia;
-        $direccion->user_id = Auth::user()->id;
-        $direccion->state_id = $request->state;
-        $direccion->city_id = $request->city;
-        
-         if (count(collect(Auth::user()->getAddress)) == '0') {
 
-             $direccion->direccion_default = '1';
-         }
-        
+        if (count(collect(Auth::user()->getAddress)) == '0') {
+
+            $direccion->direccion_default = '1';
+        }
+
         if ($direccion->save()) {
 
             alert()->success('Ubicación agregada con éxito');
@@ -142,5 +144,38 @@ class UserEditController extends Controller
             alert()->error('Error');
             return redirect()->back();
         }
+    }
+
+    public function getAccounAddressDefault(UserAddes $direccion)
+    {
+        // return  Auth::user()->getAddressDefault->id;
+        // dd(Auth::user()->id != $direccion->user_id);
+        if (Auth::id() != $direccion->user_id) {
+            // dd(Auth::user() != $address->user_id);
+            alert()->error('No puedes editar esta dirección de entrega');
+            return redirect()->back();
+        } 
+
+        // dd(Auth::user()->getAddressDefault->id);
+        $defa = Auth::user()->getAddressDefault->id;
+        $defa = UserAddes::find(Auth::user()->getAddressDefault->id);
+        $defa->direccion_default = '0';
+        $defa->save();
+
+        $direccion->direccion_default = '1';
+        if ($direccion->save()) {
+            alert()->success('éxito');
+            return redirect()->back();
+        }
+
+
+    }
+
+    public function deleteAddrees($id)
+    {
+        $direccion = UserAddes::findOrFail($id);
+        $direccion->delete();
+        // alert()->success('Éxito al borrar ', 'Se ha borrado la categoria.');
+        return back();
     }
 }

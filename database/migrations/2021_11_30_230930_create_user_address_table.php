@@ -15,7 +15,7 @@ class CreateUserAddressTable extends Migration
     {
         Schema::create('user_address', function (Blueprint $table) {
             $table->id();
-            $table->string('direccion_default')->default('0');
+            $table->integer('direccion_default')->default('0');
             $table->string('nombre');
             $table->string('calle_av');
             $table->string('casa_dp');

@@ -47,6 +47,12 @@ class User extends Authenticatable
     }
 
     public function getAddress(){
-        return $this->hasMany(UserAddes::class,'user_id', 'id');
+        return $this->hasMany(UserAddes::class,'user_id', 'id')->with(['getStates', 'getCities']);
     }
+
+    public function getAddressDefault()
+    {
+        return $this->hasOne(UserAddes::class, 'user_id', 'id')->where('direccion_default',1)->with(['getStates', 'getCities']);
+    }
+    
 }

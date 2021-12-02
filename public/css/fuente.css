@@ -154,3 +154,6 @@
     color: black;
     text-align: center;
 }
+table p{
+    margin-bottom: 4px !important;
+}

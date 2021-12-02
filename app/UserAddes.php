@@ -13,7 +13,13 @@ class UserAddes extends Model
     protected $table = 'user_address';
 
     protected $fillable = [
-        'nombre','calle_av', 'casa_dp','referencia','user_id','state_id', 'city_id'
+        'direccion_default	','nombre','calle_av', 'casa_dp','referencia','user_id','state_id', 'city_id'
     ];
 
+    public function getStates(){
+        return $this->hasOne(Coverage::class,'id', 'state_id');
+    }
+    public function getCities(){
+        return $this->hasOne(Coverage::class,'id', 'city_id');
+    }
 }

@@ -19,11 +19,13 @@ class CreateRestaurantsTable extends Migration
             $table->string('nombre_encargado')->nullable();
             $table->string('telefono_razon_social');
             $table->string('email_razon_social')->nullable();
+            $table->integer('monto_minimo_de_compra')->nullable()->default(1);
             $table->string('direccion_razon_social')->nullable();
             $table->string('mantenimiento')->nullable()->default(0);
             $table->string('restaurante_galeria')->nullable();
-            $table->integer('precio_envio')->nullable();
+            $table->integer('precio_envio')->nullable()->default(0);
             $table->decimal('valor_por_defecto',11,2)->nullable()->default(0);
+            $table->decimal('cantidad_de_envio_min',11,2)->nullable()->default(0);
             $table->timestamps();
         });
     }

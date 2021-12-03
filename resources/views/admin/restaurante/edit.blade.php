@@ -42,7 +42,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-4 mt-4">
+                            <div class="col-md-4 mt-3">
                                 <label for="correo_electrónico">Correo electrónico</label>
                                 <input type="email" name="correo_electrónico"
                                     class="form-control @error('correo_electrónico') is-invalid @enderror"
@@ -52,7 +52,7 @@
                                 @enderror
                             </div>
                             
-                            <div class="col-md-4 mt-4">
+                            <div class="col-md-4 mt-3">
                                 <div class="form-group">
                                     <label>Modo mantenimiento</label>
                                     <select name="mantenimiento"
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 mt-4">
+                            <div class="col-md-4 mt-3">
                                 <div class="form-group">
                                     <label for="imagen">Imagen destacada</label>
                                     <div class="custom-file">
@@ -83,7 +83,16 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 mt-4">
+                            <div class="col-md-4 mt-3">
+                                <label for="monto_minimo_de_compra">Monto minimo de compra</label>
+                                <input type="number" name="monto_minimo_de_compra"
+                                    class="form-control @error('monto minimo de compra') is-invalid @enderror"
+                                    value="{{ $restaurante->monto_minimo_de_compra}}" min="1">
+                                @error('monto_minimo_de_compra')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-4 mt-3">
                                 <label for="dirección">Ubicación</label>
                                 <input type="text" name="dirección"
                                     class="form-control @error('dirección') is-invalid @enderror"
@@ -92,7 +101,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-4 mt-4">
+                            <div class="col-md-4 mt-3">
                                 <div class="form-group">
                                     <label>Configración de precio de envío</label>
                                     <select name="precio_envio"
@@ -102,20 +111,29 @@
                                         <option value="0" @if ($restaurante->precio_envio == 0) selected @endif>Gratis</option>
                                         <option value="1" @if ($restaurante->precio_envio == 1) selected @endif>Valor fijo</option>
                                         <option value="2" @if ($restaurante->precio_envio == 2) selected @endif>Valor variable por ubicación</option>
-                                        <option value="3" @if ($restaurante->precio_envio == 3) selected @endif>Valor fijo por profucto</option>
-                                        
+                                        <option value="3" @if ($restaurante->precio_envio == 3) selected @endif>Envio gratis / Monto minimo</option>  
                                     </select>
                                     @error('precio_envio')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4 mt-4">
+                            <div class="col-md-4 mt-3">
                                 <label for="valor_por_defecto">Valor del envio</label>
                                 <input type="number" name="valor_por_defecto"
                                     class="form-control @error('valor_por_defecto') is-invalid @enderror"
                                     value="{{ $restaurante->valor_por_defecto}}">
                                 @error('valor_por_defecto')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4 mt-3">
+                                <label for="cantidad_de_envio_min">Envio gratis monto minimo</label>
+                                <input type="number" name="cantidad_de_envio_min"
+                                    class="form-control @error('cantidad_de_envio_min') is-invalid @enderror"
+                                    value="{{ $restaurante->cantidad_de_envio_min }}">
+                                @error('cantidad_de_envio_min')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>

@@ -112,7 +112,6 @@ class UserEditController extends Controller
     public function storeAddress(Request $request)
     {
 
-        
         $request->validate([
             'nombre_referencia' => 'required',
             'calle_o_avenida' => 'required',
@@ -149,17 +148,11 @@ class UserEditController extends Controller
     {
 
         $direccion = UserAddes::find($direccion_id);
-        dd($direccion);
         
-        // return  Auth::user()->getAddressDefault->id;
-        // dd(Auth::user()->id != $direccion->user_id);
         if (Auth::id() != $direccion->user_id) {
-            // dd(Auth::user() != $address->user_id);
             alert()->error('No puedes editar esta dirección de entrega');
             return redirect()->back();
         } 
-
-        // dd(Auth::user()->getAddressDefault->id);
         $defa = Auth::user()->getAddressDefault->id;
         $defa = UserAddes::find(Auth::user()->getAddressDefault->id);
         $defa->direccion_default = '0';
@@ -167,11 +160,9 @@ class UserEditController extends Controller
 
         $direccion->direccion_default = '1';
         if ($direccion->save()) {
-            alert()->success('Direccion cambiada con éxito');
+            alert()->success('Ubicacion actualizada con éxito');
             return redirect()->back();
         }
-
-
     }
 
     public function deleteAddrees($id)

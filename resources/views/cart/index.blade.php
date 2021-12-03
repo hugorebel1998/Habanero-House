@@ -138,11 +138,11 @@
                                         </div>
                                         <div class="col-md-7 mt-3 ml-3">
                                             <b> <i class="fas fa-truck"></i> Precio por envio: </b>
-                                            $ 0 MXN
+                                            $ {{ $envio}} MXN
                                         </div>
                                         <div class="col-md-12 mt-3 ml-3">
                                             <b><i class="fas fa-coins"></i> Total a pagar: </b>
-                                            $ 0 MXN
+                                            $ {{ $orden->total}} MXN
                                         </div>
                                     </div>
                                     <form action="#" method="post">

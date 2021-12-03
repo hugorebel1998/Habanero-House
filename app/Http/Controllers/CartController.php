@@ -10,6 +10,7 @@ use App\Restaurant;
 use App\Variants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Void_;
 
 class CartController extends Controller
 {
@@ -21,8 +22,9 @@ class CartController extends Controller
     public function getCart()
     {
         $orden = $this->getUserOrder();
-        $envio = $this->getValorEnvio($orden->id);
         $items = $orden->getItems;
+        $envio = $this->getValorEnvio($orden->id);
+        return $envio;
         return view('cart.index', compact('orden', 'items', 'envio'));
     }
 
@@ -42,23 +44,38 @@ class CartController extends Controller
     public function getValorEnvio($order_id)
     {
         $orden = Order::find($order_id);
-        // var_dump(json_encode($orden));
-        // die();
-        $metodo_envio = Restaurant::select('precio_envio')->get();
-        $precio = '0';
-        if ($metodo_envio == '0') {
-            if (isset($precio)) {
-                '0.00';
-            }
-        } else {
-            # code...
-        }
         
-        var_dump(json_encode($precio));
-        die();
         
-           
+        $metodo_envio =  Restaurant::pluck('precio_envio')->first();
+        $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();
+        $cantidad_env_min = Restaurant::pluck('cantidad_de_envio_min')->first();
 
+        // dd(gettype($valor_defecto));
+        if ($metodo_envio == '0') {
+            $precio = "0.00";
+        }
+        if ($metodo_envio == '1') {
+            $precio = $valor_defecto;
+        }
+        if ($metodo_envio == '3') {
+            if ($orden->getSubtotal() >= $cantidad_env_min) {
+                $precio = "0.00";
+
+            } else {
+                $precio = $cantidad_env_min;
+            }
+            
+           
+        }
+
+        dd($metodo_envio, $precio);
+        $orden->deliver = $precio;
+        $orden->save();
+        // if($orden->save()){
+        //     alert()->success('Éxito valor pordefecto');
+        //     return redirect()->back();
+
+        // }
 
     }
     public function postCart(Request $request, $id)

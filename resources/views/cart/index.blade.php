@@ -44,6 +44,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         @foreach ($items as $item)
 
                                             <tr class="text-center">
@@ -96,7 +97,36 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <div class="card card-danger shadow">
+                            <div class="card card-dark shadow">
+                                <div class="card-header">
+                                    <i class="fas fa-map-marker-alt"></i> Derección de envío
+                                </div>
+                                <div class="car-body">
+                                    <div class="row">
+                                        <div class="col-md-5 mt-3 ml-3">
+                                            <b><i class="fas fa-city"></i> CDMX / Estado: </b>
+                                            <p class="ml-3"><span>{{ Auth::user()->getAddressDefault->getStates->nombre }}</span></p>
+                                        </div>
+                                        <div class="col-md-6 mt-3 ml-3">
+                                            <b> <i class="fas fa-archway"></i> Colonia: </b>
+                                            <p class="ml-3"><span>{{ Auth::user()->getAddressDefault->getCities->nombre }}</span></p>
+                                        </div>
+                                        <div class="col-md-5 mt-3 ml-3">
+                                            <b><i class="fas fa-map-pin"></i> Dirección: </b>
+                                            <p class="ml-3"><span>{{ Auth::user()->getAddressDefault->nombre }} / {{ Auth::user()->getAddressDefault->calle_av }} / No. {{ Auth::user()->getAddressDefault->casa_dp }}</span></p>
+                                        </div>
+                                        <div class="col-md-6  mt-3 ml-3">
+                                            <b> <i class="fas fa-location-arrow"></i> Referencia:</b>
+                                            <p class="ml-3"><span> {{ Auth::user()->getAddressDefault->referencia }}</span></p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="text-right mr-2 mb-2">
+                                        <a href="{{ route('usuario.address')}}" class="btn btn-sm btn-dark"><i class="fas fa-map-marked-alt"></i> Cambiar direccion</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-dark shadow">
                                 <div class="card-header">
                                     <i class="fas fa-bookmark"></i> Información de la compra
                                 </div>
@@ -114,20 +144,17 @@
                                             <b><i class="fas fa-coins"></i> Total a pagar: </b>
                                             $ 0 MXN
                                         </div>
-                                        <form action="#" method="post">
-                                            <div class="col-md-12 mt-4 ml-3">
-                                                <b><i class="fas fa-map-marker-alt"></i> Direccion de envío</b>
-                                            </div>
-
-
-                                            <button type="submit" class="btn btn-sm btn-danger mt-4 mb-4 ml-3">
+                                    </div>
+                                    <form action="#" method="post">
+                                        <div class="col-md-12 mt-4 ml-3">
+                                            <b><i class="fas fa-map-marker-alt"></i> Direccion de envío</b>
+                                        </div>
+                                        <div class="text-right mr-2 mb-2">
+                                            <button type="submit" class="btn btn-sm btn-dark ">
                                                 <i class="fas fa-badge-dollar"></i> Realizar compra
                                             </button>
-
-
-
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
 

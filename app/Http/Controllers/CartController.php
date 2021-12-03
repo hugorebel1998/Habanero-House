@@ -24,8 +24,6 @@ class CartController extends Controller
         $orden = $this->getUserOrder();
         $items = $orden->getItems;
         $envio = $this->getValorEnvio($orden->id);
-
-        return $envio;
         return view('cart.index', compact('orden', 'items', 'envio'));
     }
 
@@ -59,11 +57,12 @@ class CartController extends Controller
 
         // dd($metodo_envio, $precio);
         $orden->deliver = $precio;
-        if($orden->save()){
-            alert()->success('Éxito valor pordefecto');
-            return redirect()->back();
+        $orden->save();
+        // if($orden->save()){
+        //     alert()->success('Éxito valor pordefecto');
+        //     return redirect()->back();
 
-        }
+        // }
 
     }
     public function postCart(Request $request, $id)

@@ -116,6 +116,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
                                 @foreach (Auth::user()->getAddress as $direccion)
 
 

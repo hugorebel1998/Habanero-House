@@ -45,8 +45,17 @@ class CartController extends Controller
         // var_dump(json_encode($orden));
         // die();
         $metodo_envio = Restaurant::select('precio_envio')->get();
+        $precio = '0';
+        if ($metodo_envio == '0') {
+            if (isset($precio)) {
+                '0.00';
+            }
+        } else {
+            # code...
+        }
         
-        
+        var_dump(json_encode($precio));
+        die();
         
            
 

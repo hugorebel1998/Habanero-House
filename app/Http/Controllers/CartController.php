@@ -6,9 +6,11 @@ use App\OrdenItem;
 use App\Order;
 use App\Product;
 use App\ProductInventary;
+use App\Restaurant;
 use App\Variants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Void_;
 
 class CartController extends Controller
 {
@@ -20,16 +22,17 @@ class CartController extends Controller
     public function getCart()
     {
         $orden = $this->getUserOrder();
-        // $orden_id = $this->getUserOrder()->i
         $items = $orden->getItems;
-        return view('cart.index', compact('orden', 'items'));
+        $envio = $this->getValorEnvio($orden->id);
+
+        return $envio;
+        return view('cart.index', compact('orden', 'items', 'envio'));
     }
 
     public function getUserOrder()
     {
         $orden = Order::where('status', '0')->count();
         if ($orden == '0') {
-
             $orden = new Order();
             $orden->user_id = Auth::user()->id;
             $orden->save();
@@ -37,6 +40,31 @@ class CartController extends Controller
             $orden = Order::where('status', '0')->first();
         }
         return $orden;
+    }
+
+    public function getValorEnvio($order_id)
+    {
+        $orden = Order::find($order_id);
+        
+        
+        $metodo_envio =  Restaurant::pluck('precio_envio')->first();
+        $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();;
+        // dd(gettype($valor_defecto));
+        if ($metodo_envio == '0') {
+            $precio = "0.00";
+        }
+        if ($metodo_envio == '1') {
+            $precio = $valor_defecto;
+        }
+
+        // dd($metodo_envio, $precio);
+        $orden->deliver = $precio;
+        if($orden->save()){
+            alert()->success('Éxito valor pordefecto');
+            return redirect()->back();
+
+        }
+
     }
     public function postCart(Request $request, $id)
     {
@@ -151,25 +179,26 @@ class CartController extends Controller
             if ($inventario->limitado_inventario == '0') {
                 if ($request->cantidad > $inventario->cantidad_inventario) {
                     alert()->error('La cantidad ingresada supera el inventario');
-                    return redirect()->back();                }
+                    return redirect()->back();
+                }
             }
         }
         $orden_item->cantidad = $request->cantidad;
         $total = $orden_item->precio_unitario * $request->cantidad;
         $orden_item->total = $total;
 
-            if ($orden_item->save()) {
-                alert()->success('Cantidad actualizada');
-                return redirect()->back();
-            }
+        if ($orden_item->save()) {
+            alert()->success('Cantidad actualizada');
+            return redirect()->back();
+        }
     }
 
-    public function deleteCart($id){
+    public function deleteCart($id)
+    {
         $orden_item = OrdenItem::find($id);
         if ($orden_item->delete()) {
             return back();
         }
-
     }
 
 

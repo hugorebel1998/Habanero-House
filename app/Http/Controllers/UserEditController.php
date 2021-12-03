@@ -149,16 +149,11 @@ class UserEditController extends Controller
     {
 
         $direccion = UserAddes::find($direccion_id);
-        // return $direccion;
-        // return  Auth::user()->getAddressDefault->id;
-        // dd(Auth::user()->id != $direccion->user_id);
+        
         if (Auth::id() != $direccion->user_id) {
-            // dd(Auth::user() != $address->user_id);
             alert()->error('No puedes editar esta dirección de entrega');
             return redirect()->back();
         } 
-
-        // dd(Auth::user()->getAddressDefault->id);
         $defa = Auth::user()->getAddressDefault->id;
         $defa = UserAddes::find(Auth::user()->getAddressDefault->id);
         $defa->direccion_default = '0';

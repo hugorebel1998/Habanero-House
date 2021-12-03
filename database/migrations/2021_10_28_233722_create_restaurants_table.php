@@ -23,7 +23,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('mantenimiento')->nullable()->default(0);
             $table->string('restaurante_galeria')->nullable();
             $table->integer('precio_envio')->nullable();
-            $table->integer('valor_por_defecto')->nullable()->default(0);
+            $table->decimal('valor_por_defecto',11,2)->nullable()->default(0);
             $table->timestamps();
         });
     }

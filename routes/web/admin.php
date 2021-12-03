@@ -85,6 +85,7 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::put('/coverturas/localidad/update/{localidad}', 'CoverturaController@updateLocalidad')->name('admin.covertura.localidad.update');
     Route::delete('covertura/localidad/delete/{localidad}', 'CoverturaController@delateLocalidad')->name('admin.covertura.localidad.delete');
     Route::get('/covertura/localidad/index/delete', 'CoverturaController@indexLocalDelete')->name('admin.covertura.index.local.delete');
+
     // Route::get('/covertura/index/delete/restore/{coverage}', 'CoverturaController@coverturaRestore')->name('admin.covertura.index.restore');
 
     

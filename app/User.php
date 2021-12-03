@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function getAddressDefault()
     {
-        return $this->hasOne(UserAddes::class, 'user_id', 'id')->where('direccion_default',1)->with(['getStates', 'getCities']);
+        return $this->hasOne(UserAddes::class, 'user_id', 'id')->where('direccion_default','1')->with(['getStates', 'getCities']);
     }
     
 }

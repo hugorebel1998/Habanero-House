@@ -24,7 +24,8 @@ class CartController extends Controller
         $orden = $this->getUserOrder();
         $items = $orden->getItems;
         $envio = $this->getValorEnvio($orden->id);
-        return $envio;
+         var_dump($envio);
+         die();
         return view('cart.index', compact('orden', 'items', 'envio'));
     }
 
@@ -33,22 +34,23 @@ class CartController extends Controller
         $orden = Order::where('status', '0')->count();
         if ($orden == '0') {
             $orden = new Order();
-            $orden->user_id = Auth::user()->id;
+            $orden->user_id = Auth::id();
             $orden->save();
         } else {
-            $orden = Order::where('status', '0')->first();
+            $orden = Order::where('status', '0')->where('user_id', Auth::id())->first();
         }
         return $orden;
     }
 
     public function getValorEnvio($order_id)
     {
-        $orden = Order::find($order_id);
-        
+        $orden = Order::findOrFail($order_id);
+        // dd($orden);
         
         $metodo_envio =  Restaurant::pluck('precio_envio')->first();
         $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();
         $cantidad_env_min = Restaurant::pluck('cantidad_de_envio_min')->first();
+        // dd($cantidad_env_min);
 
         // dd(gettype($valor_defecto));
         if ($metodo_envio == '0') {
@@ -57,26 +59,27 @@ class CartController extends Controller
         if ($metodo_envio == '1') {
             $precio = $valor_defecto;
         }
+        if ($metodo_envio == '2') {
+            $precio = $valor_defecto;
+        }
+
         if ($metodo_envio == '3') {
             if ($orden->getSubtotal() >= $cantidad_env_min) {
                 $precio = "0.00";
 
             } else {
-                $precio = $cantidad_env_min;
+                $precio = $valor_defecto;
             }
             
            
         }
 
-        dd($metodo_envio, $precio);
-        $orden->deliver = $precio;
-        $orden->save();
-        // if($orden->save()){
-        //     alert()->success('Éxito valor pordefecto');
-        //     return redirect()->back();
+       $orden->subtotal = $orden->getSubtotal();
+       $orden->deliver = $precio;
+       $orden->total = $orden->getSubtotal() + $precio; 
+       $orden->save();
 
-        // }
-
+    //    dd($orden);
     }
     public function postCart(Request $request, $id)
     {

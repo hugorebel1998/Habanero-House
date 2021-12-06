@@ -10,19 +10,18 @@ class Order extends Model
 
     protected $fillable = [
         'status','numero_orden', 'orden_tipo', 'subtotal', 'deliver',
-        'total', 'user_addeerss_id', 'user_commen', 'metodo_pago',
-        'info_pago', 'fecha_pago', 'user_id'
+        'total', 'metodo_pago', 'info_pago', 'fecha_pago',
+        'user_addeerss_id', 'user_id'
     ];
 
     public function getItems()
     {
-        // return $this->hasMany(OrdenItem::class, 'orden_id', 'id')->with(['getProduct']);
-        return $this->hasMany(OrdenItem::class, 'orden_id', 'id')->whereNull('fecha_caduca_descuento')
-        ->orWhere(
-            function($query){
-            $query->where('fecha_caduca_descuento', '>=', date('Y-m-d'));
-        })
-         ->with(['getProduct']);
+        return $this->hasMany(OrdenItem::class, 'orden_id', 'id')->with(['getProduct']);
+        // return $this->hasMany(OrdenItem::class, 'orden_id', 'id')->whereNull('fecha_caduca_descuento')
+        // ->orWhere(
+        //     function($query){
+        //     $query->where('fecha_caduca_descuento', '>=', date('Y-m-d'));
+        // })->with(['getProduct']);
 
          
     }

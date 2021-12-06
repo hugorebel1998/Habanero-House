@@ -20,12 +20,11 @@ class CreateOrdersTable extends Migration
             $table->integer('orden_tipo')->default(0);
             $table->decimal('subtotal', 11,2)->nullable()->default(0);
             $table->decimal('deliver', 11,2)->nullable();
-            $table->decimal('total', 11, 2)->nullable()->default(0);
-            $table->integer('user_addeerss_id')->nullable();
-            $table->text('user_comment')->nullable();
+            $table->decimal('total', 11, 2)->nullable();
             $table->integer('metodo_pago')->default(0);
             $table->text('info_pago')->nullable();
             $table->dateTime('fecha_pago')->nullable();
+            $table->integer('user_addeerss_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

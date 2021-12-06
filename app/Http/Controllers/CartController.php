@@ -10,7 +10,6 @@ use App\Restaurant;
 use App\Variants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use phpDocumentor\Reflection\Types\Void_;
 
 class CartController extends Controller
 {
@@ -23,10 +22,9 @@ class CartController extends Controller
     {
         $orden = $this->getUserOrder();
         $items = $orden->getItems;
-        $envio = $this->getValorEnvio($orden->id);
-         var_dump($envio);
-         die();
-        return view('cart.index', compact('orden', 'items', 'envio'));
+        // $envio = $this->getValorEnvio($orden->id);
+        // dd($items);
+        return view('cart.index', compact('orden', 'items'));
     }
 
     public function getUserOrder()
@@ -42,45 +40,33 @@ class CartController extends Controller
         return $orden;
     }
 
-    public function getValorEnvio($order_id)
-    {
-        $orden = Order::findOrFail($order_id);
-        // dd($orden);
+    //public function getValorEnvio($order_id)
+    //{
+    //     $orden = Order::find($order_id);
+    //     // dd($orden);
         
-        $metodo_envio =  Restaurant::pluck('precio_envio')->first();
-        $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();
-        $cantidad_env_min = Restaurant::pluck('cantidad_de_envio_min')->first();
-        // dd($cantidad_env_min);
+        
+    //     $metodo_envio =  Restaurant::pluck('precio_envio')->first();
+    //     $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();;
+    //     // dd(gettype($valor_defecto));
+    //     if ($metodo_envio == '0') {
+    //         $precio = "0.00";
+    //     }
+    //     if ($metodo_envio == '1') {
+    //         $precio = $valor_defecto;
+    //     }
 
-        // dd(gettype($valor_defecto));
-        if ($metodo_envio == '0') {
-            $precio = "0.00";
-        }
-        if ($metodo_envio == '1') {
-            $precio = $valor_defecto;
-        }
-        if ($metodo_envio == '2') {
-            $precio = $valor_defecto;
-        }
+    //     // dd($metodo_envio, $precio);
+    //     $orden->deliver = $precio;
+    //     $orden->save();
+    //     // if($orden->save()){
+    //     //     alert()->success('Éxito valor pordefecto');
+    //     //     return redirect()->back();
 
-        if ($metodo_envio == '3') {
-            if ($orden->getSubtotal() >= $cantidad_env_min) {
-                $precio = "0.00";
+    //     // }
+    //     // return $orden;
 
-            } else {
-                $precio = $valor_defecto;
-            }
-            
-           
-        }
-
-       $orden->subtotal = $orden->getSubtotal();
-       $orden->deliver = $precio;
-       $orden->total = $orden->getSubtotal() + $precio; 
-       $orden->save();
-
-    //    dd($orden);
-    }
+    // }
     public function postCart(Request $request, $id)
     {
         //Validacion de Inventario producto

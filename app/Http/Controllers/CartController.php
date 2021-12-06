@@ -10,7 +10,6 @@ use App\Restaurant;
 use App\Variants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use phpDocumentor\Reflection\Types\Void_;
 
 class CartController extends Controller
 {
@@ -23,8 +22,9 @@ class CartController extends Controller
     {
         $orden = $this->getUserOrder();
         $items = $orden->getItems;
-        $envio = $this->getValorEnvio($orden->id);
-        return view('cart.index', compact('orden', 'items', 'envio'));
+        // $envio = $this->getValorEnvio($orden->id);
+        // dd($items);
+        return view('cart.index', compact('orden', 'items'));
     }
 
     public function getUserOrder()
@@ -32,7 +32,7 @@ class CartController extends Controller
         $orden = Order::where('status', '0')->count();
         if ($orden == '0') {
             $orden = new Order();
-            $orden->user_id = Auth::user()->id;
+            $orden->user_id = Auth::id();
             $orden->save();
         } else {
             $orden = Order::where('status', '0')->first();
@@ -40,31 +40,33 @@ class CartController extends Controller
         return $orden;
     }
 
-    public function getValorEnvio($order_id)
-    {
-        $orden = Order::find($order_id);
+    //public function getValorEnvio($order_id)
+    //{
+    //     $orden = Order::find($order_id);
+    //     // dd($orden);
         
         
-        $metodo_envio =  Restaurant::pluck('precio_envio')->first();
-        $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();;
-        // dd(gettype($valor_defecto));
-        if ($metodo_envio == '0') {
-            $precio = "0.00";
-        }
-        if ($metodo_envio == '1') {
-            $precio = $valor_defecto;
-        }
+    //     $metodo_envio =  Restaurant::pluck('precio_envio')->first();
+    //     $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();;
+    //     // dd(gettype($valor_defecto));
+    //     if ($metodo_envio == '0') {
+    //         $precio = "0.00";
+    //     }
+    //     if ($metodo_envio == '1') {
+    //         $precio = $valor_defecto;
+    //     }
 
-        // dd($metodo_envio, $precio);
-        $orden->deliver = $precio;
-        $orden->save();
-        // if($orden->save()){
-        //     alert()->success('Éxito valor pordefecto');
-        //     return redirect()->back();
+    //     // dd($metodo_envio, $precio);
+    //     $orden->deliver = $precio;
+    //     $orden->save();
+    //     // if($orden->save()){
+    //     //     alert()->success('Éxito valor pordefecto');
+    //     //     return redirect()->back();
 
-        // }
+    //     // }
+    //     // return $orden;
 
-    }
+    // }
     public function postCart(Request $request, $id)
     {
         //Validacion de Inventario producto

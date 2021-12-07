@@ -50,17 +50,13 @@ class CartController extends Controller
         $metodo_envio =  Restaurant::pluck('precio_envio')->first();
         $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();
         $cantidad_de_envio_min = Restaurant::pluck('cantidad_de_envio_min')->first();
-        $coverage_precio = Coverage::where('tipo_covertura','!=', '0')->pluck('precio');
-
-        dd($coverage_precio);
-        // dd(gettype($valor_defecto));
 
       
         if ($metodo_envio == '0') {
             $precio = "0.00";
         }
         if ($metodo_envio == '1') {
-            $precio = $valor_defecto ;
+            $precio = $valor_defecto;
         }
         if ($metodo_envio == '2') {
             $user_addres_acount = Auth::user()->getAddress->count();
@@ -69,6 +65,7 @@ class CartController extends Controller
             } else {
                 $user_addres = Auth::user()->getAddressDefault->city_id;
                 $coverage = Coverage::find($user_addres);
+                // dd($coverage = Coverage::find($user_addres));
                 $precio = $coverage->precio;
             }
         }

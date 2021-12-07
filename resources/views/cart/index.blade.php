@@ -30,22 +30,25 @@
                 <div class="col-md-12 mt-5 mb-5"><br><br><br>
                     <div class="row">
                         <div class="col-md-7">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-striped shadow">
-                                    <thead class="bg-danger text-white">
-                                        <tr class="text-center">
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                            <th scope="col">Producto</th>
-                                            <th scope="col"></th>
-                                            <th scope="col">Cantidad</th>
-                                            <th scope="col">Subtotal</th>
+                           <div class="card card-dark shadow">
+                               <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Carrito de compras</h3>
+                               </div>
+                               <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr>
 
-                                        </tr>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Subtotal</th>
+                                      </tr>
                                     </thead>
                                     <tbody>
-                                        
-                                        @foreach ($items as $item)
+                                      @foreach ($items as $item)
 
                                             <tr class="text-center">
                                                 <td>
@@ -96,8 +99,12 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                </table>
-                            </div>
+                                  </table>
+
+                               </div>
+
+                           </div>
+                            
                         </div>
                         <div class="col-md-5">
                             <div class="card card-dark shadow">

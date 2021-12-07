@@ -27,7 +27,7 @@
     @else
         <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-md-11 mt-5 mb-5"><br><br><br>
+                <div class="col-md-12 mt-5 mb-5"><br><br><br>
                     <div class="row">
                         <div class="col-md-7">
                             <div class="table-responsive">
@@ -89,7 +89,10 @@
                                                         </button>
 
                                                 </td>
-                                                <td>$ {{ $item->total }}</td>
+                                                <td>$ {{ $item->total }}
+                                                    
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -102,6 +105,7 @@
                                     <i class="fas fa-map-marker-alt"></i> Derección de envío
                                 </div>
                                 <div class="car-body">
+                                    @if (!is_null(Auth::user()->getAddressDefault))
                                     <div class="row">
                                         <div class="col-md-5 mt-3 ml-3">
                                             <b><i class="fas fa-city"></i> CDMX / Estado: </b>
@@ -121,9 +125,18 @@
                                         </div>
                                         
                                     </div>
+                                   
                                     <div class="text-right mr-2 mb-2">
                                         <a href="{{ route('usuario.address')}}" class="btn btn-sm btn-dark"><i class="fas fa-map-marked-alt"></i> Cambiar direccion</a>
                                     </div>
+                                    
+                                    @else
+                                    <p class="text-center mt-3 mb-5">No cuentas con una dirección de envío</p>
+                                    <div class="text-right mr-2 mb-2">
+                                        <a href="{{ route('usuario.address')}}" class="btn btn-sm btn-dark"><i class="fas fa-map-marked-alt"></i> Cambiar direccion</a>
+                                    </div>
+                                    @endif
+                                   
                                 </div>
                             </div>
                             <div class="card card-dark shadow">
@@ -134,28 +147,30 @@
                                     <div class="row">
                                         <div class="col-md-4 mt-3 ml-3">
                                             <b><i class="fas fa-coins"></i> Subtotal: </b>
-                                            ${{ $orden->getSubtotal() }} MXN
+                                            <p class="ml-3"><span>${{ $orden->getSubtotal() }} MXN</span></p>
+                                           
                                         </div>
                                         <div class="col-md-7 mt-3 ml-3">
                                             <b> <i class="fas fa-truck"></i> Precio por envio: </b>
-                                            $ {{ $envio }} MXN
-                                            <?=  var_dump($envio); ?> 
+                                            <p class="ml-3"><span>${{ $envio }} MXN</span></p>
+                                           
                                         </div>
                                         <div class="col-md-12 mt-3 ml-3">
                                             <b><i class="fas fa-coins"></i> Total a pagar: </b>
-                                            $ {{ $orden->total }} MXN
+
+                                            <p class="ml-3"><span>${{ $orden->total }} MXN</span></p>
                                         </div>
                                     </div>
+                                    @if (!is_null(Auth::user()->getAddressDefault))
                                     <form action="#" method="post">
-                                        <div class="col-md-12 mt-4 ml-3">
-                                            <b><i class="fas fa-map-marker-alt"></i> Direccion de envío</b>
-                                        </div>
+                                        
                                         <div class="text-right mr-2 mb-2">
                                             <button type="submit" class="btn btn-sm btn-dark ">
                                                 <i class="fas fa-badge-dollar"></i> Realizar compra
                                             </button>
                                         </div>
                                     </form>
+                                    @endif
                                 </div>
                             </div>
 

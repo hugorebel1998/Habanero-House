@@ -16,12 +16,12 @@ class Order extends Model
 
     public function getItems()
     {
-        return $this->hasMany(OrdenItem::class, 'orden_id', 'id')->with(['getProduct']);
-        // return $this->hasMany(OrdenItem::class, 'orden_id', 'id')->whereNull('fecha_caduca_descuento')
-        // ->orWhere(
-        //     function($query){
-        //     $query->where('fecha_caduca_descuento', '>=', date('Y-m-d'));
-        // })->with(['getProduct']);
+       
+         return $this->hasMany(OrdenItem::class, 'orden_id', 'id')->whereNull('fecha_caduca_descuento')
+         ->orWhere(
+             function($query){
+             $query->where('fecha_caduca_descuento', '>=', date('Y-m-d'));
+         })->with(['getProduct']);
 
          
     }
@@ -33,8 +33,7 @@ class Order extends Model
         ->orWhere(
             function($query){
             $query->where('fecha_caduca_descuento', '>=', date('Y-m-d'));
-        })
-         ->sum('total');
+        })->sum('total');
 
          
     }

@@ -104,9 +104,9 @@ class UserEditController extends Controller
     {
         $states = Coverage::where('tipo_covertura', 0)->select('id', 'nombre')->get();
         // $states  = Coverage::where('tipo_covertura', 0)->pluck('id', 'nombre');
-        $direcciones = UserAddes::all();
-
-        return view('usuarios.address', compact('states', 'direcciones'));
+        // $direcciones = UserAddes::all();
+         
+        return view('usuarios.address', compact('states'));
     }
 
     public function storeAddress(Request $request)

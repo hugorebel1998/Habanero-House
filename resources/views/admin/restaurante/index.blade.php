@@ -32,16 +32,17 @@
                             <b class="">{{ $restaurante->telefono_razon_social }}</b>
                             <hr>
                         </div>
-                        <div class="col-md-7 mt-4">
+                        <div class="col-md-12 mt-4">
                             <p class=""><i class="fas fa-map-marker-alt"></i> Dirección</p>
                             <b class="">{{ $restaurante->direccion_razon_social }}</b>
                             <hr>
                         </div>
-                        <div class="col-md-5 mt-4">
+                        <div class="col-md-4 mt-4">
                             <p class=""><i class="fas fa-email"></i> Correo electrónico</p>
                             <b class="">{{ $restaurante->email_razon_social }}</b>
                             <hr>
                         </div>
+
                         <div class="col-md-4 mt-4">
                             <p class=""><i class="fas fa-email"></i> Modo mantenimiento</p>
                             <h5 class="">
@@ -64,11 +65,11 @@
                             <b class="">
                                 @if ($restaurante->precio_envio == 0)
                                     Gratis
-                                @elseif($restaurante-> precio_envio == 1)
+                                @elseif($restaurante->precio_envio == 1)
                                     Valor fijo
-                                @elseif($restaurante-> precio_envio == 2)
+                                @elseif($restaurante->precio_envio == 2)
                                     Valor variable por ubicación
-                                @elseif($restaurante-> precio_envio == 3)
+                                @elseif($restaurante->precio_envio == 3)
                                     Valor fijo por profucto
                                 @endif
                             </b>
@@ -76,8 +77,14 @@
                         </div>
 
                         <div class="col-md-4 mt-4">
-                            <p class=""><i class="fas fa-phone-volume"></i> Valor del envio</p>
+                            <p class=""><i class="fas fa-hand-holding-usd"></i> Valor del envio</p>
                             <b class="">{{ $restaurante->valor_por_defecto }}</b>
+                            <hr>
+                        </div>
+
+                        <div class="col-md-4 mt-4">
+                            <p class=""><i class="fas fa-coins"></i> Envio gratis monto minimo</p>
+                            <b class="">{{ $restaurante->cantidad_de_envio_min }}</b>
                             <hr>
                         </div>
 

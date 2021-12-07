@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Coverage;
 use App\OrdenItem;
 use App\Order;
+use App\User;
 use App\Product;
 use App\ProductInventary;
 use App\Restaurant;
@@ -22,9 +24,8 @@ class CartController extends Controller
     {
         $orden = $this->getUserOrder();
         $items = $orden->getItems;
-        // $envio = $this->getValorEnvio($orden->id);
-        // dd($items);
-        return view('cart.index', compact('orden', 'items'));
+        $envio = $this->getValorEnvio($orden->id);
+        return view('cart.index', compact('orden', 'items', 'envio'));
     }
 
     public function getUserOrder()
@@ -40,33 +41,58 @@ class CartController extends Controller
         return $orden;
     }
 
-    //public function getValorEnvio($order_id)
-    //{
-    //     $orden = Order::find($order_id);
-    //     // dd($orden);
-        
-        
-    //     $metodo_envio =  Restaurant::pluck('precio_envio')->first();
-    //     $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();;
-    //     // dd(gettype($valor_defecto));
-    //     if ($metodo_envio == '0') {
-    //         $precio = "0.00";
-    //     }
-    //     if ($metodo_envio == '1') {
-    //         $precio = $valor_defecto;
-    //     }
+    public function getValorEnvio($order_id)
+    {
+        $orden = Order::find($order_id);
+       
 
-    //     // dd($metodo_envio, $precio);
-    //     $orden->deliver = $precio;
-    //     $orden->save();
-    //     // if($orden->save()){
-    //     //     alert()->success('Éxito valor pordefecto');
-    //     //     return redirect()->back();
 
-    //     // }
-    //     // return $orden;
+        $metodo_envio =  Restaurant::pluck('precio_envio')->first();
+        $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();
+        $cantidad_de_envio_min = Restaurant::pluck('cantidad_de_envio_min')->first();
+        $coverage_precio = Coverage::where('tipo_covertura','!=', '0')->pluck('precio');
 
-    // }
+        dd($coverage_precio);
+        // dd(gettype($valor_defecto));
+
+      
+        if ($metodo_envio == '0') {
+            $precio = "0.00";
+        }
+        if ($metodo_envio == '1') {
+            $precio = $valor_defecto ;
+        }
+        if ($metodo_envio == '2') {
+            $user_addres_acount = Auth::user()->getAddress->count();
+            if ($user_addres_acount == '0') {
+                $precio = $valor_defecto;
+            } else {
+                $user_addres = Auth::user()->getAddressDefault->city_id;
+                $coverage = Coverage::find($user_addres);
+                $precio = $coverage->precio;
+            }
+        }
+        if ($metodo_envio == '3') {
+            if ($orden->getSubtotal() >= $cantidad_de_envio_min) {
+                $precio = "0.00";
+            } else {
+                $precio = $valor_defecto;
+            }
+        }
+
+
+        //dd($metodo_envio, $precio, $cantidad_de_envio_min);
+        if (!is_null(Auth::user()->getAddressDefault)) {
+            $orden->user_addeerss_id = Auth::user()->getAddressDefault->id;
+        }
+        $orden->subtotal = $orden->getSubtotal();
+        $orden->deliver = $precio;
+        $orden->total = $orden->getSubtotal() + $precio;
+        $orden->save();
+      
+
+        return $precio;
+    }
     public function postCart(Request $request, $id)
     {
         //Validacion de Inventario producto

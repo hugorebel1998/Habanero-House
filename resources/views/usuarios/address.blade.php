@@ -35,7 +35,8 @@
                                                 @foreach ($states as $state)
                                                 <option value="{{ $state->id }}" {{ old('state')==$state->id ?
                                                     'selected' : '' }}>
-                                                    {{ $state->nombre }} </option>
+                                                    {{ $state->nombre }} 
+                                                </option>
                                                 @endforeach
                                             </select>
                                             @error('categoria')

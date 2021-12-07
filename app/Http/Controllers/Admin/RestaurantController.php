@@ -48,7 +48,7 @@ class RestaurantController extends Controller
         if ($restaurante->save()) {
 
             alert()->success('Información actualizada');
-            return redirect()->to(route('admin.ajustes.index'));
+            return redirect()->back();
 
         } else {
 

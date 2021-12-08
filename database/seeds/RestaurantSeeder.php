@@ -17,7 +17,10 @@ class RestaurantSeeder extends Seeder
             'nombre_razon_social' => 'Habanero House',
             'telefono_razon_social' => '5570246551',
             'email_razon_social' => 'habanero@habanero.com',
-            'direccion_razon_social' => 'Sindicato Nacional de Electricistas 16, Hab Electra, 54060 Tlalnepantla de Baz, Méx'
+            'direccion_razon_social' => 'Sindicato Nacional de Electricistas 16, Hab Electra, 54060 Tlalnepantla de Baz, Méx',
+            'whatsapp' => '5514944025',
+            'facebook' => 'https://www.facebook.com/search/top?q=habanero%20house%20autentica%20comida%20yucateca',
+            'instagram' => 'https://www.instagram.com/habanero_house_oficial/?hl=es-la',
         ]);
     }
 }

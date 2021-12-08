@@ -26,8 +26,10 @@ class CreateRestaurantsTable extends Migration
             $table->integer('precio_envio')->nullable()->default(0);
             $table->decimal('valor_por_defecto',11,2)->nullable()->default(0);
             $table->decimal('cantidad_de_envio_min',11,2)->nullable()->default(0);
-            $table->integer('metodo_por_efectivo')->default(0);
+            $table->integer('metodo_por_efectivo')->default(0); 
+            $table->integer('metodo_por_transferencia')->default(0);
             $table->integer('metodo_por_paypal')->default(0);
+            $table->integer('metodo_por_tarjeta')->default(0);
             $table->string('whatsapp')->nullable();
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();

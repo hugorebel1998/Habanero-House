@@ -29,6 +29,7 @@ Route::get('/cart', 'CartController@getCart')->name('usuario.cart');
 Route::post('/cart/add/{product}','CartController@postCart')->name('usuario.cart.store');
 Route::put('/cart/update/{product}','CartController@updateCart')->name('usuario.cart.update');Route::put('/cart/update/{product}','CartController@updateCart')->name('usuario.cart.update');
 Route::delete('/cart/delete/{product}','CartController@deleteCart')->name('usuario.cart.delete');
+Route::get('cart/mostrar/{product}', 'CartController@mostrar')->name('usuario.cart.mostrar');
 
 
 //Route Address

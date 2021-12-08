@@ -221,6 +221,21 @@
                                 </div>
                                 <div class="col-md-12 mt-2">
                                     <div class="form-group">
+                                        <label>Metodo por trasferencia / Deposito bancario</label>
+                                        <select name="metodo_por_transferencia"
+                                            class="custom-select select2bs4 @error('metodo_por_transferencia') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="0" @if ($restaurante->metodo_por_transferencia == 0) selected @endif>Desactivado</option>
+                                            <option value="1" @if ($restaurante->metodo_por_transferencia == 1) selected @endif>Activado</option>
+                                        </select>
+                                        @error('metodo_por_transferencia')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mt-2">
+                                    <div class="form-group">
                                         <label>Metodo por paypal</label>
                                         <select name="metodo_por_paypal"
                                             class="custom-select select2bs4 @error('metodo_por_paypal') is-invalid @enderror"
@@ -233,13 +248,28 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <div class="col-md-12 mt-2">
+                                    <div class="form-group">
+                                        <label>Metodo por paypal</label>
+                                        <select name="metodo_por_tarjeta"
+                                            class="custom-select select2bs4 @error('metodo_por_tarjeta') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="0" @if ($restaurante->metodo_por_tarjeta == 0) selected @endif>Desactivado</option>
+                                            <option value="1" @if ($restaurante->metodo_por_tarjeta == 1) selected @endif>Activado</option>
+                                        </select>
+                                        @error('metodo_por_tarjeta')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                           
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-right mt-4">
+            <div class="text-right mt-4 mb-4">
                 <button type="submit" class="btn btn-danger"><i class="fas fa-save"></i>
                     Actualizar
                     información</button>

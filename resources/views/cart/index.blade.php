@@ -128,12 +128,17 @@
                                                 <p class="ml-3">
                                                     <span>{{ Auth::user()->getAddressDefault->nombre }} /
                                                         {{ Auth::user()->getAddressDefault->calle_av }} / No.
-                                                        {{ Auth::user()->getAddressDefault->casa_dp }}</span></p>
+                                                        {{ Auth::user()->getAddressDefault->casa_dp }}
+                                                    </span>
+                                                </p>
                                             </div>
                                             <div class="col-md-6  mt-3 ml-3">
                                                 <b> <i class="fas fa-location-arrow"></i> Referencia:</b>
-                                                <p class="ml-3"><span>
-                                                        {{ Auth::user()->getAddressDefault->referencia }}</span></p>
+                                                <p class="ml-3">
+                                                    <span>
+                                                        {{ Auth::user()->getAddressDefault->referencia }}
+                                                    </span>
+                                                </p>
                                             </div>
 
                                         </div>
@@ -177,14 +182,11 @@
                                         </div>
                                     </div>
                                     @if (!is_null(Auth::user()->getAddressDefault))
-                                        <form action="#" method="post">
-
                                             <div class="text-right mr-2 mb-2">
-                                                <button type="submit" class="btn btn-sm btn-dark ">
+                                                <a href="{{ route('usuario.cart.mostrar',$orden->id)}}" class="btn btn-sm btn-dark ">
                                                     <i class="fas fa-badge-dollar"></i> Realizar compra
-                                                </button>
+                                                </a>
                                             </div>
-                                        </form>
                                     @endif
                                 </div>
                             </div>

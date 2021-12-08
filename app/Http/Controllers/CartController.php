@@ -45,14 +45,14 @@ class CartController extends Controller
     public function getValorEnvio($order_id)
     {
         $orden = Order::find($order_id);
-       
+
 
 
         $metodo_envio =  Restaurant::pluck('precio_envio')->first();
         $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();
         $cantidad_de_envio_min = Restaurant::pluck('cantidad_de_envio_min')->first();
 
-      
+
         if ($metodo_envio == '0') {
             $precio = "0.00";
         }
@@ -87,7 +87,7 @@ class CartController extends Controller
         $orden->deliver = $precio;
         $orden->total = $orden->getSubtotal() + $precio;
         $orden->save();
-      
+
 
         return $precio;
     }
@@ -238,5 +238,20 @@ class CartController extends Controller
             $precio_final  = $precio - $calcular_descuento_valor;
         }
         return $precio_final;
+    }
+
+    public function mostrar($id)
+    {
+        $orden = Order::find($id);
+        $metodo_efectivo = Restaurant::pluck('metodo_por_efectivo')->first();
+        $metodo_transferencia = Restaurant::pluck('metodo_por_transferencia')->first();
+        $metodo_paypal = Restaurant::pluck('metodo_por_paypal')->first();
+        $metodo_tarjeta = Restaurant::pluck('metodo_por_tarjeta')->first();
+        // dd($metodo_efectivo, $metodo_transferencia);
+        
+        $orden = $this->getUserOrder();
+        $items = $orden->getItems;
+        $envio = $this->getValorEnvio($orden->id);
+        return view('cart.mostrar', compact('orden', 'items', 'envio', 'metodo_efectivo','metodo_transferencia', 'metodo_paypal','metodo_tarjeta'));
     }
 }

@@ -29,16 +29,16 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 mt-5 mb-5"><br><br><br>
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-8">
                            <div class="card card-dark shadow">
                                <div class="card-header">
                                 <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Carrito de compras</h3>
                                </div>
                                <div class="card-body">
+                                <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                       <tr>
-
                                         <th scope="col"></th>
                                         <th scope="col"></th>
                                         <th scope="col">Producto</th>
@@ -100,13 +100,13 @@
                                         @endforeach
                                     </tbody>
                                   </table>
-
+                                </div>
                                </div>
 
                            </div>
                             
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div class="card card-dark shadow">
                                 <div class="card-header">
                                     <i class="fas fa-map-marker-alt"></i> Derección de envío

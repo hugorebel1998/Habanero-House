@@ -25,12 +25,13 @@ class CartController extends Controller
         $orden = $this->getUserOrder();
         $items = $orden->getItems;
         $envio = $this->getValorEnvio($orden->id);
+        $orden = Order::find($orden->id);
         return view('cart.index', compact('orden', 'items', 'envio'));
     }
 
     public function getUserOrder()
     {
-        $orden = Order::where('status', '0')->count();
+        $orden = Order::where('status', '0')->where('user_id', Auth::id())->count();
         if ($orden == '0') {
             $orden = new Order();
             $orden->user_id = Auth::id();
@@ -212,6 +213,7 @@ class CartController extends Controller
         $orden_item->total = $total;
 
         if ($orden_item->save()) {
+            $this->getValorEnvio($orden->id);
             alert()->success('Cantidad actualizada');
             return redirect()->back();
         }

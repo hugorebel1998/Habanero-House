@@ -5,7 +5,7 @@
 <div class="about-section-box">
     <div class="container mt-5">
         <br>
-        <div class="card card-danger card-outline shadow">
+        <div class="card card-dark card-outline shadow">
         <div class="row">
 
                 <div class="col-lg-6 col-md-6">

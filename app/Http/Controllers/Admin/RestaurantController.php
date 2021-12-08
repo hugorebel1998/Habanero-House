@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    //     $this->middleware('isAdmin');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('isAdmin');
+    }
     public function index()
     {
         $restaurante = Restaurant::firstWhere('nombre_razon_social', 'Habanero House');
@@ -42,19 +42,39 @@ class RestaurantController extends Controller
         $restaurante->mantenimiento = $request->mantenimiento;
         $restaurante->precio_envio = $request->precio_envio;
         $restaurante->valor_por_defecto = $request->valor_por_defecto;
-        $restaurante->cantidad_de_envio_min = $request->cantidad_de_envio_min;
+        $restaurante->metodo_por_efectivo = $request->metodo_por_efectivo;
+        $restaurante->metodo_por_transferencia = $request->metodo_por_transferencia;
+        $restaurante->metodo_por_paypal = $request->metodo_por_paypal;
+        $restaurante->metodo_por_tarjeta = $request->metodo_por_tarjeta;
+        $restaurante->whatsapp = $request->whatsapp;
+        $restaurante->facebook = $request->facebook;
+        $restaurante->instagram = $request->instagram;
+        $restaurante->twitter = $request->twitter;
+        $restaurante->youtube = $request->youtube;
 
         // dd($restaurante);
         if ($restaurante->save()) {
-
             alert()->success('Información actualizada');
             return redirect()->back();
-
         } else {
-
             alert()->error('Oops error', 'Algo salio mal');
             return redirect()->to(route('admin.ajustes.edit'));
         }
+    }
 
+    public function delete($id){
+        $restaurante = Restaurant::findOrFail($id);
+        $restaurante->delete();
+        // alert()->success('Éxito al borrar ', 'Se ha borrado la categoria.');
+        return back();
+    }
+
+    public function restaurantRestore($id)
+    {
+
+        $categoria = Restaurant::find($id);
+        Restaurant::onlyTrashed()->findOrFail($id)->restore();
+        // alert()->success('Éxito categoria restablecida', 'Se ha restablecido la categoria');
+        return redirect()->back();
     }
 }

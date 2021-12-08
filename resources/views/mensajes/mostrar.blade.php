@@ -7,9 +7,9 @@
                 <div class="row">
                     <div class="col-md-4 mt-5">
                         <br><br><br>
-                        <div class="card card-danger card-outline shadow mt-5">
+                        <div class="card card-dark card-outline shadow mt-5">
                             <div class="body text-center">
-                             <h2 class="mt-3 text-danger">Habanero house</h2>
+                             <h2 class="mt-3">Habanero house</h2>
                              <p>Sindicato Nacional de Electricistas 16, Hab Electra, 54060 Tlalnepantla de Baz, Méx.</p>
                              <b>Desatunos:</b>
                              <p>Miércoles a domingo de 9:00 a 11:30 hr.</p>
@@ -17,7 +17,7 @@
                              <p>Lunes a sábados de 13:00 a 22:00 hr. <br>
                                 Domingo 13:00 a 17:30 hr.
                             </p>
-                            <a href="tel:+525560685209" class="btn btn-danger mb-4 mt-2 "><i class="fas fa-phone"></i> Llámanos</a>
+                            <a href="tel:+525560685209" class="btn btn-dark mb-4 mt-2 "><i class="fas fa-phone"></i> Llámanos</a>
                             </div>
 
                         </div>
@@ -25,7 +25,7 @@
                     <div class="col-md-8 mt-5"><br>
                         {{-- <h3 class="mt-5 mb-3">Envíenos sus dudas y comentarios, nos pondremos en contacto con usted --}}
                         </h3>
-                        <div class="card card-danger shadow mt-5">
+                        <div class="card card-dark shadow mt-5">
                             <div class="card-header">
                                 <div class="card-tittle"><i class="fas fa-envelope-open-text"></i> Contáctanos</div>
                             </div>
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center mt-4">
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button type="submit" class="btn btn-sm btn-dark">
                                             <i class="fas fa-paper-plane"></i>
                                             Enviar mensaje</button>
                                     </div>

@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-7 mt-5">
                 <br>
-                <div class="card card-danger shadow mt-5 mb-5">
+                <div class="card card-dark shadow mt-5 mb-5">
                     <div class="card-header">
                         <div class="card-tittle"><i class="fas fa-user-edit"></i> Editar perfil</div>
                     </div>
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-danger mb-3"> <i class="fas fa-save"></i>
+                                <button type="submit" class="btn btn-dark mb-3"> <i class="fas fa-save"></i>
                                     Actualizar informacion</button>
                             </div>
                         </form>
@@ -89,7 +89,7 @@
             </div>
             <div class="col-md-4 mt-5">
                 <br>
-                <diV class="card card-danger shadow mt-5">
+                <diV class="card card-dark shadow mt-5">
                     <div class="card-header">
                         <div class="card-tittle"><i class="fas fa-image"></i> Imagen destacada</div>
                     </div>

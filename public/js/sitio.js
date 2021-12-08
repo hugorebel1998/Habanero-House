@@ -137,3 +137,20 @@ function load_cities()
 
 }
 
+
+let btn_paymet_metho = document.getElementsByClassName('btn_paymet');
+if (btn_paymet_metho) {
+    let btn_paymet_metho_select = null;
+for (i = 0; i < btn_paymet_metho.length; i++) {
+    btn_paymet_metho[i].addEventListener('click', function (e) {
+        e.preventDefault();
+        if (btn_paymet_metho_select) {
+            document.getElementById(btn_paymet_metho_select).classList.remove('active');
+        }
+        this.classList.add('active');
+        document.getElementById('file_payment_method_id').value = this.getAttribute('data_payment_method_id');
+        btn_paymet_metho_select = this.getAttribute('id');
+        
+    });
+}
+}

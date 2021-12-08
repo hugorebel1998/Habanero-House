@@ -248,10 +248,27 @@ class CartController extends Controller
         $metodo_paypal = Restaurant::pluck('metodo_por_paypal')->first();
         $metodo_tarjeta = Restaurant::pluck('metodo_por_tarjeta')->first();
         // dd($metodo_efectivo, $metodo_transferencia);
-        
+        // metodo_pago
         $orden = $this->getUserOrder();
         $items = $orden->getItems;
         $envio = $this->getValorEnvio($orden->id);
         return view('cart.mostrar', compact('orden', 'items', 'envio', 'metodo_efectivo','metodo_transferencia', 'metodo_paypal','metodo_tarjeta'));
+    }
+
+    public function storeCard(Request $request)
+    {
+        $orden = $this->getUserOrder();
+        $orden = Order::find($orden->id);
+        $orden->numero_orden = $this->getNumbreOrder();
+        $orden->metodo_pago = $request->metodo_pago;
+        $orden->save();
+    }
+
+    public function getNumbreOrder()
+    {
+        $ordenes = Order::where('status' , '>', '0')->count();
+        $numero_orden = $ordenes + 1;
+        return $numero_orden;
+
     }
 }

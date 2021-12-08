@@ -9,7 +9,7 @@
                 @csrf
                 @method('PUT')
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card card-danger">
                         <div class="card-header">
                             <div class="card-tittle"><i class="fas fa-cogs"></i> General</div>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card card-danger">
                         <div class="card-header">
                             <div class="card-tittle"><i class="fas fa-dollar-sign"></i> Moneda y precio</div>
@@ -142,7 +142,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card card-danger">
                         <div class="card-header">
                             <div class="card-tittle"><i class="fas fa-wifi"></i> Redes sociales</div>
@@ -194,6 +194,46 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            <div class="card-tittle"><i class="fas fa-wallet"></i> Metodos de pago</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <div class="form-group">
+                                        <label>Metodo por efectivo</label>
+                                        <select name="metodo_por_efectivo"
+                                            class="custom-select select2bs4 @error('metodo_por_efectivo') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="0" @if ($restaurante->metodo_por_efectivo == 0) selected @endif>Desactivado</option>
+                                            <option value="1" @if ($restaurante->metodo_por_efectivo == 1) selected @endif>Activado</option>
+                                        </select>
+                                        @error('metodo_por_efectivo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <div class="form-group">
+                                        <label>Metodo por paypal</label>
+                                        <select name="metodo_por_paypal"
+                                            class="custom-select select2bs4 @error('metodo_por_paypal') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="0" @if ($restaurante->metodo_por_paypal == 0) selected @endif>Desactivado</option>
+                                            <option value="1" @if ($restaurante->metodo_por_paypal == 1) selected @endif>Activado</option>
+                                        </select>
+                                        @error('metodo_por_paypal')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                          
                             </div>
                         </div>
                     </div>

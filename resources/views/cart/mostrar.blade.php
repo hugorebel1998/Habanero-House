@@ -62,6 +62,17 @@
 
                                     </form>
                                 </div>
+                                <div class="col-md-6 mt-3">
+                                    <form action="{{ route('usuario.cart.store')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="metodo_pago" id="file_payment_method_id">
+                                        <button type="submit"
+                                         class="btn btn-dark disabled"
+                                         id="btn-complete">
+                                         <i class="fas fa-dollar-sign"></i> Realizar pago</button>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">

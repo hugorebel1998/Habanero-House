@@ -148,6 +148,7 @@ for (i = 0; i < btn_paymet_metho.length; i++) {
             document.getElementById(btn_paymet_metho_select).classList.remove('active');
         }
         this.classList.add('active');
+        document.getElementById('btn-complete').classList.remove('disabled');
         document.getElementById('file_payment_method_id').value = this.getAttribute('data_payment_method_id');
         btn_paymet_metho_select = this.getAttribute('id');
         

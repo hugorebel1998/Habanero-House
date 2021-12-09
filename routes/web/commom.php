@@ -27,10 +27,11 @@ Route::post('/contacto/mensaje/store', 'ContactController@store')->name('usuario
 //Route Carrito de compras
 Route::get('/cart', 'CartController@getCart')->name('usuario.cart');
 Route::post('/cart/add/{product}','CartController@postCart')->name('usuario.cart.store');
-Route::put('/cart/update/{product}','CartController@updateCart')->name('usuario.cart.update');Route::put('/cart/update/{product}','CartController@updateCart')->name('usuario.cart.update');
+Route::put('/cart/update/{product}','CartController@updateCart')->name('usuario.cart.update');
 Route::delete('/cart/delete/{product}','CartController@deleteCart')->name('usuario.cart.delete');
-Route::get('/cart/mostrar/{product}', 'CartController@mostrar')->name('usuario.cart.mostrar');
+Route::get('cart/mostrar/{product}', 'CartController@mostrar')->name('usuario.cart.mostrar');
 Route::post('/card/store/card', 'CartController@storeCard')->name('usuario.cart.store');
+Route::get('cart/historial-compras/', 'CartController@getHistorialCompra')->name('usuario.cart.historia.compra');
 
 
 //Route Address

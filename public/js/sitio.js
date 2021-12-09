@@ -138,6 +138,7 @@ function load_cities()
 }
 
 
+
 let btn_paymet_metho = document.getElementsByClassName('btn_paymet');
 if (btn_paymet_metho) {
     let btn_paymet_metho_select = null;

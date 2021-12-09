@@ -47,23 +47,15 @@
 
                                 <div class="col-md-6 mt-3">
                                     <b> <i class="fas fa-truck"></i> Precio por envio: </b>
-                                    <p class="ml-3"><span>${{ $envio }} MXN</span></p>
+                                            <p class="ml-3"><span>${{ $envio }} MXN</span></p>
                                 </div>
 
                                 <div class="col-md-6 mt-3">
                                     <b><i class="fas fa-coins"></i> Total a pagar: </b>
-                                    <p class="ml-3"><span>${{ $orden->total }} MXN</span></p>
+                                            <p class="ml-3"><span>${{ $orden->total }} MXN</span></p>
                                 </div>
                                 <div class="col-md-6 mt-3">
-                                    <form action="{{ route('usuario.cart.store')}}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="metodo_pago" id="file_payment_method_id">
-                                        <button type="submit" class="btn btn-dark"><i class="fas fa-dollar-sign"></i> Realizar pago</button>
-
-                                    </form>
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <form action="{{ route('usuario.cart.store')}}" method="post">
+                                       <form action="{{ route('usuario.cart.store.payment')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="metodo_pago" id="file_payment_method_id">
                                         <button type="submit"

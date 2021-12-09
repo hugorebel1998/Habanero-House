@@ -163,7 +163,7 @@
 
         #cantidad_cart {
             display: initial;
-            width: 25%;
+            width: 45%;
             height: calc(1.5em + .75rem + 2px);
             padding: .375rem .75rem;
             font-size: 1rem;
@@ -264,10 +264,10 @@
                                         href="{{ route('usuario.address')}}">
                                         <i class="fas fa-map-marker-alt"></i> {{ __('Dirección entrega') }}
                                     </a>
-                                    <a class="dropdown-item"
+                                     <a class="dropdown-item"
                                         href="{{ route('usuario.cart.historia.compra')}}">
                                         <i class="fas fa-history"></i> {{ __('Historial de compras') }}
-                                    </a>
+                                    </a> 
 
                                     <a class="dropdown-item"
                                         href="{{ route('usuario.edit.perfil', auth()->user()->id) }}">

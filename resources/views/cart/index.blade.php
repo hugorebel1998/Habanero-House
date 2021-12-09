@@ -105,7 +105,7 @@
                         <div class="col-md-5 mt-5">
                             <div class="card card-dark shadow">
                                 <div class="card-header">
-                                    <div class="card-title"> <i class="fas fa-map-marker-alt"></i> Dirección de envío   </div>
+                                    <div class="card-title"> <i class="fas fa-map-marker-alt"></i> Derección de envío   </div>
                                     
                                 </div>
                                 <div class="car-body">
@@ -219,7 +219,6 @@
                         'success'
                     )
                     this.submit();
-
                 }
             })
         });

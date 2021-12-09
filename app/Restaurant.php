@@ -15,6 +15,6 @@ class Restaurant extends Model
         'email_razon_social','monto_minimo_de_compra','direccion_razon_social', 'mantenimiento',
         'restaurante_galeria','precio_envio', 'valor_por_defecto', 'cantidad_de_envio_min',
         'metodo_por_efectivo','metodo_por_transferencia','metodo_por_paypal','metodo_por_tarjeta',
-        'whatsapp','facebook', 'instagram','twitter','youtube'
+        'whatsapp','facebook', 'instagram','twitter','youtube','to_go'
     ];
 }

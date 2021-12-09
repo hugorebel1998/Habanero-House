@@ -26,7 +26,8 @@ class CartController extends Controller
         $items = $orden->getItems;
         $envio = $this->getValorEnvio($orden->id);
         $orden = Order::find($orden->id);
-        return view('cart.index', compact('orden', 'items', 'envio'));
+        $to_go = Restaurant::pluck('to_go')->first();
+        return view('cart.index', compact('orden', 'items', 'envio','to_go'));
     }
 
     public function getUserOrder()

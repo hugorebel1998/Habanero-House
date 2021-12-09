@@ -42,6 +42,7 @@ class RestaurantController extends Controller
         $restaurante->mantenimiento = $request->mantenimiento;
         $restaurante->precio_envio = $request->precio_envio;
         $restaurante->valor_por_defecto = $request->valor_por_defecto;
+        $restaurante->to_go = $request->to_go;
         $restaurante->metodo_por_efectivo = $request->metodo_por_efectivo;
         $restaurante->metodo_por_transferencia = $request->metodo_por_transferencia;
         $restaurante->metodo_por_paypal = $request->metodo_por_paypal;

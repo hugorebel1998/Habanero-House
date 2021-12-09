@@ -177,6 +177,10 @@
             transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
         }
+        .btn-block-1 {
+         display: block;
+         width: 30%;
+         }
 
     </style>
 </head>

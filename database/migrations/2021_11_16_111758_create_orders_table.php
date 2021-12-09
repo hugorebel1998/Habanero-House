@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('subtotal', 11,2)->nullable()->default(0);
             $table->decimal('deliver', 11,2)->nullable();
             $table->decimal('total', 11, 2)->nullable();
-            $table->integer('metodo_pago')->default(0);
+            $table->integer('metodo_pago')->nullable();
             $table->text('info_pago')->nullable();
             $table->dateTime('fecha_pago')->nullable();
             $table->integer('user_addeerss_id')->nullable();

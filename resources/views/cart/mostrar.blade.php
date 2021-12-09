@@ -54,32 +54,63 @@
                                     <b><i class="fas fa-coins"></i> Total a pagar: </b>
                                             <p class="ml-3"><span>${{ $orden->total }} MXN</span></p>
                                 </div>
+                                <div class="col-md-6 mt-3">
+                                    <form action="{{ route('usuario.cart.store')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="metodo_pago" id="file_payment_method_id">
+                                        <button type="submit"
+                                         class="btn btn-dark disabled"
+                                         id="btn-complete">
+                                         <i class="fas fa-dollar-sign"></i> Realizar pago</button>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h5 class="text-center"><strong>Realizar comprar</strong> </h5>
+                            <input type="hidden" name="metodo_pago" id="file_payment_method_id">
+                            <div class="payments_methods">
+                                <div class="text-center">
+                                    @if ($metodo_efectivo == '1')
+                                    <a href="#" 
+                                    class="btn btn-outline-warning btn-lg btn-block btn_paymet"
+                                    id="payment_method_cash"
+                                    data_payment_method_id="0">
+                                    <i class="fas fa-coins"></i> Metodo por efectivo</a>
+                                    @endif
+                                </div>
+                                <div class="text-center mt-4">
+                                    @if ($metodo_transferencia == '1')
+                                    <a href="#" 
+                                    class="btn btn-outline-info btn-lg btn-block btn_paymet"
+                                    id="payment_method_transfer"
+                                    data_payment_method_id="1">
+                                        <i class="fas fa-wallet"></i>
+                                        Metodo por transferencia </a>
+                                    @endif
+                                </div>
 
-                            <div class="text-center">
-                                @if ($metodo_efectivo == '1')
-                                <a href="#" class="btn btn-warning btn-lg btn-block text-white"><i class="fas fa-coins"></i> Metodo por efectivo</a>
-                                @endif
-                            </div>
-                            <div class="text-center mt-4">
-                                @if ($metodo_transferencia == '1')
-                                <a href="#" class="btn btn-info btn-lg btn-block"><i class="fas fa-wallet"></i> Metodo por transferencia </a>
-                                @endif
-                            </div>
+                                <div class="text-center mt-4">
+                                    @if ($metodo_paypal == '1')
+                                    <a href="#"
+                                     class="btn btn-outline-primary btn-lg btn-block btn_paymet"
+                                     id="payment_method_paypal"
+                                     data_payment_method_id="2">
+                                      <i class="fab fa-paypal"></i>
+                                        Metodo por PayPal</a>
+                                    @endif
+                                </div>
 
-                            <div class="text-center mt-4">
-                                @if ($metodo_paypal == '1')
-                                <a href="#" class="btn btn-primary btn-lg btn-block"><i class="fab fa-paypal"></i> Metodo por PayPal</a>
-                                @endif
-                            </div>
-
-                            <div class="text-center mt-4">
-                                @if ($metodo_tarjeta == '1')
-                                <a href="#" class="btn btn-secondary btn-lg btn-block"><i class="far fa-credit-card"></i> Metodo por tarjeta</a>
-                                @endif
+                                <div class="text-center mt-4">
+                                    @if ($metodo_tarjeta == '1')
+                                    <a href="#" 
+                                    class="btn btn-outline-secondary btn-lg btn-block btn_paymet"
+                                    id="payment_method_card"
+                                    data_payment_method_id="3">
+                                        <i class="far fa-credit-card"></i> Metodo por tarjeta</a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

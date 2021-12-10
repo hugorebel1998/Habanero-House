@@ -26,12 +26,15 @@ class CartController extends Controller
         $items = $orden->getItems;
         $envio = $this->getValorEnvio($orden->id);
         $orden = Order::find($orden->id);
-        return view('cart.index', compact('orden', 'items', 'envio'));
+        $to_go = Restaurant::pluck('to_go')->first();
+        return view('cart.index', compact('orden', 'items', 'envio','to_go'));
     }
 
     public function getUserOrder()
     {
+        // $orden = Order::where('status', '0')->where('user_id', Auth::id())->count();
         $orden = Order::where('status', '0')->where('user_id', Auth::id())->count();
+
         if ($orden == '0') {
             $orden = new Order();
             $orden->user_id = Auth::id();
@@ -45,9 +48,6 @@ class CartController extends Controller
     public function getValorEnvio($order_id)
     {
         $orden = Order::find($order_id);
-
-
-
         $metodo_envio =  Restaurant::pluck('precio_envio')->first();
         $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();
         $cantidad_de_envio_min = Restaurant::pluck('cantidad_de_envio_min')->first();
@@ -158,7 +158,7 @@ class CartController extends Controller
 
         //Validacion para orden existente en el carrito de compras
         $orden_existente = OrdenItem::where('orden_id', $orden->id)->where('product_id', $producto->id)->count();
-        if ($orden_existente == 0) {
+        // if ($orden_existente == '0') {
 
             $orden_item = new OrdenItem();
             $label = $producto->nombre . '/' . $inventario->nombre . $variante_label;
@@ -184,10 +184,11 @@ class CartController extends Controller
                 alert()->error('Ops no sepuedo agregar el platillo alcarrito');
                 return redirect()->back();
             }
-        } else {
-            alert()->error('Este platillo ya se encuentra en tu carrito de compras');
-            return redirect()->back();
-        }
+        // }
+        //  else {
+        //     alert()->error('Este platillo ya se encuentra en tu carrito de compras');
+        //     return redirect()->back();
+        // }
     }
 
     public function updateCart(Request $request, $id)
@@ -242,20 +243,21 @@ class CartController extends Controller
 
     public function mostrar($id)
     {
-        $orden = Order::find($id);
+        
         $metodo_efectivo = Restaurant::pluck('metodo_por_efectivo')->first();
         $metodo_transferencia = Restaurant::pluck('metodo_por_transferencia')->first();
         $metodo_paypal = Restaurant::pluck('metodo_por_paypal')->first();
         $metodo_tarjeta = Restaurant::pluck('metodo_por_tarjeta')->first();
         // dd($metodo_efectivo, $metodo_transferencia);
-
         $orden = $this->getUserOrder();
+        $orden = Order::find($orden->id);
         $items = $orden->getItems;
         $envio = $this->getValorEnvio($orden->id);
         return view('cart.mostrar', compact('orden', 'items', 'envio', 'metodo_efectivo', 'metodo_transferencia', 'metodo_paypal', 'metodo_tarjeta'));
     }
 
-    public function storeCard(Request $request)
+   
+    public function storeCartPay(Request $request)
     {
         $orden = $this->getUserOrder();
         $orden = Order::find($orden->id);
@@ -279,9 +281,10 @@ class CartController extends Controller
         $numero_orden = $ordenes + 1;
         return $numero_orden;
     }
+   
 
-    public function getHistorialCompra()
-    {
-        return view('cart.history');
-    }
+     public function getHistorialCompra()
+     {
+         return view('cart.history');
+     }
 }

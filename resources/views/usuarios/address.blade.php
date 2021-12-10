@@ -20,6 +20,7 @@
                                             <input type="text" name="nombre_referencia"
                                                 class="form-control @error('nombre_referencia') is-invalid @enderror"
                                                 value="{{ old('nombre_referencia') }}">
+                                                <small  class="form-text text-muted">Ejemplo: Mi casa / Mi oficina.</small>
                                             @error('nombre_referencia')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror

@@ -136,6 +136,21 @@
                                     @enderror
 
                                 </div>
+
+                                <div class="col-md-12 mt-2">
+                                    <div class="form-group">
+                                        <label>Ordenes To Go</label>
+                                        <select name="to_go"
+                                            class="custom-select select2bs4 @error('to_go') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="0" @if ($restaurante->to_go == 0) selected @endif>Desactivado</option>
+                                            <option value="1" @if ($restaurante->to_go == 1) selected @endif>Activado</option>
+                                        </select>
+                                        @error('to_go')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

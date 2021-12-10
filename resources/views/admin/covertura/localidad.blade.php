@@ -33,7 +33,7 @@
                                             <label>Valor del envio</label>
                                             <input type="number" name="precio"
                                                 class="form-control @error('precio') is-invalid @enderror"
-                                                value="{{ $setting }}">
+                                                value="{{ $setting }}" required>
                                             @error('precio')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror

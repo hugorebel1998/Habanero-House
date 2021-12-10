@@ -10,8 +10,8 @@
                 @method('PUT')
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card card-danger">
-                        <div class="card-header">
+                    <div class="card ">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-cogs"></i> General</div>
                         </div>
                         <div class="card-body">
@@ -83,8 +83,8 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="card card-danger">
-                        <div class="card-header">
+                    <div class="card ">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-dollar-sign"></i> Moneda y precio</div>
                         </div>
                         <div class="card-body">
@@ -158,8 +158,8 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="card card-danger">
-                        <div class="card-header">
+                    <div class="card">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-wifi"></i> Redes sociales</div>
                         </div>
                         <div class="card-body">
@@ -214,8 +214,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card card-danger">
-                        <div class="card-header">
+                    <div class="card">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-wallet"></i> Metodos de pago</div>
                         </div>
                         <div class="card-body">
@@ -285,7 +285,7 @@
                 </div>
             </div>
             <div class="text-right mt-4 mb-4">
-                <button type="submit" class="btn btn-danger"><i class="fas fa-save"></i>
+                <button type="submit" class="btn bg-rojo"><i class="fas fa-save"></i>
                     Actualizar
                     información</button>
             </div>

@@ -182,6 +182,11 @@
          width: 30%;
          }
 
+         .bg-negro {
+            background: #000000;
+            color: white;
+        }
+
     </style>
 </head>
 

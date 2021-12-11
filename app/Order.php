@@ -34,7 +34,10 @@ class Order extends Model
             function($query){
             $query->where('fecha_caduca_descuento', '>=', date('Y-m-d'));
         })->sum('total');
+    }
 
-         
+    public function getUser()
+    {
+        return $this->hasOne(User::class,'id', 'user_id');
     }
 }

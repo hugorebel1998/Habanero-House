@@ -13,7 +13,7 @@ use App\Variants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CartController extends Controller
+class CartController extends NotificacionesController
 {
     public function __construct()
     {
@@ -294,8 +294,8 @@ class CartController extends Controller
 
     public function storeCartPay(Request $request)
     {
-        $orden = $this->getUserOrder();
-        $orden = Order::find($orden->id);
+        // $orden = $this->getUserOrder();
+        $orden = Order::find(1);
         if ($request->metodo_pago == "0") {
             $orden->numero_orden = $this->getNumbreOrder();
             $orden->status = "1";
@@ -303,7 +303,9 @@ class CartController extends Controller
         $orden->metodo_pago = $request->metodo_pago;
         if ($orden->save()) {
             if ($orden->metodo_pago == "0") {
-                return redirect()->to(route('usuario.cart.historia.compra', $orden->id));
+                // return redirect()->to(route('usuario.cart.historia.compra', $orden->id));
+                return $this->getDetailOrder($orden->id);
+                
             } else {
                 //Aqui redireionara aldiferente metodo depago
             }

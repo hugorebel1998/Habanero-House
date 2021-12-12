@@ -260,7 +260,7 @@
                                             <tr>
                                                 <td align="center">
                                                     <h3>La orden sera llevada a la dirección</h3>
-                                                    @foreach ($restaurante as $restaurant)
+                                                    
                                                     @if ($direccion == true)
                                                       <p>CDMX / Estado:
                                                           <b>{{ $direccion->getStates->nombre }}</b>
@@ -274,11 +274,8 @@
                                                     </p>
                                                     <p>Referencia:
                                                         <b>{{ $direccion->referencia }}</b>
-                                                    </p>
-                                                        
+                                                    </p>                                                        
                                                     @endif
-                                                    
-                                                    @endforeach
                                                 </td>
                                             </tr>
                                         </table>
@@ -306,28 +303,27 @@
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center">
-                                                    @foreach ($restaurante as $restaurant)
-                                                        
-                                                    @if ($restaurant->whatsapp)
-                                                    <a href="https://api.whatsapp.com/send?phone={{$restaurant->whatsapp}}&text=Me%20interesa%20más%20información" target="_blank" style="display: inline-block">
+            
+                                                    @if ($whatsapp)
+                                                    <a href="https://api.whatsapp.com/send?phone={{$whatsapp}}&text=Me%20interesa%20más%20información" target="_blank" style="display: inline-block">
                                                         <img src="{{ asset('img/social/whatsapp.png') }}"
                                                             style="width: 36px; padding:0px">
                                                         </a>    
                                                         @endif
-                                                    @if ($restaurant->facebook)
-                                                    <a href="{{ $restaurant->facebook }}" target="_blank" style="display: inline-block">
+                                                    @if ($facebook)
+                                                    <a href="{{ $facebook }}" target="_blank" style="display: inline-block">
                                                         <img src="{{ asset('img/social/facebook.png') }}"
                                                             style="width: 36px; padding:0px">
                                                         </a>    
                                                     @endif
 
-                                                    @if ($restaurant->instagram)
-                                                    <a href="{{ $restaurant->instagram }}" target="_blank" style="display: inline-block">
+                                                    @if ($instagram)
+                                                    <a href="{{ $instagram }}" target="_blank" style="display: inline-block">
                                                         <img src="{{ asset('img/social/instagram.png') }}"
                                                         style="width: 36px; padding:0px">
                                                     </a>    
                                                     @endif
-                                                @endforeach
+                                            
                                                 </td>
                                             </tr>
                                         </table>
@@ -341,18 +337,18 @@
                             <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
                                 style="max-width:600px;">
                                 <tr>
-                                    @foreach ($restaurante as $restaurant)
+                                    
                                     <td align="center"
                                         style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px; padding: 5px 0 10px 0;">
                                             
                                         <p style="font-size: 14px; font-weight: 800; line-height: 18px; color: #333333;">
-                                         {{ $restaurant->nombre_razon_social}} <br>
-                                         {{ $restaurant->direccion_razon_social}} <br>
-                                         Tel: {{ $restaurant->telefono_razon_social}} <br>
-                                         Email: {{ $restaurant->email_razon_social }}
+                                         {{ $restaurante_nombre }} <br>
+                                         {{ $restaurante_ubicacion }} <br>
+                                         Tel: {{ $restaurante_telefono }} <br>
+                                         Email: {{ $restaurante_email }}
                                          </p>
                                 </td>
-                                @endforeach
+                                
                                 </tr>   
                             </table>
                         </td>

@@ -294,8 +294,8 @@ class CartController extends NotificacionesController
 
     public function storeCartPay(Request $request)
     {
-        // $orden = $this->getUserOrder();
-        $orden = Order::find(1);
+        $orden = $this->getUserOrder();
+        $orden = Order::find($orden->id);
         if ($request->metodo_pago == "0") {
             $orden->numero_orden = $this->getNumbreOrder();
             $orden->status = "1";
@@ -303,8 +303,8 @@ class CartController extends NotificacionesController
         $orden->metodo_pago = $request->metodo_pago;
         if ($orden->save()) {
             if ($orden->metodo_pago == "0") {
-                // return redirect()->to(route('usuario.cart.historia.compra', $orden->id));
-                return $this->getDetailOrder($orden->id);
+                $this->getDetailOrder($orden->id);
+                return redirect()->to(route('usuario.cart.historia.compra', $orden->id));
                 
             } else {
                 //Aqui redireionara aldiferente metodo depago

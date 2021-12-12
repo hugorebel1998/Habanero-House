@@ -40,4 +40,10 @@ class Order extends Model
     {
         return $this->hasOne(User::class,'id', 'user_id');
     }
+
+    public function getAdderssUser()
+    {
+        return $this->hasOne(UserAddes::class,'id', 'user_addreess_id');
+
+    }
 }

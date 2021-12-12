@@ -319,9 +319,4 @@ class CartController extends NotificacionesController
         return $numero_orden;
     }
 
-
-    public function getHistorialCompra()
-    {
-        return view('cart.history');
-    }
 }

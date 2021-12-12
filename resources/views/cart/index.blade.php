@@ -244,4 +244,5 @@
         });
     </script>
 @endsection
+@include('components.buscador')
 @endsection

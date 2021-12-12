@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderSedDetail extends Mailable
+class OrderSedDetailAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,8 +19,7 @@ class OrderSedDetail extends Mailable
     public $data;
     public function __construct($data)
     {
-        $this->data    = $data;
-        
+        $this->data = $data;
     }
 
     /**
@@ -28,15 +27,14 @@ class OrderSedDetail extends Mailable
      *
      * @return $this
      */
-    
     public function build()
     {
         $email = env('MAIL_FROM_ADDRESS');
         $name = env('APP_NAME');
 
         return $this->from($email, $name)
-                    ->view('notificaciones.order_details')
-                    ->subject('Detalle desu compra', $name)
-                    ->with($this->data);
+            ->view('notificaciones.order_details_admin')
+            ->subject('Nueva orden #'. $this->data['orden']['numero_orden'])
+            ->with($this->data);
     }
 }

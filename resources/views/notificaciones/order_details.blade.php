@@ -259,9 +259,9 @@
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center">
-                                                    <h3>La orden sera llevada a la dirección</h3>
                                                     
                                                     @if ($direccion == true)
+                                                    <h3>La orden sera llevada a la dirección</h3>
                                                       <p>CDMX / Estado:
                                                           <b>{{ $direccion->getStates->nombre }}</b>
                                                       </p>
@@ -274,7 +274,9 @@
                                                     </p>
                                                     <p>Referencia:
                                                         <b>{{ $direccion->referencia }}</b>
-                                                    </p>                                                        
+                                                    </p>                   
+                                                    
+                                                                                     
                                                     @endif
                                                 </td>
                                             </tr>

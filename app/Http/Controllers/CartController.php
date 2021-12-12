@@ -294,8 +294,8 @@ class CartController extends NotificacionesController
 
     public function storeCartPay(Request $request)
     {
-        $orden = $this->getUserOrder();
-        $orden = Order::find($orden->id);
+        // $orden = $this->getUserOrder();
+        $orden = Order::find(1);
         if ($request->metodo_pago == "0") {
             $orden->numero_orden = $this->getNumbreOrder();
             $orden->status = "1";

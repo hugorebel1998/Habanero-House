@@ -32,7 +32,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-11 mt-5 mb-5"><br>
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-8">
                             <div class="card shadow mt-5">
                                 <div class="card-header bg-negro">
                                     <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Carrito de compras</h3>
@@ -105,7 +105,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-5 mt-5">
+                        <div class="col-md-4 mt-5">
                             <div class="card shadow">
                                 <div class="card-header bg-negro">
                                     <div class="card-title"> <i class="fas fa-car-side"></i> Tipo de envio </div>

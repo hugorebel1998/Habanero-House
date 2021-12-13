@@ -38,8 +38,7 @@
                                     <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Carrito de compras</h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
+                                        <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                                             <thead>
                                                 <tr class="text-center">
                                                     <th scope="col"></th>
@@ -100,7 +99,6 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -159,22 +159,19 @@
                             </div>
                             @endif
                             @else
-                              @if ($to_go == 1)
-                                  
-                              <div class="d-flex justify-content-center mt-4 mb-4">
-                                  <a href="#" class="btn btn-outline-primary  btn-md btn-block-1 m-1
+                            @if ($to_go == 1)
+                            <div class="d-flex justify-content-center mt-4 mb-4">
+                                <a href="#" class="btn btn-outline-primary  btn-md btn-block-1 m-1
                                   @if($orden->orden_tipo == '0') active @endif">
-                                  Ir a recoger
+                                    Ir a recoger
                                 </a>
-                                
+
                                 <a href="" class="btn btn-outline-primary btn-md btn-block-1 m-1
                                 @if($orden->orden_tipo == '1') active @endif">
-                                Enviar a domicilio
-                            </a>
-                        </div>
-                        
-                        @endif
-
+                                    Enviar a domicilio
+                                </a>
+                            </div>
+                            @endif
                             @endif
 
                         </div>

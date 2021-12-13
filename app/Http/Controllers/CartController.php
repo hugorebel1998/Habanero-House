@@ -13,7 +13,7 @@ use App\Variants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CartController extends Controller
+class CartController extends NotificacionesController
 {
     public function __construct()
     {
@@ -27,7 +27,34 @@ class CartController extends Controller
         $envio = $this->getValorEnvio($orden->id);
         $orden = Order::find($orden->id);
         $to_go = Restaurant::pluck('to_go')->first();
-        return view('cart.index', compact('orden', 'items', 'envio','to_go'));
+
+        return view('cart.index', compact('orden', 'items', 'envio', 'to_go'));
+    }
+
+    public function getCartChangeType(Order $orden, $type)
+    {
+
+        $orden = $this->getUserOrder();
+        $orden = Order::find($orden->id);
+        // dd($orden->deliver);
+
+        // dd(Auth::id());
+        if ($orden->user_id != Auth::user()->id) {
+            return redirect()->to(route('home'));
+        }
+
+        if ($orden->status == '0') {
+            $orden->orden_tipo = $type;
+            if ($type == '1') {
+                $orden->user_addeerss_id = null;
+                $orden->deliver = '0.00';
+            }
+            if ($orden->save()) {
+                return back();
+            }
+        } else {
+            return redirect()->to(route('home'));
+        }
     }
 
     public function getUserOrder()
@@ -51,43 +78,51 @@ class CartController extends Controller
         $metodo_envio =  Restaurant::pluck('precio_envio')->first();
         $valor_defecto = Restaurant::pluck('valor_por_defecto')->first();
         $cantidad_de_envio_min = Restaurant::pluck('cantidad_de_envio_min')->first();
-
-
-        if ($metodo_envio == '0') {
-            $precio = "0.00";
-        }
-        if ($metodo_envio == '1') {
-            $precio = $valor_defecto;
-        }
-        if ($metodo_envio == '2') {
-            $user_addres_acount = Auth::user()->getAddress->count();
-            if ($user_addres_acount == '0') {
-                $precio = $valor_defecto;
-            } else {
-                $user_addres = Auth::user()->getAddressDefault->city_id;
-                $coverage = Coverage::find($user_addres);
-                // dd($coverage = Coverage::find($user_addres));
-                $precio = $coverage->precio;
-            }
-        }
-        if ($metodo_envio == '3') {
-            if ($orden->getSubtotal() >= $cantidad_de_envio_min) {
+        $to_go = Restaurant::pluck('to_go')->first();
+        
+        
+        if ($orden->orden_tipo == '0' ||  $to_go == 0) {
+            
+            if ($metodo_envio == '0' ) {
                 $precio = "0.00";
-            } else {
+            }
+            if ($metodo_envio == '1') {
                 $precio = $valor_defecto;
             }
+            if ($metodo_envio == '2') {
+                $user_addres_acount = Auth::user()->getAddress->count();
+                if ($user_addres_acount == '0') {
+                    $precio = $valor_defecto;
+                } else {
+                    $user_addres = Auth::user()->getAddressDefault->city_id;
+                    $coverage = Coverage::find($user_addres);
+                    // dd($coverage = Coverage::find($user_addres));
+                    $precio = $coverage->precio;
+                }
+            }
+            if ($metodo_envio == '3') {
+                if ($orden->getSubtotal() >= $cantidad_de_envio_min) {
+                    $precio = "0.00";
+                } else {
+                    $precio = $valor_defecto;
+                }
+            }
+
+            //dd($metodo_envio, $precio, $cantidad_de_envio_min);
+            if (!is_null(Auth::user()->getAddressDefault)) {
+                $orden->user_addeerss_id = Auth::user()->getAddressDefault->id;
+            }
+            $orden->orden_tipo = 0;
+            $orden->subtotal = $orden->getSubtotal();
+            $orden->deliver = $precio;
+            $orden->total = $orden->getSubtotal() + $precio;
+
+            $orden->save();
+        }else{
+            $precio = '0.00';
+            $orden->total = $orden->getSubtotal();
+            $orden->save();
         }
-
-
-        //dd($metodo_envio, $precio, $cantidad_de_envio_min);
-        if (!is_null(Auth::user()->getAddressDefault)) {
-            $orden->user_addeerss_id = Auth::user()->getAddressDefault->id;
-        }
-        $orden->subtotal = $orden->getSubtotal();
-        $orden->deliver = $precio;
-        $orden->total = $orden->getSubtotal() + $precio;
-        $orden->save();
-
 
         return $precio;
     }
@@ -160,30 +195,30 @@ class CartController extends Controller
         $orden_existente = OrdenItem::where('orden_id', $orden->id)->where('product_id', $producto->id)->count();
         // if ($orden_existente == '0') {
 
-            $orden_item = new OrdenItem();
-            $label = $producto->nombre . '/' . $inventario->nombre . $variante_label;
-            $orden_item->user_id          = Auth::user()->id;
-            $orden_item->orden_id         = $orden->id;
-            $orden_item->product_id       = $id;
-            $orden_item->inventory_id     = $request->inventory;
-            $orden_item->variant_id       = $request->variant;
-            $orden_item->label_item       = $label;
-            $orden_item->cantidad         = $request->cantidad;
-            $orden_item->descuento_status = $producto->indescuento;
-            $orden_item->descuento        = $producto->descuento;
-            $orden_item->fecha_caduca_descuento   = $producto->fecha_caduca_descuento;
-            $orden_item->precio_original  = $inventario->precio;
-            $orden_item->precio_unitario  = $precio;
-            $orden_item->total            = $total;
-            // dd($orden_item);
+        $orden_item = new OrdenItem();
+        $label = $producto->nombre . '/' . $inventario->nombre . $variante_label;
+        $orden_item->user_id          = Auth::user()->id;
+        $orden_item->orden_id         = $orden->id;
+        $orden_item->product_id       = $id;
+        $orden_item->inventory_id     = $request->inventory;
+        $orden_item->variant_id       = $request->variant;
+        $orden_item->label_item       = $label;
+        $orden_item->cantidad         = $request->cantidad;
+        $orden_item->descuento_status = $producto->indescuento;
+        $orden_item->descuento        = $producto->descuento;
+        $orden_item->fecha_caduca_descuento   = $producto->fecha_caduca_descuento;
+        $orden_item->precio_original  = $inventario->precio;
+        $orden_item->precio_unitario  = $precio;
+        $orden_item->total            = $total;
+        // dd($orden_item);
 
-            if ($orden_item->save()) {
-                alert()->success('Platillo agregado al carrito');
-                return redirect()->back();
-            } else {
-                alert()->error('Ops no sepuedo agregar el platillo alcarrito');
-                return redirect()->back();
-            }
+        if ($orden_item->save()) {
+            alert()->success('Platillo agregado al carrito');
+            return redirect()->back();
+        } else {
+            alert()->error('Ops no sepuedo agregar el platillo alcarrito');
+            return redirect()->back();
+        }
         // }
         //  else {
         //     alert()->error('Este platillo ya se encuentra en tu carrito de compras');
@@ -243,7 +278,7 @@ class CartController extends Controller
 
     public function mostrar($id)
     {
-        
+
         $metodo_efectivo = Restaurant::pluck('metodo_por_efectivo')->first();
         $metodo_transferencia = Restaurant::pluck('metodo_por_transferencia')->first();
         $metodo_paypal = Restaurant::pluck('metodo_por_paypal')->first();
@@ -256,11 +291,11 @@ class CartController extends Controller
         return view('cart.mostrar', compact('orden', 'items', 'envio', 'metodo_efectivo', 'metodo_transferencia', 'metodo_paypal', 'metodo_tarjeta'));
     }
 
-   
+
     public function storeCartPay(Request $request)
     {
-        $orden = $this->getUserOrder();
-        $orden = Order::find($orden->id);
+        // $orden = $this->getUserOrder();
+        $orden = Order::find(1);
         if ($request->metodo_pago == "0") {
             $orden->numero_orden = $this->getNumbreOrder();
             $orden->status = "1";
@@ -268,7 +303,9 @@ class CartController extends Controller
         $orden->metodo_pago = $request->metodo_pago;
         if ($orden->save()) {
             if ($orden->metodo_pago == "0") {
+                $this->getDetailOrder($orden->id);
                 return redirect()->to(route('usuario.cart.historia.compra', $orden->id));
+                
             } else {
                 //Aqui redireionara aldiferente metodo depago
             }
@@ -281,10 +318,10 @@ class CartController extends Controller
         $numero_orden = $ordenes + 1;
         return $numero_orden;
     }
-   
 
-     public function getHistorialCompra()
-     {
-         return view('cart.history');
-     }
+
+    public function getHistorialCompra()
+    {
+        return view('cart.history');
+    }
 }

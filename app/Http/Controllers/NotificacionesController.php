@@ -8,7 +8,6 @@ use App\Order;
 use App\Restaurant;
 use App\User;
 use App\UserAddes;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 

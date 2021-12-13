@@ -39,4 +39,6 @@ class OrderSedDetail extends Mailable
                     ->subject('Detalle desu compra', $name)
                     ->with($this->data);
     }
+
+
 }

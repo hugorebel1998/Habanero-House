@@ -10,6 +10,10 @@
     <meta name="routeName" content="{{ Route::currentRouteName() }}">
     <title>@yield('title') - Habanero House </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
@@ -163,7 +167,7 @@
 
         #cantidad_cart {
             display: initial;
-            width: 45%;
+            width: 30%;
             height: calc(1.5em + .75rem + 2px);
             padding: .375rem .75rem;
             font-size: 1rem;
@@ -179,7 +183,7 @@
         }
         .btn-block-1 {
          display: block;
-         width: 30%;
+         width: 40%;
          }
 
          .bg-negro {
@@ -270,13 +274,14 @@
                                     </a>
 
                                     <a class="dropdown-item"
+                                    href="{{ route('usuario.cart.historia.compra')}}">
+                                    <i class="fas fa-history"></i> {{ __('Historial de compras') }}
+                                    </a> 
+
+                                    <a class="dropdown-item"
                                         href="{{ route('usuario.address')}}">
                                         <i class="fas fa-map-marker-alt"></i> {{ __('Dirección entrega') }}
                                     </a>
-                                     <a class="dropdown-item"
-                                        href="{{ route('usuario.cart.historia.compra')}}">
-                                        <i class="fas fa-history"></i> {{ __('Historial de compras') }}
-                                    </a> 
 
                                     <a class="dropdown-item"
                                         href="{{ route('usuario.edit.perfil', auth()->user()->id) }}">
@@ -381,13 +386,18 @@
     <script src="{{ asset('js/master/images-loded.min.js') }}"></script>
     <script src="{{ asset('js/master/isotope.min.js') }} "></script>
     <script src="{{ asset('js/master/baguetteBox.min.js') }} "></script>
-    {{-- <script src="{{ asset('js/master/form-validator.min.js') }} "></script>
-    <script src="{{ asset('js/master/contact-form-script.js') }} "></script> --}}
+    <!-- DataTables -->
+    <script src="{{ asset('admin-lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/master/custom.js') }} "></script>
     <!-- bs-custom-file-input -->
     <script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }} "></script>
     <!-- Select2 -->
     <script src="{{ asset('admin-lte/plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- TableJS -->
+    <script src="{{ asset('js/table.js') }}"></script>
     <!--slider-->
     <script src="{{ asset('js/sitio.js') }}"></script>
     <!--Select2JS-->

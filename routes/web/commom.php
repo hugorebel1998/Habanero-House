@@ -31,10 +31,13 @@ Route::put('/cart/update/{product}','CartController@updateCart')->name('usuario.
 Route::delete('/cart/delete/{product}','CartController@deleteCart')->name('usuario.cart.delete');
 Route::get('cart/mostrar/{product}', 'CartController@mostrar')->name('usuario.cart.mostrar');
 Route::post('/card/store/card', 'CartController@storeCartPay')->name('usuario.cart.store.payment');
-Route::get('/cart/historial-compras/', 'CartController@getHistorialCompra')->name('usuario.cart.historia.compra');
 
 // Route::get('/cart/{order}/type/{tipo}', 'CartController@getCartChangeType')->name('usuario.cart.cambiar.tipo');
 Route::get('/cart/type/{orden}/{tipo}', 'CartController@getCartChangeType')->name('usuario.cart.cambiar.tipo');
+
+// Routas historial de ordenes
+Route::get('/cart/historial-compras', 'UserOrderController@getHistorialCompra')->name('usuario.cart.historia.compra');
+Route::get('/cart/ver-orden/{orden}', 'UserOrderController@getOrderShow')->name('usuario.ver.orden');
 
 
 

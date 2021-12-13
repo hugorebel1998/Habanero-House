@@ -110,8 +110,7 @@
                                 <div class="card-title"><i class="fas fa-map-pin"></i> Mis direcciones</div>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
+                                    <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                                         <thead>
                                             <tr class="text-center">
                                                 <th scope="col">Nombre</th>
@@ -180,8 +179,6 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -218,4 +215,5 @@
         });
     </script>
 @endsection
+@include('components.buscador')
 @endsection

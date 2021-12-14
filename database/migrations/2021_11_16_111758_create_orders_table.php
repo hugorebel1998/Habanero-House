@@ -23,7 +23,8 @@ class CreateOrdersTable extends Migration
             $table->decimal('total', 11, 2)->nullable();
             $table->integer('metodo_pago')->nullable();
             $table->text('info_pago')->nullable();
-            $table->dateTime('fecha_pago')->nullable();
+            $table->dateTime('fecha_pago_proceso')->nullable();
+            $table->dateTime('fecha_pago_termino')->nullable();
             $table->integer('user_addeerss_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -205,15 +205,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-secondary">
+                                    <a href="{{ route('admin.orden.index')}}" class="nav-link text-secondary">
                                         <i class="fas fa-list-ul nav-icon"></i>
                                         <p>Gestión de ordenes</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link text-secondary">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear orden</p>
                                     </a>
                                 </li>
                             </ul>

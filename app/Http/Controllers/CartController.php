@@ -10,6 +10,7 @@ use App\Product;
 use App\ProductInventary;
 use App\Restaurant;
 use App\Variants;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -294,11 +295,13 @@ class CartController extends NotificacionesController
 
     public function storeCartPay(Request $request)
     {
-        // $orden = $this->getUserOrder();
-        $orden = Order::find(1);
+        $date = Carbon::now()->locale('es');
+        $orden = $this->getUserOrder();
+        $orden = Order::find($orden->id);
         if ($request->metodo_pago == "0") {
             $orden->numero_orden = $this->getNumbreOrder();
             $orden->status = "1";
+            $orden->fecha_pago_proceso = $date;
         }
         $orden->metodo_pago = $request->metodo_pago;
         if ($orden->save()) {

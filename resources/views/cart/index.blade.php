@@ -158,7 +158,8 @@
                                             </div>
                                         @endif
                                     @endif
-                                    @if ($to_go == 1)
+                                    @if ($to_go == '1')
+                                    
                                         <div class="d-flex justify-content-center mt-4 mb-4">
                                              <a href="{{ route('usuario.cart.cambiar.tipo', [$orden->id, 0])}}"
                                                 class="btn btn-outline-primary btn-md btn-block-1 m-1 @if ($orden->orden_tipo == '0') active @endif">
@@ -198,14 +199,17 @@
                                             <p class="ml-3"><span>${{ $orden->total }} MXN</span></p>
                                         </div>
                                     </div>
-                                    @if (!is_null(Auth::user()->getAddressDefault))
+                                    @if (!is_null(Auth::user()->getAddressDefault) && $to_go == 1 )
                                         <div class="text-right mr-2 mb-2">
+                                            
                                             <a href="{{ route('usuario.cart.mostrar', $orden->id) }}"
-                                                class="btn btn-sm bg-negro">
+                                                class="btn btn-sm btn-dark">
                                                 <i class="fas fa-badge-dollar"></i> Realizar compra
                                             </a>
                                         </div>
                                     @endif
+
+                                   
                                 </div>
                             </div>
 

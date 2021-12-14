@@ -89,7 +89,13 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     // Route::get('/covertura/index/delete/restore/{coverage}', 'CoverturaController@coverturaRestore')->name('admin.covertura.index.restore');
 
     
-    
+    //Ordenes
+    Route::get('/ordenes/index', 'OrderController@index')->name('admin.orden.index');
+    Route::get('/ordenes/a-domicilio', 'OrderController@ordenDomicilio')->name('admin.orden.a.domicilio');
+    Route::get('/ordenes/ir-a-recoger', 'OrderController@ordenToGo')->name('admin.orden.ir.recoger');
+    Route::get('/ordenes/show/{order}', 'OrderController@show')->name('admin.orden.show');
+
+
 
 
 

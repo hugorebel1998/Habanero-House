@@ -54,9 +54,10 @@ class OrderController extends Controller
 
 public function show($id)
 {
-    $order = Order::findOrFail($id);
+    $orden = Order::findOrFail($id);
 
-    return view()
+    dd()
+    return view('admin.ordenes.show');
 
 }
 

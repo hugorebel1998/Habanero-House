@@ -199,7 +199,7 @@
                                             <p class="ml-3"><span>${{ $orden->total }} MXN</span></p>
                                         </div>
                                     </div>
-                                    @if (!is_null(Auth::user()->getAddressDefault) && $to_go == 1 )
+                                    @if (!is_null(Auth::user()->getAddressDefault) )
                                         <div class="text-right mr-2 mb-2">
                                             
                                             <a href="{{ route('usuario.cart.mostrar', $orden->id) }}"

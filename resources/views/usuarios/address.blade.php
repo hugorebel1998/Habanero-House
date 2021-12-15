@@ -94,8 +94,8 @@
                                         </div>
                                     </div>
                                     <div class="text-center mt-3 mb-3">
-                                        <button type="submit" class="btn btn-dark"><i class="fas fa-paper-plane"></i>
-                                            Enviar</button>
+                                        <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i>
+                                            Guardar</button>
 
                                     </div>
                                 </form>

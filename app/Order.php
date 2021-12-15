@@ -46,4 +46,6 @@ class Order extends Model
         return $this->hasOne(UserAddes::class,'id', 'user_addreess_id');
 
     }
+
+    
 }

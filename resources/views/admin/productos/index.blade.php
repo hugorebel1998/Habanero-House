@@ -57,7 +57,9 @@
                                     <td>
                                         $ {{ $producto->precio }}
                                     </td>
-                                    <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp) }}</td>
+                                    <td>
+                                         {{ \Carbon\Carbon::parse($producto->created_at)->formatLocalized('%A %d, %B %Y - %H:%M:%S ') }}
+                                    </td>
                                     <td class="text-center">
                                         @can('update producto')
                                             <div class="dropdown">

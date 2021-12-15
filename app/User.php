@@ -54,5 +54,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserAddes::class, 'user_id', 'id')->where('direccion_default','1')->with(['getStates', 'getCities']);
     }
+
+    public function getOrder()
+    {
+        return $this->hasMany(Order::class,'user_id','id')->where('status','!=','0');
+    }
     
 }

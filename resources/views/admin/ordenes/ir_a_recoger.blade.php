@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold"> <i class="fas fa-utensils"></i> Ordenes ir a recoger</b>
+                    <b class="lead font-weight-bold"> <i class="fab fa-first-order"></i> Ordenes ir a recoger</b>
                 </div>
                 <div class="d-flex flex-row-reverse mr-4">
                     <div class="p-2">

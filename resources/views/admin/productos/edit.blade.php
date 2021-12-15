@@ -3,6 +3,8 @@
 @section('title', 'Editar platillo')
 <div class="container-fluid">
     <div class="row justify-content-center">
+       <div class="col-md-12">
+           <div class="row">
         <div class="col-md-8">
             <div class="card card-danger shadow">
                 <div class="card-header">
@@ -69,17 +71,6 @@
                             </div>
 
 
-                            {{-- <div class="col-md-3 mt-3">
-                                <label for="precio">Precio</label>
-                                <input type="number" name="precio"
-                                    class="form-control @error('precio') is-invalid @enderror" min="0.00" step="any"
-                                    value="{{ $producto->precio }}">
-                                @error('precio')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div> --}}
-
-
                             <div class="col-md-4 mt-3">
                                 <div class="form-group">
                                     <label>¿En descuento?</label>
@@ -135,15 +126,6 @@
                                     @enderror
                                 </div>
                             </div>
-                           
-                            {{-- <div class="col-md-4 mt-3">
-                                <label for="cantidad">Cantidad</label>
-                                <input type="number" name="cantidad" class="form-control @error('cantidad') is-invalid @enderror"
-                                 value="{{  $producto->cantidad }}" >
-                                @error('cantidad')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div> --}}
 
                              <div class="col-md-3 mt-3">
                                 <label for="código_producto">Codigo producto</label>
@@ -189,39 +171,10 @@
 
             </diV>
 
-            {{-- <diV class="card card-danger shadow">
-                <div class="card-header">
-                    <div class="card-tittle"><i class="fas fa-images"></i> Galeria</div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                             <form action="{{ route('productosgaleria.store', $producto->id) }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="imagen_producto">Imagen destacada</label>
-                                    <div class="custom-file">
-                                        <input type="hidden" name="product_id" value="{{ $producto->product_id}}">
-                                        <input accept="image/*" type="file" 
-                                            class="custom-file-input @error('imagen_producto') is-invalid @enderror"
-                                            name="imagen_producto" >
-                                        <label class="custom-file-label" for="customFile">Selecciona imagen</label>
-                                        @error('imagen_producto')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn btn-sm btn-danger" type="submit">Guardar foto</button>
-
-                                </div>
-                             </form>
-                        </div>
-                    </div>
-                </div>
-
-            </diV> --}}
+           
         </div>
+    </div>
+    </div>
     </div>
 </div>
 

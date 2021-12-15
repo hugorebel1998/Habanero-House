@@ -59,8 +59,9 @@
 
                                 </td>
 
-                                <td>{{ \Carbon\Carbon::parse($orden->fecha_pago_proceso)
-                                ->formatLocalized('%d %B %Y %I:%M %p') }}</td>
+                                <td>
+                                {{ \Carbon\Carbon::parse($orden->fecha_pago_proceso)->formatLocalized('%d %B %Y %I:%M %p A') }}
+                                </td>
                                 {{-- <td><img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
                                         class="rounded mx-auto img-thumbnail" width="80"></td>
                                 <td> --}}

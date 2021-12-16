@@ -24,8 +24,8 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($usuario_ordenes as $orden)
-
+                            @foreach (Auth::user()->getOrders as $orden)
+                                 
                                 <tr>
                                     <td>{{ $orden->numero_orden }}</td>
                                     <td>
@@ -69,7 +69,8 @@
                                     <td> $ {{ $orden->total }} MNX</td>
                                     <td class="text-center">
 
-                                        <a href="{{ route('usuario.ver.orden',$orden->id) }}" class="btn btn-primary"><i class="far fa-file-alt"></i> Ver
+                                        <a href="{{ route('usuario.ver.orden', $orden->id) }}"
+                                            class="btn btn-primary"><i class="far fa-file-alt"></i> Ver
                                             orden</a>
                                     </td>
                                 </tr>

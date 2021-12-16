@@ -35,11 +35,10 @@ Route::post('/card/store/card', 'CartController@storeCartPay')->name('usuario.ca
 // Route::get('/cart/{order}/type/{tipo}', 'CartController@getCartChangeType')->name('usuario.cart.cambiar.tipo');
 Route::get('/cart/type/{orden}/{tipo}', 'CartController@getCartChangeType')->name('usuario.cart.cambiar.tipo');
 
+
 // Routas historial de ordenes
-Route::get('/cart/historial-compras', 'UserOrderController@getHistorialCompra')->name('usuario.cart.historia.compra');
-Route::get('/cart/ver-orden/{orden}', 'UserOrderController@getOrderShow')->name('usuario.ver.orden');
-
-
+Route::get('/cart/historial-compras', 'UserOrderHistoryController@getHistorialCompra')->name('usuario.cart.historia.compra');
+Route::get('/cart/ver-orden/{orden}', 'UserOrderHistoryController@getOrderShow')->name('usuario.ver.orden');
 
 
 //Route Address

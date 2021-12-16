@@ -56,34 +56,24 @@ class OrderController extends Controller
     public function show($id)
     {
         $orden = Order::findOrFail($id);
-        $usuarios  = DB::table('users')
-            ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
-            ->where('orders.status', '!=', '0')
-            ->get();
+        $usuario = User::find($orden->user_id);
+        $address = UserAddes::find($orden->user_addeerss_id);
+        $states = DB::table('orders')
+                      ->leftJoin('user_address', 'orders.user_addeerss_id', '=', 'user_address.id')
+                      ->leftJoin('coverages', 'user_address.state_id', '=', 'coverages.id')
+                      ->where('coverages.tipo_covertura',0)
+                      ->where('orders.id',$usuario->id)
+                      ->get();
 
-
-
-            $user_states = DB::table('user_address')
-            ->leftJoin('orders', 'user_address.user_id', '=', 'orders.id')
-            ->leftJoin('coverages', 'user_address.state_id', '=', 'coverages.id')
-            ->where('orders.user_id ', '==' ,'orders.id')
-            ->where('coverages.tipo_covertura', 0)
-            ->get();
-    
-        $user_cities = DB::table('user_address')
-            ->leftJoin('coverages', 'user_address.city_id', '=', 'coverages.id')
-            ->where('coverages.tipo_covertura', 1)
-            ->leftJoin('orders', 'user_address.id', '=', 'orders.user_addeerss_id')    
-            ->get();
-    
-           
-            
+        $cities = DB::table('orders')
+                     ->leftJoin('user_address', 'orders.user_addeerss_id', '=', 'user_address.id')
+                     ->leftJoin('coverages', 'user_address.city_id', '=', 'coverages.id')
+                     ->where('coverages.tipo_covertura',1)
+                     ->where('orders.id',$usuario->id)
+                     ->get();
+        // return $address;
         
 
-      dd($user_states);
-
-
-
-        return view('admin.ordenes.show', compact('orden', 'usuarios', 'user_states', 'user_cities'));
+        return view('admin.ordenes.show', compact('orden', 'usuario', 'states','cities','address'));
     }
 }

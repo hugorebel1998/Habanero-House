@@ -67,6 +67,13 @@
                             <div class="card-title"> <i class="fas fa-map-pin"></i> Información de envio </div>
                         </div>
                         <div class="car-body">
+                          @if (is_null($orden->getUserAddress))
+                          
+                            <p class="mt-3 mb-3 ml-3">
+                                <span>Tu escogiste la opcion pasar por tu orden al restaurante</span>
+                            </p>
+                        
+                          @else
                             <div class="row">
                                 <div class="col-md-5 mt-3 ml-3">
                                     <b><i class="fas fa-city"></i> CDMX / Estado: </b>
@@ -99,6 +106,7 @@
                                 </div>
 
                             </div>
+                            @endif
                         </div>
                     </div>
 

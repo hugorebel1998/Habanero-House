@@ -49,6 +49,7 @@ class UserController extends Controller
         $usuario->password = bcrypt($request->contraseña);
         $usuario->status_id = $user_status;
         $usuario->editor_id = auth()->user()->id;
+        $usuario->rol = 'Cliente';
 
         
         if ($archivo = $request->file('imagen')) {

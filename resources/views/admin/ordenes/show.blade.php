@@ -8,77 +8,96 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card card-danger card-outline">
-                        @if ($orden->user_id == $usuario->id)
-                            <div class="card-body box-profile">
-                                <div class="text-center">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                @if (is_null($orden->getUser->imagen_usuario))
+                                    <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}"
+                                        class="rounded mx-auto d-block" width="80%" height="80%">
+                                @else
                                     <img class="profile-user-img img-fluid img-circle"
-                                        src="{{ asset('img/users/' . $usuario->imagen_usuario) }}"
+                                        src="{{ asset('img/users/' . $orden->getUser->imagen_usuario) }}"
                                         alt="User profile picture">
-                                </div>
-
-                                <h3 class="profile-username text-center">
-                                    {{ $usuario->name }} {{ $usuario->apellido_paterno }}
-                                </h3>
-
-                                <p class="text-muted text-center">{{ $usuario->rol }}</p>
-
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <i class="fas fa-envelope"></i> <b>Email:</b> <span
-                                            class="ml-1">{{ $usuario->email }}</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <i class="fas fa-phone-alt"></i> <b>Teléfono:</b> <span
-                                            class="ml-1">{{ $usuario->telefono }}</span>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <i class="fas fa-birthday-cake"></i>
-                                        <b>Edad:</b> <span
-                                            class="ml-1">{{ Carbon\Carbon::createFromDate($usuario->fecha_nacimiento)->age }}
-                                            Años</span>
-
-                                    </li>
-                                </ul>
-                                {{-- <a href="#" class="btn btn-primary btn-block"><b>Ver usuario</b></a> --}}
+                                @endif
                             </div>
-                        @endif
+
+                            <h3 class="profile-username text-center">
+                                {{ $orden->getUser->name }} {{ $orden->getUser->apellido_paterno }}
+                            </h3>
+                            @if (is_null($orden->getUser->rol))
+                                <p class="text-muted text-center">Cliente</p>
+                            @else
+                                <p class="text-muted text-center">{{ $orden->getUser->rol }}</p>
+                            @endif
+
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <i class="fas fa-envelope"></i> <b>Email:</b> <span
+                                        class="ml-1">{{ $orden->getUser->email }}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-phone-alt"></i> <b>Teléfono:</b>
+                                    @if (is_null($orden->getUser->telefono))
+                                        <span class="ml-1">Sin información</span>
+                                    @else
+                                        <span class="ml-1">{{ $orden->getUser->telefono }}</span>
+                                    @endif
+                                </li>
+
+                                <li class="list-group-item">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    <b>Edad:</b> 
+                                    @if (is_null($orden->getUser->fecha_nacimiento))
+                                        <span class="ml-1">Sin información</span>
+                                    @else
+                                        <span class="ml-1">{{ Carbon\Carbon::createFromDate($orden->getUser->fecha_nacimiento)->age }}Años </span>
+                                    @endif
+
+                                </li>
+                            </ul>
+                            {{-- <a href="#" class="btn btn-primary btn-block"><b>Ver usuario</b></a> --}}
+                        </div>
+
 
                     </div>
                     <div class="card card-danger card-outline">
-                        <h3 class="card-title text-center mt-4"> <i class="fas fa-map-pin"></i> <b>Dirección de la orden
-                                a entregar</b> </h3>
+                        <h3 class="card-title text-center mt-4"> <i class="fas fa-map-pin"></i> 
+                            <b>Dirección de la orden a entregar</b>
+                         </h3>
 
                         <div class="card-body box-profile">
+                        @if (is_null($orden->getUserAddress))
+                            
+                        <p class="ml-3">Esta orden fue definida como pasar al restaurante para recoger la orden.</p>
+                        @else
                             <div class="row">
                                 <div class="col-md-6">
-
-                                    @foreach ($states as $state)
-                                        <b>
-                                            <i class="fas fa-city"></i>
-                                            Cdmx ó Edo.Méx: ​
-                                        </b>
-                                        <p class="ml-3">{{ $state->nombre }}</p>
-                                    @endforeach
+                                    <b>
+                                        <i class="fas fa-city"></i>
+                                        Cdmx ó Edo.Méx: ​
+                                    </b>
+                                    <p class="ml-3">
+                                        <span>{{ $orden->getUserAddress->getStates->nombre }}</span>
+                                    </p>
 
                                 </div>
                                 <div class="col-md-6">
-                                    @foreach ($cities as $city)
-                                        <b>
-                                            <i class="fas fa-archway"></i>
-                                            Colonia: ​
-                                        </b>
-                                        <p class="ml-3">{{ $city->nombre }}</p>
 
-                                    @endforeach
+                                    <b>
+                                        <i class="fas fa-archway"></i>
+                                        Colonia: ​
+                                    </b>
+                                    <p class="ml-3">
+                                        {{ $orden->getUserAddress->getCities->nombre }}
+                                    </p>
                                 </div>
-
                                 <div class="col-md-12">
                                     <b><i class="fas fa-map-pin"></i>
                                         Dirección:
                                     </b>
                                     <p class="ml-3">
-                                        {{ $address->calle_av }} No.{{ $address->casa_dp }}
+                                        {{ $orden->getUserAddress->nombre }} /
+                                        {{ $orden->getUserAddress->calle_av }} / No.
+                                        {{ $orden->getUserAddress->casa_dp }}
                                     </p>
                                 </div>
 
@@ -87,7 +106,7 @@
                                         Referencia:
                                     </b>
                                     <p class="ml-3">
-                                        {{ $address->referencia }}
+                                        {{ $orden->getUserAddress->referencia }}
                                     </p>
                                 </div>
 
@@ -96,13 +115,13 @@
                                         Entregar en mi :
                                     </b>
                                     <p class="ml-3">
-                                        {{ $address->nombre }}
+                                        {{ $orden->getUserAddress->nombre }}
                                     </p>
                                 </div>
 
                             </div>
 
-
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -129,7 +148,7 @@
                                         <tr class="text-center">
                                             <td>
                                                 <img src="{{ asset('img/products/' . $item->getProduct->imagen_producto) }}"
-                                                                class="rounded mx-auto img-thumbnail" width="80">
+                                                    class="rounded mx-auto img-thumbnail" width="80">
                                             </td>
                                             <td>
                                                 <a href="{{ route('usuario.mostrar.show', $item->id) }}"
@@ -160,17 +179,17 @@
                                         <th scope="col"></th>
                                         <th scope="col"></th>
                                         <th scope="col">
-                                            <p>Subtotal: $ {{$orden->subtotal}} MXN</p> 
-                                            <p>Precio de envío: $ {{$orden->deliver}} MXN</p> 
-                                            <p>Total: $ {{$orden->total}} MXN</p> 
+                                            <p>Subtotal: $ {{ $orden->subtotal }} MXN</p>
+                                            <p>Precio de envío: $ {{ $orden->deliver }} MXN</p>
+                                            <p>Total: $ {{ $orden->total }} MXN</p>
                                         </th>
                                     </tr>
-                                    </tfoot>
+                                </tfoot>
                             </table>
 
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

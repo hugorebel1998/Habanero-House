@@ -20,11 +20,11 @@ class OrderController extends Controller
     public function index()
     {
         $ordenes = Order::where('status', '!=', '0')->get();
-        $usuarios  = DB::table('users')
-            ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
-            ->where('orders.status', '!=', '0')
-            ->get();
-        //dd($usuarios);
+        $usuarios = User::all();
+        // $usuarios  = DB::table('users')
+        //     ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
+        //     ->where('orders.status', '!=', '0')   
+        //     ->get();
         return view('admin.ordenes.index', compact('ordenes', 'usuarios'));
     }
 
@@ -55,25 +55,26 @@ class OrderController extends Controller
 
     public function show($id)
     {
-        $orden = Order::findOrFail($id);
-        $usuario = User::find($orden->user_id);
-        $address = UserAddes::find($orden->user_addeerss_id);
-        $states = DB::table('orders')
-                      ->leftJoin('user_address', 'orders.user_addeerss_id', '=', 'user_address.id')
-                      ->leftJoin('coverages', 'user_address.state_id', '=', 'coverages.id')
-                      ->where('coverages.tipo_covertura',0)
-                      ->where('orders.id',$usuario->id)
-                      ->get();
+        $orden = Order::find($id);
+        
+        // $usuario = User::find($orden->user_id);
+        // $address = UserAddes::find($orden->user_addeerss_id);
+        // $states = DB::table('orders')
+        //               ->leftJoin('user_address', 'orders.user_addeerss_id', '=', 'user_address.id')
+        //               ->leftJoin('coverages', 'user_address.state_id', '=', 'coverages.id')
+        //               ->where('coverages.tipo_covertura',0)
+        //               ->where('orders.id',$usuario->id)
+        //               ->get();
 
-        $cities = DB::table('orders')
-                     ->leftJoin('user_address', 'orders.user_addeerss_id', '=', 'user_address.id')
-                     ->leftJoin('coverages', 'user_address.city_id', '=', 'coverages.id')
-                     ->where('coverages.tipo_covertura',1)
-                     ->where('orders.id',$usuario->id)
-                     ->get();
+        // $cities = DB::table('orders')
+        //              ->leftJoin('user_address', 'orders.user_addeerss_id', '=', 'user_address.id')
+        //              ->leftJoin('coverages', 'user_address.city_id', '=', 'coverages.id')
+        //              ->where('coverages.tipo_covertura',1)
+        //              ->where('orders.id',$usuario->id)
+        //              ->get();
         // return $address;
         
 
-        return view('admin.ordenes.show', compact('orden', 'usuario', 'states','cities','address'));
+        return view('admin.ordenes.show', compact('orden'));
     }
 }

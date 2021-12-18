@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminNotiForUserOrder;
 use App\Order;
+use App\Restaurant;
 use App\User;
 use App\UserAddes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -84,30 +87,56 @@ class OrderController extends Controller
     public function storeOrder(Request $request,$id)
     {
         $orden = Order::find($id);
+        $usuario = User::find($orden->user_id);
+        $status_order = $request->status;
+        $restaurante_nombre = Restaurant::pluck('nombre_razon_social')->first();
+        $restaurante_telefono = Restaurant::pluck('telefono_razon_social')->first();
+        $restaurante_email = Restaurant::pluck('email_razon_social')->first();
+        $restaurante_ubicacion = Restaurant::pluck('direccion_razon_social')->first();
+        
+        $facebook = Restaurant::pluck('facebook')->first();
+        $whatsapp = Restaurant::pluck('whatsapp')->first();
+        $instagram = Restaurant::pluck('instagram')->first();
 
-        if ($request->status == '1' || $request->status == '2') {
+        $data = [
+            'orden' => $orden, 'usuario' => $usuario, 'restaurante_nombre' => $restaurante_nombre,
+            'restaurante_telefono' => $restaurante_telefono, 'restaurante_email' => $restaurante_email, 
+            'restaurante_ubicacion' => $restaurante_ubicacion, 'facebook' => $facebook,'whatsapp' => $whatsapp, 
+            'instagram' => $instagram, 'status_order' => $status_order,'numero_orden' => $orden->numero_orden
+
+        ];        
+        
+
+
+        if ($status_order == '1' || $status_order == '2') {
             return back();
         }
 
-        $orden->status = $request->status;
-        if ($request->status == '3' && is_null($orden->fecha_pago_procesado)) {
+        $orden->status = $status_order;
+        if ($status_order == '3' && is_null($orden->fecha_pago_procesado)) {
             $orden->fecha_pago_procesado = date('Y-m-d h:i:s');
         }
 
-        if ($request->status == '4' && is_null($orden->fecha_pago_enviado)) {
+        if ($status_order == '4' && is_null($orden->fecha_pago_enviado)) {
             $orden->fecha_pago_enviado = date('Y-m-d h:i:s');
         }
 
-        if ($request->status == '5' && is_null($orden->fecha_pago_enviado)) {
+        if ($status_order == '5' && is_null($orden->fecha_pago_enviado)) {
             $orden->fecha_pago_enviado = date('Y-m-d h:i:s');
         }
 
-        if ($request->status == '6' && is_null($orden->fecha_pago_entregado)) {
+        if ($status_order == '6' && is_null($orden->fecha_pago_entregado)) {
             $orden->fecha_pago_entregado = date('Y-m-d h:i:s');
         }
 
+        if ($status_order == '100' && is_null($orden->fecha_pago_rechazado)) {
+            $orden->fecha_pago_rechazado = date('Y-m-d h:i:s');
+        }
+
         if ($orden->save()) {
-            alert()->success('Éxito has cambiado el status de la orden.');
+
+            Mail::to($usuario->email)->send(new AdminNotiForUserOrder($data));
+            alert()->success('Éxito has cambiado el estado de la orden.','Se le envío un correo electrónico al usuario de notificación');
             return back();
         }else{
             alert()->success('Error alcambiar el status de la orden.');

@@ -166,11 +166,21 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="text-left">
-                                        <button type="submit" class="btn btn-sm btn-danger"><i
-                                                class="fas fa-save"></i> Actualizar</button>
 
+                                    @if ($orden->status == '6'|| $orden->status == '100' )
+                                    <div class="text-left">
+                                        <button type="submit" disabled class="btn btn-sm btn-danger">
+                                            <i class="fas fa-save"></i> Actualizar
+                                        </button>
                                     </div>
+                                    @else
+                                    <div class="text-left">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-save"></i> Actualizar
+                                        </button>
+                                    </div>
+                                        
+                                    @endif
 
                                 </form>
                             </div>
@@ -284,13 +294,22 @@
                                 <span>{{ $orden->fecha_pago_entregado }}</span>
 
                             @endif
-
+                            
                         </p>
 
                         <p class="mt-3 ml-4">
                             <b><i class="fas fa-truck-moving"></i> Orden entregada:</b>
                             <span>{{ $orden->fecha_pago_entregada }}</span>
                         </p>
+
+
+                        @if($orden->fecha_pago_rechazado)
+                        <p class="mt-3 ml-4">
+                            <b><i class="fas fa-recycle"></i> Orden rechazada:</b>
+                            <span>{{ $orden->fecha_pago_rechazado }}</span>
+                        </p>
+                            
+                        @endif
 
 
                     </div>

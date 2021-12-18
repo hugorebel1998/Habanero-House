@@ -11,9 +11,7 @@
                         <div class="col-md-6">
                             <h5 class="text-center"><strong>Información de la comprar</strong> </h5>
                             <div class="row">
-                            @if ()
-                                
-                            
+                            @if ($orden->orden_tipo == 0)       
                                 <div class="col-md-6 mt-3">
                                     <b><i class="fas fa-city"></i> CDMX / Estado: </b>
                                     <p class="ml-3">
@@ -68,6 +66,23 @@
 
                                     </form>
                                 </div>
+                            @else
+
+                            <div class="col-md-12 mt-3">
+                                 <p class="ml-3"><span>Escogiste la opción recoger platillo en el restaurante <b>Habanero House</b>  </span></p>
+                            </div>
+
+                            <div class="col-md-6 mt-3">
+                                <form action="{{ route('usuario.cart.store.payment')}}" method="post">
+                                 @csrf
+                                 <input type="hidden" name="metodo_pago" id="file_payment_method_id">
+                                 <button type="submit"
+                                  class="btn btn-dark disabled"
+                                  id="btn-complete">
+                                  <i class="fas fa-dollar-sign"></i> Realizar pago</button>
+
+                             </form>
+                         </div>
 
                             @endif
                             </div>

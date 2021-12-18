@@ -289,7 +289,8 @@ class CartController extends NotificacionesController
         $orden = Order::find($orden->id);
         $items = $orden->getItems;
         $envio = $this->getValorEnvio($orden->id);
-        return view('cart.mostrar', compact('orden', 'items', 'envio', 'metodo_efectivo', 'metodo_transferencia', 'metodo_paypal', 'metodo_tarjeta'));
+        $to_go = Restaurant::pluck('to_go')->first();
+        return view('cart.mostrar', compact('orden', 'items', 'envio', 'metodo_efectivo', 'metodo_transferencia', 'metodo_paypal', 'metodo_tarjeta', 'to_go'));
     }
 
 

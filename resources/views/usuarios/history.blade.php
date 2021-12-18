@@ -32,19 +32,29 @@
                                         @if ($orden->status == 0)
                                             <span class="badge badge-warning">En proceso</span>
                                         @elseif($orden->status == 1)
-                                            <h5><span class="badge badge-primary">Pago pendiente de confirmación</span>
+                                            <h5>
+                                                <span class="badge badge-primary">Pago pendiente de confirmación</span>
                                             </h5>
                                         @elseif($orden->status == 2)
+                                        <h5>
                                             <span class="badge badge-primary">Pago recibido</span>
+                                        </h5>
                                         @elseif($orden->status == 3)
+                                        <h5>
                                             <span class="badge badge-primary">Procesando la orden</span>
+                                        </h5>
                                         @elseif($orden->status == 4)
+                                        <h5>
                                             <span class="badge badge-success">Orden enviada</span>
+                                        </h5>
                                         @elseif($orden->status == 5)
+                                        <h5>
                                             <span class="badge badge-success">Orden entregada</span>
+                                        </h5>
                                         @elseif($orden->status == 100)
+                                        <h5>
                                             <span class="badge badge-danger">Orden rechazada</span>
-
+                                        </h5>
                                         @endif
                                     </td>
                                     <td>

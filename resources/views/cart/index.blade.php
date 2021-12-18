@@ -109,7 +109,6 @@
                                     <div class="card-title"> <i class="fas fa-car-side"></i> Tipo de envio </div>
                                 </div>
                                 <div class="car-body">
-
                                     @if ($orden->orden_tipo == 0)
                                         @if (!is_null(Auth::user()->getAddressDefault))
                                             <div class="row">

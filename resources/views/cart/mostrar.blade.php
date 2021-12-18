@@ -11,6 +11,9 @@
                         <div class="col-md-6">
                             <h5 class="text-center"><strong>Información de la comprar</strong> </h5>
                             <div class="row">
+                            @if ()
+                                
+                            
                                 <div class="col-md-6 mt-3">
                                     <b><i class="fas fa-city"></i> CDMX / Estado: </b>
                                     <p class="ml-3">
@@ -65,6 +68,8 @@
 
                                     </form>
                                 </div>
+
+                            @endif
                             </div>
                         </div>
                         <div class="col-md-6">

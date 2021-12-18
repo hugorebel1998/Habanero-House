@@ -42,8 +42,8 @@
                                             <span class="badge badge-success">Orden enviada</span>
                                         @elseif($orden->status == 5)
                                             <span class="badge badge-success">Orden entregada</span>
-                                        @elseif($orden->status == 5)
-                                            <span class="badge badge-danger">Pagopendiente de confirmación</span>
+                                        @elseif($orden->status == 100)
+                                            <span class="badge badge-danger">Orden rechazada</span>
 
                                         @endif
                                     </td>

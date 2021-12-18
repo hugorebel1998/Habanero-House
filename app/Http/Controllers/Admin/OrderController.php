@@ -32,10 +32,11 @@ class OrderController extends Controller
     {
 
         $ordenes = Order::where('status', '!=', '0')->where('orden_tipo', 0)->get();
-        $usuarios  = DB::table('users')
-            ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
-            ->where('orders.status', '!=', '0')
-            ->get();
+        $usuarios = User::all();
+        // $usuarios  = DB::table('users')
+        //     ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
+        //     ->where('orders.status', '!=', '0')
+        //     ->get();
 
         return view('admin.ordenes.entrega_domicilio', compact('ordenes', 'usuarios'));
     }
@@ -44,10 +45,11 @@ class OrderController extends Controller
     {
 
         $ordenes = Order::where('status', '!=', '0')->where('orden_tipo', 1)->get();
-        $usuarios  = DB::table('users')
-            ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
-            ->where('orders.status', '!=', '0')
-            ->get();
+        $usuarios = User::all();
+        // $usuarios  = DB::table('users')
+        //     ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
+        //     ->where('orders.status', '!=', '0')
+        //     ->get();
 
         return view('admin.ordenes.ir_a_recoger', compact('ordenes', 'usuarios'));
     }
@@ -76,5 +78,41 @@ class OrderController extends Controller
         
 
         return view('admin.ordenes.show', compact('orden'));
+    }
+
+
+    public function storeOrder(Request $request,$id)
+    {
+        $orden = Order::find($id);
+
+        if ($request->status == '1' || $request->status == '2') {
+            return back();
+        }
+
+        $orden->status = $request->status;
+        if ($request->status == '3' && is_null($orden->fecha_pago_procesado)) {
+            $orden->fecha_pago_procesado = date('Y-m-d h:i:s');
+        }
+
+        if ($request->status == '4' && is_null($orden->fecha_pago_enviado)) {
+            $orden->fecha_pago_enviado = date('Y-m-d h:i:s');
+        }
+
+        if ($request->status == '5' && is_null($orden->fecha_pago_enviado)) {
+            $orden->fecha_pago_enviado = date('Y-m-d h:i:s');
+        }
+
+        if ($request->status == '6' && is_null($orden->fecha_pago_entregado)) {
+            $orden->fecha_pago_entregado = date('Y-m-d h:i:s');
+        }
+
+        if ($orden->save()) {
+            alert()->success('Éxito has cambiado el status de la orden.');
+            return back();
+        }else{
+            alert()->success('Error alcambiar el status de la orden.');
+            return back();
+        }
+
     }
 }

@@ -8,6 +8,7 @@ use App\Category;
 use App\Coverage;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Http\Request;
 
 class AdminHomeController extends Controller
@@ -25,6 +26,7 @@ class AdminHomeController extends Controller
                 $categoriaCount = Category::count();
                 $usuarioCount = User::count();
                 $coverageCount = Coverage::where('tipo_covertura', '0')->count();
-                return view('adminhome', compact('productoCount', 'categoriaCount', 'usuarioCount','coverageCount'));
+                $ordenCount = Order::where('status', '!=', '0')->count();
+                return view('adminhome', compact('productoCount', 'categoriaCount', 'usuarioCount','coverageCount','ordenCount'));
         }
 }

@@ -94,6 +94,7 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::get('/ordenes/a-domicilio', 'OrderController@ordenDomicilio')->name('admin.orden.a.domicilio');
     Route::get('/ordenes/ir-a-recoger', 'OrderController@ordenToGo')->name('admin.orden.ir.recoger');
     Route::get('/ordenes/show/{order}', 'OrderController@show')->name('admin.orden.show');
+    Route::post('/ordenes/store/{order}', 'OrderController@storeOrder')->name('admin.orden.store');
 
 
 

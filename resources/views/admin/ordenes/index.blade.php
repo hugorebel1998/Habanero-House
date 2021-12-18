@@ -71,7 +71,6 @@
                                             En proceso
                                         @elseif($orden->status == 1)
                                             Pago pendiente de confirmación
-
                                         @elseif($orden->status == 2)
                                             Pago recibido
                                         @elseif($orden->status == 3)
@@ -80,8 +79,10 @@
                                             Orden enviada
                                         @elseif($orden->status == 5)
                                             Orden entregada
-                                        @elseif($orden->status == 5)
-                                            Pagopendiente de confirmación
+                                        @elseif($orden->status == 6)
+                                            Orden enviada
+                                        @elseif($orden->status == 100)
+                                            Orden rechazada
 
                                         @endif
                                     </td>

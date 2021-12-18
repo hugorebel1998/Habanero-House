@@ -3,7 +3,7 @@
 @section('content')
 
     
-	<div class="all-page-title page-breadcrumb">
+	{{-- <div class="all-page-title page-breadcrumb">
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
@@ -11,7 +11,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	
     <div class="menu-box">
         <div class="container">
@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
                     <br>
                     <div class="heading-title text-center">
-                        <h2>Menú</h2>
+                        {{-- <h2>Menú</h2> --}}
                     </div>
                 </div>
             </div>

@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card card-danger shadow">
-                        <div class="card-header">
+                    <div class="card shadow">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-archway"></i> Crear municipio / Delegación</div>
                         </div>
                         <div class="card-body">
@@ -41,13 +41,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
-
-
-
-
-
-                                  
                                 </div>
                         </div>
 
@@ -60,11 +53,11 @@
                 </div>
                 <div class="col-md-8">
 
-                    <div class="card shadow">
+                    <div class="card card-danger card-outline shadow">
                         <div class="card-header">
                             <b class="lead font-weight-bold"> <i class="fas fa-archway"></i> Municipios / Delegaciones</b>
                         </div>
-                        <div class="d-flex flex-row-reverse mr-5">
+                         <div class="d-flex flex-row-reverse mr-5">
 
                             <div class="p-2">
                                 @can('delete categoria')
@@ -85,9 +78,9 @@
                                     </div>
                                 @endcan
                             </div>
-                        </div>
+                        </div> 
                         <div class="card-body">
-                            <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">
+                            <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                                 <thead>
                                     <tr>
                                         <th scope="col">Status</th>

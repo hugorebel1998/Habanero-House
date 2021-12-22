@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card card-danger shadow">
-                        <div class="card-header">
+                    <div class="card shadow">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-truck"></i> Crear covertura de envio
                                 (Localidad)</div>
                         </div>
@@ -50,8 +50,7 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-
-                    <div class="card shadow">
+                    <div class="card card-danger card-outline shadow">
                         <div class="card-header">
                             <b class="lead font-weight-bold"> <i class="fas fa-truck"></i> Coverturas de envio</b>
                         </div>
@@ -78,7 +77,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">
+                            <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                                 <thead>
                                     <tr>
 

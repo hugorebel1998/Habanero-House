@@ -7,9 +7,9 @@
     <div class="row justify-content-center">
         <div class="col-md-11">
 
-            <div class="card shadow transparente">
+            <div class="card shadow card-danger card-outline transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold">Categorias eliminadas</b>
+                    <b class="lead font-weight-bold"><i class="fas fa-clipboard-list"></i> Categorias eliminadas</b>
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="categoria">

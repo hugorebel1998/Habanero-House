@@ -14,8 +14,8 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card card-danger shadow">
-                        <div class="card-header">
+                    <div class="card shadow">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-clipboard-check"></i> Crear variante</div>
                         </div>
                         <div class="card-body">
@@ -48,12 +48,12 @@
 
                 </div>
                 <div class="col-md-8">
-                    <div class="card">
+                    <div class="card card-danger card-outline">
                         <div class="card-header">
                             <b class="lead font-weight-bold"> Variantes</b>
                         </div>
                         <div class="card-body">
-                            <table class="order-table table table-hover" cellspacing="0" width="100%" id="example4">
+                            <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>

@@ -76,14 +76,14 @@ class CoverturaController extends Controller
     {
         $covertura = Coverage::findOrFail($id);
         if ($covertura->delete()) {
-            alert()->success('Covertura eliminada conéxito con éxito');
+            alert()->success('Covertura eliminada con éxito');
             return redirect()->to(route('admin.covertura.index'));
         }
     }
 
     public function indexDelete()
     {
-        $coverturas = Coverage::onlyTrashed()->get();
+        $coverturas = Coverage::where('tipo_covertura', 0)->onlyTrashed()->get();
         return view('admin.covertura.indexdelete', compact('coverturas'));
         $restaurante = Restaurant::pluck('id')->first();
     }
@@ -172,8 +172,22 @@ class CoverturaController extends Controller
         
         $localidad = Coverage::find($id);
         if ($localidad->delete()) {
-            alert()->success('Localidad eliminada conéxito con éxito');
+            alert()->success('Localidad eliminada con éxito');
             return redirect()->to(route('admin.covertura.index'));
         }
+    }
+
+    public function indexLocalDelete()
+    {
+        $localidades = Coverage::where('tipo_covertura', 1)->onlyTrashed()->get();
+        return view('admin.covertura.indexdeletelocal', compact('localidades'));
+        $restaurante = Restaurant::pluck('id')->first();
+    }
+
+    public function localidadRestore($id)
+    {
+        $localidad = Coverage::find($id);
+        Coverage::onlyTrashed()->findOrFail($id)->restore();
+        return redirect()->to(route('admin.covertura.localidad'));
     }
 }

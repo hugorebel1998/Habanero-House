@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card card-danger shadow">
-                <div class="card-header">
+            <div class="card shadow">
+                <div class="card-header bg-rojo">
                     <div class="card-tittle"><i class="fas fa-edit"></i> Editar covertura</div>
                 </div>
                 <div class="card-body">

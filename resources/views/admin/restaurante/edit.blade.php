@@ -100,7 +100,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="monto_minimo_de_compra">Monto minimo de compra</label>
+                                        <label for="monto_minimo_de_compra">Monto mínimo de compra</label>
                                         <input type="number" name="monto_minimo_de_compra"
                                             class="form-control @error('monto minimo de compra') is-invalid @enderror"
                                             value="{{ $restaurante->monto_minimo_de_compra }}" min="1">
@@ -305,7 +305,7 @@
                     </div>
                 </div>
                 <div class="text-right mt-4 mb-4">
-                    <button type="submit" class="btn bg-rojo"><i class="fas fa-save"></i>
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-save"></i>
                         Actualizar
                         información</button>
                 </div>

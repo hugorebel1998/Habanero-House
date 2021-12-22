@@ -192,10 +192,13 @@ class ProductController extends Controller
 
     public function productoCategoria(Request $request, $id)
     {
-        $productoListas = Product::where('category_id', $id)->get();
+        $categoria = Category::find($id);
+        // $productoListas = Product::where('category_id', $id)->get();
+        $productoListas = Product::where('category_id',$id)->get();
 
-        // dd($productoListas);
-        return view('admin.productos.productcategory', compact('productoListas'));
+
+        // dd($categoria,$productoListas);
+        return view('admin.productos.productcategory', compact('productoListas','categoria'));
     }
 
     public function productoInventario($id)
@@ -241,7 +244,7 @@ class ProductController extends Controller
 
             if ($productInventary->save()) {
 
-                alert()->success('Guardado con éxito');
+                alert()->success('Éxito un nuevo inventario creado', 'Se registro un nuevo inventario.');
                 return redirect()->back();
             } else {
                 alert()->error('Error', 'Ops no se pudo crear el inventario');
@@ -292,7 +295,7 @@ class ProductController extends Controller
 
             if ($inventario->save()) {
 
-                alert()->success('Actualizado con éxito');
+                alert()->success('Éxito al actualizar', 'Inventario actualizado con éxito.');
                 return redirect()->to(route('admin.productos.inventario', $inventario->product_id));
             } else {
                 alert()->error('Error', 'Ops no se pudo actualizar');

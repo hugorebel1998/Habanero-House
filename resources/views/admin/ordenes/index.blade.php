@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card transparente">
+            <div class="card card-danger card-outline transparente">
                 <div class="card-header">
                     <b class="lead font-weight-bold"> <i class="fab fa-first-order"></i> Ordenes</b>
                 </div>

@@ -7,7 +7,10 @@
         <div class="col-md-10">
           <div class="row">
               <div class="col-md-12 mt-5">
-                  <div class="card transparente">
+                  <div class="card shadow card-danger card-outline transparente">
+                    <div class="card-header">
+                        <b class="lead font-weight-bold"><i class="fas fa-clipboard-list"></i> Platillos de la caegoria "{{ $categoria->nombre}}"</b>
+                    </div>
                       <div class="card-body">
                         <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                             <thead>

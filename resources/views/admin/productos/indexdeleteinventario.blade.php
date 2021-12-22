@@ -5,9 +5,9 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card transparente">
+            <div class="card card-danger card-outline transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold"> Inventarios eliminados </b>
+                    <b class="lead font-weight-bold"><i class="fas fa-boxes"></i> Inventarios eliminados </b>
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">

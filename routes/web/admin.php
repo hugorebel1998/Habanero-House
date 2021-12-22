@@ -78,6 +78,8 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::delete('/covertura/delete/{coverage}', 'CoverturaController@delete')->name('admin.covertura.delete');
     Route::get('/covertura/index/delete', 'CoverturaController@indexDelete')->name('admin.covertura.index.delete');
     Route::get('/covertura/index/delete/restore/{coverage}', 'CoverturaController@coverturaRestore')->name('admin.covertura.index.restore');
+    
+    
     //Covertura de envios municipios o delegaciones
     Route::get('/coverturas/localidad/{localidad}', 'CoverturaController@localidad')->name('admin.covertura.localidad');
     Route::post('covertura/localidad/store', 'CoverturaController@localidadStore')->name('admin.covertura.localidad.store');
@@ -85,18 +87,16 @@ Route::group(['middleware' => ['isAdmin','role:super-admin|admin|gerente']], fun
     Route::put('/coverturas/localidad/update/{localidad}', 'CoverturaController@updateLocalidad')->name('admin.covertura.localidad.update');
     Route::delete('covertura/localidad/delete/{localidad}', 'CoverturaController@delateLocalidad')->name('admin.covertura.localidad.delete');
     Route::get('/covertura/localidad/index/delete', 'CoverturaController@indexLocalDelete')->name('admin.covertura.index.local.delete');
-
-    // Route::get('/covertura/index/delete/restore/{coverage}', 'CoverturaController@coverturaRestore')->name('admin.covertura.index.restore');
+    Route::get('/covertura/index/delete/restore/{localidad}', 'CoverturaController@localidadRestore')->name('admin.covertura.index.local.restore');
 
     
+
     //Ordenes
     Route::get('/ordenes/index', 'OrderController@index')->name('admin.orden.index');
     Route::get('/ordenes/a-domicilio', 'OrderController@ordenDomicilio')->name('admin.orden.a.domicilio');
     Route::get('/ordenes/ir-a-recoger', 'OrderController@ordenToGo')->name('admin.orden.ir.recoger');
     Route::get('/ordenes/show/{order}', 'OrderController@show')->name('admin.orden.show');
     Route::post('/ordenes/store/{order}', 'OrderController@storeOrder')->name('admin.orden.store');
-
-
 
 
 

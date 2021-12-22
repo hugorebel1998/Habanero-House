@@ -1,14 +1,14 @@
 @extends('layouts.home')
 @section('content')
-@section('title', 'Lista de productos eliminados')
+@section('title', 'Gestión platillos eliminados')
 
 
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card transparente">
+            <div class="card card-danger card-outline transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold"> Productos eliminados </b>
+                    <b class="lead font-weight-bold"><i class="fas fa-utensils"></i> Platillos eliminados </b>
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">

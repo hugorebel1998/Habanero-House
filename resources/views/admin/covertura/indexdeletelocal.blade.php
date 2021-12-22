@@ -9,7 +9,7 @@
 
             <div class="card card-danger card-outline shadow transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold"> <i class="fas fa-archway"></i> Municipios / Delegaciones eliminadas</b>
+                    <b class="lead font-weight-bold"> <i class="fas fa-truck"></i> Coverturas de envio eliminadas</b>
                 </div>
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
@@ -17,16 +17,17 @@
                             <tr>
                                 <th scope="col">Status</th>
                                 <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col" class="text-center">Administrador</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($coverturas as $covertura)
-                                <tr @if ($covertura->deleted_at) class="table-danger" @endif>
+                            @foreach ($localidades as $localidad)
+                                <tr @if ($localidad->deleted_at) class="table-danger" @endif>
 
                                     <td>
-                                        @if ($covertura->status == 1)
+                                        @if ($localidad->status == 1)
                                         <span class="badge badge-pill badge-info p-2"
                                             style="font-size: .8rem">Activo</span>
                                     @else
@@ -34,10 +35,11 @@
                                             style="font-size: .8rem">No activo</span>
                                     @endif
                                     </td>
-                                    <td>{{ $covertura->nombre }}</td>                                    
+                                    <td>{{ $localidad->nombre }}</td>                                    
+                                    <td>$ {{ $localidad->precio }} MNX</td>                                    
                                     <td class="text-center">
-                                        <a href="{{ route('admin.covertura.index.restore', $covertura->id) }}"
-                                            class="btn btn-sm btn-info restablecer_covertura">
+                                        <a href="{{ route('admin.covertura.index.local.restore', $localidad->id) }}"
+                                            class="btn btn-sm btn-info restablecer_localidad">
                                             <i class="fas fa-trash-restore"></i> Restablecer</a>
                                     </td>
                                 </tr>
@@ -56,12 +58,12 @@
 @section('alerta')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(".restablecer_covertura").click(function(e) {
+        $(".restablecer_localidad").click(function(e) {
             e.preventDefault();
             const href = $(this).attr('href');
             Swal.fire({
                 title: 'Estas seguro de querer restablecerlo?',
-                text: `Esta covertura sera restablecida`,
+                text: `Esta localidad sera restablecida`,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -71,7 +73,7 @@
                 if (result.value) {
                     Swal.fire(
                         'Éxito',
-                        'Restableciste esta covertura.',
+                        'Restableciste esta lacalidad.',
                         'success'
                     )
                     document.location.href = href;

@@ -7,9 +7,9 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card card-danger shadow">
-                        <div class="card-header">
-                            <div class="card-tittle"><i class="fas fa-box"></i> Crear categoria</div>
+                    <div class="card shadow">
+                        <div class="card-header bg-rojo">
+                            <div class="card-tittle"><i class="fas fa-plus"></i> Crear categoria</div>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('admin.categorias.store') }}" method="POST" autocomplete="off">
@@ -53,9 +53,9 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="card shadow">
+                    <div class="card card-danger card-outline shadow">
                         <div class="card-header">
-                            <b class="lead font-weight-bold"> Categorias</b>
+                            <b class="lead font-weight-bold"> <i class="fas fa-clipboard-list"></i> Categorias</b>
                         </div>
                         <div class="d-flex flex-row-reverse mr-5">
 

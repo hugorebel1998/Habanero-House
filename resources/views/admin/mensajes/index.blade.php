@@ -5,11 +5,11 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-11">
-            <div class="card transparente">
+            <div class="card card-danger card-outline shadow">
                 <div class="card-header">
-                    <b class="lead font-weight-bold"> Mensajes</b>
+                    <b class="lead font-weight-bold"><i class="far fa-envelope"></i> Mensajes</b>
                 </div>
-                <div class="d-flex flex-row-reverse mr-4">
+                {{-- <div class="d-flex flex-row-reverse mr-4">
                     <div class="p-2">
 
                         <div class="dropdown dropleft">
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                         <thead>

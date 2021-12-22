@@ -6,9 +6,9 @@
        <div class="col-md-12">
            <div class="row">
         <div class="col-md-8">
-            <div class="card card-danger shadow">
-                <div class="card-header">
-                    <div class="card-tittle"><i class="fas fa-box"></i> Editarproducto</div>
+            <div class="card shadow">
+                <div class="card-header bg-rojo">
+                    <div class="card-tittle"><i class="fas fa-box"></i> Editar platillo</div>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data"
@@ -155,8 +155,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <diV class="card card-danger shadow">
-                <div class="card-header">
+            <diV class="card shadow">
+                <div class="card-header bg-rojo">
                     <div class="card-tittle"><i class="fas fa-image"></i> Imagen destacada</div>
                 </div>
                 <div class="card-body">

@@ -5,9 +5,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-11">
-            <div class="card card-danger shadow">
-                <div class="card-header">
-                    <div class="card-tittle"><i class="fas fa-edit"></i> Editar {{ $inventario->nombre}}</div>
+            <div class="card shadow">
+                <div class="card-header bg-rojo">
+                    <div class="card-tittle"><i class="fas fa-edit"></i> Editar inventario "{{ $inventario->nombre}}"</div>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.productos.inventario.update', $inventario->id)}}" method="POST" enctype="multipart/form-data" autocomplete="off">

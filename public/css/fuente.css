@@ -126,17 +126,19 @@
 .h4showuser {
     /* font-family: 'Grechen Fuemen', cursive; */
     font-family: 'Fahkwang', sans-serif;
-    font-size: 1.3rem;
-}
-
-.h4showuser :hover {
-    /* font-family: 'Grechen Fuemen', cursive; */
-    font-family: 'Fahkwang', sans-serif;
-    font-size: 1.2rem;
-    color: #efb810;
+    font-size: 1rem;
 }
 
 
+#img-user {
+    height: 50px;
+    width: 50px;
+
+}
+#imagen_user_show{
+    height: 100%;
+    width: 100%;
+}
 /* Termino Vista Show Usuario */
 
 

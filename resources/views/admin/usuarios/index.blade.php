@@ -8,7 +8,10 @@
         <div class="col-md-11">
             <div class="card transparente">
                 <div class="card-header">
-                    <b class="lead font-weight-bold"> Usuarios</b>
+                    <b class="lead font-weight-bold"> 
+                        <i class="fas fa-user-friends"></i>
+                        Usuarios
+                    </b>
                 </div>
                 <div class="d-flex flex-row-reverse mr-4">
 
@@ -21,10 +24,10 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">
+                                {{-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user-friends"></i>
                                     Usurios registrados
-                                </a>
+                                </a> --}}
                                 <a class="dropdown-item" href="{{ route('admin.usuarios.indexdelete') }}">
                                     <i class="fas fa-users-slash"></i>
                                     Usuarios eliminados
@@ -45,6 +48,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col"></th>
                                 <th scope="col">Rol</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellidos</th>
@@ -59,6 +63,15 @@
 
                                 <tr>
                                     <td>{{ $usuario->id }}</td>
+                                    <td>
+                                        @if (is_null($usuario->imagen_usuario))
+                                        <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}"
+                                            class="rounded-circle mx-auto d-block" id="img-user">
+                                        @else
+                                        <img src="{{ asset('img/users/'.$usuario->imagen_usuario) }}"
+                                        class="rounded-circle mx-auto d-block" id="img-user">
+                                        @endif
+                                    </td>
                                     <td>{{ $usuario->rol ?: 'Cliente' }}</td>
                                     <td>{{ $usuario->name ?: 'Sin nombre' }}</td>
                                     <td>{{ $usuario->apellido_paterno }}

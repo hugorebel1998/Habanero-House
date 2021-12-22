@@ -6,7 +6,10 @@
         <div class="col-md-11">
             <div class="card transparente">
                 <div class="card-header">
-                <b class="lead font-weight-bold"> Usuarios eliminados</b>
+                <b class="lead font-weight-bold"> 
+                    <i class="fas fa-users-slash"></i>
+                    Usuarios eliminados
+                </b>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -14,6 +17,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col"></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellidos</th>
                                 <th scope="col">Edad</th>
@@ -26,6 +30,15 @@
                             @foreach ($usuarios as $usuario)
                             <tr @if ($usuario->deleted_at) class="table-danger" @endif>
                                 <td>{{ $usuario->id }}</td>
+                                <td>
+                                   @if (is_null($usuario->imagen_usuario))
+                                   <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}"
+                                       class="rounded-circle mx-auto d-block" id="img-user">
+                                   @else
+                                   <img src="{{ asset('img/users/'.$usuario->imagen_usuario) }}"
+                                   class="rounded-circle mx-auto d-block" id="img-user">
+                                   @endif
+                                </td>
                                 <td>{{ $usuario->name}}</td>
                                 <td>{{ $usuario->apellido_paterno}} {{ $usuario->apellido_materno}}</td>
                                 <td>{{ $usuario->age }} años</td>

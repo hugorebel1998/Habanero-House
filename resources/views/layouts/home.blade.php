@@ -91,22 +91,26 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link text-white" data-toggle="dropdown" href="#">
-                        <span class="mr-2"><b>|</b></span><span class="mr-2"><b>Perfil</b></span><i
-                            class="fas fa-user"></i>
+                        <span class="mr-2"><b>|</b></span>
+                        <span class="mr-2"><b>Perfil</b></span>
+                        <i class="fas fa-user-shield"></i>
                         <span class="badge badge-warning navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <p class="text-center"> <b>{{ auth()->user()->name }}
+                        <p class="text-center mt-3"> <b>{{ auth()->user()->name }}
                                 {{ auth()->user()->apellido_paterno }}</b></p>
                         <span class="dropdown-header">{{ auth()->user()->email }}</span>
                         <div class="dropdown-divider"></div>
+                        <a href="{{ route('home')}}" class="dropdown-item">
+                            <i class="fas fa-blog"></i> Habanero House
+                        </a>
                         <a href="{{ route('admin.usuarios.edit', auth()->user()->id) }}" class="dropdown-item">
-                            <i class="fas fa-user-edit mr-2"></i> Editar información
+                            <i class="fas fa-user-edit"></i> Editar información
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('admin.usuarios.contraseña', auth()->user()->id) }}"
                             class="dropdown-item">
-                            <i class="fas fa-unlock-alt mr-2"></i> Cambiar contraseña
+                            <i class="fas fa-unlock-alt"></i> Cambiar contraseña
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -118,16 +122,13 @@
                         </form>
                     </div>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-                            class="fas fa-th-large"></i></a>
-                </li> --}}
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-danger navbar-light elevation-4">
             <a href="{{ route('admin.home') }}" class="brand-link navbar-white pl-3">
                 <img class="mx-auto d-block" src="{{ asset('img/logohabanero.jpeg') }}" alt="Habanero House"
                     width="170">
+                
             </a>
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -233,7 +234,7 @@
                             </ul>
                         </li>
 
-                        @can('read usuario')
+                        
                             <li class="nav-item ">
                                 <a href="#" class="nav-link active">
                                     <i class="nav-icon fas fa-users"></i>
@@ -267,7 +268,6 @@
 
                                 </ul>
                             </li>
-                        @endcan
                         <li class="nav-item ">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-mail-bulk"></i>

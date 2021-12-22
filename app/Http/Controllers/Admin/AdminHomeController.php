@@ -10,6 +10,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminHomeController extends Controller
 {
@@ -22,6 +23,7 @@ class AdminHomeController extends Controller
 
         public function index()
         {
+                
                 $productoCount = Product::count();
                 $categoriaCount = Category::count();
                 $usuarioCount = User::count();

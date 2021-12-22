@@ -38,7 +38,6 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $user_status = UserStatus::pluck('id')->first();
-
         $usuario = new User();
         $usuario->name = ucwords($request->nombre);
         $usuario->apellido_paterno = ucwords($request->apellido_paterno);
@@ -67,14 +66,13 @@ class UserController extends Controller
             $usuario->apellido_materno = $request->apellido_materno;
             $usuario->fecha_nacimiento = $request->fecha_de_nacimiento;
             $usuario->telefono = $request->teléfono;
-            // $usuario->imagen_usuario = $request->file('imagen_');
             $usuario->email = $request->correo_electrónico;
             $usuario->password = bcrypt($request->contraseña);
             $usuario->editor_id = auth()->user()->id;
 
             if ($usuario->save()) {
 
-                alert()->success('Éxito nuevo usuario','Se registro un nuevo usuario', $usuario->nombre);
+                alert()->success('Éxito nuevo usuario creado'. $usuario->nombre );
                   return redirect()->to(route('admin.usuarios.index'));
             } else {
                 alert()->error('Oops error', 'Al parecer tuvimos un error.');

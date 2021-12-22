@@ -15,7 +15,7 @@
                                 <div class="col-md-6 mt-3">
                                     <h4 class="tittleshowuser">Cargo</h4>
                                     <a class="h4showuser">
-                                        <p>{{ $usuario->cargo ?: 'Cliente'}}</p>
+                                        <p>{{ $usuario->rol ?: 'Cliente'}}</p>
                                     </a>
                                 </div>
 
@@ -60,23 +60,14 @@
                                    <a href="{{ route('admin.usuarios.index') }}" class="btn btn-primary mb-2 ml-4 h4show"> <i
                                     class="far fa-hand-point-left"></i> Regresar</a>
                                    </div>
-                                   <div class="p-2">
-                                   {{-- <form action="{{ route('usuarios.delete', $usuario->id) }}" method="POST">
-                                      @csrf
-                                      @method('Delete')
-                                    <a class="btn btn-danger"
-                                      onclick="return confirm('¿Estas Seguro de eliminar este usuario')"
-                                      href="{{ route('usuarios.delete', $usuario->id) }}"><i
-                                      class="far fa-trash-alt"></i> Eliminar usuario</a>
-                                 </form> --}}
-                                   </div>
+                                   
                              </div>
                         </div>
 
                         <div class="col-md-6">
                         @if ($usuario->imagen_usuario)
                             <img src="{{ asset('img/users/'.$usuario->imagen_usuario) }}" class="img-fluid. max-width: 100%;"
-                                id="imagen_user" width="100%" height="100%">
+                                id="imagen_user_show" width="100%" height="100%">
                             @else
                             <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}" class="img-fluid. max-width: 100%;"
                                 width="100%" height="100%">

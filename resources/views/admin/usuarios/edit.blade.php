@@ -5,8 +5,8 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="card card-danger shadow">
-                        <div class="card-header">
+                    <div class="card  shadow">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-user-edit"></i> Editar usuario</div>
                         </div>
                         <div class="card-body">
@@ -94,8 +94,8 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <diV class="card card-danger shadow">
-                        <div class="card-header">
+                    <diV class="card shadow">
+                        <div class="card-header bg-rojo">
                             <div class="card-tittle"><i class="fas fa-image"></i> Imagen destacada</div>
                         </div>
                         <div class="card-body">
@@ -103,7 +103,7 @@
                                 <div class="col-md-12">
                                     @if ($usuario->imagen_usuario)
                                     <img src="{{ asset('img/users/'.$usuario->imagen_usuario) }}"
-                                        class="rounded mx-auto d-block" id="imagen_user" width="80%" height="80%">
+                                        class="rounded mx-auto d-block" id="imagen_user" width="88%" height="80%">
                                     @else
                                     <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}"
                                         class="rounded mx-auto d-block" width="80%" height="80%">

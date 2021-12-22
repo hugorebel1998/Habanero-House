@@ -281,6 +281,7 @@ class CartController extends NotificacionesController
     {
 
         $metodo_efectivo = Restaurant::pluck('metodo_por_efectivo')->first();
+        // dd($metodo_efectivo);
         $metodo_transferencia = Restaurant::pluck('metodo_por_transferencia')->first();
         $metodo_paypal = Restaurant::pluck('metodo_por_paypal')->first();
         $metodo_tarjeta = Restaurant::pluck('metodo_por_tarjeta')->first();

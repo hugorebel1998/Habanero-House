@@ -28,12 +28,17 @@
 
     <style>
         .portada {
-         /* background: url({{asset("img/habanero.png")}}) no-repeat fixed center; */
+          background: url({{asset("img/fondo2.jpg")}}) no-repeat fixed center; 
          background:#DEDEDE:
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        }
+
+         img{
+            opacity:0.7:
+            
         }
         .bg-boton {
             background-color: #213a8a;

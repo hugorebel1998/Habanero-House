@@ -63,7 +63,6 @@
                         <h3 class="card-title text-center mt-4"> <i class="fas fa-map-pin"></i>
                             <b>Dirección de la orden a entregar</b>
                         </h3>
-
                         <div class="card-body box-profile">
                             @if (is_null($orden->getUserAddress))
 
@@ -123,6 +122,25 @@
                                 </div>
 
                             @endif
+                        </div>     
+                    </div>
+
+                    <div class="card card-danger card-outline">
+                        <h3 class="card-title text-center mt-4"> <i class="fas fa-search-dollar"></i>
+                            <b>Metodo de pago</b>
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-12 p-4 mb-2">
+                                @if($orden->metodo_pago == 0)
+                                <button type="button" class="btn btn-danger btn-sm btn-block">Pago en efectivo</button>
+                                @elseif($orden->metodo_pago == 1)
+                                <button type="button" class="btn btn-danger btn-sm btn-block">Transferencia bancaria</button>
+                                @elseif($orden->metodo_pago == 2)
+                                <button type="button" class="btn btn-danger btn-sm btn-block">Pago por PayPal</button>
+                                @elseif($orden->metodo_pago == 3)
+                                <button type="button" class="btn btn-danger btn-sm btn-block">Pago con tarjeta de credito</button>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -186,7 +204,25 @@
                             </div>
                         </div>
                     </div>
+
+                    @if ($orden->metodo_pago == 1)
+                    
+                    <div class="card card-danger card-outline">
+                        <h3 class="card-title text-center mt-4"> <i class="fas fa-ticket-alt"></i>
+                            <b>Comprobante de pago</b>
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-12 p-4">
+                                <a href="{{ asset('img/orden_vauchers/'. $orden->imagen_vaucher)}}" target="_blank">
+                                    <img src="{{ asset('img/orden_vauchers/'. $orden->imagen_vaucher)}}" class="rounded mx-auto d-block" width="78%" height="78%">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
+
+                
 
             </div>
         </div>
@@ -323,4 +359,6 @@
     </div>
 </div>
 
+
 @endsection
+

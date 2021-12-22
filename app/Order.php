@@ -10,7 +10,7 @@ class Order extends Model
 
     protected $fillable = [
         'status', 'numero_orden', 'orden_tipo', 'subtotal', 'deliver',
-        'total', 'metodo_pago', 'info_pago', 'fecha_pago',
+        'total', 'metodo_pago', 'imagen_vaucher','info_pago', 'fecha_pago',
         'user_addeerss_id', 'user_id'
     ];
 

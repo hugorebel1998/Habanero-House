@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('total', 11, 2)->nullable();
             $table->integer('metodo_pago')->nullable();
             $table->text('info_pago')->nullable();
+            $table->string('imagen_vaucher')->nullable();
             $table->dateTime('fecha_pago_proceso')->nullable();
             $table->dateTime('fecha_pago_recibido')->nullable();
             $table->dateTime('fecha_pago_procesado')->nullable();

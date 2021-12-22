@@ -137,6 +137,26 @@
                         </div>
                     </div>
 
+                    @if ($orden->metodo_pago == 1)
+                    <div class="card shadow">
+                        <div class="card-header bg-negro">
+                            <div class="card-title"><i class="fas fa-ticket-alt"></i>
+                                Comprobante
+                            </div>
+                        </div>
+                        <div class="car-body">
+                            <div class="row">
+                                <div class="col-md-12 mt-3 ml-3 mb-4">
+                                    <img src="{{ asset('img/orden_vauchers/'. $orden->imagen_vaucher)}}" 
+                                    class="rounded mx-auto d-block" width="78%" height="78%">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                        
+                    @endif
+
                 </div>
 
             </div>

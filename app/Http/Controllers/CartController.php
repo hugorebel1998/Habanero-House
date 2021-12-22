@@ -300,18 +300,33 @@ class CartController extends NotificacionesController
         $date = Carbon::now()->locale('es');
         $orden = $this->getUserOrder();
         $orden = Order::find($orden->id);
-        if ($request->metodo_pago == "0") {
+
+        
+        if ($archivo = $request->file('payment_method_transfer_file')) {
+            $nombre_imagen = $archivo->getClientOriginalName();
+            $ruta = public_path('img/orden_vauchers/');
+            $archivo->move($ruta, $nombre_imagen);
+            $orden['imagen_vaucher'] = $nombre_imagen;
+        }
+       
+
+        if ($request->metodo_pago == "0" || $request->metodo_pago == "1") {
             $orden->numero_orden = $this->getNumbreOrder();
             $orden->status = "1";
             $orden->fecha_pago_proceso = $date;
+
         }
         $orden->metodo_pago = $request->metodo_pago;
         if ($orden->save()) {
-            if ($orden->metodo_pago == "0") {
+            if ($orden->metodo_pago == "0" || $request->metodo_pago == "1") {
                 $this->getDetailOrder($orden->id);
                 return redirect()->to(route('usuario.cart.historia.compra', $orden->id));
                 
-            } else {
+            } elseif($orden->metodo_pago == "1" || $request->metodo_pago == "1"){
+                $this->getDetailOrder($orden->id);
+                return redirect()->to(route('usuario.cart.historia.compra', $orden->id));
+
+            }else {
                 //Aqui redireionara aldiferente metodo depago
             }
         }

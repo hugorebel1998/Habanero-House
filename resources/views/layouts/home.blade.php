@@ -233,32 +233,6 @@
                             </ul>
                         </li>
 
-
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link active">
-
-                                <i class="nav-icon fab fa-accusoft"></i>
-                                <p>
-                                    Reportes
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link text-secondary">
-                                        <i class="far fa-list-alt nav-icon"></i>
-                                        <p class="text-black">Gestión de reportes</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="" class="nav-link text-secondary">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear reporte</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         @can('read usuario')
                             <li class="nav-item ">
                                 <a href="#" class="nav-link active">
@@ -436,6 +410,7 @@
       
     })
   </script>
+  
 
     {{-- AlertConfirmt --}}
     @yield('alerta')

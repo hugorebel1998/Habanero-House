@@ -40,6 +40,7 @@
                                 <th scope="col">No.</th>
                                 <th scope="col">Usuario</th>
                                 <th scope="col">Fecha</th>
+                                <th scope="col">Método de pago</th>
                                 <th scope="col">Estado de la orden</th>
                                 <th scope="col">Total</th>
                                 <th scope="col" class="text-center">Administrador</th>
@@ -61,11 +62,19 @@
                                     </td>
 
                                     <td>
-                                        {{ \Carbon\Carbon::parse($orden->fecha_pago_proceso)->formatLocalized('%d %B %Y %I:%M %p A') }}
+                                        {{ \Carbon\Carbon::parse($orden->fecha_pago_proceso)->formatLocalized('%d %B %Y %I:%M %p') }}
                                     </td>
-                                    {{-- <td><img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
-                                        class="rounded mx-auto img-thumbnail" width="80"></td>
-                                <td> --}}
+                                    <td>
+                                        @if ($orden->metodo_pago == 0)
+                                             Pago en efectivo
+                                        @elseif($orden->metodo_pago == 1)
+                                             Trasferencia bancaria
+                                        @elseif($orden->metodo_pago == 2)
+                                             PayPal
+                                        @elseif($orden->metodo_pago == 3)
+                                             Pago por tarjeta 
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($orden->status == 0)
                                             En proceso

@@ -56,9 +56,10 @@
                                         <p class="ml-3"><span>${{ $orden->total }} MXN</span></p>
                                     </div>
                                     <div class="col-md-6 mt-3">
-                                        <form action="{{ route('usuario.cart.store.payment') }}" method="post">
+                                        <form action="{{ route('usuario.cart.store.payment') }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <input type="hidden" name="metodo_pago" id="file_payment_method_id">
+                                            <input type="file" name="payment_method_transfer_file" id="payment_method_transfer_file" accept="image/*"  style="display: none">
                                             <button type="submit" class="btn btn-dark disabled" id="btn-complete">
                                                 <i class="fas fa-dollar-sign"></i> Realizar pago</button>
 
@@ -72,9 +73,10 @@
                                     </div>
 
                                     <div class="col-md-6 mt-3">
-                                        <form action="{{ route('usuario.cart.store.payment') }}" method="post">
+                                        <form action="{{ route('usuario.cart.store.payment') }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <input type="hidden" name="metodo_pago" id="file_payment_method_id">
+                                            <input type="file" name="payment_method_transfer_file" id="payment_method_transfer_file" accept="image/*"  style="display: none">
                                             <button type="submit" class="btn btn-dark disabled" id="btn-complete">
                                                 <i class="fas fa-dollar-sign"></i> Realizar pago</button>
 
@@ -87,7 +89,7 @@
                         <div class="col-md-6">
                             <h5 class="text-center"><strong>Realizar comprar</strong> </h5>
                             <input type="hidden" name="metodo_pago" id="file_payment_method_id">
-                            <input type="file" name="payment_method_transfer_file" id="payment_method_transfer_file" accept="image/*"  style="display: non">
+                            <input type="file" name="payment_method_transfer_file" id="payment_method_transfer_file" accept="image/*"  style="display: none">
                             <div class="payments_methods">
                                 <div class="text-center">
                                     @if ($metodo_efectivo == '1')

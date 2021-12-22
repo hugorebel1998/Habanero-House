@@ -97,19 +97,6 @@
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-rojo">
                             <div class="inner">
-                                <h3>0</h3>
-
-                                <p>Reportes</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fab fa-accusoft"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box bg-rojo">
-                            <div class="inner">
                                 <h3>{{ $coverageCount }}</h3>
 
                                 <p>Coverturas ordenes</p>

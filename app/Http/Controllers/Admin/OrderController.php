@@ -108,11 +108,16 @@ class OrderController extends Controller
         
 
 
-        if ($status_order == '1' || $status_order == '2') {
+        if ($status_order == '1') {
             return back();
         }
 
         $orden->status = $status_order;
+        
+        if ($status_order == '2' && is_null($orden->fecha_pago_recibido)) {
+            $orden->fecha_pago_recibido = date('Y-m-d h:i:s');
+        }
+
         if ($status_order == '3' && is_null($orden->fecha_pago_procesado)) {
             $orden->fecha_pago_procesado = date('Y-m-d h:i:s');
         }

@@ -18,8 +18,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <br>
-                    <div class="heading-title text-center">
-                        {{-- <h2>Menú</h2> --}}
+                    <div class="heading-title text-center">                        
                     </div>
                 </div>
             </div>
@@ -28,41 +27,46 @@
                     <div class="special-menu text-center">
                         <div class="button-group filter-button-group">
                             <button class="active" data-filter="*">Todos</button>
+                            <button data-filter=".entradas">Entradas</button>
                             <button data-filter=".antojitos-reguinales">Antojitos regionales</button>
                             <button data-filter=".sopas">Sopas</button>
                             <button data-filter=".ensaladas">Ensaladas</button>
+                            <button data-filter=".fusion_europea_y_peninsula">Ensaladas</button>
+                            
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-lg-12">
+                <div class="col-lg-12">
                     <div class="special-menu text-center">
                         <div class="button-group filter-button-group">
                             <button data-filter=".antojitos-reguinales">Antojitos regionales</button>
-                            <button data-filter=".sopas">Sopas</button>
-                            <button data-filter=".ensaladas">Ensaladas</button>
+                            {{-- <button data-filter=".sopas">Sopas</button>
+                            <button data-filter=".ensaladas">Ensaladas</button> --}}
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
 
             <div class="row special-list">
-                @foreach ($productosAntojitos as $productosAntojito)
 
-                    <div class="col-lg-4 col-md-6 special-grid antojitos-reguinales">
+                @foreach ($productosEntradas as $productosEntrada)
+
+                    <div class="col-lg-4 col-md-6 special-grid entradas">
                         <div class="gallery-single fix">
-                            <img src="{{ asset('img/products/' . $productosAntojito->imagen_producto) }}" class="img-fluid"
-                                alt="{{ $productosAntojito->nombre }}">
+                            <img src="{{ asset('img/products/' . $productosEntrada->imagen_producto) }}" class="img-fluid"
+                                alt="{{ $productosEntrada->nombre }}">
                             <div class="why-text">
-                                <h2>{{ $productosAntojito->nombre }}</h2>
-                                <h5 class="mt-3"> $ {{ $productosAntojito->precio }}</h5>
+                                <h2>{{ $productosEntrada->nombre }}</h2>
+                                <h5 class="mt-3"> $ {{ $productosEntrada->precio }}</h5>
+                                <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $productosEntrada->descripcion }}</p>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
-                                        <a href="{{ route('usuario.mostrar.show', [$productosAntojito->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
+                                        <a href="{{ route('usuario.mostrar.show', [$productosEntrada->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
                                     </div>
                                     
-                                    <div class="p-2">
+                                    {{-- <div class="p-2">
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-arrow-down"></i></a>
-                                    </div>
+                                    </div> --}}
                                   </div>
                             </div>
                         </div>
@@ -72,50 +76,101 @@
 
                 @foreach ($productosSopas as $productosSopa)
 
-                    <div class="col-lg-4 col-md-6 special-grid sopas">
-                        <div class="gallery-single fix">
-                            <img src="{{ asset('img/products/' . $productosSopa->imagen_producto) }}"
-                                class="img-fluid" alt="{{ $productosSopa->nmbre }}">
-                            <div class="why-text">
-                                <h2>{{ $productosSopa->nombre }}</h2>
-                                {{-- <p>{{ $productosSopa->descripcion }}</p> --}}
-                                <h5 class="mt-3"> $ {{ $productosSopa->precio }}</h5>
-                                <div class="d-flex justify-content-end">
-                                    <div class="p-2">
-                                        <a href="{{ route('usuario.mostrar.show', [$productosSopa->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
-                                    </div>
-                                    <div class="p-2">
-                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-plus"></i></a>
-                                    </div>
-                               </div>
-                            </div>
+                <div class="col-lg-4 col-md-6 special-grid sopas">
+                    <div class="gallery-single fix">
+                        <img src="{{ asset('img/products/' . $productosSopa->imagen_producto) }}"
+                            class="img-fluid" alt="{{ $productosSopa->nmbre }}">
+                        <div class="why-text">
+                            <h2>{{ $productosSopa->nombre }}</h2>
+                            {{-- <p>{{ $productosSopa->descripcion }}</p> --}}
+                            <h5 class="mt-3"> $ {{ $productosSopa->precio }}</h5>
+                            <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $productosSopa->descripcion }}</p>
+                            <div class="d-flex justify-content-end">
+                                <div class="p-2">
+                                    <a href="{{ route('usuario.mostrar.show', [$productosSopa->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
+                                </div>
+                                {{-- <div class="p-2">
+                                    <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-plus"></i></a>
+                                </div> --}}
+                           </div>
                         </div>
                     </div>
+                </div>
 
                 @endforeach
 
-                @foreach ($productosEnsaladas as $productosEnsalada)
 
+                @foreach ($productosEnsaladas as $productosEnsalada)
                     <div class="col-lg-4 col-md-6 special-grid ensaladas">
                         <div class="gallery-single fix">
                             <img src="{{ asset('img/products/' . $productosEnsalada->imagen_producto) }}"
                                 class="img-fluid" alt="{{ $productosEnsalada->nmbre }}">
                             <div class="why-text">
                                 <h2>{{ $productosEnsalada->nombre }}</h2>
-                                {{-- <p>{{ $productosEnsalada->descripcion }}</p> --}}
                                 <h5 class="mt-3"> $ {{ $productosEnsalada->precio }}</h5>
+                                <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $productosEnsalada->descripcion }}</p>
                                 <div class="d-flex justify-content-end">
                                     <div class="p-2">
                                         <a href="{{ route('usuario.mostrar.show', [$productosEnsalada->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
                                     </div>
-                                    <div class="p-2">
+                                    {{-- <div class="p-2">
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-plus"></i></a>
-                                    </div>
+                                    </div> --}}
                                </div>
                             </div>
                         </div>
                     </div>
+                @endforeach
 
+
+                @foreach ($productosAntojitos as $productosAntojito)
+
+                    <div class="col-lg-4 col-md-6 special-grid antojitos-reguinales">
+                        <div class="gallery-single fix">
+                            <img src="{{ asset('img/products/' . $productosAntojito->imagen_producto) }}" class="img-fluid"
+                                alt="{{ $productosAntojito->nombre }}">
+                            <div class="why-text">
+                                <h2>{{ $productosAntojito->nombre }}</h2>
+                                <h5 class="mt-3"> $ {{ $productosAntojito->precio }}</h5>
+                                <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $productosAntojito->descripcion }}</p>
+                                <div class="d-flex justify-content-end">
+                                    <div class="p-2">
+                                        <a href="{{ route('usuario.mostrar.show', [$productosAntojito->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
+                                    </div>
+                                    
+                                    {{-- <div class="p-2">
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-arrow-down"></i></a>
+                                    </div> --}}
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
+
+
+
+                @foreach ($productosEuropeas as $productosEuropea)
+                    <div class="col-lg-4 col-md-6 special-grid ensaladas">
+                        <div class="gallery-single fix">
+                            <img src="{{ asset('img/products/' . $productosEuropea->imagen_producto) }}"
+                                class="img-fluid" alt="{{ $productosEuropea->nmbre }}">
+                            <div class="why-text">
+                                <h2>{{ $productosEuropea->nombre }}</h2>
+                                {{-- <p>{{ $productosEnsalada->descripcion }}</p> --}}
+                                <h5 class="mt-3"> $ {{ $productosEuropea->precio }}</h5>
+                                <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $productosEuropea->descripcion }}</p>
+                                <div class="d-flex justify-content-end">
+                                    <div class="p-2">
+                                        <a href="{{ route('usuario.mostrar.show', [$productosEuropea->id] )}}" class="btn btn-sm btn-danger"><i class="far fa-eye"></i></a>
+                                    </div>
+                                    {{-- <div class="p-2">
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-cart-plus"></i></a>
+                                    </div> --}}
+                               </div>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
 
 

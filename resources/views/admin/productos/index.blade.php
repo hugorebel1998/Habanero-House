@@ -50,8 +50,8 @@
                             @foreach ($productos as $producto)
                                 <tr @if ($producto->status == 0) class="table-danger" @endif>
                                     <td>{{ $producto->id }}</td>
-                                    <td>{{ $producto->nombre }}</td>
-                                    <td>{{ $producto->categoriaProduct->nombre }}</td>
+                                    <td>{{ ucfirst($producto->nombre) }}</td>
+                                    <td>{{ ucfirst($producto->categoriaProduct->nombre) }}</td>
                                     <td><img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
                                             class="rounded mx-auto img-thumbnail" width="80"></td>
                                     <td>
@@ -70,25 +70,30 @@
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.productos.show', $producto->id) }}"><i
-                                                            class="far fa-bookmark"></i> Ver
-                                                        platillo</a>
+                                                        href="{{ route('admin.productos.show', $producto->id) }}">
+                                                        <i class="far fa-bookmark"></i> 
+                                                        Ver platillo
+                                                    </a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.productos.edit', $producto->id) }}"><i
-                                                            class="fas fa-edit"></i> Editar
-                                                        platillo</a>
+                                                        href="{{ route('admin.productos.edit', $producto->id) }}">
+                                                        <i class="fas fa-edit"></i> 
+                                                        Editar platillo
+                                                    </a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.productos.inventario', $producto->id) }}"><i
-                                                            class="fas fa-clipboard-check"></i>
-                                                        Inventario platillo</a>
+                                                        href="{{ route('admin.productos.inventario', $producto->id) }}">
+                                                        <i class="fas fa-clipboard-check"></i>
+                                                        Inventario platillo
+                                                    </a>
                                                     @can('delete producto')
                                                         <form action="{{ route('admin.productos.delete', $producto->id) }}"
                                                             method="POST" class="eliminar_producto">
                                                             @csrf
                                                             @method('Delete')
                                                             <button class="dropdown-item"
-                                                                href="{{ route('admin.productos.delete', $producto->id) }}"><i
-                                                                    class="far fa-trash-alt"></i> Eliminar usuario</button>
+                                                                href="{{ route('admin.productos.delete', $producto->id) }}">
+                                                                <i class="far fa-trash-alt"></i> 
+                                                                Eliminar usuario
+                                                            </button>
                                                         </form>
                                                     @endcan
                                                 </div>
@@ -100,7 +105,6 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
         </div>
     </div>

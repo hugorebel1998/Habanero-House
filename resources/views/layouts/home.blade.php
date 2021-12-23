@@ -133,8 +133,13 @@
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('admin-lte/dist/img/user.jpg') }}" alt="User Image"
-                            class="img-circle elevation-4" style="opacity: .9; height:50px; width:50px">
+                        @if (is_null(auth()->user()->imagen_usuario))
+                        <img src="{{ asset('img/users/sin_asignar/foto.jpg') }}" alt="{{auth()->user()->name}}"
+                        class="img-circle elevation-4" style="opacity: .9; height:50px; width:50px">
+                        @else
+                        <img src="{{ asset('img/users/'. auth()->user()->imagen_usuario) }}" alt="User Image"
+                        class="img-circle elevation-4" style="opacity: .9; height:50px; width:50px">
+                        @endif
                     </div>
                     <div class="info mt-2">
                         <a href="{{ route('admin.usuarios.show', auth()->user()->id) }}"
@@ -161,14 +166,7 @@
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p class="text-black">Gestión de categorias</p>
                                     </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    {{-- <a href="#" class="nav-link text-secondary">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear categoria</p>
-                                    </a> --}}
-                                </li>
+                                </li>                                
                             </ul>
                         </li>
 

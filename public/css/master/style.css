@@ -225,7 +225,10 @@
     }
     
     .slides-navigation a i {
+        color: white;
         font-size: 35px;
+        
+
     }
     
     .slides-navigation a:hover {

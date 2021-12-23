@@ -33,8 +33,8 @@
                                                 class="custom-select select2bs4 @error('status') is-invalid @enderror"
                                                 style="width: 100%;">
                                                 <option value="" selected>-- Selecciona una opción--</option>
-                                                <option value="0" @if ( old('status') == '0') selected="selected" @endif  }}> No activo</option>
-                                                <option value="1" @if ( old('status') == '1') selected="selected" @endif  }}> Activo</option>
+                                                <option value="0" @if (old('status') == '0') selected="selected" @endif }}> No activo</option>
+                                                <option value="1" @if (old('status') == '1') selected="selected" @endif }}> Activo</option>
                                             </select>
                                             @error('status')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -55,9 +55,10 @@
 
                     <div class="card card-danger card-outline shadow">
                         <div class="card-header">
-                            <b class="lead font-weight-bold"> <i class="fas fa-archway"></i> Municipios / Delegaciones</b>
+                            <b class="lead font-weight-bold"> <i class="fas fa-archway"></i> Municipios /
+                                Delegaciones</b>
                         </div>
-                         <div class="d-flex flex-row-reverse mr-5">
+                        <div class="d-flex flex-row-reverse mr-5">
 
                             <div class="p-2">
                                 @can('delete categoria')
@@ -78,14 +79,13 @@
                                     </div>
                                 @endcan
                             </div>
-                        </div> 
+                        </div>
                         <div class="card-body">
                             <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                                 <thead>
                                     <tr>
                                         <th scope="col">Status</th>
                                         <th scope="col">Nombre</th>
-
                                         <th scope="col" class="text-center">Administrador</th>
                                     </tr>
                                 </thead>
@@ -103,11 +103,8 @@
                                                         style="font-size: .8rem">No activo</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $covertura->nombre }}</td>
-                                            {{-- <td>$ {{ $covertura->precio }} MXN</td> --}}
-
+                                            <td>{{ ucfirst($covertura->nombre) }}</td>
                                             <td class="text-center">
-
                                                 <div class="dropdown">
                                                     <button class="btn btn-sm btn-info dropdown-toggle" type="button"
                                                         id="dropdownMenuButton" data-toggle="dropdown"
@@ -135,8 +132,8 @@
                                                                     class="far fa-trash-alt"></i>
                                                                 Eliminar covertura</button>
                                                         </form>
-
-
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

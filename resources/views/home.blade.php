@@ -3,42 +3,37 @@
 @section('content')
 
 
-
-<!-- Start slides -->
 <div id="slides" class="cover-slides">
     <ul class="slides-container">
         <li class="text-center">
-            <img src="{{ asset('img/home/slider-01.jpg')}} " alt="">
+            <img src="{{ asset('img/home/slider-01.jpg')}}">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Bienvenido a <br> Habanero House</strong></h1>
                         <p class="m-b-40">AUTENTICA COMIDA YUCATECA.</p>
-                        {{-- <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p> --}}
                     </div>
                 </div>
             </div>
         </li>
         <li class="text-center">
-            <img src="{{ asset('img/home/slider-02.jpg')}}" alt="">
+            <img src="{{ asset('img/home/slider-02.jpg')}}" >
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Bienvenido a <br> Habanero House</strong></h1>
                         <p class="m-b-40">AUTENTICA COMIDA YUCATECA.</p>
-                        {{-- <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p> --}}
                     </div>
                 </div>
             </div>
         </li>
         <li class="text-center">
-            <img src="{{ asset('img/home/slider-03.jpg')}}" alt="">
+            <img src="{{ asset('img/home/slider-03.jpg')}}">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Bienvenido a <br> Habanero House</strong></h1>
                         <p class="m-b-40">AUTENTICA COMIDA YUCATECA.</p>
-                        {{-- <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p> --}}
                     </div>
                 </div>
             </div>

@@ -96,9 +96,9 @@
                                         <tr>
 
                                             <td>{{ $categoria->id }}</td>
-                                            <td>{{ $categoria->nombre }}</td>
+                                            <td>{{ ucfirst($categoria->nombre) }}</td>
                                             <td style="font-size: 30px">{!! $categoria->icono !!}</td>
-                                            <td>{{ $categoria->descripcion }}</td>
+                                            <td>{{ ucfirst($categoria->descripcion) }}</td>
 
                                             <td class="text-center">
                                                 @can('update categoria')

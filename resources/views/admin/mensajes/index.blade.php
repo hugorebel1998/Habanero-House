@@ -9,24 +9,6 @@
                 <div class="card-header">
                     <b class="lead font-weight-bold"><i class="far fa-envelope"></i> Mensajes</b>
                 </div>
-                {{-- <div class="d-flex flex-row-reverse mr-4">
-                    <div class="p-2">
-
-                        <div class="dropdown dropleft">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-sort-amount-up-alt"></i> Filtrar por
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-ban"></i>
-                                    Mensajes no leidos
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="card-body">
                     <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                         <thead>
@@ -42,7 +24,7 @@
                             @foreach ($mensajes as $mensaje)
                                 <tr>
                                     <td>{{ $mensaje->id }}</td>
-                                    <td>{{ $mensaje->nombre }}</td>
+                                    <td>{{ ucfirst($mensaje->nombre) }}</td>
                                     <td>{{ $mensaje->email }}</td>
                                     <td>{{ date('d M Y - H:i:s', $mensaje->created_at->timestamp) }}</td>
                                     <td class="d-flex justify-content-center">
@@ -58,26 +40,23 @@
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i>
-                                                        Ver
-                                                        producto</a>
+                                                        Ver producto
+                                                    </a>
                                                     <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
-                                                        Editar
-                                                        producto</a>
+                                                        Editar producto
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-
 
 @endsection

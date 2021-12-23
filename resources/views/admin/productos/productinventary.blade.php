@@ -2,7 +2,6 @@
 @section('content')
 @section('title', 'Inventario platillo')
     <div class="container-fluid">
-        {{-- <h4 class="text-right text-white"> <i class="fas fa-utensils"></i> {{ ucfirst($product->nombre) }}</h4> --}}
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <ol class="breadcrumb float-sm-right transparente">
@@ -160,13 +159,15 @@
                                                             <div class="dropdown-menu"
                                                                 aria-labelledby="dropdownMenuButton">
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('admin.productos.inventario.edit', $inventario->id) }}"><i
-                                                                        class="fas fa-edit"></i>
-                                                                    Editar</a>
+                                                                    href="{{ route('admin.productos.inventario.edit', $inventario->id) }}">
+                                                                    <i class="fas fa-edit"></i>
+                                                                    Editar
+                                                                </a>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('admin.producto.variante', $inventario->id) }}"><i
-                                                                        class="fas fa-box-open"></i>
-                                                                    Variantes</a>
+                                                                    href="{{ route('admin.producto.variante', $inventario->id) }}">
+                                                                    <i class="fas fa-box-open"></i>
+                                                                    Variantes
+                                                                </a>
 
                                                                 @can('delete producto')
                                                                     <form
@@ -175,8 +176,10 @@
                                                                         @csrf
                                                                         @method('Delete')
                                                                         <button class="dropdown-item"
-                                                                            href="{{ route('admin.productos.inventario.delete', $inventario->id) }}"><i
-                                                                                class="far fa-trash-alt"></i> Eliminar</button>
+                                                                            href="{{ route('admin.productos.inventario.delete', $inventario->id) }}">
+                                                                            <i class="far fa-trash-alt"></i> 
+                                                                            Eliminar
+                                                                        </button>
                                                                     </form>
                                                                 @endcan
                                                             </div>
@@ -184,16 +187,12 @@
                                                     @endcan
                                                 </td>
                                             </tr>
-
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>

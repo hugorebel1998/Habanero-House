@@ -31,7 +31,7 @@ class CategoryController extends Controller
         $request->validate([
 
             'nombre'      => 'required|unique:categories,nombre',
-            'icono'       => 'required',
+            // 'icono'       => 'required',
             'descripcion' => "required"
         ]);
 

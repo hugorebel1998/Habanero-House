@@ -4,13 +4,13 @@
 <div class="container-fluid">
     {{-- <h4 class="text-right text-white"> <i class="fas fa-utensils"></i> {{ ucfirst($inventario->nombre) }}</h4> --}}
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        {{-- <div class="col-md-12">
             <ol class="breadcrumb float-sm-right transparente">
                 <li class="breadcrumb-item"><a href="{{ route('admin.productos.index')}}" class="text-danger"><i class="fas fa-utensils"></i> Gestion de platillos</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.productos.inventario',$inventario->id)}}" class="text-danger"><i class="fas fa-cloud-meatball"></i> {{ $inventario->nombre}}</a></li>
                 <li class="breadcrumb-item"><a href="#" class="text-danger"><i class="fas fa-cloud-meatball"></i> </a>Variente</li>
               </ol>
-        </div>
+        </div> --}}
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
@@ -58,7 +58,6 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Nombre</th>
-
                                         <th scope="col" class="text-center">Administrador</th>
                                     </tr>
                                 </thead>
@@ -67,28 +66,25 @@
                                     <tr>
                                         <td>{{ $variante->id}}</td>
                                         <td>{{ $variante->nombre}}</td>
-
                                         <td class="text-center">
                                             <form action="{{ route('admin.productos.variante.delete', $variante->id)}}"
                                                 method="POST" class="eliminar_variante">
                                                 @csrf
                                                 @method('Delete')
                                                 <button class="btn btn-sm btn-danger"
-                                                    href="{{ route('admin.productos.variante.delete', $variante->id)}}"><i class="far fa-trash-alt"></i> Eliminar</button>
+                                                    href="{{ route('admin.productos.variante.delete', $variante->id)}}">
+                                                    <i class="far fa-trash-alt"></i> 
+                                                    Eliminar
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
-
-
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                        <!-- /.card-body -->
+                        </div>                        
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

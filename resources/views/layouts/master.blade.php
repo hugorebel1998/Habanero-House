@@ -240,14 +240,6 @@
                                 <i class="fas fa-cart-plus"></i></i>
                                 {{-- {{count(collect($items))}} --}}
                             </a>
-                            {{-- <div class="dropdown-menu" aria$cartCount = OrdenItem::count();
-        return view('master', compact('cartCount'));-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">
-                                    <img src="{{ asset('img/products/panuchos.png') }}"
-                                        class="rounded mx-auto img-thumbnail" width="80">
-                                    
-                                </a>
-                            </div> --}}
                         </li>
                         @guest
                             <li class="nav-item dropdown">

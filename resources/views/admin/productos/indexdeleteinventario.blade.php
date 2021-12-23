@@ -25,7 +25,7 @@
                             @foreach ($inventarios as $inventario)
                                 <tr @if ($inventario->deleted_at) class="table-danger" @endif>
                                     <td>{{ $inventario->id }}</td>
-                                    <td>{{ $inventario->nombre }}</td>
+                                    <td>{{ ucfirst($inventario->nombre) }}</td>
                                     <td>
                                         @if ($inventario->limitado_inventario == '1')
                                             Ilimitada

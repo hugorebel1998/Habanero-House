@@ -27,8 +27,8 @@
                             @foreach ($productos as $producto)
                                 <tr @if ($producto->deleted_at) class="table-danger" @endif>
                                     <td>{{ $producto->id }}</td>
-                                    <td>{{ $producto->nombre }}</td>
-                                    <td>{{ $producto->categoriaProduct->nombre }}</td>
+                                    <td>{{ ucfirst($producto->nombre) }}</td>
+                                    <td>{{ ucfirst($producto->categoriaProduct->nombre) }}</td>
                                     <td><img src="{{ asset('img/products/' . $producto->imagen_producto) }}"
                                             class="rounded mx-auto img-thumbnail" width="80"></td>
                                     <td> {{ date('d M Y - H:i:s', $producto->created_at->timestamp) }}</td>
@@ -39,7 +39,6 @@
                                             <i class="fas fa-trash-restore"></i>
                                             Restablecer
                                         </a>
-
                                     </td>
                                 </tr>
                             @endforeach

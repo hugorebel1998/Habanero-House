@@ -149,7 +149,7 @@
 	<!-- End Gallery -->
 	<div class="container">
         <div id="button-up">
-            <i class="fal fa-long-arrow-up"></i>
+            <i class="fas fa-arrow-up"></i>
         </div>
         <div id="button-whatsaap">
         <a href="https://api.whatsapp.com/send?phone=525560685209&text=Me%20interesa%20más%20información" target="_blank"><i class="fab fa-whatsapp"></i></a>            

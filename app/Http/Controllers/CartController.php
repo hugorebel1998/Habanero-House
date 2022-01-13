@@ -245,6 +245,11 @@ class CartController extends NotificacionesController
                 }
             }
         }
+        if ($request->cantidad < 1) {
+            alert()->error('Es necesario ingresar la cantidad que deseas ordenar');
+            return redirect()->back();
+        }
+        
         $orden_item->cantidad = $request->cantidad;
         $total = $orden_item->precio_unitario * $request->cantidad;
         $orden_item->total = $total;

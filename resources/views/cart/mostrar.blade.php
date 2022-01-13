@@ -133,7 +133,10 @@
 
         <div class="col-md-6" id="payment_method_transfer_info" style="display: none"> 
                 <div class="card card-dark card-outline shadow-lg mt-2">
-                    <h6 class="text-center mt-3 ">
+                    <h5 class="text-center mt-2 text-primary">
+                        <p>No.cuenta: <b> 012 927 1276541 6152 </b></p>
+                     </h5>
+                    <h6 class="text-center mt-2 ">
                         <strong>Subir comprobante</strong>
                      </h6>
                     <div class="text-center inside">

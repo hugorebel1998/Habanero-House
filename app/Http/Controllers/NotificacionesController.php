@@ -40,8 +40,15 @@ class NotificacionesController extends Controller
 
         ];
 
-        
-        Mail::to($usuario->email)->send(new OrderSedDetail($data));
+        if($orden->status == 1){
+             Mail::to($usuario->email)->send(new OrderSedDetail($data));
+             alert()->success('Exito', 'Tu orden se pago con éxito, en breve te llegara un mensaje a tu correo electrónico');
+            //  return redirect()->to(route('usuario.edit.perfil',));
+        }elseif(!$orden){
+            alert()->error('Oops error');
+            return redirect()->back();
+
+        }        
 
         foreach($this->getAdminEmails() as $admin){
             // $data = ['orden' => $orden,];
